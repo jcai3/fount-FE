@@ -1,0 +1,70 @@
+<div id="main-container" class="clearfix">
+  <div class="page-heading  clearfix asset-bg alt-one">
+    <div class="container">
+      <div class="heading-text">
+        <h1 class="entry-title">My Account</h1>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div id="page-wrap">
+      <div class="inner-page-wrap has-no-sidebar clearfix">
+        <div class="clearfix post-5864 page type-page status-publish hentry" id="5864">
+          <div class="page-content clearfix">
+            <div class="woocommerce">
+              <div class="my-account-login-wrap">
+                <div class="col2-set" id="customer_login">
+                  <!--login block -->
+                  <div class="col-1">
+                    <div class="login-wrap">
+                      <h4 class="lined-heading"><span>Registered customers</span></h4>
+                      <form class="login">
+                        <p class="form-row form-row-wide">
+                          <label for="email">Email address <span class="required">*</span></label>
+                          <input type="text" class="input-text" name="email" id="email" ng-model="loginObj.email"/>
+                        </p>
+                        <p class="form-row form-row-wide">
+                          <label for="password">Password <span class="required">*</span></label>
+                          <input class="input-text" type="password" name="password" id="password" ng-model="loginObj.password"/>
+                        </p>
+                        <p class="form-row">
+                          <input type="submit" class="button" name="login" value="Login" ng-click="loginAccount()"/>
+                        </p>
+                      </form>
+                    </div>
+                  </div>
+                  <!--registration block -->
+                  <div class="col-2">
+                    <h4 class="lined-heading"><span>New Customers</span></h4>
+                    <form class="register">
+                      <p class="form-row form-row-wide">
+                      <label for="reg_username">Username <span class="required">*</span></label>
+                      <input type="text" class="input-text" name="username" id="reg_username" ng-model="registerObj.displayName"/>
+                      </p>
+                      <p class="form-row form-row-wide email">
+                      <label for="reg_email">Email address <span class="required">*</span></label>
+                      <input type="email" class="input-text" name="email" id="reg_email" ng-model="registerObj.email"/>
+                      </p>
+                      <p class="form-row form-row-wide">
+                      <label for="reg_password">Password <span class="required">*</span></label>
+                      <input type="password" class="input-text" name="password" id="reg_password" ng-model="registerObj.password"/>
+                      </p>
+                      <p class="form-row form-row-wide">
+                      <label for="reg_password">Confirm password <span class="required">*</span></label>
+                      <input type="password" class="input-text" name="confirm password" id="reg_confirmPwd" ng-model="registerObj.confirmPassword"/>
+                      </p>
+                      <div style="left:-999em; position:absolute;"><label for="trap">Anti-spam</label><input type="text" name="email_2" id="trap" tabindex="-1"/></div>
+                      <p class="form-row">
+                      <input type="hidden" id="_wpnonce" name="_wpnonce" value="ae46a44e65"/><input type="hidden" name="_wp_http_referer" value="/my-account/"/> <input type="submit" class="button" name="register" value="Register" ng-click="registerAccount()"/>
+                      </p>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

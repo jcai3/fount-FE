@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.service('UtilityService', ['$rootScope', '$http', 'FeatureFlagsService', 'ENV', 'CONSTANTS', '$state',function($rootScope, $http, FeatureFlagsService, ENV, CONSTANTS, $state) {
+.service('UtilityService', ['$rootScope', '$http', 'FeatureFlagsService', 'ENV', 'CONSTANTS',function($rootScope, $http, FeatureFlagsService, ENV, CONSTANTS) {
   var getQueryStrings = function(location) {
     var assoc = {};
     var decode = function(s) {
@@ -27,28 +27,28 @@ angular.module('sywStyleXApp')
     return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
   }
 
-  this.getLatestApp = function() {
-    if (window.cordova) {
-      FeatureFlagsService.getAppVersion().then(function(res) {
-        var featureFlags = res.data.payload.FEATUREFLAGS;
-        for (var i=0, j=featureFlags.length; i<j; i++) {
-          if (featureFlags[i].key == 'app.version') {
-            if (CONSTANTS.appVersion != featureFlags[i].value) {
-              if (ENV.apiEnvname == 'prod') {
-                window.open('itms-services://?action=download-manifest&url=https://spree.searshc.com/distribution/manifest.plist', '_system', 'location=yes');
-              } else {
-                window.open('itms-services://?action=download-manifest&url=https://spree.searshc.com/distribution/Spree_QA/manifest.plist', '_system', 'location=yes');
-              }
-            }
-          }
-
-          if (featureFlags[i].key == 'superuser.ids') {
-            CONSTANTS.superUsers = featureFlags[i].value;
-          }
-        }
-      });
-    }
-  };
+  // this.getLatestApp = function() {
+  //   if (window.cordova) {
+  //     FeatureFlagsService.getAppVersion().then(function(res) {
+  //       var featureFlags = res.data.payload.FEATUREFLAGS;
+  //       for (var i=0, j=featureFlags.length; i<j; i++) {
+  //         if (featureFlags[i].key == 'app.version') {
+  //           if (CONSTANTS.appVersion != featureFlags[i].value) {
+  //             if (ENV.apiEnvname == 'prod') {
+  //               window.open('itms-services://?action=download-manifest&url=https://spree.searshc.com/distribution/manifest.plist', '_system', 'location=yes');
+  //             } else {
+  //               window.open('itms-services://?action=download-manifest&url=https://spree.searshc.com/distribution/Spree_QA/manifest.plist', '_system', 'location=yes');
+  //             }
+  //           }
+  //         }
+  //
+  //         if (featureFlags[i].key == 'superuser.ids') {
+  //           CONSTANTS.superUsers = featureFlags[i].value;
+  //         }
+  //       }
+  //     });
+  //   }
+  // };
 
   this.IsSuperuser = function(userId) {
     var superUsersList = CONSTANTS.superUsers.split(',');
@@ -88,59 +88,59 @@ angular.module('sywStyleXApp')
     return "";
   };
 
-  this.openSellerSite = function(url, title, source, id) {
-    var forwardUrl = ENV.sharingHost.split('#')[0] + '#/main/home';
-    var backUrl = ENV.sharingHost.split('#')[0] + '#/product/' + id;
-    console.log(forwardUrl);
-    if (ionic.Platform.isWebView()) {
-    var ref =  cordova.ThemeableBrowser.open(url, '_blank', {
-                statusbar: {
-                  color: '#ffffff'
-                },
-                toolbar: {
-                  height: 44,
-                  color: '#f8f9f9'
-                },
-                title: {
-                  color: '#4AC0D1',
-                  staticText: title
-                },
-                backButton: {
-                  wwwImage: 'img/leftArrow.png',
-                  wwwImagePressed: 'img/leftArrow.png',
-                  wwwImageDensity: 2,
-                  align: 'left',
-                  event: 'backPressed'
-                },
-                customButtons: [{
-                  wwwImage: 'img/home.png',
-                  wwwImagePressed: 'img/home.png',
-                  wwwImageDensity: 1,
-                  align: 'right',
-                  event: 'forwardPressed'
-                }],
-                backButtonCanClose: true
-              });
-      ref.addEventListener('backPressed', function(e) {
-        console.log('back pressed');
-        $state.go('product', {productId: id});
-      });
-      ref.addEventListener(cordova.ThemeableBrowser.EVT_ERR, function(e) {
-        console.error(e.message);
-      });
-      ref.addEventListener(cordova.ThemeableBrowser.EVT_WRN, function(e) {
-        console.log(e.message);
-      });
-      ref.addEventListener('forwardPressed', function(e) {
-        console.log('home button pressed');
-        $state.go('main.home');
-        ref.close();
-      });
-
-    } else {
-      window.open(url, '_blank');
-    }
-  };
+  // this.openSellerSite = function(url, title, source, id) {
+  //   var forwardUrl = ENV.sharingHost.split('#')[0] + '#/main/home';
+  //   var backUrl = ENV.sharingHost.split('#')[0] + '#/product/' + id;
+  //   console.log(forwardUrl);
+  //   if (ionic.Platform.isWebView()) {
+  //   var ref =  cordova.ThemeableBrowser.open(url, '_blank', {
+  //               statusbar: {
+  //                 color: '#ffffff'
+  //               },
+  //               toolbar: {
+  //                 height: 44,
+  //                 color: '#f8f9f9'
+  //               },
+  //               title: {
+  //                 color: '#4AC0D1',
+  //                 staticText: title
+  //               },
+  //               backButton: {
+  //                 wwwImage: 'img/leftArrow.png',
+  //                 wwwImagePressed: 'img/leftArrow.png',
+  //                 wwwImageDensity: 2,
+  //                 align: 'left',
+  //                 event: 'backPressed'
+  //               },
+  //               customButtons: [{
+  //                 wwwImage: 'img/home.png',
+  //                 wwwImagePressed: 'img/home.png',
+  //                 wwwImageDensity: 1,
+  //                 align: 'right',
+  //                 event: 'forwardPressed'
+  //               }],
+  //               backButtonCanClose: true
+  //             });
+  //     ref.addEventListener('backPressed', function(e) {
+  //       console.log('back pressed');
+  //       $state.go('product', {productId: id});
+  //     });
+  //     ref.addEventListener(cordova.ThemeableBrowser.EVT_ERR, function(e) {
+  //       console.error(e.message);
+  //     });
+  //     ref.addEventListener(cordova.ThemeableBrowser.EVT_WRN, function(e) {
+  //       console.log(e.message);
+  //     });
+  //     ref.addEventListener('forwardPressed', function(e) {
+  //       console.log('home button pressed');
+  //       $state.go('main.home');
+  //       ref.close();
+  //     });
+  //
+  //   } else {
+  //     window.open(url, '_blank');
+  //   }
+  // };
 
   this.cjProductUrlParser = function(url) {
     var productURL = decodeURIComponent(url.split('?url=')[1]).split('&cjsku')[0];
@@ -287,26 +287,26 @@ angular.module('sywStyleXApp')
     return 'unsupported';
   };
 
-  this.gaTrackAppView = function(view) {
-    if (typeof analytics !== 'undefined') {
-      analytics.trackView(view);
-    }
-  };
-
-  this.gaTrackAppEvent = function(category, action, label, value) {
-    if (typeof analytics !== 'undefined') {
-      analytics.trackEvent(category, action, label, value);
-    }
-  };
-
-}])
-.service('FeatureFlagsService', ['apiRepository', function(apiRepository) {
-
-  this.getAppVersion = function() {
-    return apiRepository.getAppVersion();
-  };
+  // this.gaTrackAppView = function(view) {
+  //   if (typeof analytics !== 'undefined') {
+  //     analytics.trackView(view);
+  //   }
+  // };
+  //
+  // this.gaTrackAppEvent = function(category, action, label, value) {
+  //   if (typeof analytics !== 'undefined') {
+  //     analytics.trackEvent(category, action, label, value);
+  //   }
+  // };
 
 }])
+// .service('FeatureFlagsService', ['apiRepository', function(apiRepository) {
+//
+//   this.getAppVersion = function() {
+//     return apiRepository.getAppVersion();
+//   };
+//
+// }])
 .service('LoginRegisterService', ['apiRepository', function(apiRepository) {
   this.login = function(email, password) {
     return apiRepository.login(email, password);

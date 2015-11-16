@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.service('apiRepository', ['$rootScope', '$http', 'ENV', 'localStorageService', function($rootScope, $http, ENV, localStorageService) {
+.service('apiRepository', ['$rootScope', '$http', 'ENV', '$httpParamSerializer',function($rootScope, $http, ENV, $httpParamSerializer) {
 
   var self = this;
   $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
@@ -26,7 +26,7 @@ angular.module('sywStyleXApp')
       cache: false,
       url: url,
       params: (httpMethod == "GET" || httpMethod == "DELETE") ? inputParams : "",
-      data: (httpMethod == "POST") ? jQuery.param(inputParams) : ""
+      data: (httpMethod == "POST") ? $httpParamSerializer(inputParams) : ""
     }).success(function(data, status, headers, config) {
       if (data.error) {
         if (path != 'mail/notifyapierror') {
@@ -35,11 +35,11 @@ angular.module('sywStyleXApp')
         console.log(data.error);
       }
       return data;
-    }).error(function(data, status, headers, config) {
-      if (path != 'mail/notifyapierror') {
-        self.postAlertEmail(path, data);
-      }
-      return data;
+    // }).error(function(data, status, headers, config) {
+    //   if (path != 'mail/notifyapierror') {
+    //     self.postAlertEmail(path, data);
+    //   }
+    //   return data;
     });
 
   };
@@ -58,16 +58,16 @@ angular.module('sywStyleXApp')
     return serviceCall('GET', 'getAppVersion');
   };
 
-  this.postAlertEmail = function(api, error) {
-    var userId = !!localStorageService.get('userId') ? localStorageService.get('userId') : '000000';
-    var inputParams = {
-      api: api,
-      error: JSON.stringify(error),
-      userId: userId
-    };
-
-    return serviceCall('POST', 'mail/notifyapierror', inputParams);
-  };
+  // this.postAlertEmail = function(api, error) {
+  //   var userId = !!localStorageService.get('userId') ? localStorageService.get('userId') : '000000';
+  //   var inputParams = {
+  //     api: api,
+  //     error: JSON.stringify(error),
+  //     userId: userId
+  //   };
+  //
+  //   return serviceCall('POST', 'mail/notifyapierror', inputParams);
+  // };
 
   this.login = function(email, password) {
     var inputParams = {
