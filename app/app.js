@@ -6,9 +6,9 @@ angular.module('sywStyleXApp', [
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider
-    .when('/login', {
-      templateUrl: 'views/login.html',
-      controller:  'LoginCtrl'
+    .when('/', {
+      templateUrl: 'views/shop.html',
+      controller:  'ShopCtrl'
     })
-  .otherwise({redirectTo: '/login'});
+  .otherwise({redirectTo: '/'});
 }]);
