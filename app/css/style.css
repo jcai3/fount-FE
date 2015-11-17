@@ -2110,16 +2110,12 @@ nav .menu > li:first-child:before {
 }
 nav .menu ul.sub-menu {
     position: absolute;
-    z-index: 9995;
+    z-index: 999999;
     margin: 0;
-    top: 80px;
+    top: 52px;
     left: 0;
     min-width: 100px;
-	opacity: 0;
-	-moz-opacity: 0;
-	filter:alpha(opacity=0);
-	pointer-events: none;
-	-webkit-backface-visibility: hidden;
+
 	-moz-box-shadow: 0 0 5px -1px rgba(0,0,0,.2);
 	-webkit-box-shadow: 0 0 5px -1px rgba(0,0,0,.2);
 	box-shadow: 0 0 5px -1px rgba(0,0,0,.2);

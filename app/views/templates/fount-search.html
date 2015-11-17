@@ -1,0 +1,14 @@
+<li class="fount-search menu-search no-hover parent">
+  <a ng-click="searchObj.showSearchBar = !searchObj.showSearchBar"><i class="fa-search"></i></a>
+  <ul ng-show="searchObj.showSearchBar" class="sub-menu">
+    <li>
+      <div class="ajax-search-wrap">
+        <div class="ajax-loading"></div>
+        <form class="search-form">
+          <input ng-model="searchObj.keyword" type="text" placeholder="Search" name="s" autocomplete="off">
+        </form>
+        <div class="ajax-search-results"></div>
+      </div>
+    </li>
+  </ul>
+</li>

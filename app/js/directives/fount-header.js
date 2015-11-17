@@ -8,6 +8,7 @@ angular.module('sywStyleXApp')
     templateUrl: 'views/templates/fount-header.html',
     scope: {},
     link: function(scope, element, attrs) {
+      
     }
   };
 });
