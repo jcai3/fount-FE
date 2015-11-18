@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.service('UtilityService', ['$rootScope', '$http', 'FeatureFlagsService', 'ENV', 'CONSTANTS',function($rootScope, $http, FeatureFlagsService, ENV, CONSTANTS) {
+.service('UtilityService', ['$rootScope', '$http', 'ENV', 'CONSTANTS',function($rootScope, $http, ENV, CONSTANTS) {
   var getQueryStrings = function(location) {
     var assoc = {};
     var decode = function(s) {
@@ -241,7 +241,7 @@ angular.module('sywStyleXApp')
   };
 
   this.validateResult = function(result) {
-    return result && result.data && !result.data.error;
+    return result && result.data && !result.data.error && !result.data.errors;
   };
 
   this.getImageHeight = function(numOfColumn) {

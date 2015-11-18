@@ -29,9 +29,9 @@ angular.module('sywStyleXApp')
       data: (httpMethod == "POST") ? $httpParamSerializer(inputParams) : ""
     }).success(function(data, status, headers, config) {
       if (data.error) {
-        if (path != 'mail/notifyapierror') {
-          self.postAlertEmail(path, data);
-        }
+        // if (path != 'mail/notifyapierror') {
+        //   self.postAlertEmail(path, data);
+        // }
         console.log(data.error);
       }
       return data;

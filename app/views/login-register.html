@@ -12,12 +12,21 @@
         <div class="clearfix post-5864 page type-page status-publish hentry" id="5864">
           <div class="page-content clearfix">
             <div class="woocommerce">
+              <ul class="woocommerce-error" ng-if="authErrorMsg">
+                <li><strong>Error:</strong> {{errorMessage}}</li>
+              </ul>
               <div class="my-account-login-wrap">
                 <div class="col2-set" id="customer_login">
                   <!--login block -->
                   <div class="col-1">
                     <div class="login-wrap">
                       <h4 class="lined-heading"><span>Registered customers</span></h4>
+                      <div class="instagram-login" ng-click="instagramLogin('registered')">
+                        <!-- <ul class="login-instagram" style="width:auto; padding:10px; border: 1px solid #e4e4e4; display:inline-block;" ng-click="instagramLogin()">
+                          <li class="instagram-icon" style="display: inline; padding-right: 5px;">icon</li><li style="display: inline;">Sign in with Instagram</li>
+                        </ul> -->
+                        <img src="../app/css/images/IG_Signin.png" class="img-responsive" style="width: 180px;"/>
+                      </div>
                       <form class="login">
                         <p class="form-row form-row-wide">
                           <label for="email">Email address <span class="required">*</span></label>

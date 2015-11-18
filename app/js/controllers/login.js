@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('LoginCtrl', ['$rootScope', '$scope', 'LoginRegisterService' ,function($rootScope, $scope, LoginRegisterService) {
+.controller('LoginCtrl', ['$rootScope', '$scope', 'LoginRegisterService', 'UtilityService','$location', 'InstagramService', function($rootScope, $scope, LoginRegisterService, UtilityService, $location, InstagramService) {
   // UtilityService.gaTrackAppView('Login Page View');
 
   $scope.loginObj = {
@@ -19,16 +19,30 @@ angular.module('sywStyleXApp')
     errorMsg: false
   };
 
+  $scope.authErrorMsg = false;
+  $scope.errorMessage = '';
+
   console.log('inside the login page');
 
   $scope.loginAccount = function() {
+    $scope.authErrorMsg = false;
     console.log($scope.loginObj);
     LoginRegisterService.login($scope.loginObj.email, $scope.loginObj.password).then(function(result) {
       if (UtilityService.validateResult(result)) {
         console.log(result);
+        $location.path('/shop');
 
       } else {
         console.log(result);
+        $scope.authErrorMsg = true;
+        if(!!result.data.error) {
+          $scope.errorMessage = result.data.error.message;
+        }
+
+        if(!!result.data.errors) {
+          $scope.errorMessage = 'Please enter your login credentials';
+        }
+
       }
     });
     console.log('login clicked');
@@ -36,17 +50,30 @@ angular.module('sywStyleXApp')
 
   $scope.registerAccount = function() {
     console.log($scope.registerObj);
+    $scope.authErrorMsg = false;
     LoginRegisterService.register($scope.registerObj.email, $scope.registerObj.password, $scope.registerObj.displayName, $scope.registerObj.termsOfUse, $scope.registerObj.instagramUserId).then(function(result) {
       if (UtilityService.validateResult(result)) {
         console.log(result);
 
       } else {
-        if (result.data.error) {
+        if (result.data.error || result.data.errors) {
           // $scope.errorMsg = result.data.error.message;
-          $scope.registerObj.errorMsg = true;
+          $scope.authErrorMsg = true;
+          if(!!result.data.error) {
+            $scope.errorMessage = result.data.error.message;
+          }
+
+          if(!!result.data.errors) {
+            $scope.errorMessage = 'Please enter all the required fields';
+          }
         }
       }
     });
   };
+
+  $scope.instagramLogin = function(userType) {
+    console.log('user Type:' + userType);
+    InstagramService.login();
+  }
 
 }]);

@@ -3,7 +3,8 @@
 // Declare app level module which depends on views, and components
 angular.module('sywStyleXApp', [
   'ngRoute',
-  'config'
+  'config',
+  'LocalStorageModule'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider
@@ -17,4 +18,8 @@ config(['$routeProvider', function($routeProvider) {
 
     })
   .otherwise({redirectTo: '/'});
+}]).run(['$rootScope', function($rootScope){
+    $rootScope.xappObj = {
+      overlay: false
+    };
 }]);
