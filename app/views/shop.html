@@ -9,17 +9,53 @@
               <div class="spb_portfolio_widget spb_content_element span12">
                 <div class="spb_wrapper portfolio-wrap">
                   <div class="filter-wrap row clearfix">
-                    <div class="filter-slide-wrap" style="display: block;">
+                    <div class="filter-slide-wrap">
                       <ul class="portfolio-filter filtering row clearfix">
-                        <li class="all span2 selected"><a data-filter="*"><span class="item-name">New Arrivals</span></a></li>
-                        <li class="span2"><a title="View all All items" class="all" data-filter=".all"><span class="item-name">All</span></a></li>
-                        <li class="span2 has-items"><a title="View all App Design items" class="app-design" data-filter=".app-design"><span class="item-name">Most Liked</span></a></li>
-                        <li class="span2 has-items"><a title="View all Interface Design items" class="interface-design" data-filter=".interface-design"><span class="item-name">On Sale</span></a></li>
-                        <li class="span2"><a title="View all Single Column items" class="single-column" data-filter=".single-column"><span class="item-name">Single Column</span></a></li>
+                        <li class="span2 has-items" ng-class="{selected: shopObj.topFilter == 'SALE'}" ng-click="setTopFilter('SALE')"><div><span class="item-name">On Sale</span></div></li>
+                        <li class="span2 has-items" ng-class="{selected: shopObj.topFilter == 'ARRIVALS'}" ng-click="setTopFilter('ARRIVALS')"><div><span class="item-name">New Arrivals</span></div></li>
+                        <!-- <li class="span2"><a title="View all Single Column items" class="single-column" data-filter=".single-column"><span class="item-name">Single Column</span></a></li> -->
                       </ul>
                     </div>
                   </div>
-                  <ul class="portfolio-items gallery-portfolio filterable-items row clearfix" style="position: relative; height: 390px;">
+                  <div class="filter-wrap filter-wrap-second row clearfix">
+                    <div class="filter-slide-wrap">
+                      <div class='seller-carousel-container'>
+                        <ul id="seller-carousel" class="portfolio-filter filtering row clearfix">
+                          <li class="span has-items selected"><div><span class="item-name">All</span></div></li>
+                          <li ng-repeat='seller in shopObj.sellers' class="span has-items">
+                            <div>
+                              <span class="item-name">{{seller.name}}</span>
+                            </div>
+                          </li>
+                        </ul>
+                        <div id="seller-carousel-next" carousel-arrow direction="right"></div>
+                        <div id="seller-carousel-prev" carousel-arrow direction="left"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <section class="container">
+                    <ul class="portfolio-items gallery-portfolio filterable-items row clearfix">
+                      <li itemscope="" itemtype="http://schema.org/CreativeWork	" data-id="id-0" class="clearfix portfolio-item span3 gallery   app-design interface-design " style="position: absolute; left: 0px; top: 0px; min-height: 165px;">
+                        <figure>
+                          <a href="http://neighborhood.swiftideas.com/?portfolio=sazzi" class="link-to-post">
+                            <div class="overlay">
+                              <div class="thumb-info">
+                                <h4 itemprop="name headline">Page Builder Post Page 1</h4>
+                                <i class="fa-chevron-right small-icon"></i>
+                              </div>
+                            </div>
+                            <img itemprop="image" src="http://neighborhood.swiftideas.com/wp-content/uploads/2012/11/sazzi.jpg" width="570" height="428" alt="Page Builder Post Page 1">
+                          </a>
+                        </figure>
+                      </li>
+                      <li itemscope="" itemtype="http://schema.org/CreativeWork	" data-id="id-1" class="clearfix portfolio-item span3 gallery   interface-design app-design " style="position: absolute; left: 240px; top: 0px; min-height: 165px;">
+                        <figure>
+                          <img itemprop="image" src="http://neighborhood.swiftideas.com/wp-content/uploads/2012/10/cibando1.jpg" width="570" height="428" alt="Page Builder Post Page 2">
+                        </figure>
+                      </li>
+                    </ul>
+                  </section>
+                  <ul class="portfolio-items gallery-portfolio filterable-items row clearfix" style="position: relative; height: 390px">
                     <li itemscope="" itemtype="http://schema.org/CreativeWork	" data-id="id-0" class="clearfix portfolio-item span3 gallery   app-design interface-design " style="position: absolute; left: 0px; top: 0px; min-height: 165px;">
                       <figure>
                         <a href="http://neighborhood.swiftideas.com/?portfolio=sazzi" class="link-to-post">
@@ -35,15 +71,7 @@
                     </li>
                     <li itemscope="" itemtype="http://schema.org/CreativeWork	" data-id="id-1" class="clearfix portfolio-item span3 gallery   interface-design app-design " style="position: absolute; left: 240px; top: 0px; min-height: 165px;">
                       <figure>
-                        <a href="http://neighborhood.swiftideas.com/?portfolio=cibando" class="link-to-post">
-                          <div class="overlay">
-                            <div class="thumb-info">
-                              <h4 itemprop="name headline">Page Builder Post Page 2</h4>
-                              <i class="fa-chevron-right small-icon"></i>
-                            </div>
-                          </div>
-                          <img itemprop="image" src="http://neighborhood.swiftideas.com/wp-content/uploads/2012/10/cibando1.jpg" width="570" height="428" alt="Page Builder Post Page 2">
-                        </a>
+                        <img itemprop="image" src="http://neighborhood.swiftideas.com/wp-content/uploads/2012/10/cibando1.jpg" width="570" height="428" alt="Page Builder Post Page 2">
                       </figure>
                     </li>
                     <li itemscope="" itemtype="http://schema.org/CreativeWork	" data-id="id-2" class="clearfix portfolio-item span3 gallery   interface-design app-design " style="position: absolute; left: 480px; top: 0px; min-height: 165px;">

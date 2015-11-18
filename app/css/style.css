@@ -1077,7 +1077,7 @@ a img.aligncenter {
 	position: relative;
 }
 .inner-page-wrap {
-	margin-top: 50px;
+	margin-top: 20px;
 	margin-bottom: 50px;
 }
 .single-portfolio .inner-page-wrap, .inner-page-wrap.no-bottom-spacing {
@@ -3601,7 +3601,6 @@ figure.lightbox {
 
 .filter-wrap {
 	display: block;
-	margin-bottom: 20px;
 }
 .filter-wrap .select {
 	line-height: 30px;
@@ -3615,10 +3614,10 @@ figure.lightbox {
 	padding-left: 20px;
 }
 .has-no-sidebar .spb_portfolio_widget .filter-wrap {
-	margin-bottom: 40px;
+	margin-bottom: 0;
 }
 .has-no-sidebar .spb_portfolio_widget .filter-wrap .filter-slide-wrap {
-	margin-bottom: 20px;
+	margin-bottom: 0;
 }
 .filter-wrap .select:hover {
 	text-decoration: none;
@@ -3645,7 +3644,6 @@ figure.lightbox {
 	margin-left: 5px;
 }
 .filter-wrap .filter-slide-wrap {
-	display: none;
 	margin-top: 0;
 	padding-bottom: 12px;
 }
@@ -3659,18 +3657,22 @@ figure.lightbox {
 	font-size: 13px!important;
 }
 .filter-wrap ul li {
-	margin-bottom: 20px;
 	display: none;
 	float: left;
-	border-bottom: 1px solid #333;
+	background: lightgrey;
+}
+.filter-wrap-second ul li {
+	margin-bottom: 20px;
 }
 .filter-wrap ul li.selected {
 	border-bottom-color: transparent;
+	background: #1bbeb4;
+	color: #ffffff;
 }
 .filter-wrap ul li.all, .filter-wrap ul li.has-items {
 	display: inline-block;
 }
-.filter-wrap ul li a {
+.filter-wrap ul li div {
 	display: block;
 	white-space: nowrap;
 	padding: 6px 12px;
@@ -3683,14 +3685,13 @@ figure.lightbox {
 	background-clip: padding-box;
 	overflow: hidden;
 	outline: none;
+	text-align: center;
 }
-.filter-wrap ul li a span.item-name {
-	max-width: 80%;
+.filter-wrap ul li div span.item-name {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
 	display: inline-block;
-	float: left;
 }
 .filter-wrap ul li a span.item-count {
 	float: right;

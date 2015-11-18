@@ -1,7 +1,173 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('ShopCtrl', ['$rootScope','$scope', function($rootScope, $scope) {
+.controller('ShopCtrl', ['$rootScope','$scope', 'UtilityService', 'SortFilterService', function($rootScope, $scope, UtilityService, SortFilterService) {
+  $scope.shopObj = {
+    topFilter: 'SALE',
+    topSellerId: 0
+  };
+
+  $scope.setTopFilter = function(filter) {
+    if ($scope.shopObj.topFilter == filter) {
+      return;
+    }
+
+    $scope.shopObj.topFilter = filter;
+  };
+
+  var getShopSellers = function() {
+    SortFilterService.getShopSellers($scope.shopObj.topFilter).then(function(result) {
+      if (UtilityService.validateResult(result)) {
+        // $scope.shopObj.sellers = result.data.payload.SELLERS;
+        $scope.shopObj.sellers = [
+        {
+        id: 41,
+        name: "Sears",
+        productsCount: 156458,
+        selected: true
+        },
+        {
+        id: 42,
+        name: "Kmart",
+        productsCount: 133212,
+        selected: true
+        },
+        {
+        id: 30,
+        name: "Office Depot and OfficeMax",
+        productsCount: 106699,
+        selected: true
+        },
+        {
+        id: 5,
+        name: "Old Navy",
+        productsCount: 49193,
+        selected: true
+        },
+        {
+        id: 4,
+        name: "Gap",
+        productsCount: 20447,
+        selected: true
+        },
+        {
+        id: 3,
+        name: "Vitamin Shoppe",
+        productsCount: 10809,
+        selected: true
+        },
+        {
+        id: 11,
+        name: "Athleta",
+        productsCount: 7787,
+        selected: true
+        },
+        {
+        id: 34,
+        name: "Shopbop",
+        productsCount: 5727,
+        selected: true
+        },
+        {
+        id: 6,
+        name: "Banana Republic",
+        productsCount: 3464,
+        selected: true
+        },
+        {
+        id: 12,
+        name: "Adorama",
+        productsCount: 3177,
+        selected: true
+        },
+        {
+        id: 18,
+        name: "Ted Baker",
+        productsCount: 2900,
+        selected: true
+        },
+        {
+        id: 23,
+        name: "Sur La Table",
+        productsCount: 2038,
+        selected: true
+        },
+        {
+        id: 22,
+        name: "Under Armour",
+        productsCount: 1921,
+        selected: true
+        },
+        {
+        id: 16,
+        name: "MANGO",
+        productsCount: 1812,
+        selected: true
+        },
+        {
+        id: 10,
+        name: "ashford",
+        productsCount: 1286,
+        selected: true
+        },
+        {
+        id: 33,
+        name: "ULTA Beauty",
+        productsCount: 980,
+        selected: true
+        },
+        {
+        id: 28,
+        name: "Cost Plus World Market",
+        productsCount: 874,
+        selected: true
+        },
+        {
+        id: 38,
+        name: "Fossil",
+        productsCount: 692,
+        selected: true
+        },
+        {
+        id: 29,
+        name: "DisneyStore",
+        productsCount: 481,
+        selected: true
+        },
+        {
+        id: 25,
+        name: "Sunglass Hut Affiliate Program",
+        productsCount: 354,
+        selected: true
+        },
+        {
+        id: 37,
+        name: "Dwell",
+        productsCount: 95,
+        selected: true
+        },
+        {
+        id: 15,
+        name: "Stuart Weitzman - US",
+        productsCount: 57,
+        selected: true
+        }
+      ];
+      }
+    });
+  };
+
+  var getSellerProducts = function() {
+    SortFilterService.getSellerProducts($scope.shopObj.topSellerId, $scope.shopObj.topFilter, pageNumber).then(function(result) {
+      if (UtilityService.validateResult(result)) {
+
+      }
+    });
+  };
+
+  getShopSellers();
+
+
 //   UtilityService.gaTrackAppView('Shop Page View');
 //
 //   var pageNumber = 1;
