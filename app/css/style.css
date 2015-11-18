@@ -1731,7 +1731,10 @@ nav .menu > li.shopping-bag-item ul.sub-menu {
 }
 .ajax-search-results {
 	border-top: 1px solid #e3e3e3;
-	display: none;
+}
+.search-result-pt {
+	max-height: 350px;
+	overflow-y: auto;
 }
 .search-result-pt h6, .no-search-results h6 {
 	margin-bottom: 0;
@@ -1767,7 +1770,7 @@ nav .menu > li.shopping-bag-item ul.sub-menu {
 .search-result h5 {
 	margin-bottom: 0;
 	margin-top: 0;
-	max-width: 100%;
+	max-width: 300px;
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;

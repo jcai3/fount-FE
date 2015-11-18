@@ -12,8 +12,10 @@ angular.module('sywStyleXApp')
         minPrice: '',
         maxPrice: '',
         sale: '',
-        sortBy: 'relevancy'
+        selectedSortby: 'relevancy'
       };
+
+      var searchTimer = false;
 
       scope.searchObj = {
         keyword: '',
@@ -21,10 +23,18 @@ angular.module('sywStyleXApp')
       };
 
       scope.searchProducts = function() {
-        ProductSearchService.searchProducts(1, scope.searchObj.keyword, filterParams).then(function(result) {
-          if (UtilityService.validateResult(result)) {
-          }
-        });
+        clearTimeout(searchTimer);
+        if (scope.searchObj.keyword.trim().length >= 3) {
+          searchTimer = setTimeout(function() {
+            ProductSearchService.searchProducts(1, scope.searchObj.keyword, filterParams).then(function(result) {
+              if (UtilityService.validateResult(result)) {
+                scope.searchObj.results = result.data.payload;
+              }
+            });
+          }, 400);
+        }
+
+
 
         // SortFilterService.getShopSellers(filter).then(function(result) {
         //   if (UtilityService.validateResult(result)) {
