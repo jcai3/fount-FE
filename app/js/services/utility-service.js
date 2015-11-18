@@ -27,29 +27,6 @@ angular.module('sywStyleXApp')
     return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
   }
 
-  // this.getLatestApp = function() {
-  //   if (window.cordova) {
-  //     FeatureFlagsService.getAppVersion().then(function(res) {
-  //       var featureFlags = res.data.payload.FEATUREFLAGS;
-  //       for (var i=0, j=featureFlags.length; i<j; i++) {
-  //         if (featureFlags[i].key == 'app.version') {
-  //           if (CONSTANTS.appVersion != featureFlags[i].value) {
-  //             if (ENV.apiEnvname == 'prod') {
-  //               window.open('itms-services://?action=download-manifest&url=https://spree.searshc.com/distribution/manifest.plist', '_system', 'location=yes');
-  //             } else {
-  //               window.open('itms-services://?action=download-manifest&url=https://spree.searshc.com/distribution/Spree_QA/manifest.plist', '_system', 'location=yes');
-  //             }
-  //           }
-  //         }
-  //
-  //         if (featureFlags[i].key == 'superuser.ids') {
-  //           CONSTANTS.superUsers = featureFlags[i].value;
-  //         }
-  //       }
-  //     });
-  //   }
-  // };
-
   this.IsSuperuser = function(userId) {
     var superUsersList = CONSTANTS.superUsers.split(',');
 
@@ -300,13 +277,6 @@ angular.module('sywStyleXApp')
   // };
 
 }])
-// .service('FeatureFlagsService', ['apiRepository', function(apiRepository) {
-//
-//   this.getAppVersion = function() {
-//     return apiRepository.getAppVersion();
-//   };
-//
-// }])
 .service('LoginRegisterService', ['apiRepository', function(apiRepository) {
   this.login = function(email, password) {
     return apiRepository.login(email, password);
@@ -673,6 +643,14 @@ angular.module('sywStyleXApp')
 
   this.getFilteredBrands = function(key, pageNumber) {
     return apiRepository.getFilteredBrands(key, pageNumber);
+  };
+
+  this.getShopSellers = function(filter) {
+    return apiRepository.getShopSellers(filter);
+  };
+
+  this.getSellerProducts = function(sellerId, filter, pageNumber) {
+    return apiRepository.getSellerProducts(sellerId, filter, pageNumber);
   };
 
 }])

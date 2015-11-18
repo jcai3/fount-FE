@@ -764,4 +764,22 @@ angular.module('sywStyleXApp')
 
   };
 
+  this.getShopSellers = function(filter) {
+    var inputParams = {
+      filter: filter
+    };
+
+    return serviceCall('GET', 'seller/shop', inputParams);
+  };
+
+  this.getSellerProducts = function(sellerId, filter, pageNumber) {
+    var inputParams = {
+      sellerId: sellerId,
+      filter: filter,
+      pageNumber: pageNumber
+    };
+
+    return serviceCall('GET', 'seller/products', inputParams);
+  };
+
 }]);

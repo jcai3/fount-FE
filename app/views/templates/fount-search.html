@@ -5,7 +5,7 @@
       <div class="ajax-search-wrap">
         <div class="ajax-loading"></div>
         <form class="search-form">
-          <input ng-model="searchObj.keyword" type="text" placeholder="Search" name="s" autocomplete="off">
+          <input ng-model="searchObj.keyword" ng-keyup="searchProducts()" type="text" placeholder="Search" name="s" autocomplete="off">
         </form>
         <div class="ajax-search-results"></div>
       </div>
