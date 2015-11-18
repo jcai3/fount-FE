@@ -4,7 +4,8 @@
 angular.module('sywStyleXApp', [
   'ngRoute',
   'config',
-  'LocalStorageModule'
+  'LocalStorageModule',
+  'infinite-scroll'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider

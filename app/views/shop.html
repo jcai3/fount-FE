@@ -33,11 +33,11 @@
                       </div>
                     </div>
                   </div>
-                  <div class="container">
+                  <div infinite-scroll='loadMore()' infinite-scroll-disabled='shopObj.noMoreData' infinite-scroll-distance='0' class="container">
                     <ul class="portfolio-items gallery-portfolio filterable-items row clearfix">
                       <li ng-repeat="product in shopObj.products" class="clearfix portfolio-item span3 gallery app-design interface-design">
                         <figure>
-                          <img itemprop="image" ng-src="{{product.imageURL}}" width="570" height="428">
+                          <img itemprop="image" ng-src="{{product.imageURL}}">
                         </figure>
                       </li>
                     </ul>
