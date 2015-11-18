@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('ShopCtrl', ['$rootScope','$scope', 'UtilityService', 'SortFilterService', function($rootScope, $scope, UtilityService, SortFilterService) {
+.controller('ShopCtrl', ['$rootScope','$scope', 'UtilityService', 'SortFilterService', 'ProductSearchService', function($rootScope, $scope, UtilityService, SortFilterService, ProductSearchService) {
   $scope.shopObj = {
     topFilter: 'SALE',
     topSellerId: 0
@@ -165,7 +165,22 @@ angular.module('sywStyleXApp')
     });
   };
 
+  var searchProducts = function() {
+    var filterParams = {
+      minPrice: '',
+      maxPrice: '',
+      sale: '',
+      selectedSortby: 'relevancy'
+    };
+        ProductSearchService.searchProducts(1, 'shoe', filterParams).then(function(result) {
+          if (UtilityService.validateResult(result)) {
+            $scope.shopObj.products = result.data.payload.PRODUCTS;
+          }
+        });
+    }
+
   getShopSellers();
+  searchProducts();
 
 
 //   UtilityService.gaTrackAppView('Shop Page View');
