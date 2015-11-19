@@ -7515,6 +7515,35 @@ ul.products li.product .product-image > img {
 	-o-transition: opacity 1.5s cubic-bezier(0.190,1.000,0.220,1.000) 0ms;
 	transition: opacity 1.5s cubic-bezier(0.190,1.000,0.220,1.000) 0ms;
 }
+.fount-product-tile figure figcaption {
+	position: absolute;
+	bottom: -80px;
+	right: 0;
+	z-index: 4;
+	background: #222;
+	color: #fff;
+	width: 40px;
+	font-size: 12px;
+	transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+}
+.fount-product-tile figure:hover figcaption {
+	bottom: 0;
+}
+.fount-product-tile figure figcaption .yith-wcwl-add-to-wishlist {
+	float: right;
+	display: block;
+	padding: 0;
+	position: relative;
+	z-index: 3;
+	border-left-color: rgba(255,255,255,0.2);
+}
+.fount-product-tile figure figcaption .yith-wcwl-add-to-wishlist a {
+	width: 11px;
+	padding: 10px 14px;
+}
 .woocommerce ul.products li.product figure figcaption {
 	position: absolute;
 	bottom: -80px;
