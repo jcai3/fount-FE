@@ -20,16 +20,18 @@
                   <div class="filter-wrap filter-wrap-second row clearfix">
                     <div class="filter-slide-wrap">
                       <div class='seller-carousel-container'>
-                        <ul id="seller-carousel" class="portfolio-filter filtering row clearfix">
-                          <li class="span has-items selected"><div><span class="item-name">All</span></div></li>
-                          <li ng-repeat='seller in shopObj.sellers' class="span has-items">
-                            <div>
-                              <span class="item-name">{{seller.name}}</span>
-                            </div>
-                          </li>
-                        </ul>
-                        <div id="seller-carousel-next" carousel-arrow direction="right"></div>
-                        <div id="seller-carousel-prev" carousel-arrow direction="left"></div>
+                        <div id="seller-carousel" class="portfolio-filter filtering row clearfix">
+                          <div><div class="seller-element">All</div></div>
+                          <div ng-repeat='seller in shopObj.sellers'>
+                            <div class="seller-element">{{seller.name}}</div>
+                          </div>
+                        </div>
+                        <a id="seller-carousel-next" class="carousel-arrow carousel-next">
+                          <i class="fa-chevron-right carousel-arrow-icon"></i>
+                        </a>
+                        <a id="seller-carousel-prev" class="carousel-arrow carousel-prev">
+                          <i class="fa-chevron-left carousel-arrow-icon"></i>
+                        </a>
                       </div>
                     </div>
                   </div>

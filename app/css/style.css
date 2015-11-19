@@ -2757,7 +2757,7 @@ figcaption .post-category {
 	list-style: none;
 }
 .caroufredsel_wrapper {
-	margin-left: -20px!important;
+	margin-left: 0px !important;
 }
 .carousel-wrap .carousel-items > li {
 	margin-bottom: 10px;
@@ -3614,7 +3614,8 @@ figure.lightbox {
 	padding-left: 20px;
 }
 .has-no-sidebar .spb_portfolio_widget .filter-wrap {
-	margin-bottom: 0;
+	margin-bottom: 10px;
+	margin-left: 0;
 }
 .has-no-sidebar .spb_portfolio_widget .filter-wrap .filter-slide-wrap {
 	margin-bottom: 0;
@@ -3646,6 +3647,45 @@ figure.lightbox {
 .filter-wrap .filter-slide-wrap {
 	margin-top: 0;
 	padding-bottom: 12px;
+}
+.filter-slide-wrap .seller-carousel-container {
+  display: inline-block;
+  position: relative;
+	width: 100%;
+  height: 35px;
+}
+.seller-carousel-container #seller-carousel {
+	overflow: hidden;
+}
+#seller-carousel .seller-element {
+	height: 35px;
+	line-height: 35px;
+	float: left;
+	margin-left: 4px;
+	padding-left: 5px;
+	border-left: 1px solid lightgrey;
+}
+.seller-carousel-container .carousel-arrow {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	background-color: white;
+	color: lightgrey;
+	top: 3px;
+}
+.seller-carousel-container .carousel-arrow:hover {
+	background-color: lightgrey;
+	color: black;
+}
+.seller-carousel-container .carousel-arrow#seller-carousel-prev {
+	left: 0;
+}
+.seller-carousel-container .carousel-arrow#seller-carousel-next {
+	right: 0;
+}
+.seller-carousel-container .carousel-arrow .carousel-arrow-icon {
+	margin-left: 11px;
 }
 .filter-wrap ul {
 	font-size: 13px;
