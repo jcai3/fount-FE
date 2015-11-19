@@ -10,7 +10,15 @@ angular.module('sywStyleXApp')
     topSellerId: 0,
     noMoreData: false,
     emptySearchResults: false,
-    products: []
+    products: [],
+    sellers: [{
+      id: 0,
+      name: 'All'
+    }]
+  };
+
+  $scope.getMyCtrlScope = function() {
+    return $scope;
   };
 
   $scope.setTopFilter = function(filter) {
@@ -21,28 +29,31 @@ angular.module('sywStyleXApp')
     $scope.shopObj.topFilter = filter;
   };
 
+  $scope.setTopSellerId = function(id) {
+    debugger;
+    if ($scope.shopObj.topSellerId == id) {
+      return;
+    }
+
+    $scope.shopObj.topSellerId = id;
+
+    console.log(id);
+  };
+
   $scope.loadMore = function() {
     console.log('load more');
     if ($scope.shopObj.noMoreData) {
       return;
     }
-    searchProducts();
+    getSellerProducts();
   }
 
   var getShopSellers = function() {
     SortFilterService.getShopSellers($scope.shopObj.topFilter).then(function(result) {
       if (UtilityService.validateResult(result)) {
-        $scope.shopObj.sellers = result.data.payload.SELLERS;
+        var sellers = result.data.payload.SELLERS;
+        $scope.shopObj.sellers.push.apply($scope.shopObj.sellers, sellers);
         initializeSellerCarousel();
-
-      }
-    });
-  };
-
-  var getSellerProducts = function() {
-    SortFilterService.getSellerProducts($scope.shopObj.topSellerId, $scope.shopObj.topFilter, pageNumber).then(function(result) {
-      if (UtilityService.validateResult(result)) {
-
       }
     });
   };
@@ -85,41 +96,35 @@ angular.module('sywStyleXApp')
     }, 100);
   };
 
-  var searchProducts = function() {
+  var getSellerProducts = function() {
     if (apiLocker) {
       return;
     }
 
     apiLocker = true;
 
-    var filterParams = {
-      minPrice: '',
-      maxPrice: '',
-      sale: '',
-      selectedSortby: 'relevancy'
-    };
-        ProductSearchService.searchProducts(pageNumber, 'shoe', filterParams).then(function(result) {
-          if (UtilityService.validateResult(result)) {
-            if (result.data.payload.PRODUCTS.length === 0) {
-              $scope.shopObj.noMoreData = true;
-              if (pageNumber == 1) {
-                $scope.shopObj.emptySearchResults = true;
-              }
-            } else {
-              pageNumber++;
-              $scope.shopObj.noMoreData = false;
-              $scope.shopObj.emptySearchResults = false;
-              var products = result.data.payload.PRODUCTS;
-              $scope.shopObj.products.push.apply($scope.shopObj.products, products);
-            }
-
-            apiLocker = false;
+    SortFilterService.getSellerProducts($scope.shopObj.topSellerId, $scope.shopObj.topFilter, pageNumber).then(function(result) {
+      if (UtilityService.validateResult(result)) {
+        if (result.data.payload.PRODUCTS.length === 0) {
+          $scope.shopObj.noMoreData = true;
+          if (pageNumber == 1) {
+            $scope.shopObj.emptySearchResults = true;
           }
-        });
-    }
+        } else {
+          pageNumber++;
+          $scope.shopObj.noMoreData = false;
+          $scope.shopObj.emptySearchResults = false;
+          var products = result.data.payload.PRODUCTS;
+          $scope.shopObj.products.push.apply($scope.shopObj.products, products);
+        }
+
+        apiLocker = false;
+      }
+    });
+  };
 
   getShopSellers();
-  searchProducts();
+  getSellerProducts();
 
 
 //   UtilityService.gaTrackAppView('Shop Page View');

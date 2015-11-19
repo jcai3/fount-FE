@@ -3759,6 +3759,21 @@ ul.portfolio-items {
 	-ms-transform: scale(1.2);
 	transform: scale(1.2);
 }
+.fount-product-tile .fount-product-image {
+	height: 220px;
+	text-align: center;
+}
+.fount-product-tile .fount-product-image:before {
+	content: ' ';
+	/*display: inline-block;*/
+	vertical-align: middle;
+	height: 100%;
+}
+.fount-product-tile .fount-product-image img {
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+}
 .masonry-items .portfolio-item {
 	border-bottom: 0;
 	padding-bottom: 0;
@@ -3833,7 +3848,7 @@ ul.portfolio-items {
 	height: auto;
 	position: relative;
 	z-index: 3;
-	display: block!important;
+	/*display: block!important;*/
 	transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
 	-webkit-transition: all 0.3s ease-in-out;

@@ -68,6 +68,8 @@
   <script src="js/services/instagram.js"></script>
   <script src="js/controllers/login.js"></script>
   <script src="js/controllers/shop.js"></script>
+  <script src="js/directives/fount-seller-element.js"></script>
+  <script src="js/directives/fount-product-tile.js"></script>
   <script src="js/directives/fount-header.js"></script>
   <script src="js/directives/fount-search.js"></script>
   <script src="js/directives/fount-bag.js"></script>
@@ -82,5 +84,10 @@
   <script src="components/carouFredSel/helper-plugins/jquery.mousewheel.min.js"></script>
   <script src="components/carouFredSel/helper-plugins/jquery.touchSwipe.min.js"></script>
   <script src="components/carouFredSel/helper-plugins/jquery.transit.min.js"></script>
+  <script>
+    function getSellerId() {
+      console.log($('.seller-element-id').attr('data-id'));
+    };
+  </script>
 </body>
 </html>

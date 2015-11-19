@@ -20,12 +20,15 @@
                   <div class="filter-wrap filter-wrap-second row clearfix">
                     <div class="filter-slide-wrap">
                       <div class='seller-carousel-container'>
-                        <div id="seller-carousel" class="portfolio-filter filtering row clearfix">
-                          <div><div class="seller-element">All</div></div>
-                          <div ng-repeat='seller in shopObj.sellers'>
-                            <div class="seller-element">{{seller.name}}</div>
+                        <ul id="seller-carousel" class="portfolio-filter filtering row clearfix">
+                          <!-- <div ng-click="setTopSellerId(0)">
+                            <div seller-data="0" class="seller-element">All</div>
+                          </div> -->
+                          <div ng-repeat='seller in shopObj.sellers track by $index' ng-click="setTopSellerId(seller.id)">
+                            <div fount-seller-element seller="seller" class="seller-element"></div>
+                            <!-- <div class="seller-element">{{seller.name}}</div> -->
                           </div>
-                        </div>
+                        </ul>
                         <a id="seller-carousel-next" class="carousel-arrow carousel-next">
                           <i class="fa-chevron-right carousel-arrow-icon"></i>
                         </a>
@@ -38,9 +41,7 @@
                   <div infinite-scroll='loadMore()' infinite-scroll-disabled='shopObj.noMoreData' infinite-scroll-distance='0' class="container">
                     <ul class="portfolio-items gallery-portfolio filterable-items row clearfix">
                       <li ng-repeat="product in shopObj.products" class="clearfix portfolio-item span3 gallery app-design interface-design">
-                        <figure>
-                          <img itemprop="image" ng-src="{{product.imageURL}}">
-                        </figure>
+                        <div fount-product-tile product="product"></div>
                       </li>
                     </ul>
                   </div>
