@@ -19,23 +19,7 @@
                   </div>
                   <div class="filter-wrap filter-wrap-second row clearfix">
                     <div class="filter-slide-wrap">
-                      <div class='seller-carousel-container'>
-                        <ul id="seller-carousel" class="portfolio-filter filtering row clearfix">
-                          <!-- <div ng-click="setTopSellerId(0)">
-                            <div seller-data="0" class="seller-element">All</div>
-                          </div> -->
-                          <div ng-repeat='seller in shopObj.sellers track by $index' ng-click="setTopSellerId(seller.id)">
-                            <div fount-seller-element seller="seller" class="seller-element"></div>
-                            <!-- <div class="seller-element">{{seller.name}}</div> -->
-                          </div>
-                        </ul>
-                        <a id="seller-carousel-next" class="carousel-arrow carousel-next">
-                          <i class="fa-chevron-right carousel-arrow-icon"></i>
-                        </a>
-                        <a id="seller-carousel-prev" class="carousel-arrow carousel-prev">
-                          <i class="fa-chevron-left carousel-arrow-icon"></i>
-                        </a>
-                      </div>
+                      <div fount-seller-carousel sellers="shopObj.sellers"></div>
                     </div>
                   </div>
                   <div infinite-scroll='loadMore()' infinite-scroll-disabled='shopObj.noMoreData' infinite-scroll-distance='0' class="container">

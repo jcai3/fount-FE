@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('ShopCtrl', ['$rootScope','$scope', '$timeout', 'UtilityService', 'SortFilterService', 'ProductSearchService', function($rootScope, $scope, $timeout, UtilityService, SortFilterService, ProductSearchService) {
+.controller('ShopCtrl', ['$rootScope','$scope', 'UtilityService', 'SortFilterService', 'ProductSearchService', function($rootScope, $scope, UtilityService, SortFilterService, ProductSearchService) {
   var pageNumber = 1;
   var apiLocker = false;
 
@@ -53,47 +53,8 @@ angular.module('sywStyleXApp')
       if (UtilityService.validateResult(result)) {
         var sellers = result.data.payload.SELLERS;
         $scope.shopObj.sellers.push.apply($scope.shopObj.sellers, sellers);
-        initializeSellerCarousel();
       }
     });
-  };
-
-  var initializeSellerCarousel = function() {
-
-    var startPosition = 0;
-
-    var settings = {
-      circular: true,
-      infinite: true,
-      responsive: false,
-      width: "100%",
-      align: 'center',
-      auto: true,
-      items: {
-        visible: 15,
-        minimum: 1,
-        start: startPosition
-      },
-      scroll: {
-        items: 1,
-        duration: 1000,
-        pauseOnHover: true
-      },
-      prev: {
-        button: $('#seller-carousel-prev'),
-        key: "left"
-      },
-      next: {
-        button: $('#seller-carousel-next'),
-        key: "right"
-      }
-    };
-
-    $timeout(function(){
-      var $sellerCarousel = $('#seller-carousel');
-      $sellerCarousel.html(angular.element.find('#seller-carousel .seller-element'));
-      $sellerCarousel.carouFredSel(settings);
-    }, 100);
   };
 
   var getSellerProducts = function() {
