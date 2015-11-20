@@ -10,6 +10,7 @@ angular.module('sywStyleXApp')
     topSellerId: 0,
     noMoreData: false,
     emptySearchResults: false,
+    enableSellerModule: true,
     products: [],
     sellers: [{
       id: 0,
@@ -26,18 +27,17 @@ angular.module('sywStyleXApp')
       return;
     }
 
+    pageNumber = 1;
+    apiLocker = false;
+    $scope.shopObj.noMoreData = false;
+    $scope.shopObj.emptySearchResults = false;
     $scope.shopObj.topFilter = filter;
-  };
-
-  $scope.setTopSellerId = function(id) {
-    debugger;
-    if ($scope.shopObj.topSellerId == id) {
-      return;
-    }
-
-    $scope.shopObj.topSellerId = id;
-
-    console.log(id);
+    $scope.shopObj.sellers = [{
+      id: 0,
+      name: 'All'
+    }];
+    $scope.shopObj.products = [];
+    getShopSellers();
   };
 
   $scope.loadMore = function() {
@@ -52,7 +52,14 @@ angular.module('sywStyleXApp')
     SortFilterService.getShopSellers($scope.shopObj.topFilter).then(function(result) {
       if (UtilityService.validateResult(result)) {
         var sellers = result.data.payload.SELLERS;
-        $scope.shopObj.sellers.push.apply($scope.shopObj.sellers, sellers);
+        if (sellers.length == 0) {
+          $scope.shopObj.enableSellerModule = false;
+          $scope.shopObj.sellers = [];
+        } else {
+          $scope.shopObj.enableSellerModule = true;
+          $scope.shopObj.sellers.push.apply($scope.shopObj.sellers, sellers);
+          getSellerProducts();
+        }
       }
     });
   };
@@ -84,8 +91,18 @@ angular.module('sywStyleXApp')
     });
   };
 
+  $rootScope.$on('event.setTopSeller', function(event, data) {
+    pageNumber = 1;
+    apiLocker = false;
+    $scope.shopObj.topSellerId = data.id;
+    $scope.shopObj.noMoreData = false;
+    $scope.shopObj.emptySearchResults = false;
+    $scope.shopObj.products = [];
+
+    getSellerProducts();
+  });
+
   getShopSellers();
-  getSellerProducts();
 
 
 //   UtilityService.gaTrackAppView('Shop Page View');

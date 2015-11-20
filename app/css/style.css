@@ -3672,6 +3672,12 @@ ul#seller-carousel li {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
+#seller-carousel .seller-element.selected {
+	background: #1bbeb4;
+}
+.fount-no-products {
+	text-align: center;
+}
 .fount-seller-carousel .carousel-arrow {
 	position: absolute;
 	width: 30px;

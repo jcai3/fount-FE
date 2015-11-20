@@ -1,11 +1,7 @@
 <div class='fount-seller-carousel'>
   <ul id="seller-carousel" class="portfolio-filter filtering row clearfix">
-    <!-- <div ng-click="setTopSellerId(0)">
-      <div seller-data="0" class="seller-element">All</div>
-    </div> -->
     <li ng-repeat='seller in sellers track by $index' ng-click="setTopSellerId(seller.id)">
-      <!-- <div fount-seller-element seller="seller" class="seller-element"></div> -->
-      <div class="seller-element">{{seller.name}}</div>
+      <div class="seller-element" ng-class="{selected: seller.id == topSellerId}">{{seller.name}}</div>
     </li>
   </ul>
   <a id="seller-carousel-next" class="carousel-arrow carousel-next">
