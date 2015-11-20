@@ -1,0 +1,47 @@
+<div id="main-container" class="clearfix">
+  <div class="page-heading  clearfix asset-bg none">
+    <div class="container">
+      <div class="heading-text">
+        <h1 class="entry-title">{{filterInfo.productCount}} results for jean</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="page-wrap">
+      <div class="page-content clearfix">
+        <div class="inner-page-wrap woocommerce-shop-page has-left-sidebar has-one-sidebar row clearfix">
+          <section class="span9 push-right clearfix">
+            <section class="page-content clearfix">
+              <div class="woocommerce-count-wrap">
+                <p class="woocommerce-result-count">Showing all {{filterInfo.productCount}} products </p>
+              </div>
+              <form class="woocommerce-ordering">
+                <select name="orderby" class="orderby">
+                  <option ng-repeat="sortOption in filterInfo.sortByOptions" value="{{sortOption.value}}">{{sortOption.name}}</option>
+                </select>
+              </form>
+              <div infinite-scroll='loadMore()' infinite-scroll-disabled='searchObj.noMoreData' infinite-scroll-distance='0' class="container">
+                <ul id="products" class="portfolio-items gallery-portfolio filterable-items row clearfix products">
+                  <li ng-repeat="product in searchObj.products" class="clearfix portfolio-item span3 gallery app-design interface-design">
+                    <div fount-product-tile product="product"></div>
+                  </li>
+                </ul>
+              </div>
+            </section>
+          </section>
+          <aside class="sidebar left-sidebar span3">
+            <section id="woocommerce_layered_nav-4" class="widget woocommerce widget_layered_nav clearfix" ng-repeat="(filter, refineOption) in filterInfo.refineByOptions">
+              <div class="widget-heading clearfix"><h4><span>{{filter}}</span></h4></div>
+              <ul>
+                <li ng-repeat="options in refineOption.options"><span class="refine-name">{{options.name}}</span><span class="count">({{options.productsCount}})</span></li>
+            </section>
+          </aside>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

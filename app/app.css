@@ -41,3 +41,35 @@ body,h6,#sidebar .widget-heading h3,#header-search input,.header-items h3.phone-
   text-align: center;
   margin-bottom: 20px;
 }
+
+.woocommerce .widget_layered_nav ul li .refine-name {
+    padding: 7px 0;
+    float: none;
+    display: inline-block;
+    color: #666666;
+    cursor: pointer;
+    word-break: break-word;
+    white-space: normal;
+    text-overflow: ellipsis;
+    width: 75%;
+    font-size: 12px;
+}
+
+.woocommerce .widget_layered_nav ul li span.count {
+	position: absolute;
+	right: 0;
+	top: 50%;
+	margin-top: -9px;
+}
+
+.sidebar.left-sidebar {
+    padding-right: 10px;
+}
+
+.sidebar.left-sidebar .widget {
+    height: 250px;
+    overflow-y: scroll;
+    padding-right: 10px;
+    margin-bottom: 35px;
+    padding-bottom: 0;
+}

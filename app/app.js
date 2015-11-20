@@ -18,6 +18,11 @@ config(['$routeProvider', function($routeProvider) {
       controller:  'LoginCtrl'
 
     })
+    .when('/search/:searchText', {
+      templateUrl: 'views/search-results.html',
+      controller:  'SearchResultsCtrl'
+
+    })
   .otherwise({redirectTo: '/'});
 }]).run(['$rootScope', function($rootScope){
     $rootScope.xappObj = {
