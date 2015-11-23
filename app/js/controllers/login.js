@@ -30,6 +30,7 @@ angular.module('sywStyleXApp')
     LoginRegisterService.login($scope.loginObj.email, $scope.loginObj.password).then(function(result) {
       if (UtilityService.validateResult(result)) {
         console.log(result);
+        localStorageService.set('userId', result.data.payload.USER.id);
         $state.go('shop');
 
       } else {

@@ -1,8 +1,24 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('ProductDetailCtrl', ['$scope', '$state','$stateParams', '$ionicModal', '$timeout', 'UtilityService', 'CartService', 'localStorageService', 'TwoTapService', 'ProductDetailService',  function($scope, $state, $stateParams, $ionicModal, $timeout, UtilityService, CartService, localStorageService, TwoTapService, ProductDetailService) {
-  UtilityService.gaTrackAppView('Product Detail Page View');
+.controller('ProductDetailCtrl', ['$scope', '$state','$stateParams', '$timeout', 'UtilityService', 'CartService', 'localStorageService', 'ProductDetailService',  function($scope, $state, $stateParams, $timeout, UtilityService, CartService, localStorageService, ProductDetailService) {
+
+  if (!!localStorageService.get('productDetail')) {
+    console.log('from 0');
+    prepareProductDetail();
+//      getRelevantPosts(localStorageService.get('productDetail'));
+  } else {
+    getCurrentProductDetails();
+  }
+
+  if (!!localStorageService.get('shoppingCartInfo')) {
+    $scope.shoppingCartInfo = localStorageService.get('shoppingCartInfo');
+  } else {
+    $scope.shoppingCartInfo = {
+      count: 0,
+      subtotal: 0
+    };
+  }
 
   var addToCartLocker = false;
   var relevantPostId = '';
@@ -72,9 +88,9 @@ angular.module('sywStyleXApp')
       productImages.push(productDetail.xapp.imageURL);
     }
 
-    $scope.iphone4NotAvailable = (screen.height < 500) ? true : false;
-    $scope.iphone5NotAvailable = (screen.height < 660) ? true : false;
-    $scope.imageHeight = UtilityService.getImageHeight(1);
+    // $scope.iphone4NotAvailable = (screen.height < 500) ? true : false;
+    // $scope.iphone5NotAvailable = (screen.height < 660) ? true : false;
+    // $scope.imageHeight = UtilityService.getImageHeight(1);
     var brandId = !!productDetail.xapp.brand ? productDetail.xapp.brand.id : (!!productDetail.xapp.brandId ? productDetail.xapp.brandId : null);
     var brandName = !!productDetail.xapp.brand ? productDetail.xapp.brand.name : (!!productDetail.xapp.brandName ? productDetail.xapp.brandName : productDetail.xapp.sellerName);
     $scope.productDetail = {
@@ -746,64 +762,5 @@ angular.module('sywStyleXApp')
     // UtilityService.openSellerSite('https://www.ssense.com', 'ssense'); // first arg is buy url, second is title
     $state.go('forward-seller');
   }
-
-  $scope.$on('$ionicView.enter', function() {
-    addToCartLocker = false;
-
-    if(!!localStorageService.get('productDetail') && !!localStorageService.get('productDetail').source) {
-        if(!!localStorageService.get('trackHistory')) {
-          var trackHistory = localStorageService.get('trackHistory')
-        } else {
-          var trackHistory = [];
-        }
-
-        var prevSource = {
-          source: localStorageService.get('productDetail').source,
-          id: (localStorageService.get('productDetail').source == 'media') ? localStorageService.get('discoverMedia').id : null
-        }
-
-        if (trackHistory.length >= 1) {
-          var lastSavedState = trackHistory[trackHistory.length - 1];
-          if (lastSavedState.source !== prevSource.source && lastSavedState.id !== prevSource.id) {
-            trackHistory.push(prevSource);
-            localStorageService.set('trackHistory', trackHistory);
-          }
-        } else {
-          trackHistory.push(prevSource);
-          localStorageService.set('trackHistory', trackHistory);
-        }
-    }
-
-    if (!!localStorageService.get('productDetail')) {
-      console.log('from 0');
-      prepareProductDetail();
-//      getRelevantPosts(localStorageService.get('productDetail'));
-    } else {
-      getCurrentProductDetails();
-    }
-
-    if (!!localStorageService.get('shoppingCartInfo')) {
-      $scope.shoppingCartInfo = localStorageService.get('shoppingCartInfo');
-    } else {
-      $scope.shoppingCartInfo = {
-        count: 0,
-        subtotal: 0
-      };
-    }
-
-    var showProductProperty = $ionicModal.fromTemplateUrl('product-property.html', {
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function(modal) {
-      $scope.modal = modal;
-      console.log('modal created');
-    });
-
-  });
-
-  $scope.$on('$ionicView.leave', function() {
-    $scope.modal.remove();
-    console.log('modal removed');
-  });
 
 }]);
