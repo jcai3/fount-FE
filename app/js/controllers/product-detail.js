@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('ProductDetailCtrl', ['$scope', '$state','$stateParams', '$ionicScrollDelegate', '$ionicLoading', '$ionicModal', '$timeout', 'UtilityService', 'CartService', 'localStorageService', 'TwoTapService', 'ProductDetailService',  function($scope, $state, $stateParams, $ionicScrollDelegate, $ionicLoading, $ionicModal, $timeout, UtilityService, CartService, localStorageService, TwoTapService, ProductDetailService) {
+.controller('ProductDetailCtrl', ['$scope', '$state','$stateParams', '$ionicModal', '$timeout', 'UtilityService', 'CartService', 'localStorageService', 'TwoTapService', 'ProductDetailService',  function($scope, $state, $stateParams, $ionicModal, $timeout, UtilityService, CartService, localStorageService, TwoTapService, ProductDetailService) {
   UtilityService.gaTrackAppView('Product Detail Page View');
 
   var addToCartLocker = false;
@@ -432,11 +432,9 @@ angular.module('sywStyleXApp')
     if ($scope.isDescriptionShown) {
       UtilityService.gaTrackAppEvent('Product Detail Page', 'Toggle', 'Hide description on product detail page');
       $scope.isDescriptionShown = false;
-      $ionicScrollDelegate.resize();
     } else {
       UtilityService.gaTrackAppEvent('Product Detail Page', 'Toggle', 'Show description on product detail page');
       $scope.isDescriptionShown = true;
-      $ionicScrollDelegate.resize();
     }
   };
 
@@ -444,11 +442,9 @@ angular.module('sywStyleXApp')
     if ($scope.isRelevantPostsShown) {
       UtilityService.gaTrackAppEvent('Product Detail Page', 'Toggle', 'Hide relevant posts on product detail page');
       $scope.isRelevantPostsShown = false;
-      $ionicScrollDelegate.resize();
     } else {
       UtilityService.gaTrackAppEvent('Product Detail Page', 'Toggle', 'Show relevant posts on product detail page');
       $scope.isRelevantPostsShown = true;
-      $ionicScrollDelegate.resize();
     }
   };
 

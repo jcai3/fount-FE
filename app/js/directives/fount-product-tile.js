@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.directive('fountProductTile', ['UtilityService', 'SocialActionService', function(UtilityService, SocialActionService) {
+.directive('fountProductTile', ['$state', 'UtilityService', 'SocialActionService', function($state, UtilityService, SocialActionService) {
   return {
     restrict: 'A',
     replace: true,
@@ -10,6 +10,10 @@ angular.module('sywStyleXApp')
       product: '='
     },
     link: function(scope, element, attrs) {
+      scope.productDetail = function(product) {
+        $state.go('product', {productId: product.id});
+      };
+
       scope.toggleLikeProduct = function(product) {
         console.log(product.id);
 

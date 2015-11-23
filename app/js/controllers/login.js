@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('LoginCtrl', ['$rootScope', '$scope', 'LoginRegisterService', 'UtilityService','$location', '$window','$interval','ENV', 'localStorageService',function($rootScope, $scope, LoginRegisterService, UtilityService, $location, $window, $interval, ENV, localStorageService) {
+.controller('LoginCtrl', ['$rootScope', '$scope', 'LoginRegisterService', 'UtilityService','$state', '$window','$interval','ENV', 'localStorageService',function($rootScope, $scope, LoginRegisterService, UtilityService, $state, $window, $interval, ENV, localStorageService) {
   // UtilityService.gaTrackAppView('Login Page View');
 
   $scope.loginObj = {
@@ -30,7 +30,7 @@ angular.module('sywStyleXApp')
     LoginRegisterService.login($scope.loginObj.email, $scope.loginObj.password).then(function(result) {
       if (UtilityService.validateResult(result)) {
         console.log(result);
-        $location.path('/shop');
+        $state.go('shop');
 
       } else {
         console.log(result);
@@ -103,7 +103,7 @@ angular.module('sywStyleXApp')
           if(userId) {
             console.log('userId: ' + userId);
             localStorageService.set('userId', userId);
-            $location.path('/shop');
+            $state.go('shop');
           }
         }
       } catch(e) {
