@@ -21,6 +21,11 @@ angular.module('sywStyleXApp', [
       templateUrl: 'views/login-register.html',
       controller: 'LoginCtrl'
     })
+    // .state('search', {
+    //   url: '/search/:searchText'
+    //   templateUrl: 'views/search-results.html',
+    //   controller: 'SearchResultsCtrl'
+    // })
     .state('product', {
       url: '/product/{productId}',
       templateUrl: 'views/product-detail.html',
