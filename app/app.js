@@ -8,7 +8,8 @@ angular.module('sywStyleXApp', [
   'infinite-scroll',
   'ui.router'
 ])
-.config(function($routeProvider, $stateProvider, $urlRouterProvider) {
+.config(function($httpProvider, $routeProvider, $stateProvider, $urlRouterProvider) {
+  // $httpProvider.defaults.withCredentials = true;
   $stateProvider
     .state('shop', {
       url: '/shop',

@@ -2,7 +2,7 @@
   <div class="page-heading  clearfix asset-bg alt-one">
     <div class="container">
       <div class="heading-text">
-        <h1 class="entry-title">{{product.name}}</h1>
+        <h1 class="entry-title">{{productDetail.xapp.name}}</h1>
       </div>
     </div>
   </div>
@@ -16,10 +16,9 @@
                 <div class="container">
                 </div>
                 <div itemscope="" itemtype="http://schema.org/Product" id="product-9356" class="post-9356 product type-product status-publish has-post-thumbnail product_cat-footwear product_cat-sneakers product_tag-adidas product_tag-sneakers product_shipping_class-standard-shipping pa_colour-grey pa_colour-red pa_size-eu41-us8 pa_size-eu42-us9 pa_size-eu43-us10 pa_size-eu45-us12 pa_fabric-leather-2 pa_fabric-mesh pa_fabric-suede sale shipping-taxable purchasable product-type-simple product-cat-footwear product-cat-sneakers product-tag-adidas product-tag-sneakers instock">
-                  <div class="entry-title" itemprop="name">{{product.name}}</div>
                   <div class="container">
                     <div class="images">
-                      <span class="onsale">Sale!</span>
+                      <!-- <span class="onsale">Sale!</span> -->
                       <div id="product-img-slider" class="flexslider">
                         <div class="lSSlideOuter">
                           <div class="lSSlideWrapper usingCss" style="transition-duration: 400ms; transition-timing-function: ease;">
@@ -150,172 +149,20 @@
                       <div class="accordion" id="product-accordion">
                         <div class="accordion-group">
                           <div class="accordion-heading">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#product-accordion" href="#product-description">Description</a>
+                            <a class="accordion-toggle" ng-click="pdpObj.enableDesc = !pdpObj.enableDesc">Description</a>
                           </div>
-                          <div id="product-description" class="accordion-body collapse in">
+                          <div ng-show="pdpObj.enableDesc" id="product-description" class="accordion-body collapse in">
                             <div class="accordion-inner">
-                              <p>Consortium release from Adidas Originals. Special Boston Marathon version. The classic shape has been tuned and is shown here in its original colorway. Panelled upper in premium suede and mesh. Leather stripes on the sides. Leather and textile lining with branded tongue. Sits on a multicolored rubbber outsole.</p>
-                              <p>Colour: Sharp grey / Light onyx</p>
+                              <p>{{productDetail.xapp.description}}</p>
                             </div>
                           </div>
                         </div>
-                        <div class="accordion-group">
-                          <div class="accordion-heading">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#product-accordion" href="#product-additional_information">Additional Information</a>
-                          </div>
-                          <div id="product-additional_information" class="accordion-body collapse">
-                            <div class="accordion-inner">
-                              <h2>Additional Information</h2>
-                              <table class="shop_attributes">
-                                <tbody>
-                                  <tr class="">
-                                    <th>Weight</th>
-                                    <td class="product_weight">5 kg</td>
-                                  </tr>
-                                  <tr class="alt">
-                                    <th>Colour</th>
-                                    <td><p>Grey, Red</p>
-                                    </td>
-                                  </tr>
-                                  <tr class="">
-                                    <th>Size</th>
-                                    <td><p>EU 41 (US 8), EU 42 (US 9), EU 43 (US 10), EU 45 (US 12)</p>
-                                    </td>
-                                  </tr>
-                                  <tr class="alt">
-                                    <th>Fabric</th>
-                                    <td><p>Leather, Mesh, Suede</p>
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="accordion-group">
-                          <div class="accordion-heading">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#product-accordion" href="#product-reviews">Reviews (0)</a>
-                          </div>
-                          <div id="product-reviews" class="accordion-body collapse ">
-                            <div class="accordion-inner">
-                              <div id="reviews">
-                                <div id="comments">
-                                  <h2>Reviews</h2>
-                                  <p class="woocommerce-noreviews">There are no reviews yet.</p>
-                                </div>
-                                <div id="review_form_wrapper">
-                                  <div id="review_form">
-                                    <div id="respond" class="comment-respond">
-                                      <h3 id="reply-title" class="comment-reply-title">Be the first to review “Adidas – Boston Super OG” <small><a rel="nofollow" id="cancel-comment-reply-link" href="/product/adidas-boston-super-og/#respond" style="display:none;">Cancel reply</a></small></h3>
-                                      <form action="http://neighborhood.swiftideas.com/wp-comments-post.php?wpe-comment-post=neighborhood" method="post" id="commentform" class="comment-form">
-                                        <p class="comment-form-author">
-                                          <label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" aria-required="true">
-                                        </p>
-                                        <p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" aria-required="true">
-                                        </p>
-                                        <p class="comment-form-rating">
-                                          <label for="rating">Your Rating</label>
-                                          <p class="stars">
-                                            <span>
-                                              <a class="star-1" href="#">1</a>
-                                              <a class="star-2" href="#">2</a>
-                                              <a class="star-3" href="#">3</a>
-                                              <a class="star-4" href="#">4</a>
-                                              <a class="star-5" href="#">5</a>
-                                            </span>
-                                          </p>
-                                          <select name="rating" id="rating" style="display: none;">
-                                            <option value="">Rate…</option>
-                                            <option value="5">Perfect</option>
-                                            <option value="4">Good</option>
-                                            <option value="3">Average</option>
-                                            <option value="2">Not that bad</option>
-                                            <option value="1">Very Poor</option>
-                                          </select>
-                                        </p>
-                                        <p class="comment-form-comment">
-                                          <label for="comment">Your Review</label>
-                                          <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>
-                                        </p>
-                                        <p class="form-submit">
-                                          <input name="submit" type="submit" id="submit" class="submit" value="Submit">
-                                          <input type="hidden" name="comment_post_ID" value="9356" id="comment_post_ID">
-                                          <input type="hidden" name="comment_parent" id="comment_parent" value="0">
-                                        </p>
-                                      </form>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="clear"></div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="product_meta">
-                        <p>
-                          <span class="sku_wrapper">SKU: <span class="sku" itemprop="sku">340152</span> - </span>
-                          <span class="need-help">Need Help? <a href="#email-form" class="inline" data-toggle="modal">Contact Us</a></span>
-                          <span class="leave-feedback"><a href="#feedback-form" class="inline" data-toggle="modal">Leave Feedback</a></span>
-                        </p>
-                        <p>
-                          <span class="posted_in">Categories: <a href="http://neighborhood.swiftideas.com/product-category/footwear/" rel="tag">Footwear</a>, <a href="http://neighborhood.swiftideas.com/product-category/footwear/sneakers/" rel="tag">Sneakers</a>.</span>
-                        </p>
-                        <p>
-                          <span class="tagged_as">Tags: <a href="http://neighborhood.swiftideas.com/product-tag/adidas/" rel="tag">Adidas</a>, <a href="http://neighborhood.swiftideas.com/product-tag/sneakers/" rel="tag">Sneakers</a>.</span>
-                        </p>
-                        <div id="email-form" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="email-form-modal" aria-hidden="true">
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa-times"></i></button>
-                                <h3 id="email-form-modal">Contact Us</h3>
-                              </div>
-                              <div class="modal-body">Enter your contact details or email form shortcode here. (Text/HTML/Shortcodes accepted). </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div id="feedback-form" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="feedback-form-modal" aria-hidden="true">
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa-times"></i></button>
-                                <h3 id="feedback-form-modal">Leave Feedback</h3>
-                              </div>
-                              <div class="modal-body">Enter your feedback modal content here. (Text/HTML/Shortcodes accepted). </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="product-share share-links clearfix">
-                        <span>Share</span>
-                        <ul>
-                          <li><a href="mailto:?subject=Adidas – Boston Super OG&amp;body= http://neighborhood.swiftideas.com/product/adidas-boston-super-og/" class="product_share_email"><i class="fa-envelope"></i></a>
-                          </li>
-                          <li>
-                            <a href="http://www.facebook.com/sharer.php?u=http://neighborhood.swiftideas.com/product/adidas-boston-super-og/" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="product_share_facebook"><i class="fa-facebook"></i></a>
-                          </li>
-                          <li>
-                            <a href="https://twitter.com/share?url=http://neighborhood.swiftideas.com/product/adidas-boston-super-og/&amp;text=Adidas – Boston Super OG" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="product_share_twitter"><i class="fa-twitter"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="https://plus.google.com/share?url=http://neighborhood.swiftideas.com/product/adidas-boston-super-og/&amp;title=Adidas – Boston Super OG" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><i class="fa-google-plus"></i></a>
-                          </li>
-                          <li>
-                            <a href="//pinterest.com/pin/create/button/?url=http://neighborhood.swiftideas.com/product/adidas-boston-super-og/&amp;media=http://neighborhood.swiftideas.com/wp-content/uploads/2013/05/adidas-grey-red001_1.jpg&amp;description=Adidas – Boston Super OG" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="product_share_pinterest"><i class="fa-pinterest"></i></a>
-                          </li>
-                        </ul>
                       </div>
                     </div>
                   </div>
-                  <div id="product-display-area" class="container clearfix">
-                    <p>Consortium release from <a href="/product-tag/adidas/">Adidas</a> Originals. Special Boston Marathon version. The classic shape has been tuned and is shown here in its original colorway. Panelled upper in premium suede and mesh. Leather stripes on the sides. Leather and textile lining with branded tongue. Sits on a multicolored rubbber outsole.</p>
-                    <p>Colour: Sharp grey / Light onyx</p>
-                  </div>
                   <div class="container product-after-wrap">
                     <div class="product-carousel spb_content_element">
-                      <h4 class="lined-heading"><span>Related Products</span></h4>
+                      <h4 class="lined-heading"><span>Relevant Posts</span></h4>
                       <div class="carousel-wrap">
                         <ul class="related products carousel-items owl-carousel owl-theme" id="carousel-1" data-columns="4>" style="margin-left: -15px; width: 970px; opacity: 1; display: block;">
                           <div class="owl-wrapper-outer">
@@ -367,133 +214,14 @@
                                   <span class="price"><span class="amount">£255.00</span></span>
                                 </li>
                               </div>
-                              <div class="owl-item" style="width: 243px;">
-                                <li class="post-9700 product type-product status-publish has-post-thumbnail product_cat-footwear product_cat-sneakers product_tag-nike product_tag-sneakers product_shipping_class-standard-shipping pa_colour-green pa_colour-grey pa_colour-pink pa_size-eu40-us7 pa_size-eu41-us8 pa_size-eu42-us9 pa_size-eu43-us10 pa_size-eu44-us11 pa_fabric-canvas pa_fabric-mesh pa_brand-nike shipping-taxable purchasable product-type-simple product-cat-footwear product-cat-sneakers product-tag-nike product-tag-sneakers instock">
-                                  <figure class="product-transition">
-                                    <a href="http://neighborhood.swiftideas.com/product/nike-roshe-run/">
-                                      <div class="product-image">
-                                        <img width="540" height="720" src="http://neighborhood.swiftideas.com/wp-content/uploads/2013/05/nike-roshe-run-mid-qs-tko-001-540x720.jpg" class="attachment-shop_catalog" alt="nike-roshe-run-mid-qs-tko-001">
-                                      </div>
-                                      <div class="product-image second-image">
-                                        <img width="540" height="720" src="http://neighborhood.swiftideas.com/wp-content/uploads/2013/05/nike-roshe-run-mid-qs-tko-004-540x720.jpg" class="attachment-shop_catalog" alt="nike-roshe-run-mid-qs-tko-004">
-                                      </div>
-                                    </a>
-                                    <figcaption>
-                                      <div class="shop-actions clearfix">
-                                        <a href="/product/adidas-boston-super-og/?add-to-cart=9700" rel="nofollow" data-product_id="9700" data-product_sku="378165" class="add_to_cart_button product_type_simple" data-added_text="Item added to bag"><i class="icon-plus"></i>Add to shopping bag</a>
-                                        <div class="yith-wcwl-add-to-wishlist">
-                                          <div class="yith-wcwl-add-button show">
-                                            <a href="/product/adidas-boston-super-og/?add_to_wishlist=9700" data-product-id="9700" data-product-type="simple" class="add_to_wishlist"><i class="fa-star"></i></a>
-                                          </div>
-                                          <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                            <span class="feedback">Product added to wishlist.</span>
-                                            <a href="http://neighborhood.swiftideas.com/wishlist/view/">
-                                              <i class="fa-check"></i>
-                                            </a>
-                                          </div>
-                                          <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none"><a href="http://neighborhood.swiftideas.com/wishlist/view/"><i class="fa-check"></i></a>
-                                          </div>
-                                          <div style="clear:both"></div>
-                                          <div class="yith-wcwl-wishlistaddresponse"></div>
-                                        </div>
-                                      </div>
-                                    </figcaption>
-                                  </figure>
-                                  <div class="product-details">
-                                    <h3><a href="http://neighborhood.swiftideas.com/product/nike-roshe-run/">Nike – Roshe Run</a></h3>
-                                    <span class="posted_in"><a href="http://neighborhood.swiftideas.com/product-category/footwear/" rel="tag">Footwear</a>, <a href="http://neighborhood.swiftideas.com/product-category/footwear/sneakers/" rel="tag">Sneakers</a></span>
-                                  </div>
-                                  <span class="price"><span class="amount">£85.00</span></span>
-                                </li>
+                              <div class="owl-item">
+
                               </div>
-                              <div class="owl-item" style="width: 243px;">
-                                <li class="post-9707 product type-product status-publish has-post-thumbnail product_cat-footwear product_cat-sneakers product_tag-common-projects product_tag-sneakers product_shipping_class-standard-shipping pa_colour-black-2 pa_size-eu40-us7 pa_size-eu41-us8 pa_size-eu42-us9 pa_size-eu43-us10 pa_size-eu44-us11 pa_size-eu45-us12 pa_size-eu45-us13 pa_brand-common-projects shipping-taxable purchasable product-type-simple product-cat-footwear product-cat-sneakers product-tag-common-projects product-tag-sneakers outofstock">
-                                  <figure class="product-transition">
-                                    <span class="out-of-stock-badge">Out of Stock</span>
-                                    <a href="http://neighborhood.swiftideas.com/product/common-projects-achilles-low-black/">
-                                      <div class="product-image">
-                                        <img width="540" height="720" src="http://neighborhood.swiftideas.com/wp-content/uploads/2013/05/cp-sneaker-black001-540x720.jpg" class="attachment-shop_catalog" alt="cp-sneaker-black001">
-                                      </div>
-                                      <div class="product-image second-image">
-                                        <img width="540" height="720" src="http://neighborhood.swiftideas.com/wp-content/uploads/2013/05/cp-sneaker-black002-540x720.jpg" class="attachment-shop_catalog" alt="cp-sneaker-black002">
-                                      </div>
-                                    </a>
-                                    <figcaption>
-                                      <div class="shop-actions clearfix">
-                                        <a href="http://neighborhood.swiftideas.com/product/common-projects-achilles-low-black/" class="">Read More</a>
-                                        <div class="yith-wcwl-add-to-wishlist">
-                                          <div class="yith-wcwl-add-button show">
-                                            <a href="/product/adidas-boston-super-og/?add_to_wishlist=9707" data-product-id="9707" data-product-type="simple" class="add_to_wishlist"><i class="fa-star"></i></a>
-                                          </div>
-                                          <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                            <span class="feedback">Product added to wishlist.</span>
-                                            <a href="http://neighborhood.swiftideas.com/wishlist/view/">
-                                              <i class="fa-check"></i></a>
-                                            </div>
-                                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                              <a href="http://neighborhood.swiftideas.com/wishlist/view/">
-                                                <i class="fa-check"></i>
-                                              </a>
-                                            </div>
-                                            <div style="clear:both">
-                                            </div>
-                                            <div class="yith-wcwl-wishlistaddresponse"></div>
-                                          </div>
-                                        </div>
-                                      </figcaption>
-                                    </figure>
-                                    <div class="product-details">
-                                      <h3><a href="http://neighborhood.swiftideas.com/product/common-projects-achilles-low-black/">Common Projects – Achilles</a></h3>
-                                      <span class="posted_in"> <a href="http://neighborhood.swiftideas.com/product-category/footwear/" rel="tag">Footwear</a>, <a href="http://neighborhood.swiftideas.com/product-category/footwear/sneakers/" rel="tag">Sneakers</a></span>
-                                    </div>
-                                    <span class="price"><span class="amount">£250.00</span></span>
-                                  </li>
+                              <div class="owl-item">
+
                                 </div>
-                                <div class="owl-item" style="width: 243px;">
-                                  <li class="last post-10393 product type-product status-publish has-post-thumbnail product_cat-footwear product_cat-sneakers product_tag-new-balance product_tag-sneakers product_shipping_class-standard-shipping pa_colour-beige pa_colour-navy pa_colour-yellow pa_size-eu41-us8 pa_size-eu42-us9 pa_size-eu43-us10 pa_size-eu44-us11 pa_size-eu45-us12 pa_fabric-mesh pa_fabric-suede pa_brand-new-balance shipping-taxable purchasable product-type-variable product-cat-footwear product-cat-sneakers product-tag-new-balance product-tag-sneakers instock">
-                                    <figure class="product-transition">
-                                      <a href="http://neighborhood.swiftideas.com/product/new-balance-variable-demo/">
-                                        <div class="product-image">
-                                          <img width="540" height="720" src="http://neighborhood.swiftideas.com/wp-content/uploads/2013/07/nb-beige001-540x720.jpg" class="attachment-shop_catalog" alt="nb-beige001">
-                                        </div>
-                                        <div class="product-image second-image">
-                                          <img width="540" height="720" src="http://neighborhood.swiftideas.com/wp-content/uploads/2013/07/nb-beige001-540x720.jpg" class="attachment-shop_catalog" alt="nb-beige001">
-                                        </div>
-                                      </a>
-                                      <figcaption>
-                                        <div class="shop-actions clearfix">
-                                          <a href="http://neighborhood.swiftideas.com/product/new-balance-variable-demo/" rel="nofollow" data-product_id="10393" data-product_sku="343996" class=" product_type_variable" data-added_text="Item added to bag">Select options</a>
-                                          <div class="yith-wcwl-add-to-wishlist">
-                                            <div class="yith-wcwl-add-button show">
-                                              <a href="/product/adidas-boston-super-og/?add_to_wishlist=10393" data-product-id="10393" data-product-type="variable" class="add_to_wishlist"><i class="fa-star"></i></a>
-                                            </div>
-                                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                              <span class="feedback">Product added to wishlist.</span>
-                                              <a href="http://neighborhood.swiftideas.com/wishlist/view/">
-                                                <i class="fa-check"></i>
-                                              </a>
-                                            </div>
-                                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                              <a href="http://neighborhood.swiftideas.com/wishlist/view/">
-                                                <i class="fa-check"></i>
-                                              </a>
-                                            </div>
-                                            <div style="clear:both"></div>
-                                            <div class="yith-wcwl-wishlistaddresponse"></div>
-                                          </div>
-                                        </div>
-                                      </figcaption>
-                                    </figure>
-                                    <div class="product-details">
-                                      <h3>
-                                        <a href="http://neighborhood.swiftideas.com/product/new-balance-variable-demo/">New Balance – Variable Demo</a>
-                                      </h3>
-                                      <span class="posted_in">
-                                        <a href="http://neighborhood.swiftideas.com/product-category/footwear/" rel="tag">Footwear</a>, <a href="http://neighborhood.swiftideas.com/product-category/footwear/sneakers/" rel="tag">Sneakers</a>
-                                      </span>
-                                    </div>
-                                    <span class="price"><span class="amount">£95.00</span></span>
-                                  </li>
+                                <div class="owl-item">
+
                                 </div>
                               </div>
                             </div>

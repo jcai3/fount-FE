@@ -43,7 +43,9 @@
 ==================================================
 	Support for columns width sidebars
 ================================================== */
-
+[class*="span"] {
+	max-width: 100%;
+}
 .span-third {
 	width: 193px;
 }
@@ -227,19 +229,19 @@ ul ul, ul ol, ol ol, ol ul {
 }
 .no-js-alert {
 	background: none repeat scroll 0 0 #222222;
-    color: #FFFFFF;
-    font-size: 24px;
-    height: 100%;
-    left: 0;
-    opacity: 0.95;
+  color: #FFFFFF;
+  font-size: 24px;
+  height: 100%;
+  left: 0;
+  opacity: 0.95;
 	-moz-opacity: 0.95;
 	filter:alpha(opacity= 95);
-    padding: 20% 5% 0;
-    position: fixed;
-    text-align: center;
-    top: 0;
-    width: 90%;
-    z-index: 9999;
+  padding: 20% 5% 0;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  width: 90%;
+  z-index: 9999;
 }
 #container {
 	position: relative;
@@ -273,6 +275,96 @@ iframe {
 video.wp-video-shortcode {
 	max-width: 100%;
 }
+i[class^="fa-"] {
+	display: inline-block;
+	font-family: FontAwesome;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.container {
+	max-width: 100%;
+}
+.row.fw-row {
+	margin-left: 0;
+}
+.fw-row > .container {
+	padding-left: 0!important;
+	padding-right: 0!important;
+}
+.fw-row > .container > .span12 {
+	margin-left: 0;
+}
+.fw-row > .container-fluid {
+	padding-left: 0;
+	padding-right: 0;
+}
+.fw-row > .container-fluid .container .row {
+	margin-left: 0;
+}
+.row-content-width > .container {
+	width: 100%;
+}
+.row-content-width .spb-row-container.spb-row-content-width {
+	width: 100%;
+	margin-left: 10px;
+}
+.spb-asset-content > .container {
+	max-width: 100%;
+}
+.spb-row-container {
+	position: relative;
+}
+.spb-row-container > div.spb_content_element {
+	position: relative;
+	z-index: 3;
+}
+.spb-row-container > div.row-overlay {
+	position: absolute;
+	z-index: 2;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+.overlay-diaglight {
+	background-image: url('images/vo_diagonal_lines_light.png');
+}
+.overlay-diagdark {
+	background-image: url('images/vo_diagonal_lines_dark.png');
+}
+.overlay-horizlight {
+	background-image: url('images/vo_horizontal_lines_light.png');
+}
+.overlay-horizgdark {
+	background-image: url('images/vo_horizontal_lines_dark.png');
+}
+.overlay-vertlight {
+	background-image: url('images/vo_vertical_lines_light.png');
+}
+.overlay-vertzgdark {
+	background-image: url('images/vo_vertical_lines_dark.png');
+}
+.overlay-lightgrid {
+	background-image: url('images/vo_pixel_light.png');
+}
+.overlay-darkgrid {
+	background-image: url('images/vo_pixel_dark.png');
+}
+.overlay-lightgridfat {
+	background-image: url('images/vo_fat_pixel_light.png');
+}
+.overlay-darkgridfat {
+	background-image: url('images/vo_fat_pixel_dark.png');
+}
+.spb-column-container > .spb-asset-content > .container > .row {
+	margin-left: 0;
+}
+.spb-column-container > .spb-asset-content > .container > .row > [class*="span"]:first-child {
+	margin-left: 0;
+}
 
 /* --------------------------------------------
 	STANDARD MEDIA STYLING
@@ -293,7 +385,7 @@ figure .overlay {
 	height: 100%;
 	position: absolute;
 	display: block;
-	z-index: 3;
+	z-index: 4;
 	opacity: 0;
 	-moz-opacity: 0;
 	filter:alpha(opacity=0);

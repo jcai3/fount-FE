@@ -2,24 +2,6 @@
 
 angular.module('sywStyleXApp')
 .controller('ProductDetailCtrl', ['$scope', '$state','$stateParams', '$timeout', 'UtilityService', 'CartService', 'localStorageService', 'ProductDetailService',  function($scope, $state, $stateParams, $timeout, UtilityService, CartService, localStorageService, ProductDetailService) {
-
-  if (!!localStorageService.get('productDetail')) {
-    console.log('from 0');
-    prepareProductDetail();
-//      getRelevantPosts(localStorageService.get('productDetail'));
-  } else {
-    getCurrentProductDetails();
-  }
-
-  if (!!localStorageService.get('shoppingCartInfo')) {
-    $scope.shoppingCartInfo = localStorageService.get('shoppingCartInfo');
-  } else {
-    $scope.shoppingCartInfo = {
-      count: 0,
-      subtotal: 0
-    };
-  }
-
   var addToCartLocker = false;
   var relevantPostId = '';
   var pageNumber = 0;
@@ -763,4 +745,20 @@ angular.module('sywStyleXApp')
     $state.go('forward-seller');
   }
 
+  if (!!localStorageService.get('productDetail')) {
+    console.log('from 0');
+    prepareProductDetail();
+//      getRelevantPosts(localStorageService.get('productDetail'));
+  } else {
+    getCurrentProductDetails();
+  }
+
+  if (!!localStorageService.get('shoppingCartInfo')) {
+    $scope.shoppingCartInfo = localStorageService.get('shoppingCartInfo');
+  } else {
+    $scope.shoppingCartInfo = {
+      count: 0,
+      subtotal: 0
+    };
+  }
 }]);
