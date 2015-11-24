@@ -29,5 +29,7 @@
   <div class="product-details">
     <a>{{product.name}}</a>
   </div>
-  <span class="price"><span class="amount">${{product.finalPrice}}</span></span>
+  <span class="price">
+    <span ng-if="product.price > product.finalPrice" class="amount fount-sale-price">${{product.price}}</span>&nbsp;&nbsp;<span class="amount">${{product.finalPrice}}</span>
+  </span>
 </div>
