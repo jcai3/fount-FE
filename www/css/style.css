@@ -8057,7 +8057,7 @@ ul.products li.product .product-image > img {
 	z-index: 4;
 	background: #222;
 	color: #fff;
-	width: 40px;
+	width: 20px;
 	font-size: 12px;
 	transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
@@ -8070,7 +8070,7 @@ ul.products li.product .product-image > img {
 .fount-product-tile figure figcaption .yith-wcwl-add-to-wishlist {
 	float: right;
 	display: block;
-	padding: 0;
+	/*padding: 0;*/
 	position: relative;
 	z-index: 3;
 	border-left-color: rgba(255,255,255,0.2);
@@ -8079,8 +8079,14 @@ ul.products li.product .product-image > img {
 	width: 11px;
 	padding: 10px 14px;
 }
-.fount-product-tile figure figcaption .yith-wcwl-add-to-wishlist a i.fount-active-icon {
-	color: red;
+/*.fount-product-tile figure figcaption .yith-wcwl-add-to-wishlist a i.fount-active-icon {
+	color: #1BBEB8;
+}*/
+i.fount-active-icon {
+	color: #1BBEB8;
+}
+i.fount-inactive-icon {
+	color: #FFFFFF;
 }
 .fount-post-tile figure {
 	position: relative;
@@ -8114,9 +8120,9 @@ ul.products li.product .product-image > img {
 	width: 11px;
 	padding: 10px 14px;
 }
-.fount-post-tile figure figcaption .yith-wcwl-add-to-wishlist a i.fount-active-icon {
-	color: red;
-}
+/*.fount-post-tile figure figcaption .yith-wcwl-add-to-wishlist a i.fount-active-icon {
+	color: #1BBEB8;
+}*/
 .woocommerce ul.products li.product figure figcaption {
 	position: absolute;
 	bottom: -80px;
