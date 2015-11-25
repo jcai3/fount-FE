@@ -771,6 +771,10 @@
 	.woocommerce div.product form.cart div.quantity {
 		float: none;
 		margin-bottom: 20px;
+		display: block;
+    height: auto;
+    overflow: hidden;
+    max-width: 70px;
 	}
 	.summary .product_meta .need-help, .summary .product_meta .leave-feedback {
 		display: block;
