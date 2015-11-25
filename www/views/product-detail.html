@@ -26,27 +26,15 @@
                         <div itemprop="offers" itemscope="">
                           <p itemprop="price" class="price">
                             <del ng-if="productDetail.xapp.price < productDetail.xapp.retailPrice">
-                              <span class="amount">{{productDetail.xapp.retailPrice}}</span>
+                              <span class="amount">${{productDetail.xapp.retailPrice}}</span>
                             </del>
                             <ins>
-                              <span class="amount">{{productDetail.xapp.price}}</span>
+                              <span class="amount">${{productDetail.xapp.price}}</span>
                             </ins>
                           </p>
                           <!-- <meta itemprop="priceCurrency" content="GBP">
                           <link itemprop="availability" href="http://schema.org/InStock"> -->
                         </div>
-                        <!-- <div class="product-navigation">
-                          <div class="nav-previous">
-                            <a href="http://neighborhood.swiftideas.com/product/common-projects-achilles/" rel="prev">
-                              <i class="fa-angle-right"></i>
-                            </a>
-                          </div>
-                          <div class="nav-next">
-                            <a href="http://neighborhood.swiftideas.com/product/nike-roshe-run/" rel="next">
-                              <i class="fa-angle-left"></i>
-                            </a>
-                          </div>
-                        </div> -->
                       </div>
                       <div class="product-short">
                       </div>
@@ -63,14 +51,14 @@
                           </div>
                         </div>
                         <!-- <input type="hidden" name="add-to-cart" value="9356"> -->
-                        <button ng-click="addToCart()" class="single_add_to_cart_button"><i class="fa-plus"></i>Add to shopping bag</button>
+                        <button ng-click="addItemToCart()" class="single_add_to_cart_button"><i class="fa-plus"></i>Add to shopping bag</button>
                         <div class="yith-wcwl-add-to-wishlist">
                           <div class="yith-wcwl-add-button show">
-                            <a href="/product/adidas-boston-super-og/?add_to_wishlist=9356" data-product-id="9356" data-product-type="simple" class="add_to_wishlist">
+                            <a ng-click="toggleFavoriteProduct()" class="add_to_wishlist">
                               <i class="fa-star"></i>
                             </a>
                           </div>
-                          <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
+                          <!-- <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
                             <span class="feedback">Product added to wishlist.</span>
                             <a href="http://neighborhood.swiftideas.com/wishlist/view/">
                               <i class="fa-check"></i>
@@ -80,27 +68,11 @@
                             <a href="http://neighborhood.swiftideas.com/wishlist/view/">
                               <i class="fa-check"></i>
                             </a>
-                          </div>
+                          </div> -->
                           <div style="clear:both"></div>
                           <div class="yith-wcwl-wishlistaddresponse"></div>
                         </div>
                       </form>
-                      <div class="yith-wcwl-add-to-wishlist add-to-wishlist-9356">
-                        <div class="yith-wcwl-add-button show" style="display:block">
-                          <a href="/product/adidas-boston-super-og/?add_to_wishlist=9356" rel="nofollow" data-product-id="9356" data-product-type="simple" class="add_to_wishlist">Add to Wishlist</a>
-                          <img src="http://neighborhood.swiftideas.com/wp-content/plugins/yith-woocommerce-wishlist/assets/images/wpspin_light.gif" class="ajax-loading" alt="loading" width="16" height="16" style="visibility:hidden">
-                        </div>
-                        <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                          <span class="feedback">Product added!</span>
-                          <a href="http://neighborhood.swiftideas.com/wishlist/view/">Browse Wishlist </a>
-                        </div>
-                        <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                          <span class="feedback">The product is already in the wishlist!</span>
-                          <a href="http://neighborhood.swiftideas.com/wishlist/view/">Browse Wishlist</a>
-                        </div>
-                        <div style="clear:both"></div>
-                        <div class="yith-wcwl-wishlistaddresponse"></div>
-                      </div>
                       <div class="clear"></div>
                       <div class="accordion" id="product-accordion">
                         <div class="accordion-group">

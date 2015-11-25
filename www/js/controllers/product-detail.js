@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('ProductDetailCtrl', ['$scope', '$state','$stateParams', '$timeout', 'UtilityService', 'CartService', 'localStorageService', 'ProductDetailService',  function($scope, $state, $stateParams, $timeout, UtilityService, CartService, localStorageService, ProductDetailService) {
+.controller('ProductDetailCtrl', ['$rootScope', '$scope', '$state','$stateParams', '$timeout', 'UtilityService', 'CartService', 'localStorageService', 'ProductDetailService',  function($rootScope, $scope, $state, $stateParams, $timeout, UtilityService, CartService, localStorageService, ProductDetailService) {
   var addToCartLocker = false;
   var relevantPostId = '';
   var pageNumber = 0;
@@ -129,7 +129,6 @@ angular.module('sywStyleXApp')
       return;
     }
     productDetailLocker = true;
-    UtilityService.gaTrackAppEvent('Shopping Cart Page', 'Click', 'Product detail page from Shopping Cart Page:  - Product: ' + $stateParams.productId);
 
      ProductDetailService.getProductDetail($stateParams.productId).then(function(response){
 
@@ -367,65 +366,6 @@ angular.module('sywStyleXApp')
 
   };
 
-  $scope.backToPrev = function() {
-
-    var viewHistory = localStorageService.get('trackHistory');
-    if (viewHistory.length > 1) {
-      var prevState = viewHistory.pop();
-    } else {
-      var prevState = viewHistory[0];
-    }
-
-    if (prevState.source == 'media') {
-      UtilityService.gaTrackAppEvent('Product Detail Page', 'Click', 'Back to media detail page from product detail');
-      localStorageService.remove('productDetail');
-//      localStorageService.remove('discoverMedia');
-      localStorageService.set('trackHistory', viewHistory);
-      $state.go('media', {mediaId: prevState.id});
-    } else if (prevState.source == 'shop') {
-      UtilityService.gaTrackAppEvent('Product Detail Page', 'Click', 'Back to shop page from product detail');
-      localStorageService.remove('productDetail');
-      localStorageService.remove('trackHistory');
-      $state.go('main.shop');
-    } else if (prevState.source == 'settings') {
-      UtilityService.gaTrackAppEvent('Product Detail Page', 'Click', 'Back to profile page from product detail');
-      localStorageService.remove('productDetail');
-      localStorageService.remove('trackHistory');
-      $state.go('main.settings');
-    } else if (prevState.source == 'brand-profile') {
-      UtilityService.gaTrackAppEvent('Product Detail Page', 'Click', 'Back to brand profile page from product detail');
-      localStorageService.remove('productDetail');
-      localStorageService.set('trackHistory', viewHistory);
-//      localStorageService.remove('trackHistory');
-      // $state.go('profile', {Id:localStorageService.get('profileId'), type:'brand',source: 0});
-        $state.go('profile', {Id:prevState.id, type:'brand',source: 0});
-    } else if (prevState.source == 'user-profile') {
-      UtilityService.gaTrackAppEvent('Product Detail Page', 'Click', 'Back to user profile page from product detail');
-      localStorageService.remove('productDetail');
-      // localStorageService.remove('trackHistory');
-      localStorageService.set('trackHistory', viewHistory);
-      // $state.go('profile', {Id:localStorageService.get('profileId'), type:'user',source: 0});
-      $state.go('profile', {Id:prevState.id, type:'user',source: 0});
-    } else if (prevState.source == 'shopping-cart') {
-      UtilityService.gaTrackAppEvent('Product Detail Page', 'Click', 'Back to shopping cart page from product detail');
-      localStorageService.remove('productDetail');
-      localStorageService.remove('trackHistory');
-      $state.go('cart');
-    } else if (prevState.source == 'my-brands') {
-      UtilityService.gaTrackAppEvent('Product Detail Page', 'Click', 'Back to brands page - my brands from product detail');
-      localStorageService.remove('productDetail');
-      localStorageService.remove('trackHistory');
-      $state.go('main.brands');
-    } else {
-      UtilityService.gaTrackAppEvent('Product Detail Page', 'Click', 'Back to discover page from product detail');
-      localStorageService.remove('productDetail');
-      localStorageService.set('taggedProducts', []);
-      $state.go('main.home');
-      localStorageService.remove('trackHistory');
-    }
-
-  };
-
   $scope.productQuantity = 1;
   $scope.quantityPlus = function() {
     $scope.productQuantity++;
@@ -441,17 +381,14 @@ angular.module('sywStyleXApp')
     if ($scope.isDescriptionShown) {
       $scope.isDescriptionShown = false;
     } else {
-      // UtilityService.gaTrackAppEvent('Product Detail Page', 'Toggle', 'Show description on product detail page');
       $scope.isDescriptionShown = true;
     }
   };
 
   $scope.toggleRelevantPosts = function() {
     if ($scope.isRelevantPostsShown) {
-      UtilityService.gaTrackAppEvent('Product Detail Page', 'Toggle', 'Hide relevant posts on product detail page');
       $scope.isRelevantPostsShown = false;
     } else {
-      UtilityService.gaTrackAppEvent('Product Detail Page', 'Toggle', 'Show relevant posts on product detail page');
       $scope.isRelevantPostsShown = true;
     }
   };
@@ -461,7 +398,6 @@ angular.module('sywStyleXApp')
       return;
     }
 
-    // UtilityService.gaTrackAppEvent('Product Detail Page', 'Scroll down', 'Load more relevant posts on product detail page');
     getRelevantPosts($scope.productDetail);
 
     // $scope.$broadcast('scroll.infiniteScrollComplete');
@@ -469,8 +405,6 @@ angular.module('sywStyleXApp')
   };
 
   $scope.mediaDetail = function(discoverMedia) {
-    UtilityService.gaTrackAppEvent('Product Detail Page', 'Click', 'Media detail page from product detail - Media: ' + discoverMedia.id);
-
     discoverMedia.source = 'product-detail';
     discoverMedia.sourceProductId = $scope.productDetail.xapp.id;
     localStorageService.set('discoverMedia', discoverMedia);
@@ -486,8 +420,6 @@ angular.module('sywStyleXApp')
     if (addToCartLocker) {
       return;
     }
-
-    // UtilityService.gaTrackAppEvent('Product Detail Page', 'Add to cart', 'Add product to cart on product detail page');
 
     addToCartLocker = true;
     var productBuyURL = '';
@@ -610,12 +542,10 @@ angular.module('sywStyleXApp')
   };
 
   $scope.chooseProductProperty = function() {
-    UtilityService.gaTrackAppEvent('Product Detail Page', 'Product property', 'Open property modal on product detail page');
     $scope.modal.show();
   };
 
   $scope.closeProductProperty = function() {
-    UtilityService.gaTrackAppEvent('Product Detail Page', 'Product property', 'Close property modal on product detail page');
     $scope.modal.hide();
   };
 
@@ -678,7 +608,6 @@ angular.module('sywStyleXApp')
       $scope.variableObj.optionsErrorMessage = 'Please select an option for Option 4';
     }
 
-    UtilityService.gaTrackAppEvent('Product Detail Page', 'Product property', 'Submit product property on product detail page');
     if($scope.variableObj.allOptionsSelected) {
       $scope.addToCart();
       $scope.modal.hide();
@@ -686,13 +615,14 @@ angular.module('sywStyleXApp')
   };
 
   $scope.showLoadingSpinner = function() {
-    $ionicLoading.show({
-      template: '<ion-spinner icon="ios"></ion-spinner><p>Getting updated inventory from the retailer</p>'
-    });
+    // $ionicLoading.show({
+    //   template: '<ion-spinner icon="ios"></ion-spinner><p>Getting updated inventory from the retailer</p>'
+    // });
+      $rootScope.xappObj.overlay = true;
   };
 
   $scope.hideLoadingSpinner = function() {
-    $ionicLoading.hide();
+      $rootScope.xappObj.overlay = false;
   };
 
   $scope.toggleFavoriteProduct = function() {
@@ -700,14 +630,12 @@ angular.module('sywStyleXApp')
     if(!$scope.productLiked) {
         ProductDetailService.likeProduct($scope.productDetail.xapp.id).then(function(response){
           if(UtilityService.validateResult(response)) {
-            UtilityService.gaTrackAppEvent('Product Detail Page', 'Like product', 'Like product id - ' + $scope.productDetail.xapp.id + ' on product detail page');
             $scope.productLiked = true;
           }
         });
     } else {
       ProductDetailService.unlikeProduct($scope.productDetail.xapp.id).then(function(response){
         if(UtilityService.validateResult(response)) {
-          UtilityService.gaTrackAppEvent('Product Detail Page', 'Unlike product', 'Unlike product id - ' + $scope.productDetail.xapp.id + ' on product detail page');
           $scope.productLiked = false;
         }
       });
@@ -734,7 +662,6 @@ angular.module('sywStyleXApp')
   };
 
   $scope.gotoBrandProfile = function() {
-    UtilityService.gaTrackAppEvent('Product Detail Page', 'Click Brand Name', 'Go to Brand Profile page from product detail page');
     if(!!$scope.productDetail.xapp.brandId) {
       var trackHistory = localStorageService.get('trackHistory');
       var sourceObj = {

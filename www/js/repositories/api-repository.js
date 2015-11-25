@@ -26,7 +26,7 @@ angular.module('sywStyleXApp')
       cache: false,
       url: url,
       params: (httpMethod == "GET" || httpMethod == "DELETE") ? inputParams : "",
-      data: (httpMethod == "POST") ? $httpParamSerializer(inputParams) : ""
+      data: (httpMethod == "POST") ? jQuery.param(inputParams) : ""
     }).success(function(data, status, headers, config) {
       if (data.error) {
         // if (path != 'mail/notifyapierror') {
