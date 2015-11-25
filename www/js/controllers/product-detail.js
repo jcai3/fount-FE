@@ -426,12 +426,22 @@ angular.module('sywStyleXApp')
 
   };
 
+  $scope.productQuantity = 1;
+  $scope.quantityPlus = function() {
+    $scope.productQuantity++;
+  };
+
+  $scope.quantityMinus = function() {
+    if ($scope.productQuantity > 1) {
+      $scope.productQuantity--;
+    }
+  };
+
   $scope.toggleDescription = function() {
     if ($scope.isDescriptionShown) {
-      UtilityService.gaTrackAppEvent('Product Detail Page', 'Toggle', 'Hide description on product detail page');
       $scope.isDescriptionShown = false;
     } else {
-      UtilityService.gaTrackAppEvent('Product Detail Page', 'Toggle', 'Show description on product detail page');
+      // UtilityService.gaTrackAppEvent('Product Detail Page', 'Toggle', 'Show description on product detail page');
       $scope.isDescriptionShown = true;
     }
   };
@@ -451,11 +461,11 @@ angular.module('sywStyleXApp')
       return;
     }
 
-    UtilityService.gaTrackAppEvent('Product Detail Page', 'Scroll down', 'Load more relevant posts on product detail page');
+    // UtilityService.gaTrackAppEvent('Product Detail Page', 'Scroll down', 'Load more relevant posts on product detail page');
     getRelevantPosts($scope.productDetail);
 
-    $scope.$broadcast('scroll.infiniteScrollComplete');
-    $scope.$broadcast('scroll.resize');
+    // $scope.$broadcast('scroll.infiniteScrollComplete');
+    // $scope.$broadcast('scroll.resize');
   };
 
   $scope.mediaDetail = function(discoverMedia) {
@@ -477,7 +487,7 @@ angular.module('sywStyleXApp')
       return;
     }
 
-    UtilityService.gaTrackAppEvent('Product Detail Page', 'Add to cart', 'Add product to cart on product detail page');
+    // UtilityService.gaTrackAppEvent('Product Detail Page', 'Add to cart', 'Add product to cart on product detail page');
 
     addToCartLocker = true;
     var productBuyURL = '';

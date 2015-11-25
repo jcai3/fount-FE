@@ -4282,6 +4282,21 @@ ul.portfolio-items {
 	max-height: 100%;
 	width: auto;
 }
+.fount-post-tile .fount-post-image {
+	max-height: 220px;
+	text-align: center;
+}
+.fount-post-tile .fount-post-image:before {
+	content: ' ';
+	/*display: inline-block;*/
+	vertical-align: middle;
+	height: 100%;
+}
+.fount-post-tile .fount-post-image img {
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+}
 .masonry-items .portfolio-item {
 	border-bottom: 0;
 	padding-bottom: 0;
@@ -8065,6 +8080,41 @@ ul.products li.product .product-image > img {
 	padding: 10px 14px;
 }
 .fount-product-tile figure figcaption .yith-wcwl-add-to-wishlist a i.fount-active-icon {
+	color: red;
+}
+.fount-post-tile figure {
+	position: relative;
+}
+.fount-post-tile figure figcaption {
+	position: absolute;
+	bottom: -80px;
+	right: 0;
+	z-index: 4;
+	background: #222;
+	color: #fff;
+	width: 40px;
+	font-size: 12px;
+	transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+}
+.fount-post-tile figure:hover figcaption {
+	bottom: 0;
+}
+.fount-post-tile figure figcaption .yith-wcwl-add-to-wishlist {
+	float: right;
+	display: block;
+	padding: 0;
+	position: relative;
+	z-index: 3;
+	border-left-color: rgba(255,255,255,0.2);
+}
+.fount-post-tile figure figcaption .yith-wcwl-add-to-wishlist a {
+	width: 11px;
+	padding: 10px 14px;
+}
+.fount-post-tile figure figcaption .yith-wcwl-add-to-wishlist a i.fount-active-icon {
 	color: red;
 }
 .woocommerce ul.products li.product figure figcaption {
