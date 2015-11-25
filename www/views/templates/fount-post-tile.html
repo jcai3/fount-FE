@@ -3,33 +3,8 @@
     <div ng-click="mediaDetail(discoverMedia)" class="fount-post-image">
       <img itemprop="image" ng-src="{{discoverMedia.lowResolutionURL}}">
     </div>
-    <figcaption>
-      <div class="shop-actions clearfix">
-        <div class="yith-wcwl-add-to-wishlist">
-          <div ng-click="toggleLikeMedia(discoverMedia)" class="yith-wcwl-add-button show">
-            <a class="add_to_wishlist"><i class="fa-star" ng-class="discoverMediaLiked ? 'fount-active-icon' : 'fount-inactive-icon'"></i></a>
-          </div>
-          <div class="yith-wcwl-wishlistaddedbrowse hide">
-            <span class="feedback">Product added to wishlist.</span>
-            <a>
-              <i class="fa-check"></i>
-            </a>
-          </div>
-          <div class="yith-wcwl-wishlistexistsbrowse hide">
-            <a>
-              <i class="fa-check"></i>
-            </a>
-          </div>
-          <div style="clear:both"></div>
-          <div class="yith-wcwl-wishlistaddresponse"></div>
-        </div>
-      </div>
-    </figcaption>
   </figure>
-  <!-- <div class="product-details">
-    <a>{{product.name}}</a>
+  <div class="fount-post-details">
+    <a>{{discoverMedia.caption}}</a>
   </div>
-  <span class="price">
-    <span ng-if="product.price > product.finalPrice" class="amount fount-sale-price">${{product.price}}</span>&nbsp;&nbsp;<span class="amount">${{product.finalPrice}}</span>
-  </span> -->
 </div>

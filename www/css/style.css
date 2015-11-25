@@ -7863,7 +7863,7 @@ ul.cart_list li, ul.product_list_widget li {
 .woocommerce ul.cart_list li, .woocommerce ul.product_list_widget li, .woocommerce-page ul.cart_list li, .woocommerce-page ul.product_list_widget li {
 	padding: 10px 0;
 }
-.fount-product-tile .product-details {
+.fount-product-tile .product-details, .fount-post-tile .fount-post-details {
 	font-size: 14px;
 	overflow: hidden;
   text-overflow: ellipsis;
@@ -8228,7 +8228,7 @@ nav.woocommerce-pagination ul li a.prev i {
 	position: relative;
 	z-index: 2;
 	overflow: hidden;
-	padding-bottom: 50px;
+	/*padding-bottom: 50px;*/
 	margin-bottom: 0;
 	float: left;
 	width: 48%;
