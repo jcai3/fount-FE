@@ -43,6 +43,12 @@
 ==================================================
 	Support for columns width sidebars
 ================================================== */
+
+.fount-product-notAvailable {
+	color: red;
+	margin-bottom: 10px;
+}
+
 [class*="span"] {
 	max-width: 100%;
 }

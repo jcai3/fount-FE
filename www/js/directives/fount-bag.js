@@ -1,16 +1,15 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.directive('fountBag', function() {
+.directive('fountBag', ['$state', function($state) {
   return {
     restrict: 'A',
     replace: true,
     templateUrl: 'views/templates/fount-bag.html',
     scope: {},
     link: function(scope, element, attrs) {
-      scope.searchObj = {
-        keyword: '',
-        showSearchBar: false
+      scope.goToCart = function() {
+        $state.go('cart');
       };
 
       scope.toggleSearchBar = function() {
@@ -24,4 +23,4 @@ angular.module('sywStyleXApp')
       };
     }
   };
-});
+}]);

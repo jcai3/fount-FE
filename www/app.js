@@ -2,13 +2,14 @@
 
 // Declare app level module which depends on views, and components
 angular.module('sywStyleXApp', [
-  'ngRoute',
+  'ionic',
+  // 'ngRoute',
   'config',
   'LocalStorageModule',
   'infinite-scroll',
   'ui.router'
 ])
-.config(function($httpProvider, $routeProvider, $stateProvider, $urlRouterProvider) {
+.config(function($httpProvider, $stateProvider, $urlRouterProvider) {
   // $httpProvider.defaults.withCredentials = true;
   $stateProvider
     .state('shop', {
@@ -26,6 +27,11 @@ angular.module('sywStyleXApp', [
     //   templateUrl: 'views/search-results.html',
     //   controller: 'SearchResultsCtrl'
     // })
+    .state('cart', {
+      url: '/cart',
+      templateUrl: 'views/shopping-cart.html',
+      controller: 'ShoppingCartCtrl'
+    })
     .state('product', {
       url: '/product/{productId}',
       templateUrl: 'views/product-detail.html',

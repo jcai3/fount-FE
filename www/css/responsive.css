@@ -170,6 +170,11 @@
 /* --------------------------------------------
 	iPAD/TABLET PORTRAIT
 -------------------------------------------- */
+@media only screen and (max-width: 980px) {
+	#main-nav {
+		display: block;
+	}
+}
 
 @media only screen and (max-width: 979px) {
 
@@ -181,6 +186,14 @@
 		margin-left: -110px!important;
 		padding-left: 130px;
 		padding-right: 130px;
+	}
+	.spb_parallax_asset.parallax-stellar {
+		-webkit-background-position: center!important;
+		-moz-background-position: center!important;
+		background-position: center!important;
+	}
+	#main-nav {
+		display: none;
 	}
 
 	/* GENERAL */

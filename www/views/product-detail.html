@@ -51,28 +51,21 @@
                           </div>
                         </div>
                         <!-- <input type="hidden" name="add-to-cart" value="9356"> -->
-                        <button ng-click="addItemToCart()" class="single_add_to_cart_button"><i class="fa-plus"></i>Add to shopping bag</button>
+                        <button ng-click="addItemToCart()" ng-disabled="addToCartDisabled" ng-if="!variableObj.buyOnSellerSite" class="single_add_to_cart_button"><i class="fa-plus"></i>Add to shopping bag</button>
+                        <button ng-click="redirectToSeller()" ng-if="variableObj.buyOnSellerSite" class="single_add_to_cart_button">{{variableObj.buyOnSellerMsg}}</button>
                         <div class="yith-wcwl-add-to-wishlist">
                           <div class="yith-wcwl-add-button show">
                             <a ng-click="toggleFavoriteProduct()" class="add_to_wishlist">
                               <i class="fa-star" ng-class="productLiked ? 'fount-active-icon' : 'fount-inactive-icon'"></i>
                             </a>
                           </div>
-                          <!-- <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                            <span class="feedback">Product added to wishlist.</span>
-                            <a href="http://neighborhood.swiftideas.com/wishlist/view/">
-                              <i class="fa-check"></i>
-                            </a>
-                          </div>
-                          <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                            <a href="http://neighborhood.swiftideas.com/wishlist/view/">
-                              <i class="fa-check"></i>
-                            </a>
-                          </div> -->
                           <div style="clear:both"></div>
                           <div class="yith-wcwl-wishlistaddresponse"></div>
                         </div>
                       </form>
+                      <div class="fount-product-notAvailable" ng-if="variableObj.productNotAvailable">
+                        <span>Sorry, this product is currently out of stock.</span>
+                      </div>
                       <div class="clear"></div>
                       <div class="accordion" id="product-accordion">
                         <div class="accordion-group">

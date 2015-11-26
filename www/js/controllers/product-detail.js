@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('ProductDetailCtrl', ['$rootScope', '$scope', '$state','$stateParams', '$timeout', 'UtilityService', 'CartService', 'localStorageService', 'ProductDetailService',  function($rootScope, $scope, $state, $stateParams, $timeout, UtilityService, CartService, localStorageService, ProductDetailService) {
+.controller('ProductDetailCtrl', ['$rootScope', '$scope', '$state','$stateParams', '$timeout', '$ionicModal', '$ionicLoading', 'UtilityService', 'CartService', 'localStorageService', 'ProductDetailService',  function($rootScope, $scope, $state, $stateParams, $timeout, $ionicModal, $ionicLoading, UtilityService, CartService, localStorageService, ProductDetailService) {
   var addToCartLocker = false;
   var relevantPostId = '';
   var pageNumber = 0;
@@ -14,7 +14,6 @@ angular.module('sywStyleXApp')
   $scope.emptyRelevantPosts = false;
   $scope.isRelevantPostsShown = true;
   $scope.productImagesLength = 0;
-  $scope.postImageHeight = UtilityService.getImageHeight(2) + 43;
   $scope.addToCartDisabled = false;
   $scope.variableObj = {
     productNotAvailable: false,
@@ -23,6 +22,14 @@ angular.module('sywStyleXApp')
     buyOnSellerSite: false, //change it to true to enable buy now from seller
     buyOnSellerMsg: ''  //message in the button like BUY NOW on ssense.com
   }
+
+  var showProductProperty = $ionicModal.fromTemplateUrl('views/templates/product-property.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+    console.log('modal created');
+  });
 
   var prepareProductDetail = function () {
     console.log('inside prepareProductDetail function');
@@ -237,7 +244,7 @@ angular.module('sywStyleXApp')
     var visualTag = {id: products.visualTagId};
     var originalUrl = products.buyURL;
 
-    CartService.addProductsToCart(user, product, media, visualTag, productMetadata, quantity, shippingMethod, originalUrl).success(function(res) {
+    CartService.addProductsToCart(user, product, media, visualTag, productMetadata, $scope.productQuantity, shippingMethod, originalUrl).success(function(res) {
 
         if (products.availability) {
             if (!!products.prices) {
@@ -282,7 +289,7 @@ angular.module('sywStyleXApp')
 //    var visualTag = {id: products.visualTagId};
     var originalUrl = products.buyURL;
 
-    CartService.addShopProductsToCart(user, product, productMetadata, quantity, shippingMethod, originalUrl).success(function(res) {
+    CartService.addShopProductsToCart(user, product, productMetadata, $scope.productQuantity, shippingMethod, originalUrl).success(function(res) {
 
         if (products.availability) {
             if (!!products.prices) {
@@ -616,7 +623,7 @@ angular.module('sywStyleXApp')
 
   $scope.showLoadingSpinner = function() {
     // $ionicLoading.show({
-    //   template: '<ion-spinner icon="ios"></ion-spinner><p>Getting updated inventory from the retailer</p>'
+    //   template: '<ion-spinner></ion-spinner><p>Getting updated inventory from the retailer</p>'
     // });
       $rootScope.xappObj.overlay = true;
   };
