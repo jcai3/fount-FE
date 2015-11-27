@@ -46,6 +46,11 @@ angular.module('sywStyleXApp')
       };
 
       scope.productDetail = function(product) {
+        scope.searchObj = {
+          keyword: '',
+          showSearchBar: false,
+          results: {}
+        };
         ProductDetailService.getProductDetail(product.id).then(function(response){
           if (UtilityService.validateResult(response)) {
             console.log(response);
@@ -80,9 +85,13 @@ angular.module('sywStyleXApp')
       };
 
       scope.goToSearchResults = function(){
-        scope.searchObj.showSearchBar = false;
-        scope.searchObj.results = '';
         $state.go('search', {keyword: scope.searchObj.keyword});
+
+        scope.searchObj = {
+          keyword: '',
+          showSearchBar: false,
+          results: {}
+        };
       };
     }
   };
