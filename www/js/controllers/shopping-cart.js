@@ -1,9 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('ShoppingCartCtrl', ['$scope', '$state', '$ionicModal', '$timeout', 'UtilityService', 'localStorageService', 'TwoTapService', 'CartService', 'ProductDetailService',function($scope, $state, $ionicModal, $timeout, UtilityService, localStorageService, TwoTapService, CartService, ProductDetailService) {
-  UtilityService.gaTrackAppView('Shopping Cart Page View');
-
+.controller('ShoppingCartCtrl', ['$scope', '$state', '$timeout', 'UtilityService', 'localStorageService', 'CartService', 'ProductDetailService',function($scope, $state, $timeout, UtilityService, localStorageService, CartService, ProductDetailService) {
   var shoppingBagDetail;
   var sites = [];
   var productDetailLocker = false;
@@ -60,47 +58,6 @@ angular.module('sywStyleXApp')
     } else {
       $scope.selectAllItems = false;
     }
-  };
-
-  $scope.backToPrev = function() {
-    if (!!localStorageService.get('shoppingCartSource')) {
-      if (localStorageService.get('shoppingCartSource').stateName == 'media') {
-        UtilityService.gaTrackAppEvent('Shopping Cart Page', 'Click', 'Back to media detail page from shopping cart');
-        $state.go(localStorageService.get('shoppingCartSource').stateName, {mediaId: localStorageService.get('shoppingCartSource').stateParam.mediaId});
-      } else {
-        if (localStorageService.get('shoppingCartSource').stateName == 'product') {
-          UtilityService.gaTrackAppEvent('Shopping Cart Page', 'Click', 'Back to product detail page from shopping cart');
-        } else if (localStorageService.get('shoppingCartSource').stateName == 'main.home') {
-          UtilityService.gaTrackAppEvent('Shopping Cart Page', 'Click', 'Back to discover page from shopping cart');
-        } else if (localStorageService.get('shoppingCartSource').stateName == 'main.settings') {
-          UtilityService.gaTrackAppEvent('Shopping Cart Page', 'Click', 'Back to profile page from shopping cart');
-        } else if (localStorageService.get('shoppingCartSource').stateName == 'main.shop') {
-          UtilityService.gaTrackAppEvent('Shopping Cart Page', 'Click', 'Back to shop page from shopping cart');
-        } else if (localStorageService.get('shoppingCartSource').stateName == 'profile') {
-          UtilityService.gaTrackAppEvent('Shopping Cart Page', 'Click', 'Back to public profile page from shopping cart');
-        } else if (localStorageService.get('shoppingCartSource').stateName == 'settingsSocial') {
-          UtilityService.gaTrackAppEvent('Shopping Cart Page', 'Click', 'Back to settings social page from shopping cart');
-        } else if (localStorageService.get('shoppingCartSource').stateName == 'forward-seller') {
-          UtilityService.gaTrackAppEvent('Shopping Cart Page', 'Click', 'Back to product detail page from shopping cart');
-        } else {
-          UtilityService.gaTrackAppEvent('Shopping Cart Page', 'Click', 'Back to ' + localStorageService.get('shoppingCartSource').stateName + ' from shopping cart');
-        }
-
-        if(localStorageService.get('shoppingCartSource').stateName == 'profile') {
-          $state.go(localStorageService.get('shoppingCartSource').stateName, localStorageService.get('shoppingCartSource').stateParam);
-        } else if (localStorageService.get('shoppingCartSource').stateName == 'settingsSocial') {
-          $state.go(localStorageService.get('shoppingCartSource').stateName, localStorageService.get('shoppingCartSource').stateParam);
-        } else if (localStorageService.get('shoppingCartSource').stateName == 'forward-seller') {
-          $state.go('product', {productId: localStorageService.get('productDetail').xapp.id});
-        } else {
-          $state.go(localStorageService.get('shoppingCartSource').stateName);
-        }
-      }
-    } else {
-      UtilityService.gaTrackAppEvent('Shopping Cart Page', 'Click', 'Back to discover page from shopping cart 2');
-      $state.go('main.home');
-    }
-
   };
 
   $scope.enableUpdateProduct = function(key) {
@@ -186,24 +143,18 @@ angular.module('sywStyleXApp')
   }
 
   $scope.checkout = function() {
-    UtilityService.gaTrackAppEvent('Shopping Cart Page', 'Checkout', 'Checkout on shopping cart page');
     $state.go('address');
   };
 
   $scope.openProductProp = function(shoppingCart) {
-    UtilityService.gaTrackAppEvent('Shopping Cart Page', 'Product property', 'Open property modal on shopping cart page');
     $scope.modal.show();
   };
 
   $scope.closeProductProperty = function() {
-    UtilityService.gaTrackAppEvent('Shopping Cart Page', 'Product property', 'Close property modal on shopping cart page');
     $scope.modal.hide();
   };
 
   $scope.removeItemFromCart= function(shoppingCartToDelete) {
-
-    UtilityService.gaTrackAppEvent('Shopping Cart Page', 'Delete from cart', 'Delete product on shopping cart page');
-
     var shoppingCart = {
       id: localStorageService.get('shoppingCartId')
     };
@@ -237,9 +188,6 @@ angular.module('sywStyleXApp')
   };
 
   $scope.moveItemToSaveLater = function(shoppingCartToSave) {
-
-    UtilityService.gaTrackAppEvent('Shopping Cart Page', 'Save for later from cart', ' Save for later on shopping cart page');
-
     var cartProduct = {
       id: shoppingCartToSave.id
     };
@@ -272,7 +220,6 @@ angular.module('sywStyleXApp')
   };
 
   $scope.goToShop = function() {
-    UtilityService.gaTrackAppEvent('Shopping Cart Page', 'Click', 'Shop page from shopping cart page');
     $state.go('main.shop');
   };
 
@@ -283,7 +230,6 @@ angular.module('sywStyleXApp')
    productDetailLocker = true;
 
     console.log(cartProductDetails);
-    UtilityService.gaTrackAppEvent('Shopping Cart Page', 'Click', 'Product detail page from Shopping Cart Page:  - Product: ' + cartProductDetails.productId);
 
     ProductDetailService.getProductDetail(cartProductDetails.productId).then(function(response){
 

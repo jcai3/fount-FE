@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('SearchResultsCtrl', ['UtilityService', 'ProductDetailService', 'ProductSearchService', '$scope', '$routeParams',function(UtilityService, ProductDetailService, ProductSearchService, $scope, $routeParams) {
+.controller('SearchResultsCtrl', ['UtilityService', 'ProductDetailService', 'ProductSearchService', '$scope', '$stateParams',function(UtilityService, ProductDetailService, ProductSearchService, $scope, $stateParams) {
   console.log('inside the search results page');
-  console.log($routeParams.searchText);
+  console.log($stateParams.keyword);
 
   var sellerIds = [],
     brandIds = [],
@@ -11,9 +11,10 @@ angular.module('sywStyleXApp')
     minPrice = '',
     maxPrice = '',
     saleDiscount = '',
-    searchKeyword = $routeParams.searchText,
     pageNumber = 1,
     apiLocker = false;
+
+  $scope.searchKeyword = $stateParams.keyword;
 
   $scope.filterInfo = {
     allListItemsSelected : true,
@@ -39,26 +40,25 @@ angular.module('sywStyleXApp')
     selectedSortby: 'relevancy',
     refineByOptions: {
       "STORE": {
-                  value: 'store',
-                  options: []
-                },
+        value: 'store',
+        options: []
+      },
       "CATEGORY": {
-                  value: 'category',
-                  options: []
-                },
+        value: 'category',
+        options: []
+      },
       "BRANDS": {
-                  value: 'brands',
-                  options: []
-                  },
+        value: 'brands',
+        options: []
+      },
       "PRICE": {
-                  value: 'price',
-                  options: []
-                },
+        value: 'price',
+        options: []
+      },
       "SALE": {
-                  value: 'price',
-                  options: []
-              }
-
+        value: 'price',
+        options: []
+      }
     }
   };
 
@@ -69,13 +69,13 @@ angular.module('sywStyleXApp')
   };
 
   var searchFilters = {
-      sellerId:'' ,
-      brandIds: '',
-      categoryIds: '',
-      minPrice: '',
-      maxPrice: '',
-      sale: '',
-      selectedSortby: 'relevancy'
+    sellerIds: [],
+    brandIds: [],
+    categoryIds: [],
+    minPrice: '',
+    maxPrice: '',
+    sale: '',
+    selectedSortby: 'relevancy'
   }
   // $scope.loadingSpinnerEnabled = false;
 
@@ -128,9 +128,9 @@ angular.module('sywStyleXApp')
   };
 
   var getFacetsData = function() {
-    console.log(searchKeyword);
+    // console.log(searchKeyword);
     // scope.loadingSpinnerEnabled = true;
-    ProductSearchService.getAggregation(searchKeyword, sellerIds,brandIds, categoryIds, minPrice, maxPrice, saleDiscount).then(function(res) {
+    ProductSearchService.getAggregation($scope.searchKeyword, sellerIds, brandIds, categoryIds, minPrice, maxPrice, saleDiscount).then(function(res) {
       console.log(res);
       if (UtilityService.validateResult(res)) {
         $scope.filterInfo.productCount = res.data.payload.PRODUCTS_COUNT;
@@ -186,7 +186,7 @@ angular.module('sywStyleXApp')
     }
     apiLocker = true;
 
-    ProductSearchService.searchProducts(pageNumber, searchKeyword, searchFilters).then(function(result) {
+    ProductSearchService.searchProducts(pageNumber, $scope.searchKeyword, searchFilters).then(function(result) {
       if (UtilityService.validateResult(result)) {
         if (result.data.payload.PRODUCTS.length === 0) {
           $scope.searchObj.hasMoreData = false;
