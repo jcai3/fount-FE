@@ -2,7 +2,7 @@
 
 // Declare app level module which depends on views, and components
 angular.module('sywStyleXApp', [
-  'ionic',
+  // 'ionic',
   // 'ngRoute',
   'config',
   'LocalStorageModule',
@@ -22,11 +22,11 @@ angular.module('sywStyleXApp', [
       templateUrl: 'views/login-register.html',
       controller: 'LoginCtrl'
     })
-    // .state('search', {
-    //   url: '/search/:searchText'
-    //   templateUrl: 'views/search-results.html',
-    //   controller: 'SearchResultsCtrl'
-    // })
+    .state('search', {
+      url: '/search/{keyword}',
+      templateUrl: 'views/search-results.html',
+      controller: 'SearchResultsCtrl'
+    })
     .state('cart', {
       url: '/cart',
       templateUrl: 'views/shopping-cart.html',

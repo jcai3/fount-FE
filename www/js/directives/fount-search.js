@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.directive('fountSearch', ['UtilityService', 'ProductSearchService', 'SortFilterService', '$location',function(UtilityService, ProductSearchService, SortFilterService, $location) {
+.directive('fountSearch', ['UtilityService', 'ProductSearchService', 'SortFilterService', '$state', function(UtilityService, ProductSearchService, SortFilterService, $state) {
   return {
     restrict: 'A',
     replace: true,
@@ -9,6 +9,9 @@ angular.module('sywStyleXApp')
     scope: {},
     link: function(scope, element, attrs) {
       var filterParams = {
+        sellerIds: [],
+        brandIds: [],
+        categoryIds: [],
         minPrice: '',
         maxPrice: '',
         sale: '',
@@ -43,11 +46,9 @@ angular.module('sywStyleXApp')
       };
 
       scope.goToSearchResults = function(){
-          var path = '/search/'+ scope.searchObj.keyword;
-          console.log(path);
           scope.searchObj.showSearchBar = false;
           scope.searchObj.results = '';
-          $location.path(path);
+          $state.go('search', {keyword: scope.searchObj.keyword});
       };
     }
   };

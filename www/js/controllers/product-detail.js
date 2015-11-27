@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('ProductDetailCtrl', ['$rootScope', '$scope', '$state','$stateParams', '$timeout', '$ionicModal', '$ionicLoading', 'UtilityService', 'CartService', 'localStorageService', 'ProductDetailService',  function($rootScope, $scope, $state, $stateParams, $timeout, $ionicModal, $ionicLoading, UtilityService, CartService, localStorageService, ProductDetailService) {
+.controller('ProductDetailCtrl', ['$rootScope', '$scope', '$state','$stateParams', '$timeout', 'UtilityService', 'CartService', 'localStorageService', 'ProductDetailService',  function($rootScope, $scope, $state, $stateParams, $timeout, UtilityService, CartService, localStorageService, ProductDetailService) {
   var addToCartLocker = false;
   var relevantPostId = '';
   var pageNumber = 0;
@@ -23,13 +23,13 @@ angular.module('sywStyleXApp')
     buyOnSellerMsg: ''  //message in the button like BUY NOW on ssense.com
   }
 
-  var showProductProperty = $ionicModal.fromTemplateUrl('views/templates/product-property.html', {
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal) {
-    $scope.modal = modal;
-    console.log('modal created');
-  });
+  // var showProductProperty = $ionicModal.fromTemplateUrl('views/templates/product-property.html', {
+  //   scope: $scope,
+  //   animation: 'slide-in-up'
+  // }).then(function(modal) {
+  //   $scope.modal = modal;
+  //   console.log('modal created');
+  // });
 
   var prepareProductDetail = function () {
     console.log('inside prepareProductDetail function');
