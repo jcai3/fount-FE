@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.service('apiRepository', ['$rootScope', '$http', 'ENV', '$httpParamSerializer',function($rootScope, $http, ENV, $httpParamSerializer) {
+.service('apiRepository', ['$rootScope', '$http', 'ENV', function($rootScope, $http, ENV) {
 
   var self = this;
   $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
