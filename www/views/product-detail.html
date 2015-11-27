@@ -1,0 +1,106 @@
+<div id="main-container" class="clearfix">
+  <div class="page-heading  clearfix asset-bg alt-one">
+    <div class="container">
+      <div class="heading-text">
+        <h1 class="entry-title">{{productDetail.xapp.name}}</h1>
+      </div>
+    </div>
+  </div>
+  <div class="pb-fw-wrap">
+    <div id="page-wrap">
+      <div class="page-content clearfix">
+        <div class="inner-page-wrap has-no-sidebar clearfix">
+          <article class="clearfix product type-product status-publish has-post-thumbnail product_cat-footwear product_cat-sneakers product_tag-adidas product_tag-sneakers product_shipping_class-standard-shipping pa_colour-grey pa_colour-red pa_size-eu41-us8 pa_size-eu42-us9 pa_size-eu43-us10 pa_size-eu45-us12 pa_fabric-leather-2 pa_fabric-mesh pa_fabric-suede sale shipping-taxable purchasable product-type-simple product-cat-footwear product-cat-sneakers product-tag-adidas product-tag-sneakers instock">
+            <div class="page-content clearfix">
+              <section class="article-body-wrap">
+                <div class="container">
+                </div>
+                <div class="product type-product status-publish has-post-thumbnail product_cat-footwear product_cat-sneakers product_tag-adidas product_tag-sneakers product_shipping_class-standard-shipping pa_colour-grey pa_colour-red pa_size-eu41-us8 pa_size-eu42-us9 pa_size-eu43-us10 pa_size-eu45-us12 pa_fabric-leather-2 pa_fabric-mesh pa_fabric-suede sale shipping-taxable purchasable product-type-simple product-cat-footwear product-cat-sneakers product-tag-adidas product-tag-sneakers instock">
+                  <div class="container">
+                    <div class="images">
+                      <!-- <span ng-show="productDetail.xapp.price < productDetail.xapp.retailPrice" class="onsale">Sale!</span> -->
+                      <div fount-product-slider product-images="productDetail.productImages"></div>
+                    </div>
+                    <div class="summary entry-summary">
+                      <div class="summary-top clearfix">
+                        <div itemprop="offers" itemscope="">
+                          <p itemprop="price" class="price">
+                            <del ng-if="productDetail.xapp.price < productDetail.xapp.retailPrice">
+                              <span class="amount">${{productDetail.xapp.retailPrice}}</span>
+                            </del>
+                            <ins>
+                              <span class="amount">${{productDetail.xapp.price}}</span>
+                            </ins>
+                          </p>
+                          <!-- <meta itemprop="priceCurrency" content="GBP">
+                          <link itemprop="availability" href="http://schema.org/InStock"> -->
+                        </div>
+                      </div>
+                      <div class="product-short">
+                      </div>
+                      <form class="cart" >
+                        <div class="quantity">
+                          <input type="number" step="1" min="1" name="quantity" value="{{productQuantity}}" title="Qty" class="input-text qty text" size="4">
+                          <div class="qty-adjust">
+                            <a class="qty-plus" ng-click="quantityPlus()">
+                              <i class="fa-chevron-up"></i>
+                            </a>
+                            <a class="qty-minus" ng-click="quantityMinus()">
+                              <i class="fa-chevron-down"></i>
+                            </a>
+                          </div>
+                        </div>
+                        <!-- <input type="hidden" name="add-to-cart" value="9356"> -->
+                        <button ng-click="addItemToCart()" ng-disabled="addToCartDisabled" ng-if="!variableObj.buyOnSellerSite" class="single_add_to_cart_button"><i class="fa-plus"></i>Add to shopping bag</button>
+                        <button ng-click="redirectToSeller()" ng-if="variableObj.buyOnSellerSite" class="single_add_to_cart_button">{{variableObj.buyOnSellerMsg}}</button>
+                        <div class="yith-wcwl-add-to-wishlist">
+                          <div class="yith-wcwl-add-button show">
+                            <a ng-click="toggleFavoriteProduct()" class="add_to_wishlist">
+                              <i class="fa-star" ng-class="productLiked ? 'fount-active-icon' : 'fount-inactive-icon'"></i>
+                            </a>
+                          </div>
+                          <div style="clear:both"></div>
+                          <div class="yith-wcwl-wishlistaddresponse"></div>
+                        </div>
+                      </form>
+                      <div class="fount-product-notAvailable" ng-if="variableObj.productNotAvailable">
+                        <span>Sorry, this product is currently out of stock.</span>
+                      </div>
+                      <div class="clear"></div>
+                      <div class="accordion" id="product-accordion">
+                        <div class="accordion-group">
+                          <div class="accordion-heading">
+                            <a class="accordion-toggle" ng-click="toggleDescription()">Description</a>
+                          </div>
+                          <div ng-show="isDescriptionShown" id="product-description" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+                              <p>{{productDetail.xapp.description}}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container product-after-wrap">
+                    <div class="product-carousel spb_content_element">
+                      <h4 class="lined-heading"><span>Relevant Posts</span></h4>
+                      <div infinite-scroll='loadMore()' infinite-scroll-disabled='!hasMoreData' infinite-scroll-distance='0' class="container">
+                        <ul class="portfolio-items gallery-portfolio filterable-items row clearfix">
+                          <li ng-repeat="discoverMedia in discoverMedias" class="clearfix portfolio-item span3 gallery app-design interface-design">
+                            <div fount-post-tile discover-media="discoverMedia"></div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="container">
+                </div>
+              </section>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
