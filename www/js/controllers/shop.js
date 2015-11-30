@@ -46,7 +46,7 @@ angular.module('sywStyleXApp')
       return;
     }
     getSellerProducts();
-  }
+  };
 
   var getShopSellers = function() {
     SortFilterService.getShopSellers($scope.shopObj.topFilter).then(function(result) {

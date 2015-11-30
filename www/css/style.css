@@ -2813,6 +2813,8 @@ nav .menu ul li.parent > a {
 .widget ul {
 	margin: 0;
 	list-style: none;
+	height: 220px;
+	overflow-y: auto;
 }
 .widget ul li {
 	margin-bottom: 0;

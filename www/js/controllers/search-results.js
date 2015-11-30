@@ -68,6 +68,14 @@ angular.module('sywStyleXApp')
     products: []
   };
 
+  $scope.loadMore = function() {
+    console.log('load more');
+    if ($scope.searchObj.noMoreData) {
+      return;
+    }
+    searchProducts();
+  };
+
   var searchFilters = {
     sellerIds: [],
     brandIds: [],
@@ -189,15 +197,15 @@ angular.module('sywStyleXApp')
     ProductSearchService.searchProducts(pageNumber, $scope.searchKeyword, searchFilters).then(function(result) {
       if (UtilityService.validateResult(result)) {
         if (result.data.payload.PRODUCTS.length === 0) {
-          $scope.searchObj.hasMoreData = false;
+          $scope.searchObj.noMoreData = true;
           if(pageNumber == 1) {
             $scope.searchObj.emptySearchResults = true;
           }
 
         } else {
           pageNumber++;
-          $scope.hasMoreData = true;
-          $scope.emptySearchResults = false;
+          $scope.searchObj.noMoreData = false;
+          $scope.searchObj.emptySearchResults = false;
           var products = result.data.payload.PRODUCTS;
           for (var i = 0, j = products.length; i < j; i++) {
             if(!!products[i].twoTapData) {
@@ -221,7 +229,7 @@ angular.module('sywStyleXApp')
           $scope.searchObj.products.push.apply($scope.searchObj.products, products);
         }
       } else {
-        $scope.hasMoreData = false;
+        $scope.searchObj.noMoreData = true;
         console.log('error');
       }
       apiLocker = false;
