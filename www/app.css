@@ -7,7 +7,34 @@ h1,h2,h3,h4,h5,.custom-caption p,span.dropcap1,span.dropcap2,span.dropcap3,span.
 nav .menu li {
   font-family:"Helvetica",Palatino,Arial Helvetica,Tahoma,sans-serif;
 }
-body,p,.masonry-items .blog-item .quote-excerpt,#commentform label,.contact-form label{font-size:14px;line-height:22px;}h1,.spb_impact_text .spb_call_text,.impact-text{font-size:24px;line-height:34px;}h2{font-size:20px;line-height:30px;}h3{font-size:18px;line-height:24px;}h4,.body-content.quote,#respond-wrap h3{font-size:16px;line-height:20px;}h5{font-size:14px;line-height:18px;}h6{font-size:12px;line-height:16px;}nav .menu li{font-size:14px;}::selection,::-moz-selection{background-color:#1bbeb4;color:#fff;}span.highlighted,span.dropcap4,.loved-item:hover .loved-count,.flickr-widget li,.portfolio-grid li,.wpcf7 input.wpcf7-submit[type="submit"],.woocommerce-page nav.woocommerce-pagination ul li span.current,.woocommerce nav.woocommerce-pagination ul li span.current,figcaption .product-added,.woocommerce .wc-new-badge,.yith-wcwl-wishlistexistsbrowse a,.yith-wcwl-wishlistaddedbrowse a,.woocommerce .widget_layered_nav ul li.chosen>*,.woocommerce .widget_layered_nav_filters ul li a{background-color:#1bbeb4!important;color:#ffffff;}.sf-button.accent{background-color:#1bbeb4!important;}a:hover,#sidebar a:hover,.pagination-wrap a:hover,.carousel-nav a:hover,.portfolio-pagination div:hover>i,#footer a:hover,#copyright a,.beam-me-up a:hover span,.portfolio-item .portfolio-item-permalink,.read-more-link,.blog-item .read-more,.blog-item-details a,.author-link,.comment-meta .edit-link a,.comment-meta .comment-reply a,#reply-title small a,ul.member-contact,ul.member-contact li a,#respond .form-submit input:hover,span.dropcap2,.spb_divider.go_to_top a,love-it-wrapper:hover .love-it,.love-it-wrapper:hover span,.love-it-wrapper .loved,.comments-likes a:hover i,.comments-likes .love-it-wrapper:hover a i,.comments-likes a:hover span,.love-it-wrapper:hover a i,.item-link:hover,#header-translation p a,#swift-slider .flex-caption-large h1 a:hover,.wooslider .slide-title a:hover,.caption-details-inner .details span>a,.caption-details-inner .chart span,.caption-details-inner .chart i,#swift-slider .flex-caption-large .chart i,#breadcrumbs a:hover,.ui-widget-content a:hover,.woocommerce form.cart button.single_add_to_cart_button:hover,.yith-wcwl-add-button a:hover,#product-img-slider li a.zoom:hover,.woocommerce .star-rating span,.mobile-search-link.active,.woocommerce div.product form.cart .button.add_to_cart_button{color:#1bbeb4;}.carousel-wrap>a:hover,.ajax-search-results .all-results:hover,.search-result h5 a:hover{color:#1bbeb4!important;}.comments-likes a:hover span,.comments-likes a:hover i{color:#1bbeb4!important;}.read-more i:before,.read-more em:before{color:#1bbeb4;}.bypostauthor .comment-wrap .comment-avatar,.search-form input:focus,.wpcf7 input[type="text"]:focus,.wpcf7 textarea:focus{border-color:#1bbeb4!important;}nav .menu ul li:first-child:after,.navigation a:hover>.nav-text{border-bottom-color:#1bbeb4;}nav .menu ul ul li:first-child:after{border-right-color:#1bbeb4;}.spb_impact_text .spb_button span{color:#fff;}article.type-post #respond .form-submit input#submit{background-color:#252525;}.woocommerce .free-badge{background-color:#252525;color:#f7f7f7;}body{color:#252525;}.pagination-wrap a,.search-pagination a{color:#252525;}
+body,p,.masonry-items .blog-item .quote-excerpt,#commentform label,.contact-form label {
+  font-size:14px;
+  line-height:22px;
+}
+h1,.spb_impact_text .spb_call_text,.impact-text {
+  font-size:24px;
+  line-height:34px;
+}
+h2 {
+  font-size:20px;
+  line-height:30px;
+}
+h3 {
+  font-size:18px;
+  line-height:24px;
+}
+h4,.body-content.quote,#respond-wrap h3 {
+  font-size:16px;
+  line-height:20px;
+}
+h5 {
+  font-size:14px;
+  line-height:18px;
+}h6{font-size:12px;line-height:16px;}nav .menu li{font-size:14px;}::selection,::-moz-selection{background-color:#1bbeb4;color:#fff;}span.highlighted,span.dropcap4,.loved-item:hover .loved-count,.flickr-widget li,.portfolio-grid li,.wpcf7 input.wpcf7-submit[type="submit"],.woocommerce-page nav.woocommerce-pagination ul li span.current,.woocommerce nav.woocommerce-pagination ul li span.current,figcaption .product-added,.woocommerce .wc-new-badge,.yith-wcwl-wishlistexistsbrowse a,.yith-wcwl-wishlistaddedbrowse a,.woocommerce .widget_layered_nav ul li.chosen>*,.woocommerce .widget_layered_nav_filters ul li a {
+  background-color:#1bbeb4!important;
+  color:#ffffff;
+}
+.sf-button.accent{background-color:#1bbeb4!important;}a:hover,#sidebar a:hover,.pagination-wrap a:hover,.carousel-nav a:hover,.portfolio-pagination div:hover>i,#footer a:hover,#copyright a,.beam-me-up a:hover span,.portfolio-item .portfolio-item-permalink,.read-more-link,.blog-item .read-more,.blog-item-details a,.author-link,.comment-meta .edit-link a,.comment-meta .comment-reply a,#reply-title small a,ul.member-contact,ul.member-contact li a,#respond .form-submit input:hover,span.dropcap2,.spb_divider.go_to_top a,love-it-wrapper:hover .love-it,.love-it-wrapper:hover span,.love-it-wrapper .loved,.comments-likes a:hover i,.comments-likes .love-it-wrapper:hover a i,.comments-likes a:hover span,.love-it-wrapper:hover a i,.item-link:hover,#header-translation p a,#swift-slider .flex-caption-large h1 a:hover,.wooslider .slide-title a:hover,.caption-details-inner .details span>a,.caption-details-inner .chart span,.caption-details-inner .chart i,#swift-slider .flex-caption-large .chart i,#breadcrumbs a:hover,.ui-widget-content a:hover,.woocommerce form.cart button.single_add_to_cart_button:hover,.yith-wcwl-add-button a:hover,#product-img-slider li a.zoom:hover,.woocommerce .star-rating span,.mobile-search-link.active,.woocommerce div.product form.cart .button.add_to_cart_button{color:#1bbeb4;}.carousel-wrap>a:hover,.ajax-search-results .all-results:hover,.search-result h5 a:hover{color:#1bbeb4!important;}.comments-likes a:hover span,.comments-likes a:hover i{color:#1bbeb4!important;}.read-more i:before,.read-more em:before{color:#1bbeb4;}.bypostauthor .comment-wrap .comment-avatar,.search-form input:focus,.wpcf7 input[type="text"]:focus,.wpcf7 textarea:focus{border-color:#1bbeb4!important;}nav .menu ul li:first-child:after,.navigation a:hover>.nav-text{border-bottom-color:#1bbeb4;}nav .menu ul ul li:first-child:after{border-right-color:#1bbeb4;}.spb_impact_text .spb_button span{color:#fff;}article.type-post #respond .form-submit input#submit{background-color:#252525;}.woocommerce .free-badge{background-color:#252525;color:#f7f7f7;}body{color:#252525;}.pagination-wrap a,.search-pagination a{color:#252525;}
 body{
   background:#e4e4e4 url('img/tiny_grid1.png') repeat center top fixed;
 }
@@ -106,4 +133,11 @@ body{background-size:auto;}#main-container,.tm-toggle-button-wrap a{background-c
 
 .sidebar.left-sidebar .widget ul li.active {
   background-color: #1bbeb4;
+  padding: 2px 5px;
+}
+.sidebar.left-sidebar .widget ul li.active span {
+  color: #ffffff;
+}
+.container.no-search-results {
+  text-align: center;
 }

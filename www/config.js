@@ -5,8 +5,8 @@ angular.module('config', [])
 .constant('ENV', {
   sharingHost: 'http://localhost:8100/#/media/',
   apiEnvname: 'local',
-  apiEndpoint: '/styleXApp/api/',
-  // apiEndpoint: 'https://spreest.searshc.com/lifestyle/',
+  // apiEndpoint: '/styleXApp/api/',
+  apiEndpoint: 'https://spreest.searshc.com/lifestyle/',
   // instagramRedirectDomain: 'http://localhost:9090/',
   instagramRedirectDomain: 'https://spreest.searshc.com/lifestyle/',
   instagramRedirectUri: 'getInstagramAccessToken',
