@@ -5,14 +5,18 @@ angular.module('sywStyleXApp')
   console.log('inside the search results page');
   console.log($stateParams.keyword);
 
-  var sellerIds = [],
-    brandIds = [],
-    categoryIds = [],
-    minPrice = '',
-    maxPrice = '',
-    saleDiscount = '',
-    pageNumber = 1,
-    apiLocker = false;
+  var pageNumber = 1;
+  var apiLocker = false;
+
+  var searchFilters = {
+    sellerIds: [],
+    brandIds: [],
+    categoryIds: [],
+    minPrice: '',
+    maxPrice: '',
+    sale: '',
+    selectedSortby: 'relevancy'
+  }
 
   $scope.searchKeyword = $stateParams.keyword;
 
@@ -56,7 +60,7 @@ angular.module('sywStyleXApp')
         options: []
       },
       "SALE": {
-        value: 'price',
+        value: 'sale',
         options: []
       }
     }
@@ -76,16 +80,62 @@ angular.module('sywStyleXApp')
     searchProducts();
   };
 
-  var searchFilters = {
-    sellerIds: [],
-    brandIds: [],
-    categoryIds: [],
-    minPrice: '',
-    maxPrice: '',
-    sale: '',
-    selectedSortby: 'relevancy'
-  }
-  // $scope.loadingSpinnerEnabled = false;
+  $scope.changeSortByOptions = function() {
+    // localStorageService.set('filteredProductsHasMoreData', 1);
+    pageNumber = 1,
+    apiLocker = false;
+    $scope.searchObj.noMoreData = false;
+    $scope.searchObj.products = [];
+    searchFilters.selectedSortby = $scope.filterInfo.selectedSortby;
+    searchProducts();
+  };
+
+  $scope.toggleRefineOptions = function(filter, option) {
+    if (filter == 'STORE') {
+      var index = searchFilters.sellerIds.indexOf(option.id);
+      if (index != -1) {
+        option.selected = false;
+        searchFilters.sellerIds.splice(index, 1);
+      } else {
+        option.selected = true;
+        searchFilters.sellerIds.push(option.id);
+      }
+    } else if (filter == 'CATEGORY') {
+      var index = searchFilters.categoryIds.indexOf(option.id);
+      if (index != -1) {
+        option.selected = false;
+        searchFilters.categoryIds.splice(index, 1);
+      } else {
+        option.selected = true;
+        searchFilters.categoryIds.push(option.id);
+      }
+    } else if (filter == 'BRANDS') {
+      var index = searchFilters.brandIds.indexOf(option.id);
+      if (index != -1) {
+        option.selected = false;
+        searchFilters.brandIds.splice(index, 1);
+      } else {
+        option.selected = true;
+        searchFilters.brandIds.push(option.id);
+      }
+    } else if (filter == 'PRICE') {
+      var options = $scope.filterInfo.refineByOptions.PRICE.options;
+      for (var i=0,j=options.length; i<j; i++) {
+        options[i].selected = false;
+      }
+      option.selected = true;
+      searchFilters.minPrice = option.minPrice;
+      searchFilters.maxPrice = option.maxPrice;
+    } else if (filter == 'SALE') {
+      var options = $scope.filterInfo.refineByOptions.SALE.options;
+      for (var i=0,j=options.length; i<j; i++) {
+        options[i].selected = false;
+      }
+      option.selected = true;
+      searchFilters.sale = option.value;
+    }
+    $scope.changeSortByOptions();
+  };
 
   var changeFilterObj = function(filterObj, type) {
     var filterArray = [];
@@ -103,7 +153,7 @@ angular.module('sywStyleXApp')
         priceObj.maxPrice = Number(priceParts[1]);
         priceObj.name = '$' + priceObj.minPrice + ' - ' + '$' + priceObj.maxPrice;
         priceObj.productsCount = filterObj[i].productsCount;
-        if(priceObj.maxPrice == maxPrice) {
+        if(priceObj.maxPrice == searchFilters.maxPrice) {
           priceObj.selected = true;
         } else {
           priceObj.selected = filterObj[i].selected;
@@ -125,7 +175,7 @@ angular.module('sywStyleXApp')
         if(value > 1) {
           saleObj.name = value + '%' + ' off or more ';
         }
-        if(saleObj.value == saleDiscount) {
+        if(saleObj.value == searchFilters.sale) {
           saleObj.selected = true;
         }
         filterArray.push(saleObj);
@@ -138,7 +188,7 @@ angular.module('sywStyleXApp')
   var getFacetsData = function() {
     // console.log(searchKeyword);
     // scope.loadingSpinnerEnabled = true;
-    ProductSearchService.getAggregation($scope.searchKeyword, sellerIds, brandIds, categoryIds, minPrice, maxPrice, saleDiscount).then(function(res) {
+    ProductSearchService.getAggregation($scope.searchKeyword, searchFilters.sellerIds, searchFilters.brandIds, searchFilters.categoryIds, searchFilters.minPrice, searchFilters.maxPrice, searchFilters.sale).then(function(res) {
       console.log(res);
       if (UtilityService.validateResult(res)) {
         $scope.filterInfo.productCount = res.data.payload.PRODUCTS_COUNT;
@@ -196,6 +246,7 @@ angular.module('sywStyleXApp')
 
     ProductSearchService.searchProducts(pageNumber, $scope.searchKeyword, searchFilters).then(function(result) {
       if (UtilityService.validateResult(result)) {
+        $scope.filterInfo.productCount = result.data.payload.COUNT;
         if (result.data.payload.PRODUCTS.length === 0) {
           $scope.searchObj.noMoreData = true;
           if(pageNumber == 1) {

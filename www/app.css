@@ -103,3 +103,7 @@ body{background-size:auto;}#main-container,.tm-toggle-button-wrap a{background-c
   margin-bottom: 35px;
   padding-bottom: 0;
 }
+
+.sidebar.left-sidebar .widget ul li.active {
+  background-color: #1bbeb4;
+}
