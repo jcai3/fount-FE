@@ -2,12 +2,11 @@
 
 // Declare app level module which depends on views, and components
 angular.module('sywStyleXApp', [
-  // 'ionic',
-  // 'ngRoute',
   'config',
   'LocalStorageModule',
   'infinite-scroll',
-  'ui.router'
+  'ui.router',
+  'ngDialog'
 ])
 .config(function($httpProvider, $stateProvider, $urlRouterProvider) {
   // $httpProvider.defaults.withCredentials = true;

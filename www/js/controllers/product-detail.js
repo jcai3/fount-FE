@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('ProductDetailCtrl', ['$rootScope', '$scope', '$state','$stateParams', '$timeout', 'UtilityService', 'CartService', 'localStorageService', 'ProductDetailService',  function($rootScope, $scope, $state, $stateParams, $timeout, UtilityService, CartService, localStorageService, ProductDetailService) {
+.controller('ProductDetailCtrl', ['$rootScope', '$scope', '$state','$stateParams', '$timeout', 'ngDialog', 'UtilityService', 'CartService', 'localStorageService', 'ProductDetailService',  function($rootScope, $scope, $state, $stateParams, $timeout, ngDialog, UtilityService, CartService, localStorageService, ProductDetailService) {
   var addToCartLocker = false;
   var relevantPostId = '';
   var pageNumber = 0;
@@ -622,14 +622,17 @@ angular.module('sywStyleXApp')
   };
 
   $scope.showLoadingSpinner = function() {
-    // $ionicLoading.show({
-    //   template: '<ion-spinner></ion-spinner><p>Getting updated inventory from the retailer</p>'
-    // });
-      $rootScope.xappObj.overlay = true;
+    ngDialog.open({
+      template: '<p>Getting updated inventory from the retailer...</p><img src="img/loader.gif">',
+      plain: true,
+      showClose: false
+    });
+      // $rootScope.xappObj.overlay = true;
   };
 
   $scope.hideLoadingSpinner = function() {
-      $rootScope.xappObj.overlay = false;
+    ngDialog.close();
+      // $rootScope.xappObj.overlay = false;
   };
 
   $scope.toggleFavoriteProduct = function() {
