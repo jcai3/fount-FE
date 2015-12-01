@@ -51,7 +51,7 @@
                           </div>
                         </div>
                         <!-- <input type="hidden" name="add-to-cart" value="9356"> -->
-                        <button ng-click="addItemToCart()" ng-disabled="addToCartDisabled" ng-if="!variableObj.buyOnSellerSite" class="single_add_to_cart_button"><i class="fa-plus"></i>Add to shopping bag</button>
+                        <button ng-click="addItemToCart()" ng-disabled="addToCartDisabled" ng-if="!variableObj.buyOnSellerSite" ng-class="{'buttonDisabled' : addToCartDisabled}" class="single_add_to_cart_button"><i class="fa-plus"></i>Add to shopping bag</button>
                         <button ng-click="redirectToSeller()" ng-if="variableObj.buyOnSellerSite" class="single_add_to_cart_button">{{variableObj.buyOnSellerMsg}}</button>
                         <div class="yith-wcwl-add-to-wishlist">
                           <div class="yith-wcwl-add-button show">
