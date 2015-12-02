@@ -351,7 +351,7 @@ angular.module('sywStyleXApp')
 
           if(!!addToCart[0]) {
             if(!!$scope.productDetail.twotap.addToCart.required_field_names && $scope.productDetail.twotap.addToCart.required_field_names.length > 0 && !($scope.productDetail.twotap.addToCart.required_field_names.length == 1 && $scope.productDetail.twotap.addToCart.required_field_names[0] == 'quantity')) {
-              $scope.chooseProductProperty();
+              $scope.submitProperty();
             } else {
               $scope.addToCart();
             }
@@ -494,7 +494,7 @@ angular.module('sywStyleXApp')
 
     console.log(shoppingBagObj);
 
-  if (!!$scope.productDetail.xapp.mediaId &&!!$scope.productDetail.xapp.visualTagId ) {
+    if (!!$scope.productDetail.xapp.mediaId &&!!$scope.productDetail.xapp.visualTagId ) {
       addProductsToCart(shoppingBagObj);
     } else {
       addShopProductsToCart(shoppingBagObj);
@@ -549,11 +549,11 @@ angular.module('sywStyleXApp')
   };
 
   $scope.chooseProductProperty = function() {
-    $scope.modal.show();
+    // $scope.modal.show();
   };
 
   $scope.closeProductProperty = function() {
-    $scope.modal.hide();
+    // $scope.modal.hide();
   };
 
   $scope.submitProperty = function() {
@@ -617,7 +617,7 @@ angular.module('sywStyleXApp')
 
     if($scope.variableObj.allOptionsSelected) {
       $scope.addToCart();
-      $scope.modal.hide();
+      // $scope.modal.hide();
     }
   };
 
@@ -658,7 +658,7 @@ angular.module('sywStyleXApp')
     if(!!$scope.productDetail.twotap) {
 
       if(!!$scope.productDetail.twotap.addToCart.required_field_names && $scope.productDetail.twotap.addToCart.required_field_names.length > 0 && !($scope.productDetail.twotap.addToCart.required_field_names.length == 1 && $scope.productDetail.twotap.addToCart.required_field_names[0] == 'quantity')) {
-        $scope.chooseProductProperty();
+        $scope.submitProperty();
       } else {
         $scope.addToCart();
       }

@@ -1,5 +1,5 @@
 <li class="fount-bag parent shopping-bag-item">
-  <a ng-click="goToCart()" ng-mouseover="" ng-mouseout="" class="cart-contents" title="View your shopping bag"><i class="sf-cart"></i><span class="amount">$0.00</span></a>
+  <a ng-click="goToCart()" ng-mouseover="" ng-mouseout="" class="cart-contents" title="View your shopping bag"><i class="sf-cart"></i><span class="amount">${{shoppingCartInfo.subtotal}}</span></a>
   <ul ng-show="bagObj.showBagView" class="sub-menu">
     <li>
       <div class="shopping-bag">
