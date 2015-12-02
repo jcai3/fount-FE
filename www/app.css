@@ -150,3 +150,6 @@ body{background-size:auto;}#main-container,.tm-toggle-button-wrap a{background-c
 .container.no-search-results {
   text-align: center;
 }
+.options-error-msg {
+  color: red;
+}

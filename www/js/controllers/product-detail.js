@@ -301,6 +301,7 @@ angular.module('sywStyleXApp')
 
         $scope.shoppingCartInfo.count += 1;
         localStorageService.set('shoppingCartInfo', $scope.shoppingCartInfo);
+        $rootScope.$emit('event.updateShoppingCart', {shoppingCartInfo: $scope.shoppingCartInfo});
     });
   };
 

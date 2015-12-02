@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.directive('fountHeader', ['$state', 'localStorageService', 'CartService', function($state, localStorageService, CartService) {
+.directive('fountHeader', ['$rootScope', '$state', 'localStorageService', 'CartService', function($rootScope, $state, localStorageService, CartService) {
   return {
     restrict: 'A',
     replace: true,
@@ -39,6 +39,14 @@ angular.module('sywStyleXApp')
       // } else {
         getProductsFromCart();
       // }
+
+      $rootScope.$on('event.updateShoppingCart', function(event, data) {
+        scope.shoppingCartInfo = {
+          count: data.shoppingCartInfo.count,
+          subtotal: data.shoppingCartInfo.subtotal
+        };
+
+      });
     }
   };
 }]);
