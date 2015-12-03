@@ -10,6 +10,7 @@ angular.module('sywStyleXApp')
   var pollCallCounter = 0;
   $scope.discoverMedias = [];
   $scope.hasMoreData = false;
+  $scope.isDescriptionShown = true;
   $scope.loadingSpinnerEnabled = false;
   $scope.emptyRelevantPosts = false;
   $scope.isRelevantPostsShown = true;

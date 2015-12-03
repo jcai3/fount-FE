@@ -24,8 +24,8 @@
                                 <input checked type="checkbox" ng-model="shoppingCartDict[key].selectSeller"  ng-change="checkSellers(key)" ng-disabled="shoppingCartDict[key].disableSeller">
                               </label>
                             </th>
-                            <th>{{key}}</th>
-                            <th></th>
+                            <th colspan="8">{{key}}</th>
+
                             <!-- <th class="product-remove edit-btn">
                               <span ng-click="enableUpdateProduct(key)">{{shoppingCartDict[key].updateProductText}}</span>
                             </th> -->
@@ -33,13 +33,13 @@
                         </thead>
                         <tbody>
                           <tr ng-repeat="shoppingCart in sellerItems track by $index" class="cart_item">
-                            <td>
+                            <td class="product-checkbox">
                               <label class="checkbox">
                                 <input type="checkbox" ng-model="shoppingCart.itemSelected" ng-disabled="!shoppingCart.availability" ng-change="toggleCartItemSelect($parent, shoppingCart)">
                               </label>
                             </td>
                             <td class="product-thumbnail">
-                              <div class="item item-image" ng-click="productDetail(shoppingCart)">
+                              <div class="product-image" ng-click="productDetail(shoppingCart)">
                                 <img ng-src="{{shoppingCart.imageURL}}">
                               </div>
                             </td>
@@ -53,12 +53,12 @@
                                  </div>
                              </td>
                              <td ng-if="!shoppingCartDict[key].updateProductEnabled && shoppingCart.availability" class="product-price">
-                               <p>{{shoppingCart.prices.subtotal | currency}}&nbsp;USD</p>
+                               <p>{{shoppingCart.prices.subtotal | currency}}</p>
                                <!-- <h2 ng-class="{'product-not-available': shoppingCart.availability == false}">{{shoppingCart.prices.subtotal | currency}}&nbsp;USD</h2> -->
                                <!-- <p class="shipping-default-option">*{{shoppingCart.shippingOptions}}</p> -->
                              </td>
                              <td ng-if="!shoppingCartDict[key].updateProductEnabled && !shoppingCart.availability" class="product-price">
-                               <p>{{shoppingCart.price | currency}}&nbsp;USD</p>
+                               <p>{{shoppingCart.price | currency}}</p>
                                <p class="product-not-available">Not available</p>
                              </td>
 
@@ -73,11 +73,14 @@
                              </td>
 
                              <td class="product-subtotal">
-                               <span ng-if="shoppingCart.availability" class="amount">{{(shoppingCart.qty * shoppingCart.prices.subtotal) | currency}}&nbsp;USD</span>
+                               <span ng-if="shoppingCart.availability" class="amount">{{(shoppingCart.qty * shoppingCart.prices.subtotal) | currency}}</span>
                                <span ng-if="!shoppingCart.availability" class="amount">{{(shoppingCart.qty * shoppingCart.price) | currency}}&nbsp;USD</span>
                              </td>
                              <td class="product-subtotal">
                                <p class="shipping-default-option">*{{shoppingCart.shippingOptions}}</p>
+                             </td>
+                             <td class="product-save-fl">
+                               <a ng-click="moveItemToSaveLater(shoppingCart)" class="save-fl" title="Save this item"><i class="fa-star"></i></a>
                              </td>
                              <td class="product-remove">
                                <a ng-click="removeItemFromCart(shoppingCart)" class="remove" title="Remove this item">×</a>
@@ -156,7 +159,7 @@
                           <tbody>
                             <tr class="cart-subtotal">
                               <th>Cart Subtotal</th>
-                              <td><span class="amount">{{shoppingCartInfo.subtotal | currency}}</span></td>
+                              <td><span class="amount">{{shoppingCartInfo.subtotal | currency}}&nbsp;USD</span></td>
                             </tr>
                             <!-- <tr class="shipping">
                               <th>Shipping</th>
