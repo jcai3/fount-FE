@@ -220,7 +220,7 @@ angular.module('sywStyleXApp')
   };
 
   $scope.goToShop = function() {
-    $state.go('main.shop');
+    $state.go('shop');
   };
 
  $scope.productDetail = function (cartProductDetails) {
@@ -269,7 +269,7 @@ angular.module('sywStyleXApp')
     });
  };
 
-  $scope.$on('$ionicView.enter', function() {
+  var enableShoppingCartView = function() {
     sites = [];
     cartProductIds = [];
     var shoppingCartInfo = localStorageService.get('shoppingCartInfo');
@@ -281,14 +281,14 @@ angular.module('sywStyleXApp')
     };
     if(!!localStorageService.get('shoppingBagDetail')){
       shoppingBagDetail = localStorageService.get('shoppingBagDetail');
-
-      var showProductProperty = $ionicModal.fromTemplateUrl('product-property.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-      }).then(function(modal) {
-        $scope.modal = modal;
-        console.log('modal created');
-      });
+      //
+      // var showProductProperty = $ionicModal.fromTemplateUrl('product-property.html', {
+      //   scope: $scope,
+      //   animation: 'slide-in-up'
+      // }).then(function(modal) {
+      //   $scope.modal = modal;
+      //   console.log('modal created');
+      // });
 
       var shoppingCart = localStorageService.get('shoppingCart');
       var sellerNames = [];
@@ -340,11 +340,13 @@ angular.module('sywStyleXApp')
 
       console.log('in shop cart page' + $scope.shoppingCartDict);
     }
-  });
+  };
 
-  $scope.$on('$ionicView.leave', function() {
-    $scope.modal.remove();
-    console.log('modal removed');
-  });
+  enableShoppingCartView();
+
+  // $scope.$on('$ionicView.leave', function() {
+  //   $scope.modal.remove();
+  //   console.log('modal removed');
+  // });
 
 }]);

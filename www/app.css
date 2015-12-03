@@ -153,3 +153,6 @@ body{background-size:auto;}#main-container,.tm-toggle-button-wrap a{background-c
 .options-error-msg {
   color: red;
 }
+.woocommerce table.shop_table tr td.product-remove .remove {
+  color: red;
+}
