@@ -143,7 +143,7 @@ angular.module('sywStyleXApp')
   }
 
   $scope.checkout = function() {
-    $state.go('address');
+    $state.go('checkout');
   };
 
   $scope.openProductProp = function(shoppingCart) {
