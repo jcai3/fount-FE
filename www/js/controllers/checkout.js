@@ -1,9 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('CheckoutCtrl', ['$scope', '$state', '$timeout', '$ionicLoading', '$ionicPopup', 'UtilityService', 'AddressService', 'OrderCommissionService', 'localStorageService', 'TwoTapService', function($scope, $state, $timeout, $ionicLoading, $ionicPopup, UtilityService, AddressService, OrderCommissionService, localStorageService, TwoTapService) {
-  UtilityService.gaTrackAppView('Checkout Page View');
-
+.controller('CheckoutCtrl', ['$scope', '$state', '$timeout', 'UtilityService', 'AddressService', 'OrderCommissionService', 'localStorageService', 'TwoTapService', function($scope, $state, $timeout, UtilityService, AddressService, OrderCommissionService, localStorageService, TwoTapService) {
   var apiLocker = false;
 
   // var paymentInfo = {
@@ -203,7 +201,6 @@ angular.module('sywStyleXApp')
 
   $scope.fillBillingAddress = function() {
     if ($scope.checkboxModel.sameAsShippingAddress === true) {
-      UtilityService.gaTrackAppEvent('Checkout Page', 'Checkbox', 'Check same as shipping address on checkout page');
       $scope.billingAddress.name = $scope.shippingAddress.name;
       $scope.billingAddress.line1 = $scope.shippingAddress.line1;
       $scope.billingAddress.city = $scope.shippingAddress.city;
@@ -211,7 +208,6 @@ angular.module('sywStyleXApp')
       $scope.billingAddress.zip = $scope.shippingAddress.zip;
       $scope.billingAddress.phone = $scope.shippingAddress.phone;
     } else {
-      UtilityService.gaTrackAppEvent('Checkout Page', 'Checkbox', 'Uncheck same as shipping address on checkout page');
       $scope.billingAddress = {
         type: 'BILLING',
         name: '',
@@ -227,7 +223,6 @@ angular.module('sywStyleXApp')
   $scope.addShippingAddress = function() {
     // verify address needs to be done
     // verifyAddress($scope.shippingAddress);
-    UtilityService.gaTrackAppEvent('Checkout Page', 'Click', 'Add shipping address on checkout page');
 
     AddressService.addAddress(user, $scope.shippingAddress).then(function(result) {
       if (UtilityService.validateResult(result)) {
@@ -247,7 +242,6 @@ angular.module('sywStyleXApp')
   };
 
   $scope.addPaymentInfo = function() {
-    UtilityService.gaTrackAppEvent('Checkout Page', 'Click', 'Add payment info on checkout page');
 
     paymentInfo.billing_title = 'default',
     paymentInfo.billing_first_name = $scope.billingAddress.name.split(' ')[0];
@@ -272,36 +266,29 @@ angular.module('sywStyleXApp')
 
   $scope.backToPrev = function() {
     // localStorageService.remove('shoppingCart');
-    UtilityService.gaTrackAppEvent('Checkout Page', 'Click', 'Back to shopping cart page from checkout');
     $state.go('cart');
   };
 
   $scope.toggleShippingAddress = function() {
     if ($scope.sectionVisible.shipping) {
-      UtilityService.gaTrackAppEvent('Checkout Page', 'Toggle', 'Hide shipping section on checkout page');
       $scope.sectionVisible.shipping = false;
     } else {
-      UtilityService.gaTrackAppEvent('Checkout Page', 'Toggle', 'Show shipping section on checkout page');
       $scope.sectionVisible.shipping = true;
     }
   };
 
   $scope.togglePayment = function() {
     if ($scope.sectionVisible.payment) {
-      UtilityService.gaTrackAppEvent('Checkout Page', 'Toggle', 'Hide billing section on checkout page');
       $scope.sectionVisible.payment = false;
     } else {
-      UtilityService.gaTrackAppEvent('Checkout Page', 'Toggle', 'Show billing section on checkout page');
       $scope.sectionVisible.payment = true;
     }
   };
 
   $scope.toggleTotal = function() {
     if ($scope.sectionVisible.total) {
-      UtilityService.gaTrackAppEvent('Checkout Page', 'Toggle', 'Hide expense section on checkout page');
       $scope.sectionVisible.total = false;
     } else {
-      UtilityService.gaTrackAppEvent('Checkout Page', 'Toggle', 'Show expense section on checkout page');
       $scope.sectionVisible.total = true;
     }
   };
@@ -320,8 +307,6 @@ angular.module('sywStyleXApp')
   };
 
   $scope.showPopup = function() {
-    UtilityService.gaTrackAppEvent('Checkout Page', 'Popup', 'Required fields need to be filled on checkout page');
-
     var checkoutPopupAlert = $ionicPopup.alert({
       cssClass: 'reach-tagging-limit',
       template: 'Please fill all the required fields.'
@@ -333,8 +318,6 @@ angular.module('sywStyleXApp')
   };
 
   $scope.confirmToPay = function() {
-    UtilityService.gaTrackAppEvent('Checkout Page', 'Confirm to pay', 'Confirm to pay on checkout page');
-
     // for non-authenticated checkout
     var shoppingCart = localStorageService.get('shoppingCart');
     var shoppingBagDetail = localStorageService.get('shoppingBagDetail');
