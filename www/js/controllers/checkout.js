@@ -167,9 +167,22 @@ angular.module('sywStyleXApp')
     total: true
   };
 
+  if (!!localStorageService.get('shoppingCartInfo')) {
+    $scope.shoppingCartInfo = localStorageService.get('shoppingCartInfo');
+  }
+
+  if (!!localStorageService.get('shoppingBagDetail')) {
+      $scope.shoppingBagDetail = localStorageService.get('shoppingBagDetail');
+  }
+
+  $scope.checkboxModel = {
+    differentToBillingAddress: false
+  };
+
   $scope.shippingAddress = {
     type: 'SHIPPING',
-    name: '',
+    firstName: '',
+    lastName: '',
     line1: '',
     city: '',
     state: 'Alabama',
@@ -187,30 +200,43 @@ angular.module('sywStyleXApp')
 
   $scope.billingAddress = {
     type: 'BILLING',
-    name: '',
+    firstName: '',
+    lastName: '',
     line1: '',
     city: '',
     state: 'Alabama',
     zip: '',
     phone: ''
   };
+  //
+  // $scope.billingAddress = {
+  //   type: 'BILLING',
+  //   name: '',
+  //   line1: '',
+  //   city: '',
+  //   state: 'Alabama',
+  //   zip: '',
+  //   phone: ''
+  // };
 
   $scope.checkboxModel = {
     sameAsShippingAddress: false
   };
 
-  $scope.fillBillingAddress = function() {
-    if ($scope.checkboxModel.sameAsShippingAddress === true) {
-      $scope.billingAddress.name = $scope.shippingAddress.name;
-      $scope.billingAddress.line1 = $scope.shippingAddress.line1;
-      $scope.billingAddress.city = $scope.shippingAddress.city;
-      $scope.billingAddress.state = $scope.shippingAddress.state;
-      $scope.billingAddress.zip = $scope.shippingAddress.zip;
-      $scope.billingAddress.phone = $scope.shippingAddress.phone;
+  $scope.fillShippingAddress = function() {
+    if ($scope.checkboxModel.differentToBillingAddress === false) {
+      $scope.shippingAddress.firstName = $scope.billingAddress.firstName;
+      $scope.shippingAddress.lastName = $scope.billingAddress.lastName;
+      $scope.shippingAddress.line1 = $scope.billingAddress.line1;
+      $scope.shippingAddress.city = $scope.billingAddress.city;
+      $scope.shippingAddress.state = $scope.billingAddress.state;
+      $scope.shippingAddress.zip = $scope.billingAddress.zip;
+      $scope.shippingAddress.phone = $scope.billingAddress.phone;
     } else {
-      $scope.billingAddress = {
-        type: 'BILLING',
-        name: '',
+      $scope.shippingAddress = {
+        type: 'SHIPPING',
+        firstName: '',
+        lastName: '',
         line1: '',
         city: '',
         state: '',

@@ -9333,11 +9333,16 @@ ul.checkout-process li a.active, ul.checkout-process li p.active {
 #order_review table.shop_table td.product-name {
 	text-align: left;
 }
+#order_review table.shop_table td.product-name p {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
 #order_review table.shop_table th, #order_review table.shop_table td {
 	padding: 10px 0;
 }
 #order_review table.shop_table tbody th, #order_review table.shop_table tbody td {
-	padding: 25px 0;
+	padding: 15px 0;
 }
 #order_review table.shop_table .cart-subtotal th, #order_review table.shop_table .cart-subtotal td {
 	border-top: 2px solid rgba(0,0,0,0.8);
@@ -9418,6 +9423,7 @@ table.totals_table tr.total td .amount {
 	padding: 15px 0;
 }
 .woocommerce #payment ul.payment_methods li {
+	height: 30px;
 	margin-bottom: 5px;
 }
 .woocommerce #payment ul.payment_methods li input {
