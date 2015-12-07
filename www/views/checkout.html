@@ -12,7 +12,7 @@
         <div class="clearfix post-5862 page type-page status-publish hentry" id="5862">
           <div class="page-content clearfix">
             <div class="woocommerce">
-              <form name="checkout" class="checkout woocommerce-checkout row">
+              <form class="checkout woocommerce-checkout row">
                 <div class="span7" id="customer_details">
                   <div>
                     <h4 class="lined-heading"><span>Billing Address</span></h4>
@@ -206,14 +206,14 @@
                         <tr class="cart_item" ng-repeat="cartItem in shoppingBagDetail.twotap.payload.SHOPPING_CART.cartProducts">
                           <td class="product-name">{{cartItem.product.name}}&nbsp;<strong class="product-quantity">× {{cartItem.quantity}}</strong>													</td>
 						              <td class="product-total">
-							              <span class="amount">${{cartItem.product.finalPrice * cartItem.quantity}}</span>
+							              <span class="amount">{{cartItem.product.finalPrice * cartItem.quantity | currency}}</span>
                           </td>
                         </tr>
                       </tbody>
                       <tfoot>
                         <tr class="cart-subtotal">
                           <th>Subtotal</th>
-                          <td><span class="amount">${{shoppingCartInfo.subtotal}}</span></td>
+                          <td><span class="amount">{{shoppingCartInfo.subtotal | currency}}</span></td>
                         </tr>
                         <!-- <tr class="shipping">
                           <th>Shipping</th>
@@ -252,7 +252,7 @@
                         </li>
                       </ul>
                       <div class="form-row place-order">
-                        <input type="submit" class="button alt" name="woocommerce_checkout_place_order" id="place_order" value="Review" data-value="Place order">
+                        <input type="submit" class="button alt" name="woocommerce_checkout_place_order" id="place_order" value="Review">
                       </div>
                       <div class="clear"></div>
                     </div>
