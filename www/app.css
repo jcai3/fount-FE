@@ -171,3 +171,9 @@ nav .menu ul.sub-menu li>a,#top-bar nav .menu ul li>a{color:#666666;}nav .menu u
 .woocommerce table.shop_table tr td.product-remove .remove {
   color: red;
 }
+.woocommerce form .form-row select, .woocommerce-page form .form-row select {
+  width: 75%;
+}
+abbr[title], abbr[data-original-title] {
+  border: none;
+}
