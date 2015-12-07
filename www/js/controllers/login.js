@@ -24,6 +24,10 @@ angular.module('sywStyleXApp')
 
   console.log('inside the login page');
 
+  var invokeFountLogin = function() {
+    $rootScope.$emit('event.updateFountLogin', {isLoggedIn: true});
+  };
+
   $scope.loginAccount = function() {
     $scope.authErrorMsg = false;
     console.log($scope.loginObj);
@@ -31,6 +35,7 @@ angular.module('sywStyleXApp')
       if (UtilityService.validateResult(result)) {
         console.log(result);
         localStorageService.set('userId', result.data.payload.USER.id);
+        invokeFountLogin();
         $state.go('shop');
 
       } else {
@@ -104,6 +109,7 @@ angular.module('sywStyleXApp')
           if(userId) {
             console.log('userId: ' + userId);
             localStorageService.set('userId', userId);
+            invokeFountLogin();
             $state.go('shop');
           }
         }

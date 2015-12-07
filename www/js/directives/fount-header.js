@@ -34,11 +34,11 @@ angular.module('sywStyleXApp')
         });
       };
 
-      // if (!localStorageService.get('userId')) {
-      //   $state.go('landing');
-      // } else {
+      if (!localStorageService.get('userId')) {
+        $state.go('login');
+      } else {
         getProductsFromCart();
-      // }
+      }
 
       $rootScope.$on('event.updateShoppingCart', function(event, data) {
         scope.shoppingCartInfo = {

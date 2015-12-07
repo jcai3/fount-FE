@@ -19,7 +19,7 @@ angular.module('sywStyleXApp')
           circular: true,
           infinite: true,
           responsive: true,
-          width: '100%',
+          width: null,
           align: 'center',
           auto: false,
           items: {
