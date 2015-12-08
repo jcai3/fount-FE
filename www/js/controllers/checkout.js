@@ -201,6 +201,8 @@ angular.module('sywStyleXApp')
     // $scope.clickToNext();
   };
 
+  $scope.allInputFieldsValided = true;
+
   $scope.invalidAddress = {
     billing: false,
     shipping: false
@@ -379,16 +381,39 @@ angular.module('sywStyleXApp')
   };
 
   $scope.validRequiredFields = function() {
-    var requiredFieldsValided = false;
-    for (var key in $scope.requiredFieldsValided) {
-      if (!!$scope.requiredFieldsValided[key]) {
-        requiredFieldsValided = !!$scope.requiredFieldsValided[key];
-      } else {
-        return false;
+    $scope.allInputFieldsValided = true;
+    for (var key in $scope.billingAddress) {
+      if (key == 'firstName') {
+        $scope.requiredFieldsValided.billing_firstName = !!$scope.billingAddress[key];
+      }
+      if (key == 'lastName') {
+        $scope.requiredFieldsValided.billing_lastName = !!$scope.billingAddress[key];
+      }
+      if (key == 'line1') {
+        $scope.requiredFieldsValided.billing_address = !!$scope.billingAddress[key];
+      }
+      if (key == 'city') {
+        $scope.requiredFieldsValided.billing_city = !!$scope.billingAddress[key];
+      }
+      if (key == 'zip') {
+        $scope.requiredFieldsValided.billing_zip = !!$scope.billingAddress[key];
+      }
+      if (key == 'phone') {
+        $scope.requiredFieldsValided.billing_telephone = !!$scope.billingAddress[key];
       }
     }
 
-    return requiredFieldsValided;
+    for (var key in $scope.requiredFieldsValided) {
+      if ($scope.requiredFieldsValided[key] == false) {
+        $scope.allInputFieldsValided = false;
+        break;
+      }
+    }
+
+    if ($scope.allInputFieldsValided) {
+      verifyAddress($scope.billingAddress);
+    }
+    // return requiredFieldsValided;
   };
 
   $scope.showPopup = function() {
@@ -549,6 +574,27 @@ angular.module('sywStyleXApp')
       }
     }
   });
+
+  // $scope.$watch('billingAddress', function(newVal, oldVal) {
+  //     if (!!newVal.firstName) {
+  //       $scope.requiredFieldsValided.billing_firstName = true;
+  //     }
+  //     if (!!newVal.lastName) {
+  //       $scope.requiredFieldsValided.billing_lastName = true;
+  //     }
+  //     if (!!newVal.line1) {
+  //       $scope.requiredFieldsValided.billing_address = true;
+  //     }
+  //     if (!!newVal.city) {
+  //       $scope.requiredFieldsValided.billing_city = true;
+  //     }
+  //     if (!!newVal.zip) {
+  //       $scope.requiredFieldsValided.billing_zip = true;
+  //     }
+  //     if (!!newVal.phone) {
+  //       $scope.requiredFieldsValided.billing_telephone = true;
+  //     }
+  // });
 
   $scope.$on('$ionicView.enter', function() {
 

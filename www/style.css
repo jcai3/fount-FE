@@ -9253,6 +9253,9 @@ ul.checkout-process li a.active, ul.checkout-process li p.active {
 .woocommerce form #customer_details .form-row input.has-error {
 	border: 1px solid red;
 }
+.woocommerce form #customer_details .form-row input.has-value {
+	border: 1px solid #69bf29;
+}
 .woocommerce form #customer_details .form-row textarea {
 	float: right;
 	width: 75%;
