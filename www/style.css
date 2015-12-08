@@ -9236,7 +9236,7 @@ ul.checkout-process li a.active, ul.checkout-process li p.active {
 	display: block;
 	width: 100%;
 	float: none;
-	margin-bottom: 20px;
+	margin-bottom: 15px;
 }
 .woocommerce form #customer_details .form-row label {
 	float: left;
@@ -9430,7 +9430,7 @@ table.totals_table tr.total td .amount {
 }
 .woocommerce #payment ul.payment_methods li {
 	height: 30px;
-	margin-bottom: 5px;
+	margin-bottom: 15px;
 }
 .woocommerce #payment ul.payment_methods li input {
 	margin-top: 3px;

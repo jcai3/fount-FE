@@ -177,3 +177,9 @@ nav .menu ul.sub-menu li>a,#top-bar nav .menu ul li>a{color:#666666;}nav .menu u
 abbr[title], abbr[data-original-title] {
   border: none;
 }
+.woocommerce #payment ul.payment_methods li input.has-error {
+  border: 1px solid red;
+}
+.woocommerce #payment ul.payment_methods li input.has-value {
+	border: 1px solid #69bf29;
+}

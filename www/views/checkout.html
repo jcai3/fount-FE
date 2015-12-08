@@ -242,7 +242,7 @@
                     <div id="payment" class="woocommerce-checkout-payment" style="position: relative; zoom: 1;">
                       <ul class="payment_methods methods">
                         <li class="payment_method_bacs">
-                          <label for="payment_method_bacs">Card Type</label>
+                          <label for="payment_method_bacs">Payment</label>
                         </li>
                         <li class="payment_method_bacs">
                           <select ng-model="creditCardInfo.type">
@@ -253,16 +253,16 @@
                           </select>
                         </li>
                         <li class="payment_method_bacs">
-                          <input ng-class="{ 'has-error' : !requiredFieldsValided.card_number}" class="input-text" type="text" ng-model="creditCardInfo.number" placeholder="Enter Card Number" maxlength="16" required>
+                          <input ng-class="{'has-error': !requiredFieldsValided.card_number, 'has-value': creditCardInfo.number.length}" class="input-text" type="text" ng-model="creditCardInfo.number" placeholder="Card Number" maxlength="16" required>
                         </li>
                         <li class="payment_method_bacs">
-                           <input ng-class="{ 'has-error' : !requiredFieldsValided.expiry}" class="input-text" type="text" ng-model="creditCardInfo.expiration" placeholder="Expiration (MM/YYYY)" required>
+                           <input ng-class="{'has-error': !requiredFieldsValided.expiry, 'has-value': creditCardInfo.expiration.length}" class="input-text" type="text" ng-model="creditCardInfo.expiration" placeholder="Expiration (MM/YYYY)" required>
                         </li>
                         <li class="payment_method_bacs">
-                           <input ng-class="{ 'has-error' : !requiredFieldsValided.cvv}" class="input-text" type="text" ng-model="creditCardInfo.cvv" placeholder="CVV" required>
+                           <input ng-class="{'has-error': !requiredFieldsValided.cvv, 'has-value': creditCardInfo.cvv.length}" class="input-text" type="text" ng-model="creditCardInfo.cvv" placeholder="CVV" required>
                         </li>
                         <li class="payment_method_bacs">
-                           <input ng-class="{ 'has-error' : !requiredFieldsValided.card_name}" type="text" ng-model="creditCardInfo.name" placeholder="Full Name (First Last)" required>
+                           <input ng-class="{'has-error': !requiredFieldsValided.card_name, 'has-value': creditCardInfo.name.length}" class="input-text" type="text" ng-model="creditCardInfo.name" placeholder="Full Name (First Last)" required>
                         </li>
                       </ul>
                       <div class="form-row place-order">

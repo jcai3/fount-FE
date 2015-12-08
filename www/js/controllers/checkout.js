@@ -64,20 +64,6 @@ angular.module('sywStyleXApp')
     id: localStorageService.get('userId')
   };
 
-  var verifyAddress = function(userAddress) {
-    var address = {
-      address_line1: userAddress.line1,
-      address_line2: '',
-      address_city: userAddress.city,
-      address_state: userAddress.state,
-      address_zip: userAddress.zip
-    }
-
-    AddressService.verifyAddress(user, address).then(function(result) {
-
-    });
-  };
-
   var createOrder = function(items) {
     var shippingAddress = $scope.shippingAddress;
     shippingAddress.user = {
@@ -400,6 +386,21 @@ angular.module('sywStyleXApp')
       }
       if (key == 'phone') {
         $scope.requiredFieldsValided.billing_telephone = !!$scope.billingAddress[key];
+      }
+    }
+
+    for (var key in $scope.creditCardInfo) {
+      if (key == 'number') {
+        $scope.requiredFieldsValided.card_number = !!$scope.creditCardInfo[key];
+      }
+      if (key == 'name') {
+        $scope.requiredFieldsValided.card_name = !!$scope.creditCardInfo[key];
+      }
+      if (key == 'expiration') {
+        $scope.requiredFieldsValided.expiry = !!$scope.creditCardInfo[key];
+      }
+      if (key == 'cvv') {
+        $scope.requiredFieldsValided.cvv = !!$scope.creditCardInfo[key];
       }
     }
 
