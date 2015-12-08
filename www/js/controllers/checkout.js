@@ -161,6 +161,51 @@ angular.module('sywStyleXApp')
     $ionicLoading.hide();
   };
 
+  var verifyAddress = function(addr) {
+    var verifyAddress = {
+      line1: addr.line1,
+      line2: '',
+      city: addr.city,
+      state: addr.state,
+      zip: addr.zip
+    };
+
+    AddressService.verifyAddress(user, verifyAddress).then(function(result) {
+      if (UtilityService.validateResult(result)) {
+        if (addr.type == 'SHIPPING') {
+          $scope.invalidAddress.shipping = false;
+        }
+        if (addr.type == 'BILLING') {
+          $scope.invalidAddress.shipping = false;
+        }
+        // savePaymentInfo();
+      } else {
+        console.log('invalid address');
+        if (addr.type == 'SHIPPING') {
+          $scope.invalidAddress.shipping = true;
+        }
+        if (addr.type == 'BILLING') {
+          $scope.invalidAddress.shipping = true;
+        }
+      }
+    });
+  };
+
+  var savePaymentInfo = function() {
+    ReviewOrderService.setPaymentInfo(paymentInfo);
+    $scope.paymentInfoAdded = true;
+    $scope.sectionVisible.payment = false;
+    $scope.paymentdetails.type = $scope.creditCardInfo.type;
+    $scope.paymentdetails.number = '************ '+ $scope.creditCardInfo.number.substring(12,16);
+
+    // $scope.clickToNext();
+  };
+
+  $scope.invalidAddress = {
+    billing: false,
+    shipping: false
+  };
+
   $scope.sectionVisible = {
     shipping: false,
     payment: false,
@@ -208,16 +253,30 @@ angular.module('sywStyleXApp')
     zip: '',
     phone: ''
   };
-  //
-  // $scope.billingAddress = {
-  //   type: 'BILLING',
-  //   name: '',
-  //   line1: '',
-  //   city: '',
-  //   state: 'Alabama',
-  //   zip: '',
-  //   phone: ''
-  // };
+
+  $scope.requiredFieldsValided = {
+    shipping_firstName: true,
+    shipping_lastName: true,
+    shipping_address: true,
+    shipping_city: true,
+    shipping_state: true,
+    shipping_country: true,
+    shipping_zip: true,
+    shipping_telephone: true,
+    billing_firstName: true,
+    billing_lastName: true,
+    billing_address: true,
+    billing_city: true,
+    billing_state: true,
+    billing_country: true,
+    billing_zip: true,
+    billing_telephone: true,
+    card_type: true,
+    card_number: true,
+    card_name: true,
+    expiry: true,
+    cvv: true
+  };
 
   $scope.checkboxModel = {
     sameAsShippingAddress: false
@@ -255,8 +314,8 @@ angular.module('sywStyleXApp')
         $scope.sectionVisible.shipping = false;
         paymentInfo.email = result.data.payload.ADDRESS.user.email;
         paymentInfo.shipping_title = 'default';
-        paymentInfo.shipping_first_name = $scope.shippingAddress.name.split(' ')[0];
-        paymentInfo.shipping_last_name = $scope.shippingAddress.name.split(' ')[1];
+        paymentInfo.shipping_first_name = $scope.shippingAddress.firstName;
+        paymentInfo.shipping_last_name = $scope.shippingAddress.lastName;
         paymentInfo.shipping_address = $scope.shippingAddress.line1;
         paymentInfo.shipping_city = $scope.shippingAddress.city;
         paymentInfo.shipping_state = $scope.shippingAddress.state;
@@ -270,8 +329,8 @@ angular.module('sywStyleXApp')
   $scope.addPaymentInfo = function() {
 
     paymentInfo.billing_title = 'default',
-    paymentInfo.billing_first_name = $scope.billingAddress.name.split(' ')[0];
-    paymentInfo.billing_last_name = $scope.billingAddress.name.split(' ')[1];
+    paymentInfo.billing_first_name = $scope.billingAddress.firstName;
+    paymentInfo.billing_last_name = $scope.billingAddress.lastName;
     paymentInfo.billing_address = $scope.billingAddress.line1;
     paymentInfo.billing_city = $scope.billingAddress.city;
     paymentInfo.billing_state = $scope.billingAddress.state;
@@ -321,9 +380,9 @@ angular.module('sywStyleXApp')
 
   $scope.validRequiredFields = function() {
     var requiredFieldsValided = false;
-    for (var key in paymentInfo) {
-      if (!!paymentInfo[key]) {
-        requiredFieldsValided = !!paymentInfo[key];
+    for (var key in $scope.requiredFieldsValided) {
+      if (!!$scope.requiredFieldsValided[key]) {
+        requiredFieldsValided = !!$scope.requiredFieldsValided[key];
       } else {
         return false;
       }
@@ -473,6 +532,23 @@ angular.module('sywStyleXApp')
       }
     });
   };
+
+  $scope.$watch('creditCardInfo.number', function(newVal, oldVal) {
+    if (!!newVal) {
+      if (newVal.length < 6) {
+        return;
+      }
+
+      var ccType = UtilityService.getCreditCardType(newVal);
+      if (ccType != 'unsupported') {
+        $scope.sectionVisible.unsupportedCard = false;
+        $scope.creditCardInfo.type = ccType;
+      } else {
+        $scope.creditCardInfo.type = 'Visa';
+        $scope.sectionVisible.unsupportedCard = true;
+      }
+    }
+  });
 
   $scope.$on('$ionicView.enter', function() {
 

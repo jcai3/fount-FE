@@ -13,14 +13,6 @@ angular.module('sywStyleXApp')
     var nocache = "&nocache=" + Math.random();
     var url = ENV.apiEndpoint + path + "?" +  ((httpMethod == "GET" || httpMethod == "DELETE") ? nocache : '');
 
-    if (inputParams) {
-      inputParams['source'] = 'styleXApp';
-    } else {
-      inputParams = {
-        source: 'styleXApp'
-      }
-    }
-
     return $http({
       method: httpMethod,
       cache: false,
