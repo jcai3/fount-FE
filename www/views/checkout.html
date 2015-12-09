@@ -116,26 +116,27 @@
                   </div>
                   <div>
                     <p id="ship-to-different-address">
-                      <input class="input-checkbox" type="checkbox" name="ship_to_different_address" ng-model="checkboxModel.differentToBillingAddress" ng-change="fillShippingAddress()">
+                      <!-- <input class="input-checkbox" type="checkbox" name="ship_to_different_address" ng-model="checkboxModel.differentToBillingAddress" ng-change="fillShippingAddress()"> -->
+                      <input class="input-checkbox" type="checkbox" name="ship_to_different_address" ng-model="checkboxModel.differentToBillingAddress">
                       <label for="ship-to-different-address-checkbox" class="checkbox">Ship to a different address?</label>
                     </p>
                     <div class="shipping_address" ng-show="checkboxModel.differentToBillingAddress">
                       <h4 class="lined-heading"><span>Shipping Address</span></h4>
                       <p class="form-row form-row-first validate-required">
                         <label for="shipping_first_name" class="">First Name <abbr class="required" title="required">*</abbr></label>
-                        <input type="text" class="input-text" ng-model="shippingAddress.firstName" name="userFirstName" placeholder="First Name" required />
+                        <input ng-class="{'has-error': !requiredFieldsValided.shipping_firstName, 'has-value': shippingAddress.firstName.length}" type="text" class="input-text" ng-model="shippingAddress.firstName" name="userFirstName" placeholder="First Name" required />
                       </p>
                       <p class="form-row form-row-last validate-required">
                         <label for="shipping_last_name" class="">Last Name <abbr class="required" title="required">*</abbr></label>
-                        <input type="text" class="input-text" ng-model="shippingAddress.lastName" name="userLastName" placeholder="Last Name" required />
+                        <input ng-class="{'has-error': !requiredFieldsValided.shipping_lastName, 'has-value': shippingAddress.lastName.length}" type="text" class="input-text" ng-model="shippingAddress.lastName" name="userLastName" placeholder="Last Name" required />
                       </p>
                       <p class="form-row form-row-wide address-field validate-required">
                         <label for="shipping_address_1" class="">Address <abbr class="required" title="required">*</abbr></label>
-                        <input type="text" class="input-text" ng-model="shippingAddress.line1" name="userAddressLine1" placeholder="Street Address (Include Apt/Unit)" required />
+                        <input ng-class="{'has-error': !requiredFieldsValided.shipping_address, 'has-value': shippingAddress.line1.length}" type="text" class="input-text" ng-model="shippingAddress.line1" name="userAddressLine1" placeholder="Street Address (Include Apt/Unit)" required />
                       </p>
                       <p class="form-row form-row-wide address-field validate-required">
                         <label for="shipping_city" class="">City <abbr class="required" title="required">*</abbr></label>
-                        <input type="text" class="input-text" ng-model="shippingAddress.city" name="userAddressCity" placeholder="City" required />
+                        <input ng-class="{'has-error': !requiredFieldsValided.shipping_city, 'has-value': shippingAddress.city.length}" type="text" class="input-text" ng-model="shippingAddress.city" name="userAddressCity" placeholder="City" required />
                       </p>
                       <p class="form-row form-row-first address-field validate-required">
                         <label for="shipping_state" class="">State <abbr class="required" title="required">*</abbr></label>
@@ -196,11 +197,11 @@
                       </p>
                       <p class="form-row form-row-last address-field validate-required validate-postcode">
                         <label for="shipping_postcode" class="">Zip <abbr class="required" title="required">*</abbr></label>
-                        <input type="text" class="input-text" ng-model="shippingAddress.zip" name="userAddressZip" placeholder="Zip" required />
+                        <input ng-class="{'has-error': !requiredFieldsValided.shipping_zip, 'has-value': shippingAddress.zip.length}" type="text" class="input-text" ng-model="shippingAddress.zip" name="userAddressZip" placeholder="Zip" required />
                       </p>
                       <p class="form-row form-row-last validate-required validate-phone">
                         <label for="shipping_phone" class="">Phone <abbr class="required" title="required">*</abbr></label>
-                        <input type="text" class="input-text" ng-model="shippingAddress.phone" placeholder="Phone Number">
+                        <input ng-class="{'has-error': !requiredFieldsValided.shipping_telephone, 'has-value': shippingAddress.phone.length}" type="text" class="input-text" ng-model="shippingAddress.phone" placeholder="Phone Number" required />
                       </p>
                       <div class="clear"></div>
                     </div>

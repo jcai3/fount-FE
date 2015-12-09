@@ -266,10 +266,6 @@ angular.module('sywStyleXApp')
     cvv: true
   };
 
-  $scope.checkboxModel = {
-    sameAsShippingAddress: false
-  };
-
   $scope.fillShippingAddress = function() {
     if ($scope.checkboxModel.differentToBillingAddress === false) {
       $scope.shippingAddress.firstName = $scope.billingAddress.firstName;
@@ -279,17 +275,6 @@ angular.module('sywStyleXApp')
       $scope.shippingAddress.state = $scope.billingAddress.state;
       $scope.shippingAddress.zip = $scope.billingAddress.zip;
       $scope.shippingAddress.phone = $scope.billingAddress.phone;
-    } else {
-      $scope.shippingAddress = {
-        type: 'SHIPPING',
-        firstName: '',
-        lastName: '',
-        line1: '',
-        city: '',
-        state: '',
-        zip: '',
-        phone: ''
-      };
     }
   };
 
@@ -389,6 +374,31 @@ angular.module('sywStyleXApp')
       }
     }
 
+    if ($scope.checkboxModel.differentToBillingAddress === true) {
+      for (var key in $scope.shippingAddress) {
+        if (key == 'firstName') {
+          $scope.requiredFieldsValided.shipping_firstName = !!$scope.shippingAddress[key];
+        }
+        if (key == 'lastName') {
+          $scope.requiredFieldsValided.shipping_lastName = !!$scope.shippingAddress[key];
+        }
+        if (key == 'line1') {
+          $scope.requiredFieldsValided.shipping_address = !!$scope.shippingAddress[key];
+        }
+        if (key == 'city') {
+          $scope.requiredFieldsValided.shipping_city = !!$scope.shippingAddress[key];
+        }
+        if (key == 'zip') {
+          $scope.requiredFieldsValided.shipping_zip = !!$scope.shippingAddress[key];
+        }
+        if (key == 'phone') {
+          $scope.requiredFieldsValided.shipping_telephone = !!$scope.shippingAddress[key];
+        }
+      }
+    } else {
+      $scope.fillShippingAddress();
+    }
+
     for (var key in $scope.creditCardInfo) {
       if (key == 'number') {
         $scope.requiredFieldsValided.card_number = !!$scope.creditCardInfo[key];
@@ -413,6 +423,10 @@ angular.module('sywStyleXApp')
 
     if ($scope.allInputFieldsValided) {
       verifyAddress($scope.billingAddress);
+
+      if ($scope.checkboxModel.differentToBillingAddress === true) {
+        verifyAddress($scope.shippingAddress);
+      }
     }
     // return requiredFieldsValided;
   };
