@@ -25,6 +25,7 @@ angular.module('sywStyleXApp')
           id: userId
         };
         scope.isLoggedIn = false;
+        $rootScope.$emit('event.updateFountLogout', {isLoggedIn: false});
 
         LoginRegisterService.logout(user).then(function(res) {
           console.log('logout');
@@ -46,6 +47,7 @@ angular.module('sywStyleXApp')
 
       $rootScope.$on('event.updateFountLogin', function(event, data) {
         scope.isLoggedIn = data.isLoggedIn;
+        $state.go('shop');
       });
 
     }

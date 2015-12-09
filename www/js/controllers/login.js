@@ -36,7 +36,7 @@ angular.module('sywStyleXApp')
         console.log(result);
         localStorageService.set('userId', result.data.payload.USER.id);
         invokeFountLogin();
-        $state.go('shop');
+        // $state.go('shop');
 
       } else {
         console.log(result);
@@ -110,7 +110,7 @@ angular.module('sywStyleXApp')
             console.log('userId: ' + userId);
             localStorageService.set('userId', userId);
             invokeFountLogin();
-            $state.go('shop');
+            // $state.go('shop');
           }
         }
       } catch(e) {

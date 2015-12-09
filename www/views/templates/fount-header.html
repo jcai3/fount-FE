@@ -20,8 +20,8 @@
           <div class="header-left span4">
             <nav class="std-menu header-menu">
               <ul class="menu">
-                <li class="tb-welcome"></li>
-                <li class="hs-woo-custom clearfix"><a class="swift-search-link"><span></span></a></li>
+                <li ng-show="isLoggedIn" class="tb-welcome">Welcome {{username}}</li>
+                <!-- <li class="hs-woo-custom clearfix"><a class="swift-search-link"><span></span></a></li> -->
               </ul>
             </nav>
           </div>
@@ -37,8 +37,19 @@
           <div class="header-right span4">
             <nav class="std-menu header-menu">
               <ul class="menu">
+                <li class="parent aux-languages">
+                  <a href="#"><span class="language name">English</span></a>
+                  <ul id="header-languages" class="sub-menu" style="display: none;">
+                    <li><a href="#">DEMO - EXAMPLE PURPOSES</a></li>
+                    <li><a href="#"><span class="language name">German</span></a></li>
+                    <li><div class="current-language"><span class="language name">English</span></div></li>
+                    <li><a href="#"><span class="language name">Spanish</span></a></li>
+                    <li><a href="#"><span class="language name">French</span></a></li>
+                  </ul>
+                </li>
                 <li fount-login>
                 </li>
+                <li ng-show="isLoggedIn"><a>My Account</a></li>
               </ul>
             </nav>
           </div>

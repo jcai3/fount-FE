@@ -8,6 +8,8 @@ angular.module('sywStyleXApp')
     templateUrl: 'views/templates/fount-header.html',
     scope: {},
     link: function(scope, element, attrs) {
+      scope.isLoggedIn = false;
+
       scope.goToShop = function() {
         $state.go('shop');
       };
@@ -23,6 +25,7 @@ angular.module('sywStyleXApp')
 
       var getProductsFromCart = function() {
         CartService.getProductsFromCart(localStorageService.get('userId'), false).success(function(response) {
+          scope.username = response.payload.SHOPPING_CART.user.displayName;
           scope.shoppingCartInfo.count = response.payload.SHOPPING_CART.cartProducts.length;
           scope.shoppingCartInfo.subtotal = 0;
           for (var i=0,j=scope.shoppingCartInfo.count; i<j; i++) {
@@ -35,8 +38,10 @@ angular.module('sywStyleXApp')
       };
 
       if (!localStorageService.get('userId')) {
+        scope.isLoggedIn = false;
         $state.go('login');
       } else {
+        scope.isLoggedIn = true;
         getProductsFromCart();
       }
 
@@ -45,7 +50,17 @@ angular.module('sywStyleXApp')
           count: data.shoppingCartInfo.count,
           subtotal: data.shoppingCartInfo.subtotal
         };
+      });
 
+      $rootScope.$on('event.updateFountLogin', function(event, data) {
+        scope.isLoggedIn = data.isLoggedIn;
+        getProductsFromCart();
+      });
+
+      $rootScope.$on('event.updateFountLogout', function(event, data) {
+        scope.isLoggedIn = data.isLoggedIn;
+        scope.shoppingCartInfo.subtotal = 0;
+        // getProductsFromCart();
       });
     }
   };

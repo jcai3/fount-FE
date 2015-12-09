@@ -162,19 +162,27 @@ angular.module('sywStyleXApp')
           $scope.invalidAddress.shipping = false;
         }
         if (addr.type == 'BILLING') {
-          $scope.invalidAddress.shipping = false;
+          $scope.invalidAddress.billing = false;
         }
-        // savePaymentInfo();
+
+        if (($scope.checkboxModel.differentToBillingAddress === false && addr.type == 'BILLING') ||
+          $scope.checkboxModel.differentToBillingAddress === true && $scope.invalidAddress.shipping == false && $scope.invalidAddress.billing == false) {
+            goToOrderConfirm();
+        }
       } else {
         console.log('invalid address');
         if (addr.type == 'SHIPPING') {
           $scope.invalidAddress.shipping = true;
         }
         if (addr.type == 'BILLING') {
-          $scope.invalidAddress.shipping = true;
+          $scope.invalidAddress.billing = true;
         }
       }
     });
+  };
+
+  var goToOrderConfirm = function() {
+    console.log('go to order confirm');
   };
 
   var savePaymentInfo = function() {
