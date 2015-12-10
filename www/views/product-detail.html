@@ -26,10 +26,10 @@
                         <div itemprop="offers" itemscope="">
                           <p itemprop="price" class="price">
                             <del ng-if="productDetail.xapp.price < productDetail.xapp.retailPrice">
-                              <span class="amount">${{productDetail.xapp.retailPrice}}</span>
+                              <span class="amount">{{productDetail.xapp.retailPrice | currency}}</span>
                             </del>
                             <ins>
-                              <span class="amount">${{productDetail.xapp.price}}</span>
+                              <span class="amount">{{productDetail.xapp.price | currency}}</span>
                             </ins>
                           </p>
                           <!-- <meta itemprop="priceCurrency" content="GBP">

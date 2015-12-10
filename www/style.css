@@ -613,14 +613,14 @@ body .wooslider.wooslider-type-slides img { max-width: 100%; }
 }
 .flex-direction-nav a, .wooslider-direction-nav a {
 	width: 36px;
-	height: 36px;
+	height: 30px;
 	margin: -18px 0 0;
 	display: block;
 	background: transparent url('img/showcase-nav.png') no-repeat center left;
 	position: absolute;
 	top: 50%;
 	cursor: pointer;
-	text-indent: -9999px;
+	text-indent: 9999px;
 	opacity: 0;
 	filter: alpha(opacity=0);
 	transition: all 0.3s ease-in-out;
@@ -4159,6 +4159,7 @@ ul#seller-carousel li {
 }
 #seller-carousel .seller-element.selected {
 	background: #4AC0D1;
+	color: #ffffff;
 }
 .fount-no-products {
 	text-align: center;
@@ -4194,10 +4195,16 @@ ul#seller-carousel li {
 .filter-wrap ul.wp-tag-cloud li a {
 	font-size: 13px!important;
 }
+.filter-wrap ul {
+	text-align: center;
+}
 .filter-wrap ul li {
-	display: none;
-	float: left;
 	background: lightgrey;
+}
+.filter-wrap ul li.shop-top-menu {
+	display: inline-block;
+	width: 140px;
+	margin-left: 20px;
 }
 .filter-wrap-second ul li {
 	margin-bottom: 20px;
