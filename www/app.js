@@ -36,6 +36,11 @@ angular.module('sywStyleXApp', [
       templateUrl: 'views/checkout.html',
       controller: 'CheckoutCtrl'
     })
+    .state('order-confirm', {
+      url: '/order-confirm',
+      templateUrl: 'views/order-confirm.html',
+      controller: 'OrderConfirmCtrl'
+    })
     .state('product', {
       url: '/product/{productId}',
       templateUrl: 'views/product-detail.html',

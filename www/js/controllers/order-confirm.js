@@ -1,9 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('OrderConfirmCtrl', ['$scope', '$state', '$timeout', '$ionicLoading', 'localStorageService', 'UtilityService', 'TwoTapService', 'CheckoutService', 'CartService', 'ReviewOrderService', '$ionicScrollDelegate', function($scope, $state, $timeout, $ionicLoading, localStorageService, UtilityService, TwoTapService, CheckoutService, CartService, ReviewOrderService, $ionicScrollDelegate) {
-  UtilityService.gaTrackAppView('Order Confirmation Page View');
-
+.controller('OrderConfirmCtrl', ['$scope', '$state', '$timeout', 'localStorageService', 'UtilityService', 'TwoTapService', 'CheckoutService', 'CartService', 'ReviewOrderService', function($scope, $state, $timeout, localStorageService, UtilityService, TwoTapService, CheckoutService, CartService, ReviewOrderService) {
   var shippingAddress = ReviewOrderService.getPrimaryAddress();
   var paymentInfo = ReviewOrderService.getPaymentInfo();
 
@@ -111,7 +109,6 @@ angular.module('sywStyleXApp')
   };
 
   $scope.confirmToPay = function() {
-    UtilityService.gaTrackAppEvent('Checkout Page', 'Confirm to pay', 'Confirm to pay on checkout page');
     placeOrder();
   };
 

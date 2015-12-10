@@ -182,7 +182,23 @@ angular.module('sywStyleXApp')
   };
 
   var goToOrderConfirm = function() {
-    console.log('go to order confirm');
+    $state.go('order-confirm');
+  };
+
+  var setPrimaryAddress = function(address) {
+    var primaryAddress = {
+      type: 'SHIPPING',
+      id: address.id,
+      name: address.name,
+      line1: address.line1,
+      city: address.city,
+      state: address.state,
+      zip: address.zip,
+      phone: address.phone
+    };
+
+    ReviewOrderService.setPrimaryAddress(primaryAddress);
+    console.log(ReviewOrderService.getPrimaryAddress());
   };
 
   var savePaymentInfo = function() {
