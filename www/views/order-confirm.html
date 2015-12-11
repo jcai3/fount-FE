@@ -6,44 +6,42 @@
       </div>
     </div>
   </div>
-  <div class="container">
+  <div class="container order-confirm">
     <div class="checkout-error-msg" ng-if="checkoutErrorMsg.enabled">
       <span>{{checkoutErrorMsg.description}}</span>
     </div>
     <div>
       <div ng-repeat="productsGroup in shoppingCartGroups.shoppingCartProductGroups" class="cart-products-group">
-        <div class="item-title row">
-          <div class="col col-80 seller-name">
+        <div class="item-title">
+          <div class="seller-name">
             <span>{{productsGroup.seller.name}}</span>
           </div>
         </div>
         <div ng-repeat="cartProduct in productsGroup.shoppingCartProducts">
-          <div>
+          <div class="item">
             <div class="item-detail">
-              <div class="row">
-                <div class="col col-20 product-image">
-                  <div class="item item-image" ng-click="productDetail(cartProduct)">
-                    <img ng-src="{{cartProduct.product.imageURL}}">
-                  </div>
+              <div class="product-image">
+                <div class="item item-image" ng-click="productDetail(cartProduct)">
+                  <img ng-src="{{cartProduct.product.imageURL}}">
                 </div>
-                <div class="col col-80 product-detail">
-                  <div class="row">
-                    <div class="col col-60 product-option" ng-click="productDetail(shoppingCart)">
-                      <h2>{{cartProduct.product.name}}</h2>
-                      <p ng-if="!!cartProduct.productMetadata.color && cartProduct.productMetadata.color != 'NA'">Color: {{cartProduct.productMetadata.color}}</p>
-                      <p ng-if="!!cartProduct.productMetadata.size && cartProduct.productMetadata.size != 'NA'">Size: {{cartProduct.productMetadata.size}}</p>
-                      <p ng-if="!!cartProduct.productMetadata.option && cartProduct.productMetadata.option != 'NA'">Option: {{cartProduct.productMetadata.option}}</p>
-                      <p ng-if="!!cartProduct.productMetadata.style && cartProduct.productMetadata.style != 'NA'">Style: {{cartProduct.productMetadata.style}}</p>
-                    </div>
-                    <div ng-if="cartProduct.productMetadata.availability == 'AVAILABLE'" class="col col-40 product-price">
-                      <p>{{cartProduct.quantity}}x {{cartProduct.productMetadata.price | currency}}&nbsp;USD</p>
-                      <h2 ng-class="{'product-not-available': shoppingCart.availability == false}">{{cartProduct.quantity*cartProduct.productMetadata.price | currency}}&nbsp;USD</h2>
-                    </div>
-                    <div ng-if="cartProduct.productMetadata.availability == 'UNAVAILABLE'" class="col col-40 product-price">
-                      <p>{{cartProduct.quantity}}x {{cartProduct.productMetadata.price | currency}}&nbsp;USD</p>
-                      <h2 ng-class="{'product-not-available': shoppingCart.availability == false}">{{(cartProduct.quantity * cartProduct.productMetadata.price) | currency}}&nbsp;USD</h2>
-                      <p class="product-not-available">Item is not available</p>
-                    </div>
+              </div>
+              <div class="product-detail">
+                <div class="row">
+                  <div class="col col-60 product-option" ng-click="productDetail(shoppingCart)">
+                    <h2>{{cartProduct.product.name}}</h2>
+                    <p ng-if="!!cartProduct.productMetadata.color && cartProduct.productMetadata.color != 'NA'">Color: {{cartProduct.productMetadata.color}}</p>
+                    <p ng-if="!!cartProduct.productMetadata.size && cartProduct.productMetadata.size != 'NA'">Size: {{cartProduct.productMetadata.size}}</p>
+                    <p ng-if="!!cartProduct.productMetadata.option && cartProduct.productMetadata.option != 'NA'">Option: {{cartProduct.productMetadata.option}}</p>
+                    <p ng-if="!!cartProduct.productMetadata.style && cartProduct.productMetadata.style != 'NA'">Style: {{cartProduct.productMetadata.style}}</p>
+                  </div>
+                  <div ng-if="cartProduct.productMetadata.availability == 'AVAILABLE'" class="col col-40 product-price">
+                    <p>{{cartProduct.quantity}}x {{cartProduct.productMetadata.price | currency}}&nbsp;USD</p>
+                    <h2 ng-class="{'product-not-available': shoppingCart.availability == false}">{{cartProduct.quantity*cartProduct.productMetadata.price | currency}}&nbsp;USD</h2>
+                  </div>
+                  <div ng-if="cartProduct.productMetadata.availability == 'UNAVAILABLE'" class="col col-40 product-price">
+                    <p>{{cartProduct.quantity}}x {{cartProduct.productMetadata.price | currency}}&nbsp;USD</p>
+                    <h2 ng-class="{'product-not-available': shoppingCart.availability == false}">{{(cartProduct.quantity * cartProduct.productMetadata.price) | currency}}&nbsp;USD</h2>
+                    <p class="product-not-available">Item is not available</p>
                   </div>
                 </div>
               </div>
@@ -79,34 +77,32 @@
       </div>
       <div ng-if="shoppingCartGroups.unavailableGroups.length > 0" class="unavailable-groups-header"><span>We're sorry. Products below are no longer available from the sellers.</span></div>
       <div ng-repeat="productsGroup in shoppingCartGroups.unavailableGroups" class="cart-products-group">
-        <div class="item-title row">
-          <div class="col col-80 seller-name">
+        <div class="item-title">
+          <div class="seller-name">
             <span>{{productsGroup.seller.name}}</span>
           </div>
         </div>
         <div ng-repeat="cartProduct in productsGroup.shoppingCartProducts">
-          <div>
+          <div class="item">
             <div class="item-detail">
-              <div class="row">
-                <div class="col col-20 product-image">
-                  <div class="item item-image" ng-click="productDetail(cartProduct)">
-                    <img ng-src="{{cartProduct.product.imageURL}}">
-                  </div>
+              <div class="product-image">
+                <div class="item item-image" ng-click="productDetail(cartProduct)">
+                  <img ng-src="{{cartProduct.product.imageURL}}">
                 </div>
-                <div class="col col-80 product-detail">
-                  <div class="row">
-                    <div class="col col-60 product-option" ng-click="productDetail(shoppingCart)">
-                      <h2>{{cartProduct.product.name}}</h2>
-                      <p ng-if="!!cartProduct.productMetadata.color && cartProduct.productMetadata.color != 'NA'">Color: {{cartProduct.productMetadata.color}}</p>
-                      <p ng-if="!!cartProduct.productMetadata.size && cartProduct.productMetadata.size != 'NA'">Size: {{cartProduct.productMetadata.size}}</p>
-                      <p ng-if="!!cartProduct.productMetadata.option && cartProduct.productMetadata.option != 'NA'">Option: {{cartProduct.productMetadata.option}}</p>
-                      <p ng-if="!!cartProduct.productMetadata.style && cartProduct.productMetadata.style != 'NA'">Style: {{cartProduct.productMetadata.style}}</p>
-                    </div>
-                    <div class="col col-40 product-price">
-                      <p>{{cartProduct.quantity}}x {{cartProduct.productMetadata.price | currency}}&nbsp;USD</p>
-                      <h2 ng-class="{'product-not-available': shoppingCart.availability == false}">{{(cartProduct.quantity * cartProduct.productMetadata.price) | currency}}&nbsp;USD</h2>
-                      <p class="product-not-available">Item is not available</p>
-                    </div>
+              </div>
+              <div class="product-detail">
+                <div class="row">
+                  <div class="col col-60 product-option" ng-click="productDetail(shoppingCart)">
+                    <h2>{{cartProduct.product.name}}</h2>
+                    <p ng-if="!!cartProduct.productMetadata.color && cartProduct.productMetadata.color != 'NA'">Color: {{cartProduct.productMetadata.color}}</p>
+                    <p ng-if="!!cartProduct.productMetadata.size && cartProduct.productMetadata.size != 'NA'">Size: {{cartProduct.productMetadata.size}}</p>
+                    <p ng-if="!!cartProduct.productMetadata.option && cartProduct.productMetadata.option != 'NA'">Option: {{cartProduct.productMetadata.option}}</p>
+                    <p ng-if="!!cartProduct.productMetadata.style && cartProduct.productMetadata.style != 'NA'">Style: {{cartProduct.productMetadata.style}}</p>
+                  </div>
+                  <div class="col col-40 product-price">
+                    <p>{{cartProduct.quantity}}x {{cartProduct.productMetadata.price | currency}}&nbsp;USD</p>
+                    <h2 ng-class="{'product-not-available': shoppingCart.availability == false}">{{(cartProduct.quantity * cartProduct.productMetadata.price) | currency}}&nbsp;USD</h2>
+                    <p class="product-not-available">Item is not available</p>
                   </div>
                 </div>
               </div>

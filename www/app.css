@@ -183,3 +183,134 @@ abbr[title], abbr[data-original-title] {
 .woocommerce #payment ul.payment_methods li input.has-value {
 	border: 1px solid #69bf29;
 }
+.order-confirm .checkout-error-msg {
+  padding: 15px 10px;
+  font-size: 12px;
+  background-color: #ef473a;
+  color: white;
+  text-align: center;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
+}
+.order-confirm .checkout-error-msg span {
+  font-weight: 700;
+}
+.order-confirm .cart-products-group {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  margin-top: 15px;
+  background-color: white;
+}
+.order-confirm .cart-products-group .item {
+  padding: 0;
+}
+.order-confirm .cart-products-group .item .item-detail .product-image {
+  margin-top: 2px;
+  width: 20%;
+  float: left;
+}
+.order-confirm .cart-products-group .item .item-detail .product-image .item-image {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+}
+.order-confirm .cart-products-group .item .item-detail .product-image .item-image:before {
+  content: ' ';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+.order-confirm .cart-products-group .item .item-detail .product-image .item-image img {
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+.order-confirm .cart-products-group .item .item-detail .product-detail {
+  width: 80%;
+  float: left;
+}
+.order-confirm .cart-products-group .item .item-detail .product-detail .row {
+  padding: 0;
+  margin: 0;
+}
+.order-confirm .cart-products-group .item .item-detail .product-detail .row .col {
+  padding: 0;
+}
+.order-confirm .cart-products-group .item .item-detail .product-detail .row .col.product-price {
+  text-align: right;
+  position: relative;
+}
+.order-confirm .cart-products-group .item .item-detail .product-detail .row .col.product-price h2 {
+  font-size: 14px;
+  font-weight: bold;
+}
+.order-confirm .cart-products-group .item .item-detail .product-detail .row .col.product-price h2.product-not-available {
+  text-decoration: line-through;
+}
+.order-confirm .cart-products-group .item .item-detail .product-detail .row .col.product-price p {
+  font-size: 12px;
+}
+.order-confirm .cart-products-group .item .item-detail .product-detail .row .col.product-price p.product-not-available {
+  color: red;
+}
+.order-confirm .cart-products-group .item .item-detail .product-detail .row .col.product-option h2 {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.order-confirm .cart-products-group .item .item-detail .product-detail .row .col.product-option p {
+  font-size: 12px;
+  line-height: 14px;
+}
+.order-confirm .cart-products-group .item-summary {
+  font-size: 12px;
+  padding: 10px 15px;
+}
+.order-confirm .cart-products-group .item-summary .font-grey {
+  color: #666;
+}
+.order-confirm .cart-products-group .item-summary .row {
+  padding: 0;
+}
+.order-confirm .cart-products-group .item-summary .row.item-total {
+  padding-top: 15px;
+  text-align: right;
+}
+.order-confirm .cart-products-group .item-summary .row.item-total .col:last-child {
+  font-weight: bold;
+}
+.order-confirm .cart-products-group .item-summary .row.item-return {
+  padding: 8px 0 5px 0;
+  border-bottom: 1px solid lightgrey;
+}
+.order-confirm .cart-products-group .item-summary .row.item-return .col:last-child {
+  padding: 10px 5px;
+  line-height: 12px;
+  font-size: 10px;
+}
+.order-confirm .cart-products-group .item-summary .row.item-delivery {
+  padding: 8px 0;
+  border-bottom: 1px solid lightgrey;
+  border-top: 1px solid lightgrey;
+}
+.order-confirm .cart-products-group .item-summary .row.item-expense .col {
+  padding: 3px 5px;
+}
+.order-confirm .cart-products-group .item-summary .row.item-expense.item-shipping {
+  margin-bottom: 10px;
+}
+.order-confirm .cart-products-group .item-summary .row .col:last-child {
+  text-align: right;
+}
+.order-confirm .cart-products-group .item-title {
+  padding: 10px 0;
+}
+.order-confirm .cart-products-group .item-title .seller-name {
+  color: $calm;
+}
+.order-confirm .cart-products-group .item-title .seller-name span {
+  padding: 5px;
+  font-size: 14px;
+  font-weight: 400;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 80%;
+}
