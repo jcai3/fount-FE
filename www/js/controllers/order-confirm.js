@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('OrderConfirmCtrl', ['$scope', '$state', '$timeout', 'localStorageService', 'UtilityService', 'TwoTapService', 'CheckoutService', 'CartService', 'ReviewOrderService', function($scope, $state, $timeout, localStorageService, UtilityService, TwoTapService, CheckoutService, CartService, ReviewOrderService) {
+.controller('OrderConfirmCtrl', ['$scope', '$state', '$timeout', 'localStorageService', 'UtilityService', 'TwoTapService', 'CheckoutService', 'CartService', 'ReviewOrderService', 'ngDialog', function($scope, $state, $timeout, localStorageService, UtilityService, TwoTapService, CheckoutService, CartService, ReviewOrderService, ngDialog) {
   // var shippingAddress = ReviewOrderService.getPrimaryAddress();
   // var paymentInfo = ReviewOrderService.getPaymentInfo();
   var shippingAddress = localStorageService.get('shippingAddress');
@@ -89,7 +89,7 @@ angular.module('sywStyleXApp')
           enabled: true
         };
 
-        $ionicScrollDelegate.scrollTop();
+        // $ionicScrollDelegate.scrollTop();
       }
     }, function(error) {
       console.log(error);
@@ -98,13 +98,15 @@ angular.module('sywStyleXApp')
   };
 
   var showLoadingSpinner = function() {
-    $ionicLoading.show({
-      template: '<ion-spinner icon="ios"></ion-spinner><p>Order in progress</p>'
+    ngDialog.open({
+      template: '<p>Order in progress...</p><img src="img/loader.gif">',
+      plain: true,
+      showClose: false
     });
   };
 
   var hideLoadingSpinner = function() {
-    $ionicLoading.hide();
+    ngDialog.close();
   };
 
   $scope.checkoutErrorMsg = {

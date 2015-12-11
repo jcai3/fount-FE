@@ -184,7 +184,8 @@ abbr[title], abbr[data-original-title] {
 	border: 1px solid #69bf29;
 }
 .order-confirm .checkout-error-msg {
-  padding: 15px 10px;
+  margin-top: 15px !important;
+  padding: 15px 0;
   font-size: 12px;
   background-color: #ef473a;
   color: white;
@@ -349,4 +350,13 @@ abbr[title], abbr[data-original-title] {
 .order-confirm .shipping-and-billing .span6 .shipping-billing-detail table tr th {
   text-align: left;
   padding-bottom: 10px;
+}
+.order-confirm .span12 .place-order-btn {
+  margin: 0;
+  padding: 20px;
+  text-align: right;
+  margin-bottom: 30px;
+}
+.order-confirm .span12 .place-order-btn .button {
+  padding: 10px 20px;
 }
