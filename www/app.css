@@ -200,7 +200,11 @@ abbr[title], abbr[data-original-title] {
   background-color: white;
 }
 .order-confirm .cart-products-group .item {
-  padding: 0;
+  padding: 0 15px;
+}
+.order-confirm .cart-products-group .item .item-detail {
+  padding: 5px 0;
+  border-bottom: 1px solid lightgrey;
 }
 .order-confirm .cart-products-group .item .item-detail .product-image {
   margin-top: 2px;
@@ -217,7 +221,7 @@ abbr[title], abbr[data-original-title] {
   content: ' ';
   display: inline-block;
   vertical-align: middle;
-  height: 100%;
+  /*height: 100%;*/
 }
 .order-confirm .cart-products-group .item .item-detail .product-image .item-image img {
   width: auto;
@@ -269,6 +273,18 @@ abbr[title], abbr[data-original-title] {
 .order-confirm .cart-products-group .item-summary .row {
   margin: 0;
 }
+.order-confirm .cart-products-group .item-summary .row .col-67 {
+  display: inline-block;
+  width: 65%;
+}
+.order-confirm .cart-products-group .item-summary .row .col-33 {
+  display: inline-block;
+  width: 31%;
+}
+.order-confirm .cart-products-group .item-summary .row .col-50 {
+  display: inline-block;
+  width: 48%;
+}
 .order-confirm .cart-products-group .item-summary .row.item-total {
   padding-top: 15px;
   text-align: right;
@@ -300,17 +316,37 @@ abbr[title], abbr[data-original-title] {
   text-align: right;
 }
 .order-confirm .cart-products-group .item-title {
-  padding: 10px 0;
+  padding: 10px;
 }
 .order-confirm .cart-products-group .item-title .seller-name {
-  color: $calm;
+  color: #4AC0D1;
 }
 .order-confirm .cart-products-group .item-title .seller-name span {
   padding: 5px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
   width: 80%;
+  border-bottom: 1px solid lightgrey;
+}
+.order-confirm .shipping-and-billing {
+  /*margin-top: 15px;*/
+}
+.order-confirm .shipping-and-billing .span6:first-child {
+  margin: 0;
+}
+.order-confirm .span12 {
+  margin: 0;
+}
+.order-confirm .shipping-and-billing .span6 .shipping-billing-detail {
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  margin-top: 15px;
+  background-color: white;
+}
+.order-confirm .shipping-and-billing .span6 .shipping-billing-detail table tr th {
+  text-align: left;
+  padding-bottom: 10px;
 }

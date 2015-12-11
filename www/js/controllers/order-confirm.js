@@ -17,7 +17,7 @@ angular.module('sywStyleXApp')
     id: localStorageService.get('userId')
   };
 
-  var noauthCheckout = {
+  $scope.noauthCheckout = {
     billingAddressId: '',
     billingAddress: paymentInfo.line1,
     billingCity: paymentInfo.city,
@@ -69,7 +69,7 @@ angular.module('sywStyleXApp')
 
   var placeOrder = function() {
     showLoadingSpinner();
-    CheckoutService.placeOrder($scope.shoppingCartGroups.shoppingCartProductGroups, cartId, productTwotapIdMap, noauthCheckout, $scope.shoppingCartTotal.totalPrice, $scope.shoppingCartTotal.totalShipping, $scope.shoppingCartTotal.totalTax).then(function(result) {
+    CheckoutService.placeOrder($scope.shoppingCartGroups.shoppingCartProductGroups, cartId, productTwotapIdMap, $scope.noauthCheckout, $scope.shoppingCartTotal.totalPrice, $scope.shoppingCartTotal.totalShipping, $scope.shoppingCartTotal.totalTax).then(function(result) {
       hideLoadingSpinner();
       if (result.data.payload.TWOTAP_PURCHASE_RESPONSE.message == 'still_processing') {
         localStorageService.remove('shoppingCart');

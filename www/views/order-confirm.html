@@ -7,10 +7,65 @@
     </div>
   </div>
   <div class="container order-confirm">
-    <div class="checkout-error-msg" ng-if="checkoutErrorMsg.enabled">
-      <span>{{checkoutErrorMsg.description}}</span>
+    <div class="shipping-and-billing">
+      <div class="span6">
+        <div class="shipping-billing-detail">
+          <table>
+            <thead>
+              <tr>
+                <th>Shipping Address</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{noauthCheckout.shippingFirstName}}&nbsp;{{noauthCheckout.shippingLastName}}</td>
+              </tr>
+              <tr>
+                <td>{{noauthCheckout.shippingAddress}}</td>
+              </tr>
+              <tr>
+                <td>{{noauthCheckout.shippingCity}}</td>
+              </tr>
+              <tr>
+                <td>{{noauthCheckout.shippingState}}</td>
+              </tr>
+              <tr>
+                <td>{{noauthCheckout.shippingZip}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="span6">
+        <div class="shipping-billing-detail">
+          <table>
+            <thead>
+              <tr>
+                <th>Billing Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>{{noauthCheckout.cardType}}</strong> with last four digits <strong>{{noauthCheckout.cardNumber.substr(noauthCheckout.cardNumber.length-4)}}</strong></td>
+              </tr>
+              <tr>
+                <td>{{noauthCheckout.cardName}}</td>
+              </tr>
+              <tr>
+                <td>{{noauthCheckout.billingAddress}}</td>
+              </tr>
+              <tr>
+                <td>{{noauthCheckout.billingCity}}</td>
+              </tr>
+              <tr>
+                <td>{{noauthCheckout.billingState}}&nbsp;{{noauthCheckout.billingZip}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-    <div>
+    <div class="span12">
       <div ng-repeat="productsGroup in shoppingCartGroups.shoppingCartProductGroups" class="cart-products-group">
         <div class="item-title">
           <div class="seller-name">
@@ -21,7 +76,7 @@
           <div class="item">
             <div class="item-detail">
               <div class="product-image">
-                <div class="item item-image" ng-click="productDetail(cartProduct)">
+                <div class="item-image" ng-click="productDetail(cartProduct)">
                   <img ng-src="{{cartProduct.product.imageURL}}">
                 </div>
               </div>
@@ -48,28 +103,28 @@
         </div>
         <div class="item-summary">
           <div class="row item-expense">
-            <div class="col col-67 calm">SUBTOTAL</div>
-            <div class="col col-33 font-grey">{{productsGroup.subTotal | currency}}</div>
+            <div class="col col-50 calm">SUBTOTAL</div>
+            <div class="col col-50 font-grey">{{productsGroup.subTotal | currency}}</div>
           </div>
           <div class="row item-expense">
-            <div class="col col-67 calm">EST. TAX</div>
-            <div class="col col-33 font-grey">{{productsGroup.estimatedTax | currency}}</div>
+            <div class="col col-50 calm">EST. TAX</div>
+            <div class="col col-50 font-grey">{{productsGroup.estimatedTax | currency}}</div>
           </div>
           <div class="row item-expense item-shipping">
             <div class="col col-50 calm">EST. SHIPPING</div>
             <div class="col col-50 font-grey">{{productsGroup.estimatedShippingPrice | currency}}</div>
           </div>
-          <div class="row item-delivery">
+          <div class="row item-expense item-delivery">
             <div class="col col-50 calm">EST. DELIVERY DAYS</div>
             <div class="col col-50 font-grey">{{productsGroup.estimatedDeliveryDays.cheapest}}</div>
           </div>
-          <div class="row item-return">
-            <div class="col col-33 calm">RETURN & REFUND</div>
-            <div class="col col-67 font-grey">*Order will be fulfilled by {{productsGroup.seller.name}}. Please refer to {{productsGroup.seller.name}} return & refund policy.</div>
+          <div class="row item-expense item-return">
+            <div class="col col-50 calm">RETURN & REFUND</div>
+            <div class="col col-50 font-grey">*Order will be fulfilled by {{productsGroup.seller.name}}. Please refer to {{productsGroup.seller.name}} return & refund policy.</div>
           </div>
-          <div class="row item-total">
-            <div class="col col-75 font-grey">TOTAL ({{productsGroup.shoppingCartProducts.length}} <span ng-if="productsGroup.shoppingCartProducts.length == 1">ITEM</span><span ng-if="productsGroup.shoppingCartProducts.length > 1">ITEMS</span>)</div>
-            <div class="col col-25 calm">{{productsGroup.totalPrice | currency}}</div>
+          <div class="row item-expense item-delivery">
+            <div class="col col-50 font-grey">TOTAL ({{productsGroup.shoppingCartProducts.length}} <span ng-if="productsGroup.shoppingCartProducts.length == 1">ITEM</span><span ng-if="productsGroup.shoppingCartProducts.length > 1">ITEMS</span>)</div>
+            <div class="col col-50 calm">{{productsGroup.totalPrice | currency}}</div>
           </div>
         </div>
       </div>
@@ -106,6 +161,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="span12 checkout-error-msg" ng-if="checkoutErrorMsg.enabled">
+      <span>{{checkoutErrorMsg.description}}</span>
     </div>
   </div>
 </div>
