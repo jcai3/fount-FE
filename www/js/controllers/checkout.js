@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('CheckoutCtrl', ['$scope', '$state', '$timeout', 'UtilityService', 'AddressService', 'OrderCommissionService', 'localStorageService', 'TwoTapService', function($scope, $state, $timeout, UtilityService, AddressService, OrderCommissionService, localStorageService, TwoTapService) {
+.controller('CheckoutCtrl', ['$scope', '$state', '$timeout', 'UtilityService', 'AddressService', 'ReviewOrderService', 'OrderCommissionService', 'localStorageService', 'TwoTapService', function($scope, $state, $timeout, UtilityService, AddressService, ReviewOrderService, OrderCommissionService, localStorageService, TwoTapService) {
   var apiLocker = false;
 
   // var paymentInfo = {
@@ -160,6 +160,7 @@ angular.module('sywStyleXApp')
       if (UtilityService.validateResult(result)) {
         if (addr.type == 'SHIPPING') {
           $scope.invalidAddress.shipping = false;
+          // ReviewOrderService.setPrimaryAddress($scope.shippingAddress);
         }
         if (addr.type == 'BILLING') {
           $scope.invalidAddress.billing = false;
@@ -167,6 +168,8 @@ angular.module('sywStyleXApp')
 
         if (($scope.checkboxModel.differentToBillingAddress === false && addr.type == 'BILLING') ||
           $scope.checkboxModel.differentToBillingAddress === true && $scope.invalidAddress.shipping == false && $scope.invalidAddress.billing == false) {
+            localStorageService.set('shippingAddress', $scope.shippingAddress);
+            setPaymentInfo($scope.billingAddress, $scope.creditCardInfo);
             goToOrderConfirm();
         }
       } else {
@@ -185,20 +188,26 @@ angular.module('sywStyleXApp')
     $state.go('order-confirm');
   };
 
-  var setPrimaryAddress = function(address) {
-    var primaryAddress = {
-      type: 'SHIPPING',
-      id: address.id,
-      name: address.name,
-      line1: address.line1,
-      city: address.city,
-      state: address.state,
-      zip: address.zip,
-      phone: address.phone
+  var setPaymentInfo = function(billingAddress, creditCardInfo) {
+    var paymentInfo = {
+      type: 'BILLING',
+      firstName: billingAddress.firstName,
+      lastName: billingAddress.lastName,
+      line1: billingAddress.line1,
+      city: billingAddress.city,
+      state: billingAddress.state,
+      zip: billingAddress.zip,
+      phone: billingAddress.phone,
+      cardType: creditCardInfo.type,
+      cardNumber: creditCardInfo.number,
+      cardExp: creditCardInfo.expiration,
+      cardCVV: creditCardInfo.cvv,
+      cardName: creditCardInfo.name
     };
 
-    ReviewOrderService.setPrimaryAddress(primaryAddress);
-    console.log(ReviewOrderService.getPrimaryAddress());
+    // ReviewOrderService.setPaymentInfo(paymentInfo);
+    localStorageService.set('paymentInfo', paymentInfo);
+
   };
 
   var savePaymentInfo = function() {

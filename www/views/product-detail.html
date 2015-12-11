@@ -25,11 +25,11 @@
                       <div class="summary-top clearfix">
                         <div itemprop="offers" itemscope="">
                           <p itemprop="price" class="price">
-                            <del ng-if="productDetail.xapp.price < productDetail.xapp.retailPrice">
-                              <span class="amount">{{productDetail.xapp.retailPrice | currency}}</span>
+                            <del ng-if="productDetail.xapp.price > productDetail.xapp.finalPrice">
+                              <span class="amount">{{productDetail.xapp.price | currency}}</span>
                             </del>
                             <ins>
-                              <span class="amount">{{productDetail.xapp.price | currency}}</span>
+                              <span class="amount">{{productDetail.xapp.finalPrice | currency}}</span>
                             </ins>
                           </p>
                           <!-- <meta itemprop="priceCurrency" content="GBP">

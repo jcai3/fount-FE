@@ -2,11 +2,13 @@
 
 angular.module('sywStyleXApp')
 .controller('OrderConfirmCtrl', ['$scope', '$state', '$timeout', 'localStorageService', 'UtilityService', 'TwoTapService', 'CheckoutService', 'CartService', 'ReviewOrderService', function($scope, $state, $timeout, localStorageService, UtilityService, TwoTapService, CheckoutService, CartService, ReviewOrderService) {
-  var shippingAddress = ReviewOrderService.getPrimaryAddress();
-  var paymentInfo = ReviewOrderService.getPaymentInfo();
+  // var shippingAddress = ReviewOrderService.getPrimaryAddress();
+  // var paymentInfo = ReviewOrderService.getPaymentInfo();
+  var shippingAddress = localStorageService.get('shippingAddress');
+  var paymentInfo = localStorageService.get('paymentInfo');
 
   var cartId = '';
-  var cartProductIds = [];
+  var cartProductIds = localStorageService.get('cartProductIds');
   var affiliateLinks = [];
   var twotapProductUrls = [];
   var productTwotapIdMap = {};
@@ -17,28 +19,29 @@ angular.module('sywStyleXApp')
 
   var noauthCheckout = {
     billingAddressId: '',
-    billingAddress: paymentInfo.billing_address,
-    billingCity: paymentInfo.billing_city,
-    billingCountry: paymentInfo.billing_country,
-    billingFirstName: paymentInfo.billing_firstName,
-    billingLastName: paymentInfo.billing_lastName,
-    billingState: paymentInfo.billing_state,
-    billingTelephone: paymentInfo.billing_telephone,
+    billingAddress: paymentInfo.line1,
+    billingCity: paymentInfo.city,
+    billingCountry: 'United States of America',
+    billingFirstName: paymentInfo.firstName,
+    billingLastName: paymentInfo.lastName,
+    billingState: paymentInfo.state,
+    billingTelephone: paymentInfo.phone,
     billingTitle: 'default',
-    billingZip: paymentInfo.billing_zip,
-    cardName: paymentInfo.card_name,
-    cardNumber: paymentInfo.card_number,
-    cardType: paymentInfo.card_type,
-    cvv: paymentInfo.cvv,
+    billingZip: paymentInfo.zip,
+    cardName: paymentInfo.cardName,
+    cardNumber: paymentInfo.cardNumber,
+    cardType: paymentInfo.cardType,
+    cvv: paymentInfo.cardCVV,
     email: 'test@test.com',
-    expiryDateMonth: paymentInfo.expiry.split('/')[0],
-    expiryDateYear: paymentInfo.expiry.split('/')[1],
-    shippingAddressId: shippingAddress.id,
+    expiryDateMonth: paymentInfo.cardExp.split('/')[0],
+    expiryDateYear: paymentInfo.cardExp.split('/')[1],
+    // shippingAddressId: shippingAddress.id,
+    shippingAddressId: '',
     shippingAddress: shippingAddress.line1,
     shippingCity: shippingAddress.city,
     shippingCountry: 'United States of America',
-    shippingFirstName: shippingAddress.name.split(' ')[0],
-    shippingLastName: shippingAddress.name.split(' ')[1],
+    shippingFirstName: shippingAddress.firstName,
+    shippingLastName: shippingAddress.lastName,
     shippingState: shippingAddress.state,
     shippingTelephone: shippingAddress.phone,
     shippingTitle: 'default',
@@ -104,6 +107,11 @@ angular.module('sywStyleXApp')
     $ionicLoading.hide();
   };
 
+  $scope.checkoutErrorMsg = {
+    description: '',
+    enabled: false
+  };
+
   $scope.backToHome = function() {
     $state.go('payment');
   };
@@ -112,14 +120,6 @@ angular.module('sywStyleXApp')
     placeOrder();
   };
 
-  $scope.$on('$ionicView.enter', function() {
-    cartProductIds = localStorageService.get('cartProductIds');
-    $scope.checkoutErrorMsg = {
-      description: '',
-      enabled: false
-    };
-
-    getCartProducts();
-  });
+  getCartProducts();
 
 }]);
