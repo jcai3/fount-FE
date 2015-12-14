@@ -46,6 +46,11 @@ angular.module('sywStyleXApp', [
       templateUrl: 'views/order-complete.html',
       controller: 'OrderCompleteCtrl'
     })
+    .state('forward-seller', {
+      url: '/forward-seller',
+      templateUrl: 'forward-sellerWeb.html',
+      controller: 'ForwardSellerWebCtrl'
+    })
     .state('product', {
       url: '/product/{productId}',
       templateUrl: 'views/product-detail.html',

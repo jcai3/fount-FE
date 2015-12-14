@@ -23,6 +23,11 @@
                     </div>
                     <div class="summary entry-summary">
                       <div class="summary-top clearfix">
+                        <div class="product-short">
+                          <p>{{productDetail.xapp.name}}</p>
+                          <p><strong>{{productDetail.xapp.brandName}}</strong></p>
+                        </div>
+
                         <div itemprop="offers" itemscope="">
                           <p itemprop="price" class="price">
                             <del ng-if="productDetail.xapp.price > productDetail.xapp.finalPrice">
@@ -36,19 +41,18 @@
                           <link itemprop="availability" href="http://schema.org/InStock"> -->
                         </div>
                       </div>
-                      <div class="product-short">
-                      </div>
+
                       <form class="cart" >
                         <div class="quantity">
-                          <input type="number" step="1" min="1" name="quantity" value="{{productQuantity}}" title="Qty" class="input-text qty text" size="4">
-                          <div class="qty-adjust">
+                          <input type="number" step="1" min="1" name="quantity" value="{{productQuantity}}" title="Qty" class="input-text qty text" size="4" disabled="true">
+                          <!-- <div class="qty-adjust">
                             <a class="qty-plus" ng-click="quantityPlus()">
                               <i class="fa-chevron-up"></i>
                             </a>
                             <a class="qty-minus" ng-click="quantityMinus()">
                               <i class="fa-chevron-down"></i>
                             </a>
-                          </div>
+                          </div> -->
                         </div>
                         <!-- <input type="hidden" name="add-to-cart" value="9356"> -->
                         <button ng-click="addItemToCart()" ng-disabled="addToCartDisabled" ng-if="!variableObj.buyOnSellerSite" ng-class="{'buttonDisabled' : addToCartDisabled}" class="single_add_to_cart_button"><i class="fa-plus"></i>Add to shopping bag</button>
@@ -210,7 +214,74 @@
                             </div>
                           </div>
                         </div>
+                        <div class="accordion-group">
+                          <div class="accordion-heading">
+                            <a class="accordion-toggle">Review</a>
+                          </div>
+                        </div>
                       </div>
+
+                      <div class="product_meta">
+                        <p>
+                          <span class="sku_wrapper">SKU: <span class="sku" itemprop="sku">123456789</span> - </span>
+                          <span class="need-help">Need Help? <a class="inline" data-toggle="modal">Contact Us</a></span>
+                          <span class="leave-feedback"><a class="inline" data-toggle="modal">Leave Feedback</a></span>
+                        </p>
+                        <p>
+                          <span class="posted_in">Categories: <a rel="tag">xxx</a>, <a rel="tag">xxx</a>.</span>
+                        </p>
+                        <p>
+                          <span class="tagged_as">Tags: <a rel="tag">xxx</a>, <a rel="tag">xxx</a>.</span>
+                        </p>
+                        <div id="email-form" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="email-form-modal" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa-times"></i></button>
+                                <h3 id="email-form-modal">Contact Us</h3>
+                              </div>
+                              <div class="modal-body">
+                                Enter your contact details or email form shortcode here. (Text/HTML/Shortcodes accepted).
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="feedback-form" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="feedback-form-modal" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa-times"></i></button>
+                                <h3 id="feedback-form-modal">Leave Feedback</h3>
+                              </div>
+                              <div class="modal-body">
+                                Enter your feedback modal content here. (Text/HTML/Shortcodes accepted).
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="product-share share-links clearfix">
+                        <span>Share</span>
+                        <ul>
+                          <li>
+                            <a class="product_share_email"><i class="fa-envelope"></i></a>
+                          </li>
+                          <li>
+                            <a class="product_share_facebook"><i class="fa-facebook"></i></a>
+                          </li>
+                          <li>
+                            <a class="product_share_twitter"><i class="fa-twitter"></i></a>
+                          </li>
+                          <li>
+                            <a><i class="fa-google-plus"></i></a>
+                          </li>
+                          <li>
+                            <a class="product_share_pinterest"><i class="fa-pinterest"></i></a>
+                          </li>
+                        </ul>
+                      </div>
+
                     </div>
                   </div>
                   <div class="container product-after-wrap">

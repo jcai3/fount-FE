@@ -694,7 +694,8 @@ angular.module('sywStyleXApp')
     console.log($scope.productDetail);
     // window.open("https://www.ssense.com");
     // UtilityService.openSellerSite('https://www.ssense.com', 'ssense'); // first arg is buy url, second is title
-    $state.go('forward-seller');
+    // $state.go('forward-seller');
+    window.open(UtilityService.cjProductUrlParser($scope.productDetail.xapp.affiliateURL), '_blank');
   }
 
   if (!!localStorageService.get('productDetail')) {
