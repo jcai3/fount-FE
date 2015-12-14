@@ -84,7 +84,7 @@ angular.module('sywStyleXApp')
         localStorageService.remove('productDetail');
         localStorageService.remove('trackHistory');
         localStorageService.remove('filteredProductsHasMoreData');
-        // $state.go('order-complete');
+        $state.go('order-complete');
       } else {
         $scope.checkoutErrorMsg = {
           description: result.data.payload.TWOTAP_PURCHASE_RESPONSE.description,
