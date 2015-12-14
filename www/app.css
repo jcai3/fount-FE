@@ -360,3 +360,13 @@ abbr[title], abbr[data-original-title] {
 .order-confirm .span12 .place-order-btn .button {
   padding: 10px 20px;
 }
+.order-complete {
+  text-align: left;
+}
+.order-complete .back-to-shop {
+  padding: 20px;
+  margin-bottom: 30px;
+}
+.order-complete .back-to-shop .button {
+  padding: 10px 20px;
+}
