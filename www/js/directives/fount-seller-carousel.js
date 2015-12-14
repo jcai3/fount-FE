@@ -44,7 +44,7 @@ angular.module('sywStyleXApp')
 
         $timeout(function(){
           element.find('#seller-carousel').css('height', '35px').carouFredSel(settings);
-        }, 500);
+        }, 1000);
       };
 
       scope.setTopSellerId = function(id) {

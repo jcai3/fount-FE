@@ -72,6 +72,8 @@ angular.module('sywStyleXApp')
     CheckoutService.placeOrder($scope.shoppingCartGroups.shoppingCartProductGroups, cartId, productTwotapIdMap, $scope.noauthCheckout, $scope.shoppingCartTotal.totalPrice, $scope.shoppingCartTotal.totalShipping, $scope.shoppingCartTotal.totalTax).then(function(result) {
       hideLoadingSpinner();
       if (result.data.payload.TWOTAP_PURCHASE_RESPONSE.message == 'still_processing') {
+        localStorageService.remove('shippingAddress');
+        localStorageService.remove('paymentInfo');
         localStorageService.remove('shoppingCart');
         localStorageService.remove('shoppingCartId');
         localStorageService.remove('shoppingCartInfo');
@@ -82,7 +84,7 @@ angular.module('sywStyleXApp')
         localStorageService.remove('productDetail');
         localStorageService.remove('trackHistory');
         localStorageService.remove('filteredProductsHasMoreData');
-        $state.go('order-complete');
+        // $state.go('order-complete');
       } else {
         $scope.checkoutErrorMsg = {
           description: result.data.payload.TWOTAP_PURCHASE_RESPONSE.description,
