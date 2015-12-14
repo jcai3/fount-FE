@@ -30,9 +30,9 @@
               <img class="standard" src="img/spree-logo.png" alt="Fount">
               <img class="retina" src="img/spree-logo.png" alt="Fount">
             </a>
-            <a class="hidden-desktop show-main-nav"><i class="fa-align-justify"></i></a>
-            <a class="hidden-desktop mobile-cart-link"><i class="sf-cart"></i></a>
-            <a class="hidden-desktop mobile-search-link"><i class="fa-search"></i></a>
+            <!-- <a class="hidden-desktop show-main-nav"><i class="fa-align-justify"></i></a> -->
+            <a ng-click="goToCart()" class="hidden-desktop mobile-cart-link"><i class="sf-cart"></i></a>
+            <a ng-click="searchObj.showSearchBar = !searchObj.showSearchBar" class="hidden-desktop mobile-search-link"><i class="fa-search"></i></a>
           </div>
           <div class="header-right span4">
             <nav class="std-menu header-menu">
@@ -56,7 +56,9 @@
         </div>
       </div>
     </header>
-    <form method="get" class="mobile-search-form container" action=""><input type="text" placeholder="Search" name="s" autocomplete="off"></form>
+    <form ng-show="searchObj.showSearchBar" class="mobile-search-form container">
+      <input ng-model="searchObj.keyword" ng-keyup="searchProducts()" type="text" placeholder="Search" name="s" autocomplete="off">
+    </form>
     <div id="main-nav">
       <div class="container">
         <div class="row">
@@ -78,7 +80,21 @@
             <nav class="std-menu">
               <ul class="menu">
                 <li fount-search></li>
-                <li fount-bag shopping-cart-info="shoppingCartInfo"></li>
+                <!-- <li fount-bag shopping-cart-info="shoppingCartInfo"></li> -->
+                <li class="fount-bag parent shopping-bag-item">
+                  <a ng-click="goToCart()" ng-mouseover="" ng-mouseout="" class="cart-contents" title="View your shopping bag"><i class="sf-cart"></i><span class="amount">{{shoppingCartInfo.subtotal | currency}}</span></a>
+                  <!-- <ul ng-show="bagObj.showBagView" class="sub-menu">
+                    <li>
+                      <div class="shopping-bag">
+                        <div class="bag-header">0 items in the shopping bag</div>
+                        <div class="bag-empty">Unfortunately, your shopping bag is empty.</div>
+                        <div class="bag-buttons">
+                          <a class="sf-roll-button shop-button"><span>Go to the shop</span><span>Go to the shop</span></a>
+                        </div>
+                      </div>
+                    </li>
+                  </ul> -->
+                </li>
                 <!-- <li fount-sfl></li> -->
               </ul>
             </nav>

@@ -44,7 +44,7 @@ angular.module('sywStyleXApp')
 
       };
 
-      var getProductsFromCart = function() {
+      var updateProductsFromCart = function() {
         shoppingCartDict = {};
         var userId = localStorageService.get('userId');
         CartService.getProductsFromCart(userId, true).success(function(response) {
@@ -73,7 +73,7 @@ angular.module('sywStyleXApp')
 
       scope.goToCart = function() {
         // $state.go('cart');
-        getProductsFromCart();
+        updateProductsFromCart();
       };
 
       scope.toggleSearchBar = function() {

@@ -118,9 +118,9 @@
 
 @media only screen and (min-width: 768px) {
 
-	.mobile-search-form {
+	/*.mobile-search-form {
 		display: none!important;
-	}
+	}*/
 
 }
 
@@ -170,6 +170,17 @@
 /* --------------------------------------------
 	iPAD/TABLET PORTRAIT
 -------------------------------------------- */
+
+@media (max-width: 979px) and (min-width: 768px) {
+	[class*="span3"] {
+		display: block;
+		float: none;
+		width: 100%;
+		margin-left: 0;
+		box-sizing: border-box;
+	}
+}
+
 @media only screen and (max-width: 980px) {
 	#main-nav {
 		display: block;
@@ -177,6 +188,24 @@
 }
 
 @media only screen and (max-width: 979px) {
+
+	.header-right > nav:first-child, .header-2 .header-right, .header-3 .header-left, .header-3 .header-right, .header-1 .header-left, .header-1 .header-right, .header-5 .header-left > nav {
+		display: none;
+	}
+
+	#logo {
+		margin: 10px 20px 5px;
+		float: none!important;
+		width: auto;
+	}
+	#logo a:first-child {
+		float: left;
+	}
+	#logo img {
+		margin: 0 auto;
+		padding: 0!important;
+		float: none!important;
+	}
 
 	/* LAYOUT */
 	.boxed-layout {

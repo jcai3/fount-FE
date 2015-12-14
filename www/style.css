@@ -2455,7 +2455,6 @@ nav .menu .wishlist-item ul.sub-menu li:first-child:before {
 }
 #header-section .mobile-search-form {
 	margin: 10px 20px;
-	display: none;
 }
 #header-section .mobile-search-form input {
 	width: 100%;
