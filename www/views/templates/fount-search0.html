@@ -1,0 +1,25 @@
+<li class="fount-search menu-search no-hover parent">
+  <a ng-click="searchObj.showSearchBar = !searchObj.showSearchBar"><i class="fa-search"></i></a>
+  <ul ng-show="searchObj.showSearchBar" class="sub-menu">
+    <li>
+      <div class="ajax-search-wrap">
+        <div class="ajax-loading"></div>
+        <form class="search-form">
+          <input ng-model="searchObj.keyword" ng-keyup="searchProducts()" type="text" placeholder="Search" name="s" autocomplete="off">
+        </form>
+        <div ng-show="searchObj.results.COUNT>0" class="ajax-search-results">
+          <div class="search-result-pt">
+            <div ng-repeat="product in searchObj.results.PRODUCTS" ng-click="productDetail(product)" class="search-result">
+              <div class="search-item-img"><a><img width="150" height="150" ng-src="{{product.imageURL}}" class="attachment-thumbnail wp-post-image"></a>
+              </div>
+              <div class="search-item-content">
+                <h5><a>{{product.name}}</a></h5>
+              </div>
+            </div>
+          </div>
+          <span class="all-results" ng-click="goToSearchResults()">View all {{searchObj.results.COUNT}} results</span>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li>

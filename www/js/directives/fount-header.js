@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.directive('fountHeader', ['$rootScope', '$state', 'localStorageService', 'CartService', 'ProductSearchService', 'UtilityService', function($rootScope, $state, localStorageService, CartService, ProductSearchService, UtilityService) {
+.directive('fountHeader', ['$rootScope', '$state', 'localStorageService', 'CartService', 'ProductSearchService', 'PublicProfileService', 'UtilityService', function($rootScope, $state, localStorageService, CartService, ProductSearchService, PublicProfileService, UtilityService) {
   return {
     restrict: 'A',
     replace: true,
@@ -30,6 +30,25 @@ angular.module('sywStyleXApp')
           showSearchBar: false,
           results: {}
         };
+      };
+
+      var getProfileDetails = function() {
+        var userId = localStorageService.get('userId');
+        PublicProfileService.getPublicProfile(userId).then(function(response){
+          if (UtilityService.validateResult(response)) {
+            console.log(response);
+            var publicProfileObj = response.data.payload;
+            var profileDisplayName = !!publicProfileObj.USER.USER.userProfile.instagramFullName ? publicProfileObj.USER.USER.userProfile.instagramFullName : publicProfileObj.USER.USER.displayName;
+            scope.profileDisplayName = UtilityService.emojiParse(profileDisplayName.toUpperCase());
+            scope.publicProfilePicture = !!publicProfileObj.USER.USER.userProfile.instagramProfilePicture ? publicProfileObj.USER.USER.userProfile.instagramProfilePicture : '';
+            scope.totalPosts = publicProfileObj.USER_POSTS_COUNT[userId];
+            scope.totalProducts = publicProfileObj.USER_PRODUCTS_COUNT[userId];
+            scope.totalFollowing = publicProfileObj.USER_FOLLOWING_COUNT[userId];
+            scope.totalFollowers = publicProfileObj.USER_FOLLOWER_COUNT[userId];
+          } else {
+            console.log('error');
+          }
+        });
       };
 
       scope.searchObj = {
@@ -153,6 +172,8 @@ angular.module('sywStyleXApp')
       } else {
         scope.isLoggedIn = true;
         getProductsFromCart();
+        getProfileDetails();
+
       }
 
       $rootScope.$on('event.updateShoppingCart', function(event, data) {

@@ -1,64 +1,42 @@
-<div class="fount-header header-wrap">
-  <div id="top-bar" class="tb-1">
-    <!-- <div class="tb-ss hidden-desktop">
-      <div class="tb-text">
-        <a class="swift-search-link" href="#"><i class="fa-search-plus"></i><span>Personal Shopper</span></a>
-      </div>
-    </div> -->
+<div class="fount-header">
+  <!-- <div class="container"> -->
+  <nav class="navbar navbar-default">
     <div class="container">
-      <div class="row">
-        <div class="tb-left span6 clearfix">
-          <div class="tb-text clearfix">Fount it</div>
+      <div class="fount-logo">
+        <img src="img/spree-logo.png" alt="Fount">
+      </div>
+      <div class="fount-menu-btns">
+        <span ng-click="goToTrending()">TRENDING</span>
+        <span ng-click="goToFeed()">FEED</span>
+        <span ng-click="goToOnSale()">ON SALE</span>
+        <span ng-click="goToNewArrivals()">NEW ARRIVALS</span>
+      </div>
+      <div class="fount-search-bar">
+        <div fount-search></div>
+      </div>
+      <div ng-show="isLoggedIn" class="fount-header-right">
+        <div ng-click="goToCart()" class="fount-shopping-bag">
+          <i class="sf-cart"></i><span class="amount">{{shoppingCartInfo.subtotal | currency}}</span>
+        </div>
+        <div class="fount-profile-section">
+          <div class="fount-user-avatar">
+            <img ng-src="{{publicProfilePicture}}">
+          </div>
+          {{username}}
+        </div>
+      </div>
+      <div ng-show="!isLoggedIn" class="fount-header-right">
+        <div class="fount-shopping-bag">
+          <i class="sf-cart"></i>
+        </div>
+        <div class="fount-profile-section">
+          login
         </div>
       </div>
     </div>
-  </div>
-  <div id="header-section" class="header-1 logo-fade">
-    <header id="header" class="clearfix">
-      <div class="container">
-        <div class="header-row row">
-          <div class="header-left span4">
-            <nav class="std-menu header-menu">
-              <ul class="menu">
-                <li ng-show="isLoggedIn" class="tb-welcome">Welcome {{username}}</li>
-                <!-- <li class="hs-woo-custom clearfix"><a class="swift-search-link"><span></span></a></li> -->
-              </ul>
-            </nav>
-          </div>
-          <div id="logo" class="span4 logo-center clearfix">
-            <a class="logo-link">
-              <img class="standard" src="img/spree-logo.png" alt="Fount">
-              <img class="retina" src="img/spree-logo.png" alt="Fount">
-            </a>
-            <!-- <a class="hidden-desktop show-main-nav"><i class="fa-align-justify"></i></a> -->
-            <a ng-click="goToCart()" class="hidden-desktop mobile-cart-link"><i class="sf-cart"></i></a>
-            <a ng-click="searchObj.showSearchBar = !searchObj.showSearchBar" class="hidden-desktop mobile-search-link"><i class="fa-search"></i></a>
-          </div>
-          <div class="header-right span4">
-            <nav class="std-menu header-menu">
-              <ul class="menu">
-                <li class="parent aux-languages">
-                  <a href="#"><span class="language name">English</span></a>
-                  <ul id="header-languages" class="sub-menu" style="display: none;">
-                    <li><a href="#">DEMO - EXAMPLE PURPOSES</a></li>
-                    <li><a href="#"><span class="language name">German</span></a></li>
-                    <li><div class="current-language"><span class="language name">English</span></div></li>
-                    <li><a href="#"><span class="language name">Spanish</span></a></li>
-                    <li><a href="#"><span class="language name">French</span></a></li>
-                  </ul>
-                </li>
-                <li fount-login>
-                </li>
-                <li ng-show="isLoggedIn"><a>My Account</a></li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </header>
-    <form ng-show="searchObj.showSearchBar" class="mobile-search-form container">
-      <input ng-model="searchObj.keyword" ng-keyup="searchProducts()" type="text" placeholder="Search" name="s" autocomplete="off">
-    </form>
+  </nav>
+
+
     <div id="main-nav">
       <div class="container">
         <div class="row">
@@ -66,9 +44,6 @@
             <nav id="main-navigation" class="std-menu clearfix">
               <div class="menu-main-menu-container">
                 <ul id="menu-main-menu" class="menu">
-                  <li class="menu-item-9269 menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children sf-std-menu parent">
-                    <a><span class="menu-item-text">Home</span></a>
-                  </li>
                   <li class="menu-item-9282 menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children sf-std-menu parent">
                     <a ng-click="goToShop()"><span class="menu-item-text">Shop</span></a>
                   </li>
@@ -76,31 +51,7 @@
               </div>
             </nav>
           </div>
-          <div class="span3 header-right">
-            <nav class="std-menu">
-              <ul class="menu">
-                <li fount-search></li>
-                <!-- <li fount-bag shopping-cart-info="shoppingCartInfo"></li> -->
-                <li class="fount-bag parent shopping-bag-item">
-                  <a ng-click="goToCart()" ng-mouseover="" ng-mouseout="" class="cart-contents" title="View your shopping bag"><i class="sf-cart"></i><span class="amount">{{shoppingCartInfo.subtotal | currency}}</span></a>
-                  <!-- <ul ng-show="bagObj.showBagView" class="sub-menu">
-                    <li>
-                      <div class="shopping-bag">
-                        <div class="bag-header">0 items in the shopping bag</div>
-                        <div class="bag-empty">Unfortunately, your shopping bag is empty.</div>
-                        <div class="bag-buttons">
-                          <a class="sf-roll-button shop-button"><span>Go to the shop</span><span>Go to the shop</span></a>
-                        </div>
-                      </div>
-                    </li>
-                  </ul> -->
-                </li>
-                <!-- <li fount-sfl></li> -->
-              </ul>
-            </nav>
-          </div>
         </div>
       </div>
     </div>
-  </div>
 </div>

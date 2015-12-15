@@ -2213,7 +2213,7 @@ nav .menu > li.shopping-bag-item ul.sub-menu {
 	display: none;
 }
 .ajax-search-results {
-	border-top: 1px solid #e3e3e3;
+	border: 1px solid #e3e3e3;
 }
 .search-result-pt {
 	max-height: 350px;
