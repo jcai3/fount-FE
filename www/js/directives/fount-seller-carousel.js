@@ -43,7 +43,7 @@ angular.module('sywStyleXApp')
         };
 
         $timeout(function(){
-          element.find('#seller-carousel').css('height', '35px').carouFredSel(settings);
+          element.find('#seller-carousel').carouFredSel(settings);
         }, 1000);
       };
 
@@ -57,6 +57,10 @@ angular.module('sywStyleXApp')
       };
 
       initializeSellerCarousel();
+
+      $rootScope.$on('event.setTopFilter', function(event, data) {
+        initializeSellerCarousel();
+      });
     }
   };
 }]);

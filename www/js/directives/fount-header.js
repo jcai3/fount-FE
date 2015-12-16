@@ -10,6 +10,7 @@ angular.module('sywStyleXApp')
     link: function(scope, element, attrs) {
       var shoppingCartDict = {};
       scope.isLoggedIn = false;
+      scope.topFilter = '';
 
       var filterParams = {
         sellerIds: [],
@@ -70,8 +71,17 @@ angular.module('sywStyleXApp')
         }
       };
 
-      scope.goToShop = function() {
-        $state.go('shop');
+      // scope.goToShop = function() {
+      //   $state.go('shop');
+      // };
+
+      scope.setTopFilter = function(filter) {
+        if (scope.topFilter == filter) {
+          return;
+        }
+
+        scope.topFilter = filter;
+        $rootScope.$emit('event.setTopFilter', {filter: filter});
       };
 
       if (!!localStorageService.get('shoppingCartInfo')) {
@@ -175,6 +185,8 @@ angular.module('sywStyleXApp')
         getProfileDetails();
 
       }
+
+      scope.setTopFilter('SALE');
 
       $rootScope.$on('event.updateShoppingCart', function(event, data) {
         scope.shoppingCartInfo = {

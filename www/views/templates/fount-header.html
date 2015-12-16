@@ -6,10 +6,10 @@
         <img src="img/spree-logo.png" alt="Fount">
       </div>
       <div class="fount-menu-btns">
-        <span ng-click="goToTrending()">TRENDING</span>
-        <span ng-click="goToFeed()">FEED</span>
-        <span ng-click="goToOnSale()">ON SALE</span>
-        <span ng-click="goToNewArrivals()">NEW ARRIVALS</span>
+        <span>TRENDING</span>
+        <span>FEED</span>
+        <span ng-click="setTopFilter('SALE')">ON SALE</span>
+        <span ng-click="setTopFilter('ARRIVALS')">NEW ARRIVALS</span>
       </div>
       <div class="fount-search-bar">
         <div fount-search></div>
@@ -35,7 +35,7 @@
       </div>
     </div>
   </nav>
-
+<!--
 
     <div id="main-nav">
       <div class="container">
@@ -53,5 +53,5 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 </div>

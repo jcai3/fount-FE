@@ -1560,7 +1560,7 @@ a img.aligncenter {
 	position: relative;
 }
 .inner-page-wrap {
-	margin-top: 20px;
+	margin-top: 0px;
 	margin-bottom: 50px;
 }
 .single-portfolio .inner-page-wrap, .inner-page-wrap.no-bottom-spacing {
@@ -4131,7 +4131,7 @@ figure.lightbox {
 }
 .filter-wrap .filter-slide-wrap {
 	margin-top: 0;
-	padding-bottom: 12px;
+	/*padding-bottom: 12px;*/
 }
 .filter-slide-wrap .fount-seller-carousel {
   position: relative;
@@ -9864,7 +9864,7 @@ ul.my-account-nav > li a:before {
 }
 .woocommerce .products ul, .woocommerce ul.products, .woocommerce-page .products ul, .woocommerce-page ul.products {
 	padding-top: 25px;
-	border-top: 1px solid #e4e4e4;
+	/*border-top: 1px solid #e4e4e4;*/
 }
 .woocommerce-account .page-content h2 {
 	border-bottom: 1px solid #ccc;
