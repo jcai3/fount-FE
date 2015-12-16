@@ -431,6 +431,9 @@ abbr[title], abbr[data-original-title] {
 .fount-header .fount-menu-btns span {
   padding: 10px;
 }
+.fount-header .fount-menu-btns span.selected {
+  font-weight: bold;
+}
 .fount-header .fount-search-bar {
   width: 240px;
   display: inline-block;
@@ -512,4 +515,7 @@ abbr[title], abbr[data-original-title] {
 ul.products li.product .price span {
   font-size: 14px;
   margin-right: 5px;
+}
+.fount-shop-page {
+  margin-top: -20px;
 }

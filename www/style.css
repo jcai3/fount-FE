@@ -1560,7 +1560,7 @@ a img.aligncenter {
 	position: relative;
 }
 .inner-page-wrap {
-	margin-top: 0px;
+	margin-top: 20px;
 	margin-bottom: 50px;
 }
 .single-portfolio .inner-page-wrap, .inner-page-wrap.no-bottom-spacing {
@@ -4147,7 +4147,7 @@ figure.lightbox {
 }
 ul#seller-carousel li {
 	display: inline-block;
-	background: none;
+	background: #ffffff;
 }
 #seller-carousel .seller-element {
 	text-align: center;
@@ -4157,8 +4157,8 @@ ul#seller-carousel li {
 	white-space: nowrap;
 }
 #seller-carousel .seller-element.selected {
-	background: #4AC0D1;
-	color: #ffffff;
+	color: #4AC0D1;
+	font-weight: bold;
 }
 .fount-no-products {
 	text-align: center;

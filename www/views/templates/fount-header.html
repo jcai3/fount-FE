@@ -8,8 +8,8 @@
       <div class="fount-menu-btns">
         <span>TRENDING</span>
         <span>FEED</span>
-        <span ng-click="setTopFilter('SALE')">ON SALE</span>
-        <span ng-click="setTopFilter('ARRIVALS')">NEW ARRIVALS</span>
+        <span ng-click="setTopFilter('SALE')" ng-class="{selected: topFilter == 'SALE'}">ON SALE</span>
+        <span ng-click="setTopFilter('ARRIVALS')" ng-class="{selected: topFilter == 'ARRIVALS'}">NEW ARRIVALS</span>
       </div>
       <div class="fount-search-bar">
         <div fount-search></div>

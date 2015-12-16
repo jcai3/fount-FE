@@ -10,7 +10,7 @@ angular.module('sywStyleXApp')
     link: function(scope, element, attrs) {
       var shoppingCartDict = {};
       scope.isLoggedIn = false;
-      scope.topFilter = '';
+      scope.topFilter = 'SALE';
 
       var filterParams = {
         sellerIds: [],
