@@ -75,6 +75,14 @@ angular.module('sywStyleXApp')
       //   $state.go('shop');
       // };
 
+      scope.hoverIn = function() {
+        scope.showCartOverlay = true;
+      };
+
+      scope.hoverOut = function() {
+        scope.showCartOverlay = false;
+      };
+
       scope.setTopFilter = function(filter) {
         if ($state.current.name != 'shop') {
           $state.go('shop');
@@ -101,6 +109,7 @@ angular.module('sywStyleXApp')
       var getProductsFromCart = function() {
         CartService.getProductsFromCart(localStorageService.get('userId'), false).success(function(response) {
           scope.username = response.payload.SHOPPING_CART.user.displayName;
+          scope.fountCartProducts = response.payload.SHOPPING_CART.cartProducts;
           scope.shoppingCartInfo.count = response.payload.SHOPPING_CART.cartProducts.length;
           scope.shoppingCartInfo.subtotal = 0;
           for (var i=0,j=scope.shoppingCartInfo.count; i<j; i++) {
