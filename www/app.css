@@ -470,19 +470,42 @@ abbr[title], abbr[data-original-title] {
 .fount-header .fount-header-right {
   float: right;
   line-height: 17px;
-  margin-right: 20px;
+  margin: 11px 20px 0 0;
 }
-.fount-header .fount-shopping-bag {
+.fount-header .fount-header-right .fount-shopping-bag {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+.fount-header .fount-header-right .fount-shopping-bag span {
+  position: absolute;
+  font-size: 10px;
+  top: 12px;
+  left: 10px;
+}
+.fount-header .fount-header-right .fount-profile-section {
+  display: inline-block;
+  vertical-align: super;
+  cursor: pointer;
+}
+.fount-header .fount-header-right .fount-profile-section .fount-user-avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  border: 1px solid #60C7D6;
+  background-color: white;
   display: inline-block;
 }
-.fount-header .fount-profile-section {
-  display: inline-block;
+.fount-header .fount-header-right .fount-profile-section .fount-user-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  background-color: lightgrey;
 }
 .fount-header i.sf-cart {
-  background: transparent url('img/shopping_bag_icon.png') no-repeat top left;
-  margin-right: 6px;
-  width: 14px;
-  height: 16px;
+  background: transparent url('img/shopping_bag_icon@2x.png') no-repeat top left;
+  width: 28px;
+  height: 32px;
   display: inline-block;
-  vertical-align: -3px;
+  vertical-align: -8px;
 }

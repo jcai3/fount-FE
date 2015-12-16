@@ -16,13 +16,13 @@
       </div>
       <div ng-show="isLoggedIn" class="fount-header-right">
         <div ng-click="goToCart()" class="fount-shopping-bag">
-          <i class="sf-cart"></i><span class="amount">{{shoppingCartInfo.subtotal | currency}}</span>
+          <i class="sf-cart"></i><span class="amount">{{shoppingCartInfo.count}}</span>
         </div>
         <div class="fount-profile-section">
           <div class="fount-user-avatar">
             <img ng-src="{{publicProfilePicture}}">
           </div>
-          {{username}}
+          <span>{{username}}</span>
         </div>
       </div>
       <div ng-show="!isLoggedIn" class="fount-header-right">
