@@ -18,40 +18,21 @@
         <div ng-click="goToCart()" class="fount-shopping-bag">
           <i class="sf-cart"></i><span class="amount">{{shoppingCartInfo.count}}</span>
         </div>
-        <div class="fount-profile-section">
+        <div ng-click="logout()" class="fount-profile-section">
           <div class="fount-user-avatar">
             <img ng-src="{{publicProfilePicture}}">
           </div>
           <span>{{username}}</span>
         </div>
       </div>
-      <div ng-show="!isLoggedIn" class="fount-header-right">
+      <div ng-click="login()" ng-show="!isLoggedIn" class="fount-header-right">
         <div class="fount-shopping-bag">
           <i class="sf-cart"></i>
         </div>
         <div class="fount-profile-section">
-          login
+          <span>login</span>
         </div>
       </div>
     </div>
   </nav>
-<!--
-
-    <div id="main-nav">
-      <div class="container">
-        <div class="row">
-          <div class="span9">
-            <nav id="main-navigation" class="std-menu clearfix">
-              <div class="menu-main-menu-container">
-                <ul id="menu-main-menu" class="menu">
-                  <li class="menu-item-9282 menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children sf-std-menu parent">
-                    <a ng-click="goToShop()"><span class="menu-item-text">Shop</span></a>
-                  </li>
-                </ul>
-              </div>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </div> -->
 </div>

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.directive('fountHeader', ['$rootScope', '$state', 'localStorageService', 'CartService', 'ProductSearchService', 'PublicProfileService', 'UtilityService', function($rootScope, $state, localStorageService, CartService, ProductSearchService, PublicProfileService, UtilityService) {
+.directive('fountHeader', ['$rootScope', '$state', 'localStorageService', 'CartService', 'ProductSearchService', 'PublicProfileService', 'LoginRegisterService', 'InstagramService', 'UtilityService', function($rootScope, $state, localStorageService, CartService, ProductSearchService, PublicProfileService, LoginRegisterService, InstagramService, UtilityService) {
   return {
     restrict: 'A',
     replace: true,
@@ -76,7 +76,12 @@ angular.module('sywStyleXApp')
       // };
 
       scope.setTopFilter = function(filter) {
-        if (scope.topFilter == filter) {
+        if ($state.current.name != 'shop') {
+          $state.go('shop');
+          return;
+        }
+
+        if (scope.topFilter == filter && $state.current.name == 'shop') {
           return;
         }
 
@@ -185,6 +190,32 @@ angular.module('sywStyleXApp')
         getProfileDetails();
 
       }
+
+      scope.login = function() {
+        $state.go('login');
+      };
+
+      scope.logout = function() {
+        var user = {
+          id: localStorageService.get('userId')
+        };
+        scope.isLoggedIn = false;
+        $rootScope.$emit('event.updateFountLogout', {isLoggedIn: false});
+
+        LoginRegisterService.logout(user).then(function(res) {
+          console.log('logout');
+        });
+
+        InstagramService.logout();
+        localStorageService.clearAll();
+
+        $state.go('login');
+      };
+
+      $rootScope.$on('event.updateFountLogin', function(event, data) {
+        scope.isLoggedIn = data.isLoggedIn;
+        $state.go('shop');
+      });
 
       scope.setTopFilter('SALE');
 
