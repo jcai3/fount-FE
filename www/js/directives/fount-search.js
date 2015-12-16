@@ -22,7 +22,16 @@ angular.module('sywStyleXApp')
 
       scope.searchObj = {
         keyword: '',
-        showSearchBar: false
+        showSearchBar: false,
+        showSearchResults: true
+      };
+
+      scope.showSearchResults = function() {
+        scope.searchObj.showSearchResults = true;
+      };
+
+      scope.hideSearchResults = function() {
+        scope.searchObj.showSearchResults = false;
       };
 
       scope.searchProducts = function() {
@@ -49,7 +58,8 @@ angular.module('sywStyleXApp')
         scope.searchObj = {
           keyword: '',
           showSearchBar: false,
-          results: {}
+          results: {},
+          showSearchResults: true
         };
         ProductDetailService.getProductDetail(product.id).then(function(response){
           if (UtilityService.validateResult(response)) {
@@ -90,7 +100,8 @@ angular.module('sywStyleXApp')
         scope.searchObj = {
           keyword: '',
           showSearchBar: false,
-          results: {}
+          results: {},
+          showSearchResults: true
         };
       };
     }

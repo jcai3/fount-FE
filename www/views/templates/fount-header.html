@@ -15,15 +15,15 @@
         <div fount-search></div>
       </div>
       <div ng-show="isLoggedIn" class="fount-header-right">
-        <div ng-click="goToCart()" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()" class="fount-shopping-bag">
-          <i class="sf-cart"></i>
-          <span class="fount-cart-count">{{shoppingCartInfo.count}}</span>
+        <div ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()" class="fount-shopping-bag">
+          <i ng-click="goToCart()" class="sf-cart"></i>
+          <span ng-click="goToCart()" class="fount-cart-count">{{shoppingCartInfo.count}}</span>
           <ul ng-show="showCartOverlay" class="sub-menu fount-cart-content">
             <li>
               <div class="shopping-bag">
 							<!-- <div class="bag-header">1 item in the shopping bag</div> -->
 								<div class="bag-contents">
-                  <div ng-repeat="cartProduct in fountCartProducts" class="bag-product clearfix">
+                  <div ng-repeat="cartProduct in fountCartProducts" ng-click="productDetail(cartProduct.product)" class="bag-product clearfix">
 								    <figure>
                       <div class="bag-product-img">
                         <img ng-src="{{cartProduct.product.imageURL}}" class="attachment-shop_thumbnail wp-post-image">
@@ -41,7 +41,7 @@
 							  </div>
 							  <div class="bag-buttons">
 							    <a ng-click="goToCart()" class="sf-roll-button bag-button"><span>View shopping bag</span><span>View shopping bag</span></a>
-							    <!-- <a class="sf-roll-button checkout-button"><span>Proceed to checkout</span><span>Proceed to checkout</span></a> -->
+							    <a ng-click="checkout()" class="sf-roll-button checkout-button"><span>Proceed to checkout</span><span>Proceed to checkout</span></a>
 								</div>
 							</div>
 						</li>

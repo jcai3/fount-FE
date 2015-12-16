@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.directive('fountHeader', ['$rootScope', '$state', 'localStorageService', 'CartService', 'ProductSearchService', 'PublicProfileService', 'LoginRegisterService', 'InstagramService', 'UtilityService', function($rootScope, $state, localStorageService, CartService, ProductSearchService, PublicProfileService, LoginRegisterService, InstagramService, UtilityService) {
+.directive('fountHeader', ['$rootScope', '$state', 'localStorageService', 'CartService', 'ProductDetailService', 'ProductSearchService', 'PublicProfileService', 'LoginRegisterService', 'InstagramService', 'UtilityService', function($rootScope, $state, localStorageService, CartService, ProductDetailService, ProductSearchService, PublicProfileService, LoginRegisterService, InstagramService, UtilityService) {
   return {
     restrict: 'A',
     replace: true,
@@ -81,6 +81,41 @@ angular.module('sywStyleXApp')
 
       scope.hoverOut = function() {
         scope.showCartOverlay = false;
+      };
+
+      scope.productDetail = function(product) {
+
+        ProductDetailService.getProductDetail(product.id).then(function(response){
+          if (UtilityService.validateResult(response)) {
+            console.log(response);
+            product.affiliateURL = decodeURIComponent(product.buyURL);
+            product.mediaId = null;
+            product.visualTagId = null;
+            product.brandName = !!product.brand ? product.brand.name : null;
+            product.brandId = !!product.brand ? product.brand.id : null;
+            product.sellerName = !!product.seller ? product.seller.name : null;
+
+            if(!!response.data.payload.PRODUCT.socialActionUserProduct) {
+              product.socialActionUserProduct = response.data.payload.PRODUCT.socialActionUserProduct;
+            }
+
+            var productDetail = {
+              xapp: product
+              // source: 'shop'
+            };
+
+            if(response.data.payload.PRODUCT.twoTapData) {
+              productDetail.twotap = response.data.payload.PRODUCT.twoTapData;
+            }
+
+            localStorageService.set('productDetail', productDetail);
+            // productDetailLocker = false;
+
+            $state.go('product', {productId: product.id});
+          }
+        }, function(error) {
+            console.log(error);
+        });
       };
 
       scope.setTopFilter = function(filter) {
@@ -183,6 +218,10 @@ angular.module('sywStyleXApp')
       scope.goToCart = function() {
         // $state.go('cart');
         updateProductsFromCart();
+      };
+
+      scope.checkout = function() {
+        $state.go('checkout');
       };
 
       scope.searchObj = {

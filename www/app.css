@@ -430,6 +430,7 @@ abbr[title], abbr[data-original-title] {
 }
 .fount-header .fount-menu-btns span {
   padding: 10px;
+  cursor: pointer;
 }
 .fount-header .fount-menu-btns span.selected {
   font-weight: bold;
@@ -520,7 +521,6 @@ abbr[title], abbr[data-original-title] {
   content: ' ';
   display: inline-block;
   vertical-align: middle;
-  height: 100%;
 }
 .fount-header .fount-header-right .fount-profile-section {
   display: inline-block;
