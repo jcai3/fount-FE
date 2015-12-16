@@ -509,3 +509,7 @@ abbr[title], abbr[data-original-title] {
   display: inline-block;
   vertical-align: -8px;
 }
+ul.products li.product .price span {
+  font-size: 14px;
+  margin-right: 5px;
+}
