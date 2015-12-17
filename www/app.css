@@ -471,10 +471,50 @@ abbr[title], abbr[data-original-title] {
 .fount-header .fount-search-bar .fount-search .ajax-search-results .all-results {
   color: black;
 }
+.fount-header .fount-mobile-menu-section {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #4AC0D1;
+  color: #ffffff;
+  height: 500px;
+  width: 70%;
+  height: 100%;
+  z-index: 100;
+  display: inline-block;
+}
+.fount-header .fount-mobile-menu-section .fount-mobile-search {
+  padding: 10px;
+  background-color: #3ab8cf;
+}
+.fount-header .fount-mobile-menu-section .fount-mobile-search input {
+  background-color: #3ab8cf;
+  border: none;
+  color: #ffffff;
+  margin-bottom: 0;
+}
+.fount-header .fount-mobile-menu-section .fount-mobile-search input::-webkit-input-placeholder {
+  color: #ffffff;
+}
+.fount-header .fount-mobile-menu-section .fount-mobile-menu-tabs {
+  padding: 10px 20px;
+}
+.fount-header .fount-mobile-overlay {
+  position: absolute;
+  top: 0;
+  background: black;
+  height: 100%;
+  width: 30%;
+  z-index: 10;
+  opacity: 0.5;
+  display: inline-block;
+}
 .fount-header .fount-header-right {
-  float: right;
   line-height: 17px;
   margin: 11px 20px 0 0;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 .fount-header .fount-header-right .fount-shopping-bag {
   display: inline-block;
@@ -554,4 +594,23 @@ ul.products li.product .price span {
 }
 .fount-shop-page {
   margin-top: -20px;
+}
+@media only screen and (max-width: 900px) {
+  .fount-header .container {
+    text-align: center;
+    position: relative;
+  }
+  .fount-header .fount-mobile-menu {
+    display: block!important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 15px;
+  }
+  .fount-header .fount-menu-btns {
+    display: none;
+  }
+  .fount-header .fount-search-bar {
+    display: none;
+  }
 }

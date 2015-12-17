@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.directive('fountHeader', ['$rootScope', '$state', 'localStorageService', 'CartService', 'ProductDetailService', 'ProductSearchService', 'PublicProfileService', 'LoginRegisterService', 'InstagramService', 'UtilityService', function($rootScope, $state, localStorageService, CartService, ProductDetailService, ProductSearchService, PublicProfileService, LoginRegisterService, InstagramService, UtilityService) {
+.directive('fountHeader', ['$rootScope', '$state', 'localStorageService', 'ngDialog', 'CartService', 'ProductDetailService', 'ProductSearchService', 'PublicProfileService', 'LoginRegisterService', 'InstagramService', 'UtilityService', function($rootScope, $state, localStorageService, ngDialog, CartService, ProductDetailService, ProductSearchService, PublicProfileService, LoginRegisterService, InstagramService, UtilityService) {
   return {
     restrict: 'A',
     replace: true,
@@ -81,6 +81,26 @@ angular.module('sywStyleXApp')
 
       scope.hoverOut = function() {
         scope.showCartOverlay = false;
+      };
+
+      scope.showMobileMenu = function() {
+        var $body = element.find('.navbar').parent().parent();
+        $body.css('margin-left', '70%').css('margin-right', '-70%').css('overflow', 'hidden');
+        scope.enableMobileMenu = true;
+
+        // ngDialog.open({
+        //   template: 'views/templates/fount-mobile-menu.html',
+        //   showClose: false,
+        //   controller: 'FountMobileMenuCtrl',
+        //   className: 'ngdialog-theme-default fount-mobile-menu-modal',
+        //   closeByDocument: true
+        // });
+      };
+
+      scope.hideMobileMenu = function() {
+        var $body = element.find('.navbar').parent().parent();
+        $body.css('margin-left', '0').css('margin-right', '0');
+        scope.enableMobileMenu = false;
       };
 
       scope.productDetail = function(product) {

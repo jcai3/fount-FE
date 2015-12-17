@@ -1,7 +1,39 @@
 <div class="fount-header">
   <!-- <div class="container"> -->
+  <div ng-show="enableMobileMenu" class="fount-mobile-menu-section">
+    <div class="fount-mobile-search">
+      <div fount-search></div>
+    </div>
+    <div ng-show="isLoggedIn">
+      <div ng-click="logout()" class="fount-profile-section">
+        <div class="fount-user-avatar">
+          <img ng-src="{{publicProfilePicture}}">
+        </div>
+        <span>{{username}}</span>
+      </div>
+    </div>
+    <div class="fount-mobile-menu-tabs">TRENDING</div>
+    <div class="fount-mobile-menu-tabs">FEED</div>
+    <div ng-click="setTopFilter('SALE')" ng-class="{selected: topFilter == 'SALE'}" class="fount-mobile-menu-tabs">ON SALE</div>
+    <div ng-click="setTopFilter('ARRIVALS')" ng-class="{selected: topFilter == 'ARRIVALS'}" class="fount-mobile-menu-tabs">NEW ARRIVALS</div>
+    <div class="fount-mobile-menu-tabs">HELP</div>
+    <div ng-show="isLoggedIn">
+      <div ng-click="logout()">
+        Logout
+      </div>
+    </div>
+    <!-- <div ng-show="!isLoggedIn">
+      <div ng-click="login()">
+        Login
+      </div>
+    </div> -->
+  </div>
+  <div ng-show="enableMobileMenu" ng-click="hideMobileMenu()" class="fount-mobile-overlay"></div>
   <nav class="navbar navbar-default">
     <div class="container">
+      <div ng-click="showMobileMenu()" class="fount-mobile-menu" style="display: none;">
+        <div class="icon-menu"></div>
+      </div>
       <div class="fount-logo">
         <img src="img/spree-logo.png" alt="Fount">
       </div>
