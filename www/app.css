@@ -492,6 +492,8 @@ abbr[title], abbr[data-original-title] {
   border: none;
   color: #ffffff;
   margin-bottom: 0;
+  padding-right: 0;
+  width: 85%;
 }
 .fount-header .fount-mobile-menu-section .fount-mobile-search input::-webkit-input-placeholder {
   color: #ffffff;
@@ -501,6 +503,32 @@ abbr[title], abbr[data-original-title] {
 }
 .fount-header .fount-mobile-menu-section .fount-mobile-menu-tabs i {
   margin-right: 15px;
+}
+.fount-header .fount-mobile-menu-section .ajax-search-results {
+  position: absolute;
+  background-color: #ffffff;
+  color: black;
+  z-index: 10;
+}
+.fount-header .fount-mobile-menu-section .fount-mobile-logout {
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+}
+.fount-header .fount-mobile-menu-section .fount-user-avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  border: 1px solid #60C7D6;
+  background-color: white;
+  display: inline-block;
+}
+.fount-header .fount-mobile-menu-section .fount-user-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: lightgrey;
+  margin-top: -5px;
 }
 .fount-header .fount-mobile-overlay {
   position: absolute;
