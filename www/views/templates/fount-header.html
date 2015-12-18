@@ -5,21 +5,21 @@
       <div fount-search></div>
     </div>
     <div ng-show="isLoggedIn">
-      <div ng-click="logout()" class="fount-profile-section">
+      <div ng-click="logout()" class="fount-mobile-menu-tabs">
         <div class="fount-user-avatar">
           <img ng-src="{{publicProfilePicture}}">
         </div>
         <span>{{username}}</span>
       </div>
     </div>
-    <div class="fount-mobile-menu-tabs">TRENDING</div>
-    <div class="fount-mobile-menu-tabs">FEED</div>
-    <div ng-click="setTopFilter('SALE')" ng-class="{selected: topFilter == 'SALE'}" class="fount-mobile-menu-tabs">ON SALE</div>
-    <div ng-click="setTopFilter('ARRIVALS')" ng-class="{selected: topFilter == 'ARRIVALS'}" class="fount-mobile-menu-tabs">NEW ARRIVALS</div>
-    <div class="fount-mobile-menu-tabs">HELP</div>
+    <div class="fount-mobile-menu-tabs"><i class="icon-chart-line"></i>TRENDING</div>
+    <div class="fount-mobile-menu-tabs"><i class="icon-rss"></i>FEED</div>
+    <div ng-click="setTopFilter('SALE')" ng-class="{selected: topFilter == 'SALE'}" class="fount-mobile-menu-tabs"><i class="icon-bell"></i>ON SALE</div>
+    <div ng-click="setTopFilter('ARRIVALS')" ng-class="{selected: topFilter == 'ARRIVALS'}" class="fount-mobile-menu-tabs"><i class="icon-star-empty"></i>NEW ARRIVALS</div>
+    <div class="fount-mobile-menu-tabs"><i class="icon-lifebuoy"></i>HELP</div>
     <div ng-show="isLoggedIn">
-      <div ng-click="logout()">
-        Logout
+      <div ng-click="logout()" class="fount-mobile-menu-tabs">
+        <i class="icon-link-ext"></i>Logout
       </div>
     </div>
     <!-- <div ng-show="!isLoggedIn">

@@ -499,6 +499,9 @@ abbr[title], abbr[data-original-title] {
 .fount-header .fount-mobile-menu-section .fount-mobile-menu-tabs {
   padding: 10px 20px;
 }
+.fount-header .fount-mobile-menu-section .fount-mobile-menu-tabs i {
+  margin-right: 15px;
+}
 .fount-header .fount-mobile-overlay {
   position: absolute;
   top: 0;
