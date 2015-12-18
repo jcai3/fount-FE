@@ -471,6 +471,9 @@ abbr[title], abbr[data-original-title] {
 .fount-header .fount-search-bar .fount-search .ajax-search-results .all-results {
   color: black;
 }
+.ajax-search-results .search-result, .ajax-search-results .all-results {
+  cursor: pointer;
+}
 .fount-header .fount-mobile-menu-section {
   position: absolute;
   left: 0;
@@ -500,6 +503,13 @@ abbr[title], abbr[data-original-title] {
 }
 .fount-header .fount-mobile-menu-section .fount-mobile-menu-tabs {
   padding: 10px 20px;
+  cursor: pointer;
+}
+.fount-header .fount-mobile-menu-section .selected {
+  font-weight: bold;
+}
+.fount-header .fount-mobile-menu-section .fount-mobile-menu-tabs span {
+  margin-left: 10px;
 }
 .fount-header .fount-mobile-menu-section .fount-mobile-menu-tabs i {
   margin-right: 15px;
@@ -637,6 +647,7 @@ ul.products li.product .price span {
     top: 0;
     left: 0;
     padding: 15px;
+    cursor: pointer;
   }
   .fount-header .fount-menu-btns {
     display: none;

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.directive('fountSearch', ['UtilityService', 'ProductSearchService', 'SortFilterService', 'ProductDetailService', 'localStorageService', '$state', function(UtilityService, ProductSearchService, SortFilterService, ProductDetailService, localStorageService, $state) {
+.directive('fountSearch', ['$rootScope', 'UtilityService', 'ProductSearchService', 'SortFilterService', 'ProductDetailService', 'localStorageService', '$state', function($rootScope, UtilityService, ProductSearchService, SortFilterService, ProductDetailService, localStorageService, $state) {
   return {
     restrict: 'A',
     replace: true,
@@ -19,6 +19,10 @@ angular.module('sywStyleXApp')
       };
 
       var searchTimer = false;
+
+      var notifyToCloseOverlay = function() {
+        $rootScope.$emit('event.closeMobileOverlay');
+      };
 
       scope.searchObj = {
         keyword: '',
@@ -55,6 +59,8 @@ angular.module('sywStyleXApp')
       };
 
       scope.productDetail = function(product) {
+        notifyToCloseOverlay();
+
         scope.searchObj = {
           keyword: '',
           showSearchBar: false,
@@ -95,6 +101,7 @@ angular.module('sywStyleXApp')
       };
 
       scope.goToSearchResults = function(){
+        notifyToCloseOverlay();
         $state.go('search', {keyword: scope.searchObj.keyword});
 
         scope.searchObj = {

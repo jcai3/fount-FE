@@ -99,11 +99,15 @@ angular.module('sywStyleXApp')
 
       scope.hideMobileMenu = function() {
         var $body = element.find('.navbar').parent().parent();
-        $body.css('margin-left', '0').css('margin-right', '0');
+        $body.css('margin-left', '0').css('margin-right', '0').css('overflow', 'auto');;
         scope.enableMobileMenu = false;
       };
 
       scope.productDetail = function(product) {
+
+        if (scope.enableMobileMenu == true) {
+          scope.hideMobileMenu();
+        }
 
         ProductDetailService.getProductDetail(product.id).then(function(response){
           if (UtilityService.validateResult(response)) {
@@ -146,6 +150,10 @@ angular.module('sywStyleXApp')
 
         if (scope.topFilter == filter && $state.current.name == 'shop') {
           return;
+        }
+
+        if (scope.enableMobileMenu == true) {
+          scope.hideMobileMenu();
         }
 
         scope.topFilter = filter;
@@ -303,6 +311,12 @@ angular.module('sywStyleXApp')
         scope.isLoggedIn = data.isLoggedIn;
         scope.shoppingCartInfo.subtotal = 0;
         // getProductsFromCart();
+      });
+
+      $rootScope.$on('event.closeMobileOverlay', function(event, data) {
+        if (scope.enableMobileMenu == true) {
+          scope.hideMobileMenu();
+        }
       });
     }
   };
