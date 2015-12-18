@@ -11,6 +11,7 @@ angular.module('sywStyleXApp')
   $scope.discoverMedias = [];
   $scope.hasMoreData = false;
   $scope.isDescriptionShown = true;
+  $scope.isReviewShown = false;
   $scope.loadingSpinnerEnabled = false;
   $scope.emptyRelevantPosts = false;
   $scope.isRelevantPostsShown = true;
@@ -394,6 +395,14 @@ angular.module('sywStyleXApp')
       $scope.isDescriptionShown = false;
     } else {
       $scope.isDescriptionShown = true;
+    }
+  };
+
+  $scope.toggleReview = function() {
+    if ($scope.isReviewShown) {
+      $scope.isReviewShown = false;
+    } else {
+      $scope.isReviewShown = true;
     }
   };
 
