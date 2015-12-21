@@ -183,6 +183,10 @@
 	.fount-product-tile .fount-product-image {
 		height: 166px;
 	}
+
+	.fount-product-tile .fount-product-image img {
+		height: 166px;	
+	}
 }
 
 @media only screen and (max-width: 980px) {
