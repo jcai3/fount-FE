@@ -185,7 +185,7 @@
 	}
 
 	.fount-product-tile .fount-product-image img {
-		height: 166px;	
+		height: 166px;
 	}
 }
 
@@ -375,6 +375,10 @@
 -------------------------------------------- */
 
 @media only screen and (max-width: 767px) {
+
+	.woocommerce ul.products li.product,.woocommerce-page ul.products li.product {
+	  width: 29.75%;
+	}
 
 	/* LAYOUT */
 	.boxed-layout {

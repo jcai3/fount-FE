@@ -1,39 +1,39 @@
-<div class="container">
-    <div class="fount-shop-page">
-      <div class="clearfix post-364 page type-page status-publish hentry" id="364">
-        <div class="page-content clearfix">
-          <section class="container">
-            <div class="row">
-              <div class="spb_portfolio_widget spb_content_element span12">
-                <div class="spb_wrapper portfolio-wrap">
-                  <!-- <div class="filter-wrap row clearfix">
-                    <div class="filter-slide-wrap">
-                      <ul class="portfolio-filter filtering row clearfix">
-                        <li class="shop-top-menu" ng-class="{selected: shopObj.topFilter == 'SALE'}" ng-click="setTopFilter('SALE')"><div><span class="item-name">On Sale</span></div></li>
-                        <li class="shop-top-menu" ng-class="{selected: shopObj.topFilter == 'ARRIVALS'}" ng-click="setTopFilter('ARRIVALS')"><div><span class="item-name">New Arrivals</span></div></li>
-                      </ul>
-                    </div>
-                  </div> -->
-                  <div class="filter-wrap" ng-show="shopObj.enableSellerModule">
-                    <div class="filter-slide-wrap">
-                      <div fount-seller-carousel sellers="shopObj.sellers" top-seller-id="shopObj.topSellerId"></div>
-                    </div>
-                  </div>
-                  <div infinite-scroll='loadMore()' infinite-scroll-disabled='shopObj.noMoreData' infinite-scroll-distance='0' class="container">
-                    <ul class="portfolio-items products gallery-portfolio filterable-items row clearfix">
-                      <li ng-repeat="product in shopObj.products" class="clearfix product portfolio-item span3 gallery app-design interface-design">
-                        <div fount-product-tile product="product"></div>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="fount-no-products" ng-show="!shopObj.enableSellerModule">No available products.</div>
-                  <div class="pagination-wrap">
-                  </div>
+<!-- <div class="container"> -->
+<div class="fount-shop-page">
+  <div class="clearfix post-364 page type-page status-publish hentry">
+    <div class="page-content clearfix">
+      <section class="container">
+        <div class="row">
+          <div class="spb_portfolio_widget spb_content_element span12">
+            <div class="spb_wrapper portfolio-wrap">
+              <!-- <div class="filter-wrap row clearfix">
+                <div class="filter-slide-wrap">
+                  <ul class="portfolio-filter filtering row clearfix">
+                    <li class="shop-top-menu" ng-class="{selected: shopObj.topFilter == 'SALE'}" ng-click="setTopFilter('SALE')"><div><span class="item-name">On Sale</span></div></li>
+                    <li class="shop-top-menu" ng-class="{selected: shopObj.topFilter == 'ARRIVALS'}" ng-click="setTopFilter('ARRIVALS')"><div><span class="item-name">New Arrivals</span></div></li>
+                  </ul>
+                </div>
+              </div> -->
+              <div class="filter-wrap" ng-show="shopObj.enableSellerModule">
+                <div class="filter-slide-wrap">
+                  <div fount-seller-carousel sellers="shopObj.sellers" top-seller-id="shopObj.topSellerId"></div>
                 </div>
               </div>
+              <div infinite-scroll='loadMore()' infinite-scroll-disabled='shopObj.noMoreData' infinite-scroll-distance='0' class="container">
+                <ul class="portfolio-items products gallery-portfolio filterable-items row clearfix">
+                  <li ng-repeat="product in shopObj.products" class="clearfix product portfolio-item span3 gallery app-design interface-design">
+                    <div fount-product-tile product="product"></div>
+                  </li>
+                </ul>
+              </div>
+              <div class="fount-no-products" ng-show="!shopObj.enableSellerModule">No available products.</div>
+              <div class="pagination-wrap">
+              </div>
             </div>
-          </section>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
+  </div>
 </div>
+<!-- </div> -->

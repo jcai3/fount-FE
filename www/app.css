@@ -87,7 +87,8 @@ body {
   color:#252525;
 }
 body{
-  background:#e4e4e4 url('img/tiny_grid1.png') repeat center top fixed;
+  /*background:#e4e4e4 url('img/tiny_grid1.png') repeat center top fixed;*/
+  /*background-color: whitesmoke;*/
 }
 body {
   background-size:auto;
@@ -638,6 +639,7 @@ ul.products li.product .price span {
 }
 .fount-shop-page {
   margin-top: -20px;
+  background-color: whitesmoke;
 }
 .woocommerce #review_form #respond {
   position: static;

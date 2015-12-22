@@ -101,6 +101,10 @@ angular.module('sywStyleXApp')
       };
 
       scope.goToSearchResults = function(){
+        if (scope.searchObj.keyword.trim().length == 0) {
+          return;
+        }
+
         notifyToCloseOverlay();
         $state.go('search', {keyword: scope.searchObj.keyword});
 

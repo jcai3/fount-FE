@@ -81,7 +81,7 @@ angular.module('sywStyleXApp')
     var host = $window.location.host;
     console.log('user Type:' + userType);
     console.log('inside the instagram login function');
-    $rootScope.xappObj.overlay = true;
+    // $rootScope.xappObj.overlay = true;
     var loginWindow;
      //the pop-up window size, change if you want
     var popupWidth = 400,
@@ -90,9 +90,13 @@ angular.module('sywStyleXApp')
     popupTop = (window.screen.height - popupHeight) / 2,
     interval = 1000;
 
+    // loginWindow = $window.open('https://api.instagram.com/oauth/authorize?client_id=' + ENV.instagramClientId +
+    //   '&redirect_uri=' + ENV.instagramRedirectDomain + ENV.instagramRedirectUri +
+    //   '&scope=likes+comments&response_type=code', '', 'width='+popupWidth+',height='+popupHeight+',left='+popupLeft+',top='+popupTop+''
+    // );
     loginWindow = $window.open('https://api.instagram.com/oauth/authorize?client_id=' + ENV.instagramClientId +
       '&redirect_uri=' + ENV.instagramRedirectDomain + ENV.instagramRedirectUri +
-      '&scope=likes+comments&response_type=code', '', 'width='+popupWidth+',height='+popupHeight+',left='+popupLeft+',top='+popupTop+''
+      '&scope=likes+comments&response_type=code', '_parent'
     );
 
     var i = $interval(function(){
