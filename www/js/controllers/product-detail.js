@@ -33,12 +33,75 @@ angular.module('sywStyleXApp')
   //   console.log('modal created');
   // });
 
+  var initializeAttr = function() {
+    if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('fit') != -1) {
+      $scope.selectedFit = $scope.productDetail.twotap.addToCart.required_field_values.fit[0];
+
+      if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('color') != -1) {
+        $scope.selectedColor = $scope.selectedFit.dep.color[0];
+
+        if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1) {
+          $scope.selectedSize = $scope.selectedColor.dep.size[0];
+
+          if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('inseam') != -1) {
+            $scope.selectedInseam = $scope.selectedSize.dep.inseam[0];
+          }
+        }
+      }
+    } else {
+      if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('color') != -1) {
+        $scope.selectedColor = $scope.productDetail.twotap.addToCart.required_field_values.color[0];
+
+        if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1) {
+          $scope.selectedSize = $scope.selectedColor.dep.size[0];
+        }
+
+        if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option') == 1) {
+          $scope.selectedOption = $scope.selectedColor.dep.option[0];
+        }
+
+        if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('style') != -1) {
+          $scope.selectedStyle = $scope.selectedColor.dep.style[0];
+        }
+      } else {
+        if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1) {
+          $scope.selectedSize = $scope.productDetail.twotap.addToCart.required_field_values.size[0];
+        }
+
+        if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option') != -1) {
+          $scope.selectedOption = $scope.productDetail.twotap.addToCart.required_field_values.option[0];
+        }
+      }
+    }
+
+    if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('options') != -1) {
+      $scope.selectedOptions = $scope.productDetail.twotap.addToCart.required_field_values.option[0];
+    }
+
+    if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option 1') != -1) {
+      $scope.selectedOption1 = $scope.productDetail.twotap.addToCart.required_field_values['option 1'];
+
+      if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option 2') != -1) {
+        $scope.selectedOption2 = $scope.selectedOption1.dep['option 2'];
+
+        if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option 3') != -1) {
+          $scope.selectedOption3 = $scope.selectedOption2.dep['option 3'];
+
+          if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option 4') != -1) {
+            $scope.selectedOption4 = $scope.selectedOption3.dep['option 4'];
+          }
+        }
+      }
+    }
+
+  };
+
   var prepareProductDetail = function () {
     console.log('inside prepareProductDetail function');
     var productDetail = localStorageService.get('productDetail');
     console.log(productDetail);
     checkSellerQuality(productDetail);
-    getRelevantPosts(productDetail);
+    // getRelevantPosts(productDetail);
     var siteId  = '';
     var sites = [];
     if(!!productDetail.twotap) {
@@ -115,6 +178,7 @@ angular.module('sywStyleXApp')
         addToCart: addToCart[0],
         shippingOptions: shippingOptions
       };
+      initializeAttr();
     }
 
     $scope.productImagesLength = $scope.productDetail.productImages.length;
@@ -352,6 +416,8 @@ angular.module('sywStyleXApp')
             addToCart: addToCart[0],
             shippingOptions: shippingOptions
           };
+
+          initializeAttr();
 
           console.log($scope.productDetail);
 
@@ -710,7 +776,6 @@ angular.module('sywStyleXApp')
   if (!!localStorageService.get('productDetail')) {
     console.log('from 0');
     prepareProductDetail();
-//      getRelevantPosts(localStorageService.get('productDetail'));
   } else {
     getCurrentProductDetails();
   }

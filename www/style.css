@@ -8481,6 +8481,7 @@ nav.woocommerce-pagination ul li a.prev i {
 	display: block;
 	padding: 9px 13px;
 	background: transparent;
+	cursor: pointer;
 }
 .yith-wcwl-add-button > a i {
 	margin-right: 0;
