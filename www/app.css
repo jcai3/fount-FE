@@ -729,6 +729,9 @@ ul.fount-product-attr-list li.selectedColorActive div {
 .fount-feedback-modal .ngdialog-content input[type="submit"] {
   padding: 5px 10px;
 }
+.fount-pdp-to-brand {
+  cursor: pointer;
+}
 @media only screen and (max-width: 900px) {
   .fount-header .container {
     text-align: center;

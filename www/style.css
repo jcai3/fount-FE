@@ -8180,6 +8180,7 @@ li.product figcaption .shop-actions > a {
 .woocommerce ul.products li.product figure figcaption .yith-wcwl-add-to-wishlist {
 	z-index: 3;
 	border-left-color: rgba(255,255,255,0.2);
+	cursor: pointer;
 }
 .woocommerce ul.products li.product figure figcaption .yith-wcwl-add-to-wishlist a {
 	width: 11px;

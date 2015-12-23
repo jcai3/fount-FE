@@ -499,6 +499,12 @@ angular.module('sywStyleXApp')
     $state.go('media', {mediaId: discoverMedia.id});
   };
 
+  $scope.goToBrand = function() {
+    if (!!$scope.productDetail.xapp.brandId) {
+      $state.go('brand', {brandId: $scope.productDetail.xapp.brandId});
+    }
+  };
+
   $scope.buyItNow = function() {
     alert('This function will be available soon!');
   };

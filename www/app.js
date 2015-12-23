@@ -16,6 +16,11 @@ angular.module('sywStyleXApp', [
       templateUrl: 'views/shop.html',
       controller: 'ShopCtrl'
     })
+    .state('brand', {
+      url: '/brand/{brandId}',
+      templateUrl: 'views/brand.html',
+      controller: 'BrandCtrl'
+    })
     .state('login', {
       url: '/login',
       templateUrl: 'views/login-register.html',
