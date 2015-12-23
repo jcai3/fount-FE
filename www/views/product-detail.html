@@ -282,11 +282,11 @@
                                           <label for="rating">Your Rating</label>
                                           <p class="stars">
                                             <span>
-                                              <a class="star-1" href="#">1</a>
-                                              <a class="star-2" href="#">2</a>
-                                              <a class="star-3" href="#">3</a>
-                                              <a class="star-4" href="#">4</a>
-                                              <a class="star-5" href="#">5</a>
+                                              <a ng-click="reviewStar(1)" ng-class="{'reviewSelected': starReviewed == 1}" class="star-1">1</a>
+                                              <a ng-click="reviewStar(2)" ng-class="{'reviewSelected': starReviewed == 2}" class="star-2">2</a>
+                                              <a ng-click="reviewStar(3)" ng-class="{'reviewSelected': starReviewed == 3}" class="star-3">3</a>
+                                              <a ng-click="reviewStar(4)" ng-class="{'reviewSelected': starReviewed == 4}" class="star-4">4</a>
+                                              <a ng-click="reviewStar(5)" ng-class="{'reviewSelected': starReviewed == 5}" class="star-5">5</a>
                                             </span>
                                           </p>
                                           <select name="rating" id="rating" style="display: none;">
@@ -298,11 +298,10 @@
                                             <option value="1">Very Poor</option>
                                           </select>
                                         </p>
-                                        <p class="comment-form-comment"><label for="comment">Your Review</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>
+                                        <p class="comment-form-comment"><label for="comment">Your Review</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" ng-model="reviewComment"></textarea></p>
+                                        <p ng-show="showReviewAlertMsg" class="fount-pdp-review-msg">Please choose your rating and fill out your review.</p>
                                         <p class="form-submit">
-                                          <input name="submit" type="submit" id="submit" class="submit" value="Submit">
-                                          <input type="hidden" name="comment_post_ID" value="9677" id="comment_post_ID">
-                                          <input type="hidden" name="comment_parent" id="comment_parent" value="0">
+                                          <input ng-click="submitReview()" name="submit" type="submit" class="submit" value="Submit">
                                         </p>
                                       </form>
                                     </div>

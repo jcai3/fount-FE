@@ -14,6 +14,7 @@ angular.module('sywStyleXApp')
   $scope.isReviewShown = false;
   $scope.loadingSpinnerEnabled = false;
   $scope.emptyRelevantPosts = false;
+  $scope.showReviewAlertMsg = false;
   $scope.isRelevantPostsShown = true;
   $scope.productImagesLength = 0;
   $scope.addToCartDisabled = false;
@@ -502,6 +503,22 @@ angular.module('sywStyleXApp')
   $scope.goToBrand = function() {
     if (!!$scope.productDetail.xapp.brandId) {
       $state.go('brand', {brandId: $scope.productDetail.xapp.brandId});
+    }
+  };
+
+  $scope.reviewStar = function(rate) {
+    if ($scope.starReviewed == rate) {
+      return;
+    }
+    $scope.starReviewed = rate;
+  };
+
+  $scope.submitReview = function() {
+    if (!!$scope.starReviewed && !!$scope.reviewComment) {
+      $scope.showReviewAlertMsg = false;
+      // call review api
+    } else {
+      $scope.showReviewAlertMsg = true;
     }
   };
 
