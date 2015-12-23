@@ -72,8 +72,8 @@
                       </div>
                       <div class="clear"></div>
 
-                      <div ng-show="!!productDetail.twotap.addToCart.required_field_names && productDetail.twotap.addToCart.required_field_names.length > 0 && !(productDetail.twotap.addToCart.required_field_names.length == 1 && productDetail.twotap.addToCart.required_field_names[0] == 'quantity')" class="accordion" id="product-accordion">
-                        <div class="accordion-group">
+                      <div class="accordion" id="product-accordion">
+                        <div ng-if="!!productDetail.twotap.addToCart.required_field_names && productDetail.twotap.addToCart.required_field_names.length > 0 && !(productDetail.twotap.addToCart.required_field_names.length == 1 && productDetail.twotap.addToCart.required_field_names[0] == 'quantity')" class="accordion-group">
                           <div class="accordion-body collapse in">
                             <div class="accordion-inner">
                               <div class="options-error-msg" ng-if="!variableObj.allOptionsSelected">
@@ -321,16 +321,15 @@
 
                       <div class="product_meta">
                         <p>
-                          <span class="sku_wrapper">SKU: <span class="sku" itemprop="sku">123456789</span> - </span>
-                          <span class="need-help">Need Help? <a class="inline" data-toggle="modal">Contact Us</a></span>
-                          <span class="leave-feedback"><a class="inline" data-toggle="modal">Leave Feedback</a></span>
+                          <span class="need-help">Need Help? <a class="inline" ng-click="openContactModal()">Contact Us</a></span>
+                          <span class="leave-feedback"><a class="inline" ng-click="openFeedbackModal()">Leave Feedback</a></span>
                         </p>
                         <p>
-                          <span class="posted_in">Categories: <a rel="tag">xxx</a>, <a rel="tag">xxx</a>.</span>
+                          <span class="posted_in">Categories: <a rel="tag">{{productDetail.xapp.category.name}}</a></span>
                         </p>
-                        <p>
+                        <!-- <p>
                           <span class="tagged_as">Tags: <a rel="tag">xxx</a>, <a rel="tag">xxx</a>.</span>
-                        </p>
+                        </p> -->
                         <div id="email-form" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="email-form-modal" aria-hidden="true">
                           <div class="modal-dialog">
                             <div class="modal-content">

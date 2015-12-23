@@ -4171,6 +4171,7 @@ ul#seller-carousel li {
 	background-color: white;
 	color: lightgrey;
 	top: 1px;
+	cursor: pointer;
 }
 .fount-seller-carousel .carousel-arrow:hover {
 	background-color: lightgrey;
@@ -8579,6 +8580,7 @@ nav.woocommerce-pagination ul li a.prev i {
 }
 .product_meta a.inline {
 	border-bottom: 1px dotted #e4e4e4;
+	cursor: pointer;
 }
 .product-share {
 	border-bottom: 1px solid #e4e4e4;

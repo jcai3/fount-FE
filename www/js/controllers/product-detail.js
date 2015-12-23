@@ -154,6 +154,7 @@ angular.module('sywStyleXApp')
         mediaId: productDetail.xapp.mediaId,
         visualTagId: productDetail.xapp.visualTagId,
         description: productDetail.xapp.description,
+        category: productDetail.xapp.category,
         imageURL: productDetail.xapp.imageURL,
         brandName: brandName,
         name: UtilityService.productNameParser(productDetail.xapp.name),
@@ -749,6 +750,26 @@ angular.module('sywStyleXApp')
   //      $scope.addToCart();   //temp to check the existing flow is working.
     }
 
+  };
+
+  $scope.openContactModal = function() {
+    ngDialog.open({
+      template: 'views/templates/fount-contact-us.html',
+      showClose: true,
+      className: 'ngdialog-theme-default fount-contact-us-modal',
+      closeByDocument: true,
+      closeByEscape: true
+    });
+  };
+
+  $scope.openFeedbackModal = function() {
+    ngDialog.open({
+      template: 'views/templates/fount-feedback.html',
+      showClose: true,
+      className: 'ngdialog-theme-default fount-feedback-modal',
+      closeByDocument: true,
+      closeByEscape: true
+    });
   };
 
   $scope.gotoBrandProfile = function() {

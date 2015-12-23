@@ -29,7 +29,7 @@ angular.module('sywStyleXApp')
           },
           scroll: {
             items: 1,
-            duration: 1000,
+            duration: 50,
             pauseOnHover: true
           },
           prev: {
@@ -44,7 +44,7 @@ angular.module('sywStyleXApp')
 
         $timeout(function(){
           element.find('#seller-carousel').carouFredSel(settings);
-        }, 1000);
+        }, 100);
       };
 
       scope.setTopSellerId = function(id) {

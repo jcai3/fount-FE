@@ -721,6 +721,12 @@ ul.fount-product-attr-list li.selectedActive {
 ul.fount-product-attr-list li.selectedColorActive div {
   border: 1px solid #4AC0D1;
 }
+.fount-contact-us-modal .ngdialog-content input[type="submit"] {
+  padding: 5px 10px;
+}
+.fount-feedback-modal .ngdialog-content input[type="submit"] {
+  padding: 5px 10px;
+}
 @media only screen and (max-width: 900px) {
   .fount-header .container {
     text-align: center;
@@ -739,5 +745,14 @@ ul.fount-product-attr-list li.selectedColorActive div {
   }
   .fount-header .fount-search-bar {
     display: none;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .fount-contact-us-modal .ngdialog-content, .fount-feedback-modal .ngdialog-content {
+    width: 500px !important;
+  }
+
+  .ngdialog-content input.fount-contact-input, .ngdialog-content textarea.fount-contact-textarea {
+    width: 400px;
   }
 }
