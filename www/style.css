@@ -8576,6 +8576,9 @@ nav.woocommerce-pagination ul li a.prev i {
 .summary .product_meta {
 	margin-top: 15px;
 }
+.summary .product_meta p span.posted_in a:hover {
+	color: #666666;
+}
 .product_meta p .leave-feedback {
 	float: right;
 }
@@ -8600,6 +8603,7 @@ nav.woocommerce-pagination ul li a.prev i {
 .product-share ul li {
 	float: left;
 	margin-left: 5px;
+	cursor: pointer;
 }
 .product-share ul li a {
 	padding: 10px;

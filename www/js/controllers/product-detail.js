@@ -35,70 +35,70 @@ angular.module('sywStyleXApp')
   // });
 
   var initializeAttr = function() {
-    if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('fit') != -1) {
-      $scope.selectedFit = $scope.productDetail.twotap.addToCart.required_field_values.fit[0];
+    if (!!$scope.productDetail.twotap.addToCart && !!$scope.productDetail.twotap.addToCart.required_field_names) {
+      if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('fit') != -1) {
+        $scope.selectedFit = $scope.productDetail.twotap.addToCart.required_field_values.fit[0];
 
-      if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('color') != -1) {
-        $scope.selectedColor = $scope.selectedFit.dep.color[0];
+        if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('color') != -1) {
+          $scope.selectedColor = $scope.selectedFit.dep.color[0];
 
-        if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1) {
-          $scope.selectedSize = $scope.selectedColor.dep.size[0];
+          if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1) {
+            $scope.selectedSize = $scope.selectedColor.dep.size[0];
 
-          if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('inseam') != -1) {
-            $scope.selectedInseam = $scope.selectedSize.dep.inseam[0];
+            if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('inseam') != -1) {
+              $scope.selectedInseam = $scope.selectedSize.dep.inseam[0];
+            }
           }
-        }
-      }
-    } else {
-      if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('color') != -1) {
-        $scope.selectedColor = $scope.productDetail.twotap.addToCart.required_field_values.color[0];
-
-        if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1) {
-          $scope.selectedSize = $scope.selectedColor.dep.size[0];
-        }
-
-        if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option') == 1) {
-          $scope.selectedOption = $scope.selectedColor.dep.option[0];
-        }
-
-        if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('style') != -1) {
-          $scope.selectedStyle = $scope.selectedColor.dep.style[0];
         }
       } else {
-        if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1) {
-          $scope.selectedSize = $scope.productDetail.twotap.addToCart.required_field_values.size[0];
-        }
+        if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('color') != -1) {
+          $scope.selectedColor = $scope.productDetail.twotap.addToCart.required_field_values.color[0];
 
-        if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option') != -1) {
-          $scope.selectedOption = $scope.productDetail.twotap.addToCart.required_field_values.option[0];
+          if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1) {
+            $scope.selectedSize = $scope.selectedColor.dep.size[0];
+          }
+
+          if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option') == 1) {
+            $scope.selectedOption = $scope.selectedColor.dep.option[0];
+          }
+
+          if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('style') != -1) {
+            $scope.selectedStyle = $scope.selectedColor.dep.style[0];
+          }
+        } else {
+          if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1) {
+            $scope.selectedSize = $scope.productDetail.twotap.addToCart.required_field_values.size[0];
+          }
+
+          if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option') != -1) {
+            $scope.selectedOption = $scope.productDetail.twotap.addToCart.required_field_values.option[0];
+          }
         }
       }
-    }
 
-    if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('options') != -1) {
-      $scope.selectedOptions = $scope.productDetail.twotap.addToCart.required_field_values.option[0];
-    }
+      if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('options') != -1) {
+        $scope.selectedOptions = $scope.productDetail.twotap.addToCart.required_field_values.option[0];
+      }
 
-    if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option 1') != -1) {
-      $scope.selectedOption1 = $scope.productDetail.twotap.addToCart.required_field_values['option 1'];
+      if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option 1') != -1) {
+        $scope.selectedOption1 = $scope.productDetail.twotap.addToCart.required_field_values['option 1'];
 
-      if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option 2') != -1) {
-        $scope.selectedOption2 = $scope.selectedOption1.dep['option 2'];
+        if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option 2') != -1) {
+          $scope.selectedOption2 = $scope.selectedOption1.dep['option 2'];
 
-        if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option 3') != -1) {
-          $scope.selectedOption3 = $scope.selectedOption2.dep['option 3'];
+          if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option 3') != -1) {
+            $scope.selectedOption3 = $scope.selectedOption2.dep['option 3'];
 
-          if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option 4') != -1) {
-            $scope.selectedOption4 = $scope.selectedOption3.dep['option 4'];
+            if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option 4') != -1) {
+              $scope.selectedOption4 = $scope.selectedOption3.dep['option 4'];
+            }
           }
         }
       }
     }
-
   };
 
   var prepareProductDetail = function () {
-    console.log('inside prepareProductDetail function');
     var productDetail = localStorageService.get('productDetail');
     console.log(productDetail);
     checkSellerQuality(productDetail);
@@ -215,6 +215,7 @@ angular.module('sywStyleXApp')
            brandName: !!response.data.payload.PRODUCT.brand ? response.data.payload.PRODUCT.brand.name : null,
            buyURL: response.data.payload.PRODUCT.buyURL,
            description: response.data.payload.PRODUCT.description,
+           category: response.data.payload.PRODUCT.category,
            id: response.data.payload.PRODUCT.id,
            imageURL: response.data.payload.PRODUCT.imageURL,
            inStock: response.data.payload.PRODUCT.inStock,
@@ -817,12 +818,12 @@ angular.module('sywStyleXApp')
     window.open($scope.productDetail.xapp.affiliateURL, '_blank');
   }
 
-  if (!!localStorageService.get('productDetail')) {
-    console.log('from 0');
-    prepareProductDetail();
-  } else {
+  // if (!!localStorageService.get('productDetail')) {
+  //   console.log('from 0');
+  //   prepareProductDetail();
+  // } else {
     getCurrentProductDetails();
-  }
+  // }
 
   if (!!localStorageService.get('shoppingCartInfo')) {
     $scope.shoppingCartInfo = localStorageService.get('shoppingCartInfo');

@@ -32,7 +32,7 @@ angular.module('sywStyleXApp')
         $timeout(function(){
           element.find('#product-img-carousel').flexslider(carouselSettings);
           element.find('#product-img-slider').flexslider(sliderSettings);
-        }, 100);
+        }, 500);
       };
 
       initializeProductSlider();
