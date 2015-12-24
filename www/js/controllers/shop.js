@@ -2,13 +2,13 @@
 
 angular.module('sywStyleXApp')
 .controller('ShopCtrl', ['$rootScope','$scope', 'UtilityService', 'SortFilterService', 'ProductSearchService', function($rootScope, $scope, UtilityService, SortFilterService, ProductSearchService) {
-  var pageNumber = 1;
   var apiLocker = false;
 
   $scope.shopObj = {
     topFilter: 'SALE',
     topSellerId: 0,
     noMoreData: false,
+    pageNumber: 1,
     emptySearchResults: false,
     enableSellerModule: true,
     products: [],
@@ -27,7 +27,7 @@ angular.module('sywStyleXApp')
       return;
     }
 
-    pageNumber = 1;
+    $scope.shopObj.pageNumber = 1;
     apiLocker = false;
     $scope.shopObj.noMoreData = false;
     $scope.shopObj.emptySearchResults = false;
@@ -41,7 +41,13 @@ angular.module('sywStyleXApp')
   };
 
   $scope.loadMore = function() {
-    console.log('load more');
+    if ($scope.shopObj.noMoreData || $scope.shopObj.pageNumber > 5) {
+      return;
+    }
+    getSellerProducts();
+  };
+
+  $scope.loadNextPage = function() {
     if ($scope.shopObj.noMoreData) {
       return;
     }
@@ -71,15 +77,15 @@ angular.module('sywStyleXApp')
 
     apiLocker = true;
 
-    SortFilterService.getSellerProducts($scope.shopObj.topSellerId, $scope.shopObj.topFilter, pageNumber).then(function(result) {
+    SortFilterService.getSellerProducts($scope.shopObj.topSellerId, $scope.shopObj.topFilter, $scope.shopObj.pageNumber).then(function(result) {
       if (UtilityService.validateResult(result)) {
         if (result.data.payload.PRODUCTS.length === 0) {
           $scope.shopObj.noMoreData = true;
-          if (pageNumber == 1) {
+          if ($scope.shopObj.pageNumber == 1) {
             $scope.shopObj.emptySearchResults = true;
           }
         } else {
-          pageNumber++;
+          $scope.shopObj.pageNumber++;
           $scope.shopObj.noMoreData = false;
           $scope.shopObj.emptySearchResults = false;
           var products = result.data.payload.PRODUCTS;
@@ -92,7 +98,7 @@ angular.module('sywStyleXApp')
   };
 
   $rootScope.$on('event.setTopSeller', function(event, data) {
-    pageNumber = 1;
+    $scope.shopObj.pageNumber = 1;
     apiLocker = false;
     $scope.shopObj.topSellerId = data.id;
     $scope.shopObj.noMoreData = false;

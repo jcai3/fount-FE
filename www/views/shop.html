@@ -4,16 +4,8 @@
     <div class="page-content clearfix">
       <section class="container">
         <div class="row">
-          <div class="spb_portfolio_widget spb_content_element span12">
+          <div class="span12">
             <div class="spb_wrapper portfolio-wrap">
-              <!-- <div class="filter-wrap row clearfix">
-                <div class="filter-slide-wrap">
-                  <ul class="portfolio-filter filtering row clearfix">
-                    <li class="shop-top-menu" ng-class="{selected: shopObj.topFilter == 'SALE'}" ng-click="setTopFilter('SALE')"><div><span class="item-name">On Sale</span></div></li>
-                    <li class="shop-top-menu" ng-class="{selected: shopObj.topFilter == 'ARRIVALS'}" ng-click="setTopFilter('ARRIVALS')"><div><span class="item-name">New Arrivals</span></div></li>
-                  </ul>
-                </div>
-              </div> -->
               <div class="filter-wrap" ng-show="shopObj.enableSellerModule">
                 <div class="filter-slide-wrap">
                   <div fount-seller-carousel sellers="shopObj.sellers" top-seller-id="shopObj.topSellerId"></div>
@@ -27,7 +19,8 @@
                 </ul>
               </div>
               <div class="fount-no-products" ng-show="!shopObj.enableSellerModule">No available products.</div>
-              <div class="pagination-wrap">
+              <div ng-show="shopObj.pageNumber >=5 " class="pagination-wrap">
+                <input ng-click="loadNextPage()" type="submit" class="button alt load-more" value="Load More">
               </div>
             </div>
           </div>

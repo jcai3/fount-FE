@@ -1740,7 +1740,12 @@ h4.spb_heading span, h4.lined-heading span {
 -------------------------------------------- */
 
 .pagination-wrap {
-	margin-top: 30px;
+	margin-bottom: 30px;
+	text-align: center;
+}
+.pagination-wrap .load-more {
+	border: 1px solid lightgrey !important;
+	padding: 10px 30px;
 }
 .single .pagination-wrap {
 	margin: 0;
