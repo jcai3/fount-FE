@@ -20,7 +20,8 @@
                     </li>
                   </ul>
                 </div>
-                <div class="pagination-wrap">
+                <div ng-show="filteredProductsPageNumber >= 5" class="pagination-wrap">
+                  <input ng-click="loadNextPage()" type="submit" class="button alt load-more" value="Load More">
                 </div>
               </div>
             </div>

@@ -2,7 +2,6 @@
 
 angular.module('sywStyleXApp')
 .controller('BrandCtrl', ['$rootScope', '$scope', '$state','$stateParams', '$timeout', 'ngDialog', 'UtilityService', 'CartService', 'localStorageService', 'ProductDetailService', 'SortFilterService', function($rootScope, $scope, $state, $stateParams, $timeout, ngDialog, UtilityService, CartService, localStorageService, ProductDetailService, SortFilterService) {
-  var filteredProductsPageNumber = 1;
   var filteredProductsApiLocker = false;
   var filters = {
     brandIds: [
@@ -15,6 +14,7 @@ angular.module('sywStyleXApp')
 
   $scope.productsCount = 0;
   $scope.filteredProductsHasMoreData = true;
+  $scope.filteredProductsPageNumber = 1;
   $scope.brandName = '';
   $scope.filteredProducts = [];
 
@@ -25,9 +25,9 @@ angular.module('sywStyleXApp')
 
     filteredProductsApiLocker = true;
 
-    SortFilterService.getFilteredProducts(filters.brandIds, filters.sellerIds, filters.sortBy, filteredProductsPageNumber, filters.filterRequest).then(function(res) {
+    SortFilterService.getFilteredProducts(filters.brandIds, filters.sellerIds, filters.sortBy, $scope.filteredProductsPageNumber, filters.filterRequest).then(function(res) {
       if (UtilityService.validateResult(res)) {
-        if (filteredProductsPageNumber == 1) {
+        if ($scope.filteredProductsPageNumber == 1) {
           $scope.productsCount = res.data.payload.COUNT;
           var product = res.data.payload.PRODUCTS[0];
           $scope.brandName = !!product.brand ? product.brand.name : product.seller.name;
@@ -36,7 +36,7 @@ angular.module('sywStyleXApp')
         if (res.data.payload.PRODUCTS.length === 0) {
           $scope.filteredProductsHasMoreData = false;
         } else {
-          filteredProductsPageNumber++;
+          $scope.filteredProductsPageNumber++;
           $scope.filteredProductsHasMoreData = true;
           var filteredProducts = res.data.payload.PRODUCTS;
           $scope.filteredProducts.push.apply($scope.filteredProducts, filteredProducts);
@@ -51,6 +51,14 @@ angular.module('sywStyleXApp')
   };
 
   $scope.loadMore = function() {
+    if (!$scope.filteredProductsHasMoreData || $scope.filteredProductsPageNumber > 5) {
+      return;
+    }
+
+    getFilteredProducts();
+  };
+
+  $scope.loadNextPage = function() {
     if (!$scope.filteredProductsHasMoreData) {
       return;
     }

@@ -2,10 +2,7 @@
 
 angular.module('sywStyleXApp')
 .controller('SearchResultsCtrl', ['UtilityService', 'ProductDetailService', 'ProductSearchService', '$scope', '$stateParams',function(UtilityService, ProductDetailService, ProductSearchService, $scope, $stateParams) {
-  console.log('inside the search results page');
-  console.log($stateParams.keyword);
 
-  var pageNumber = 1;
   var apiLocker = false;
 
   var searchFilters = {
@@ -68,12 +65,19 @@ angular.module('sywStyleXApp')
 
   $scope.searchObj = {
     noMoreData: false,
+    pageNumber: 1,
     emptySearchResults: false,
     products: []
   };
 
   $scope.loadMore = function() {
-    console.log('load more');
+    if ($scope.searchObj.noMoreData || $scope.searchObj.pageNumber > 5) {
+      return;
+    }
+    searchProducts();
+  };
+
+  $scope.loadNextPage = function() {
     if ($scope.searchObj.noMoreData) {
       return;
     }
@@ -82,7 +86,7 @@ angular.module('sywStyleXApp')
 
   $scope.changeSortByOptions = function() {
     // localStorageService.set('filteredProductsHasMoreData', 1);
-    pageNumber = 1,
+    $scope.searchObj.pageNumber = 1,
     apiLocker = false;
     $scope.searchObj.noMoreData = false;
     $scope.searchObj.products = [];
@@ -244,17 +248,17 @@ angular.module('sywStyleXApp')
     }
     apiLocker = true;
 
-    ProductSearchService.searchProducts(pageNumber, $scope.searchKeyword, searchFilters).then(function(result) {
+    ProductSearchService.searchProducts($scope.searchObj.pageNumber, $scope.searchKeyword, searchFilters).then(function(result) {
       if (UtilityService.validateResult(result)) {
         $scope.filterInfo.productCount = result.data.payload.COUNT;
         if (result.data.payload.PRODUCTS.length === 0) {
           $scope.searchObj.noMoreData = true;
-          if(pageNumber == 1) {
+          if($scope.searchObj.pageNumber == 1) {
             $scope.searchObj.emptySearchResults = true;
           }
 
         } else {
-          pageNumber++;
+          $scope.searchObj.pageNumber++;
           $scope.searchObj.noMoreData = false;
           $scope.searchObj.emptySearchResults = false;
           var products = result.data.payload.PRODUCTS;
