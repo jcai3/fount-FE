@@ -4156,10 +4156,10 @@ ul#seller-carousel li {
 }
 #seller-carousel .seller-element {
 	text-align: center;
-	border-left: 1px solid lightgrey;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	text-transform: uppercase;
 }
 #seller-carousel .seller-element.selected {
 	color: #4AC0D1;
@@ -7947,9 +7947,12 @@ ul.products li.product a.quick-view-button {
 	overflow: hidden;
 	position: relative;
 	margin-bottom: 20px;
-	-webkit-box-shadow: 0 8px 6px -7px #999;
+	/*-webkit-box-shadow: 0 8px 6px -7px #999;
 	-moz-box-shadow: 0 8px 6px -7px #999;
-	box-shadow: 0 8px 6px -7px #999;
+	box-shadow: 0 8px 6px -7px #999;*/
+	-webkit-box-shadow: 0 0 3px #ccc;
+	-moz-box-shadow: 0 0 3px #ccc;
+	box-shadow: 0 0 3px #ccc;
 }
 .woocommerce ul.products li.product figure > a {
 	display: block;

@@ -1,30 +1,29 @@
 <div class="fount-shop-page">
-  <div class="clearfix post-364 page type-page status-publish hentry">
-    <div class="page-content clearfix">
-      <section class="container">
-        <div class="row">
-          <div class="span12">
-            <div class="spb_wrapper portfolio-wrap">
-              <div class="filter-wrap" ng-show="onSaleObj.enableSellerModule">
-                <div class="filter-slide-wrap">
-                  <div fount-seller-carousel sellers="onSaleObj.sellers" top-seller-id="onSaleObj.topSellerId"></div>
-                </div>
+  <div fount-home-slider></div>
+  <div class="page-content clearfix">
+    <section class="container">
+      <div class="row">
+        <div class="span12">
+          <div class="spb_wrapper portfolio-wrap">
+            <div class="filter-wrap" ng-show="onSaleObj.enableSellerModule">
+              <div class="filter-slide-wrap">
+                <div fount-seller-carousel sellers="onSaleObj.sellers" top-seller-id="onSaleObj.topSellerId"></div>
               </div>
-              <div infinite-scroll='loadMore()' infinite-scroll-disabled='onSaleObj.noMoreData' infinite-scroll-distance='0' class="container">
-                <ul class="portfolio-items products gallery-portfolio filterable-items row clearfix">
-                  <li ng-repeat="product in onSaleObj.products" class="clearfix product portfolio-item span3 gallery app-design interface-design">
-                    <div fount-product-tile product="product"></div>
-                  </li>
-                </ul>
-              </div>
-              <div class="fount-no-products" ng-show="!onSaleObj.enableSellerModule">No available products.</div>
-              <div ng-show="onSaleObj.pageNumber >= 5" class="pagination-wrap">
-                <input ng-click="loadNextPage()" type="submit" class="button alt load-more" value="Load More">
-              </div>
+            </div>
+            <div infinite-scroll='loadMore()' infinite-scroll-disabled='onSaleObj.noMoreData' infinite-scroll-distance='0' class="container">
+              <ul class="portfolio-items products gallery-portfolio filterable-items row clearfix">
+                <li ng-repeat="product in onSaleObj.products" class="clearfix product portfolio-item span3 gallery app-design interface-design">
+                  <div fount-product-tile product="product"></div>
+                </li>
+              </ul>
+            </div>
+            <div class="fount-no-products" ng-show="!onSaleObj.enableSellerModule">No available products.</div>
+            <div ng-show="onSaleObj.pageNumber >= 5" class="pagination-wrap">
+              <input ng-click="loadNextPage()" type="submit" class="button alt load-more" value="Load More">
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   </div>
 </div>

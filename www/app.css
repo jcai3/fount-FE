@@ -95,7 +95,7 @@ body {
 }
 #main-container,.tm-toggle-button-wrap a {
   background-color:#ffffff;
-  margin-top: -20px;
+  /*margin-top: -20px;*/
 }
 a,.ui-widget-content a{color:#666666;}.pagination-wrap li span.current,.pagination-wrap li a:hover{color:#ffffff;background:#4AC0D1;border-color:#4AC0D1;}.pagination-wrap li a,.pagination-wrap li span.expand{color:#252525;border-color:#e4e4e4;}.pagination-wrap li a,.pagination-wrap li span{background-color:#ffffff;}
 input[type="text"],input[type="password"],input[type="email"],textarea,select{border-color:#e4e4e4;background:#f7f7f7;}textarea:focus,input:focus{border-color:#999!important;}.modal-header{background:#f7f7f7;}#logo>a.logo-link{height:100px;}#header-section.header-1 #header{padding:35px 0;}#header-section.header-4 #header nav#main-navigation ul.menu>li,#header-section.header-5 #header nav#main-navigation ul.menu>li,#header-section.header-4 .header-right nav ul.menu>li,#header-section.header-5 .header-left nav ul.menu>li{line-height:110px;}#header-section.header-4 #logo>a.logo-link,#header-section.header-5 #logo>a.logo-link{height:110px;}.sf-super-search{background-color:#252525;}.sf-super-search .search-options .ss-dropdown>span,.sf-super-search .search-options input{color:#4AC0D1;border-bottom-color:#4AC0D1;}
@@ -415,7 +415,7 @@ abbr[title], abbr[data-original-title] {
 .order-complete .back-to-shop .button {
   padding: 10px 20px;
 }
-.fount-header .container {
+.fount-header .fount-header-container {
   background-color: #4AC0D1;
   color: #ffffff;
 }
@@ -583,7 +583,7 @@ abbr[title], abbr[data-original-title] {
 }
 .fount-header .fount-header-right .fount-shopping-bag .fount-cart-content {
   position: absolute;
-  top: 32px;
+  top: 50px;
   right: 0;
   background-color: #ffffff;
   z-index: 10;
@@ -648,8 +648,10 @@ ul.products li.product .price span {
   margin-right: 5px;
 }
 .fount-shop-page {
-  margin-top: -20px;
-  background-color: whitesmoke;
+  background-color: #ffffff;
+}
+.fount-shop-page .fount-home-slider .flexslider {
+  margin: 0;
 }
 .woocommerce #review_form #respond {
   position: static;
@@ -767,7 +769,7 @@ ul.fount-product-attr-list li.selectedColorActive div {
   opacity: 0;
 }
 @media only screen and (max-width: 900px) {
-  .fount-header .container {
+  .fount-header .fount-header-container {
     text-align: center;
     position: relative;
   }
