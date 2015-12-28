@@ -558,7 +558,7 @@ abbr[title], abbr[data-original-title] {
 }
 .fount-header .fount-header-right {
   line-height: 17px;
-  margin: 11px 20px 0 0;
+  margin: 0 20px 0 0;
   position: absolute;
   right: 0;
   top: 0;
@@ -567,12 +567,19 @@ abbr[title], abbr[data-original-title] {
   display: inline-block;
   position: relative;
   cursor: pointer;
+  margin-right: 10px;
 }
 .fount-header .fount-header-right .fount-shopping-bag span.fount-cart-count {
   position: absolute;
   font-size: 10px;
-  top: 12px;
-  left: 10px;
+  top: 5px;
+  left: 25px;
+  width: 8px;
+  height: 8px;
+  border-radius: 10px;
+  background: #4AC0D1;
+  padding: 5px;
+  line-height: 8px;
 }
 .fount-header .fount-header-right .fount-shopping-bag .fount-cart-content {
   position: absolute;
@@ -611,8 +618,9 @@ abbr[title], abbr[data-original-title] {
 }
 .fount-header .fount-header-right .fount-profile-section {
   display: inline-block;
-  vertical-align: super;
+  vertical-align: top;
   cursor: pointer;
+  margin-top: 15px;
 }
 .fount-header .fount-header-right .fount-profile-section .fount-user-avatar {
   width: 20px;
@@ -630,8 +638,8 @@ abbr[title], abbr[data-original-title] {
 }
 .fount-header i.sf-cart {
   background: transparent url('img/shopping_bag_icon@2x.png') no-repeat top left;
-  width: 28px;
-  height: 32px;
+  width: 52px;
+  height: 52px;
   display: inline-block;
   vertical-align: -8px;
 }

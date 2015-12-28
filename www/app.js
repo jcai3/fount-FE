@@ -11,10 +11,20 @@ angular.module('sywStyleXApp', [
 .config(function($httpProvider, $stateProvider, $urlRouterProvider) {
   // $httpProvider.defaults.withCredentials = true;
   $stateProvider
-    .state('shop', {
-      url: '/shop',
-      templateUrl: 'views/shop.html',
-      controller: 'ShopCtrl'
+    // .state('shop', {
+    //   url: '/shop',
+    //   templateUrl: 'views/shop.html',
+    //   controller: 'ShopCtrl'
+    // })
+    .state('on-sale', {
+      url: '/on-sale',
+      templateUrl: 'views/on-sale.html',
+      controller: 'OnSaleCtrl'
+    })
+    .state('new-arrivals', {
+      url: '/new-arrivals',
+      templateUrl: 'views/new-arrivals.html',
+      controller: 'NewArrivalsCtrl'
     })
     .state('brand', {
       url: '/brand/{brandId}',
@@ -63,7 +73,7 @@ angular.module('sywStyleXApp', [
     });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/shop');
+  $urlRouterProvider.otherwise('/on-sale');
 })
 // .config(['$routeProvider', function($routeProvider) {
 //   $routeProvider

@@ -145,12 +145,12 @@ angular.module('sywStyleXApp')
       };
 
       scope.setTopFilter = function(filter) {
-        if ($state.current.name != 'shop') {
-          $state.go('shop');
-          return;
-        }
+        // if ($state.current.name != 'shop') {
+        //   $state.go('shop');
+        //   return;
+        // }
 
-        if (scope.topFilter == filter && $state.current.name == 'shop') {
+        if (scope.topFilter == filter) {
           return;
         }
 
@@ -159,7 +159,14 @@ angular.module('sywStyleXApp')
         }
 
         scope.topFilter = filter;
-        $rootScope.$emit('event.setTopFilter', {filter: filter});
+
+        if (filter == 'SALE') {
+          $state.go('on-sale');
+        } else if (filter == 'ARRIVALS') {
+          $state.go('new-arrivals');
+        }
+
+        // $rootScope.$emit('event.setTopFilter', {filter: filter});
       };
 
       if (!!localStorageService.get('shoppingCartInfo')) {
