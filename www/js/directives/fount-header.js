@@ -305,10 +305,11 @@ angular.module('sywStyleXApp')
       scope.setTopFilter('SALE');
 
       $rootScope.$on('event.updateShoppingCart', function(event, data) {
-        scope.shoppingCartInfo = {
-          count: data.shoppingCartInfo.count,
-          subtotal: data.shoppingCartInfo.subtotal
-        };
+        // scope.shoppingCartInfo = {
+        //   count: data.shoppingCartInfo.count,
+        //   subtotal: data.shoppingCartInfo.subtotal
+        // };
+        getProductsFromCart();
       });
 
       $rootScope.$on('event.updateFountLogin', function(event, data) {

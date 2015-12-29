@@ -130,7 +130,8 @@ nav .menu ul.sub-menu li>a,#top-bar nav .menu ul li>a{color:#666666;}nav .menu u
 }
 .woocommerce-cart .wc-proceed-to-checkout a.checkoutDisabled:hover {
   background:#f7f7f7;
-  color:#252525
+  color:#252525;
+  cursor: auto;
 }
 .woocommerce #account_details .login,.woocommerce #account_details .login h4.lined-heading span,.my-account-login-wrap .login-wrap,.my-account-login-wrap .login-wrap h4.lined-heading span,.woocommerce div.product form.cart table div.quantity{background:#f7f7f7;}.woocommerce .help-bar ul li a:hover,.woocommerce .continue-shopping:hover,.woocommerce .address .edit-address:hover,.my_account_orders td.order-number a:hover,.product_meta a.inline:hover{border-bottom-color:#4AC0D1;}.woocommerce .order-info,.woocommerce .order-info mark{background:#4AC0D1;color:#ffffff;}.woocommerce #payment div.payment_box:after{border-bottom-color:#f7f7f7;}.woocommerce .widget_price_filter .price_slider_wrapper .ui-widget-content{background:#e4e4e4;}.woocommerce .widget_price_filter .ui-slider-horizontal .ui-slider-range{background:#f7f7f7;}.yith-wcwl-wishlistexistsbrowse a:hover,.yith-wcwl-wishlistaddedbrowse a:hover{color:#ffffff;}.woocommerce ul.products li.product .price,.woocommerce div.product p.price{color:#252525;}.asset-bg{border-color:#e4e4e4;}.asset-bg.alt-one{background-color:#FFFFFF;}
 .asset-bg.alt-one {
