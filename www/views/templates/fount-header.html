@@ -52,8 +52,10 @@
           <span ng-click="goToCart()" class="fount-cart-count">{{shoppingCartInfo.count}}</span>
           <ul ng-show="showCartOverlay" class="sub-menu fount-cart-content">
             <li>
-              <div class="shopping-bag">
-							<!-- <div class="bag-header">1 item in the shopping bag</div> -->
+  						<div ng-show="shoppingCartInfo.count==0" class="shopping-bag">
+                <div class="bag-header">No item in shopping bag.</div>
+              </div>
+              <div ng-show="shoppingCartInfo.count>0" class="shopping-bag">
 								<div class="bag-contents">
                   <div ng-repeat="cartProduct in fountCartProducts" ng-click="productDetail(cartProduct.product)" class="bag-product clearfix">
 								    <figure>
