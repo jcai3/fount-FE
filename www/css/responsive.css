@@ -122,6 +122,10 @@
 		display: none!important;
 	}
 
+	.filter-wrap {
+		margin-left: -20px;
+	}
+
 }
 
 /* --------------------------------------------
