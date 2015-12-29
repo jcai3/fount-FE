@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('ShoppingCartCtrl', ['$scope', '$state', '$timeout', 'UtilityService', 'localStorageService', 'CartService', 'ProductDetailService',function($scope, $state, $timeout, UtilityService, localStorageService, CartService, ProductDetailService) {
+.controller('ShoppingCartCtrl', ['$rootScope', '$scope', '$state', '$timeout', 'UtilityService', 'localStorageService', 'CartService', 'ProductDetailService', function($rootScope, $scope, $state, $timeout, UtilityService, localStorageService, CartService, ProductDetailService) {
   var shoppingBagDetail;
   var sites = [];
   var productDetailLocker = false;
@@ -143,6 +143,10 @@ angular.module('sywStyleXApp')
   }
 
   $scope.checkout = function() {
+    if ($scope.shoppingCartInfo.count <= 0) {
+      return;
+    }
+
     $state.go('checkout');
   };
 
@@ -184,6 +188,7 @@ angular.module('sywStyleXApp')
       localStorageService.set('shoppingCartInfo', $scope.shoppingCartInfo);
       localStorageService.set('shoppingCart', $scope.shoppingCartDict);
       localStorageService.set('cartProductIds', cartProductIds);
+      $rootScope.$emit('event.updateShoppingCart', {shoppingCartInfo: $scope.shoppingCartInfo});
     });
   };
 
@@ -220,7 +225,7 @@ angular.module('sywStyleXApp')
   };
 
   $scope.goToShop = function() {
-    $state.go('shop');
+    $state.go('on-sale');
   };
 
  $scope.productDetail = function (cartProductDetails) {

@@ -16,6 +16,7 @@
                 <form>
                   <div class="row">
                     <div class="span9">
+                      <div ng-show="shoppingCartInfo.count==0" class="cart-no-products-msg">No products in shopping bag.</div>
                       <table ng-repeat="(key, sellerItems) in shoppingCartDict" class="shop_table cart" cellspacing="0">
                         <thead>
                           <tr>
@@ -174,7 +175,7 @@
                           </tbody>
                         </table>
                         <div class="wc-proceed-to-checkout">
-                          <a ng-click="checkout()" class="checkout-button button alt wc-forward">Proceed to Checkout</a>
+                          <a ng-click="checkout()" ng-class="{'checkoutDisabled': shoppingCartInfo.count==0}" class="checkout-button button alt wc-forward">Proceed to Checkout</a>
                         </div>
                       </div>
                       <a ng-click="goToShop()" class="continue-shopping">Continue shopping</a>
