@@ -58,9 +58,6 @@ angular.module('sywStyleXApp')
 
       initializeSellerCarousel();
 
-      $rootScope.$on('event.setTopFilter', function(event, data) {
-        initializeSellerCarousel();
-      });
     }
   };
 }]);

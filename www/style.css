@@ -610,6 +610,11 @@ body .wooslider.wooslider-type-slides img { max-width: 100%; }
     height: auto;
     display: block!important;
 }
+#product-img-slider .slides li img {
+	width: auto;
+	height: 445px;
+	margin: auto;
+}
 .flex-direction-nav, .flex-direction-nav li, .wooslider-direction-nav, .wooslider-direction-nav li {
 	margin: 0;
 	padding: 0;

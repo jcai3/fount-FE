@@ -680,6 +680,9 @@ ul.products li.product .price span {
 .fount-shop-page .fount-home-slider .flexslider {
   margin: 0 0 20px 0;
 }
+.fount-product-detail {
+  margin-top: 20px;
+}
 .woocommerce #review_form #respond {
   position: static;
   margin: 0;

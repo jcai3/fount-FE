@@ -7,7 +7,19 @@
           <div class="spb_wrapper portfolio-wrap">
             <div class="filter-wrap" ng-show="newArrivalsObj.enableSellerModule">
               <div class="filter-slide-wrap">
-                <div fount-seller-carousel sellers="newArrivalsObj.sellers" top-seller-id="newArrivalsObj.topSellerId"></div>
+                <div class='fount-seller-carousel'>
+                  <ul id="seller-carousel" class="portfolio-filter filtering row clearfix">
+                    <li ng-repeat='seller in newArrivalsObj.sellers track by $index' ng-click="setTopSellerId(seller.id)">
+                      <div class="seller-element" ng-class="{selected: seller.id == newArrivalsObj.topSellerId}">{{seller.name}}</div>
+                    </li>
+                  </ul>
+                  <a id="seller-carousel-next" class="carousel-arrow carousel-next">
+                    <i class="fa-chevron-right carousel-arrow-icon"></i>
+                  </a>
+                  <a id="seller-carousel-prev" class="carousel-arrow carousel-prev">
+                    <i class="fa-chevron-left carousel-arrow-icon"></i>
+                  </a>
+                </div>
               </div>
             </div>
             <div infinite-scroll='loadMore()' infinite-scroll-disabled='newArrivalsObj.noMoreData' infinite-scroll-distance='0' class="container">

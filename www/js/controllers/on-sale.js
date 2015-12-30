@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('OnSaleCtrl', ['$rootScope','$scope', 'UtilityService', 'SortFilterService', 'ProductSearchService', function($rootScope, $scope, UtilityService, SortFilterService, ProductSearchService) {
+.controller('OnSaleCtrl', ['$rootScope','$scope', '$timeout', 'UtilityService', 'SortFilterService', 'ProductSearchService', function($rootScope, $scope, $timeout, UtilityService, SortFilterService, ProductSearchService) {
   var apiLocker = false;
 
   $scope.onSaleObj = {
@@ -16,24 +16,6 @@ angular.module('sywStyleXApp')
       id: 0,
       name: 'All'
     }]
-  };
-
-  $scope.setTopFilter = function(filter) {
-    if ($scope.onSaleObj.topFilter == filter) {
-      return;
-    }
-
-    $scope.onSaleObj.pageNumber = 1;
-    apiLocker = false;
-    $scope.onSaleObj.noMoreData = false;
-    $scope.onSaleObj.emptySearchResults = false;
-    $scope.onSaleObj.topFilter = filter;
-    $scope.onSaleObj.sellers = [{
-      id: 0,
-      name: 'All'
-    }];
-    $scope.onSaleObj.products = [];
-    getShopSellers();
   };
 
   $scope.loadMore = function() {
@@ -58,6 +40,7 @@ angular.module('sywStyleXApp')
           $scope.onSaleObj.enableSellerModule = false;
           $scope.onSaleObj.sellers = [];
         } else {
+          initializeSellerCarousel();
           $scope.onSaleObj.enableSellerModule = true;
           $scope.onSaleObj.sellers.push.apply($scope.onSaleObj.sellers, sellers);
           getSellerProducts();
@@ -93,21 +76,56 @@ angular.module('sywStyleXApp')
     });
   };
 
-  $rootScope.$on('event.setTopSeller', function(event, data) {
-    $scope.onSaleObj.pageNumber = 1;
+  var initializeSellerCarousel = function() {
+
+    var startPosition = 0;
+
+    var settings = {
+      circular: true,
+      infinite: true,
+      responsive: true,
+      width: null,
+      align: 'center',
+      auto: false,
+      items: {
+        visible: 6,
+        minimum: 5,
+        start: startPosition
+      },
+      scroll: {
+        items: 1,
+        duration: 50,
+        pauseOnHover: true
+      },
+      prev: {
+        button: $('#seller-carousel-prev'),
+        key: "left"
+      },
+      next: {
+        button: $('#seller-carousel-next'),
+        key: "right"
+      }
+    };
+
+    $timeout(function(){
+      $('#seller-carousel').carouFredSel(settings);
+    }, 10);
+  };
+
+  $scope.setTopSellerId = function(id) {
+    if ($scope.onSaleObj.topSellerId == id) {
+      return;
+    }
+
     apiLocker = false;
-    $scope.onSaleObj.topSellerId = data.id;
+    $scope.onSaleObj.topSellerId = id;
+    $scope.onSaleObj.pageNumber = 1;
     $scope.onSaleObj.noMoreData = false;
     $scope.onSaleObj.emptySearchResults = false;
     $scope.onSaleObj.products = [];
 
     getSellerProducts();
-  });
-
-  $rootScope.$on('event.setTopFilter', function(event, data) {
-    $scope.setTopFilter(data.filter);
-  });
+  };
 
   getShopSellers();
-
 }]);

@@ -18,28 +18,6 @@ angular.module('sywStyleXApp')
     }]
   };
 
-  $scope.getMyCtrlScope = function() {
-    return $scope;
-  };
-
-  $scope.setTopFilter = function(filter) {
-    if ($scope.newArrivalsObj.topFilter == filter) {
-      return;
-    }
-
-    $scope.newArrivalsObj.pageNumber = 1;
-    apiLocker = false;
-    $scope.newArrivalsObj.noMoreData = false;
-    $scope.newArrivalsObj.emptySearchResults = false;
-    $scope.newArrivalsObj.topFilter = filter;
-    $scope.newArrivalsObj.sellers = [{
-      id: 0,
-      name: 'All'
-    }];
-    $scope.newArrivalsObj.products = [];
-    getShopSellers();
-  };
-
   $scope.loadMore = function() {
     if ($scope.newArrivalsObj.noMoreData || $scope.newArrivalsObj.pageNumber > 5) {
       return;
@@ -62,6 +40,7 @@ angular.module('sywStyleXApp')
           $scope.newArrivalsObj.enableSellerModule = false;
           $scope.newArrivalsObj.sellers = [];
         } else {
+          initializeSellerCarousel();
           $scope.newArrivalsObj.enableSellerModule = true;
           $scope.newArrivalsObj.sellers.push.apply($scope.newArrivalsObj.sellers, sellers);
           getSellerProducts();
@@ -97,20 +76,56 @@ angular.module('sywStyleXApp')
     });
   };
 
-  $rootScope.$on('event.setTopSeller', function(event, data) {
-    $scope.newArrivalsObj.pageNumber = 1;
+  var initializeSellerCarousel = function() {
+
+    var startPosition = 0;
+
+    var settings = {
+      circular: true,
+      infinite: true,
+      responsive: true,
+      width: null,
+      align: 'center',
+      auto: false,
+      items: {
+        visible: 6,
+        minimum: 5,
+        start: startPosition
+      },
+      scroll: {
+        items: 1,
+        duration: 50,
+        pauseOnHover: true
+      },
+      prev: {
+        button: $('#seller-carousel-prev'),
+        key: "left"
+      },
+      next: {
+        button: $('#seller-carousel-next'),
+        key: "right"
+      }
+    };
+
+    $timeout(function(){
+      $('#seller-carousel').carouFredSel(settings);
+    }, 10);
+  };
+
+  $scope.setTopSellerId = function(id) {
+    if ($scope.newArrivalsObj.topSellerId == id) {
+      return;
+    }
+
     apiLocker = false;
-    $scope.newArrivalsObj.topSellerId = data.id;
+    $scope.newArrivalsObj.topSellerId = id;
+    $scope.newArrivalsObj.pageNumber = 1;
     $scope.newArrivalsObj.noMoreData = false;
     $scope.newArrivalsObj.emptySearchResults = false;
     $scope.newArrivalsObj.products = [];
 
     getSellerProducts();
-  });
-
-  $rootScope.$on('event.setTopFilter', function(event, data) {
-    $scope.setTopFilter(data.filter);
-  });
+  };
 
   getShopSellers();
 

@@ -18,28 +18,6 @@ angular.module('sywStyleXApp')
     }]
   };
 
-  $scope.getMyCtrlScope = function() {
-    return $scope;
-  };
-
-  $scope.setTopFilter = function(filter) {
-    if ($scope.shopObj.topFilter == filter) {
-      return;
-    }
-
-    pageNumber = 1;
-    apiLocker = false;
-    $scope.shopObj.noMoreData = false;
-    $scope.shopObj.emptySearchResults = false;
-    $scope.shopObj.topFilter = filter;
-    $scope.shopObj.sellers = [{
-      id: 0,
-      name: 'All'
-    }];
-    $scope.shopObj.products = [];
-    getShopSellers();
-  };
-
   $scope.loadMore = function() {
     console.log('load more');
     if ($scope.shopObj.noMoreData) {
@@ -100,10 +78,6 @@ angular.module('sywStyleXApp')
     $scope.shopObj.products = [];
 
     getSellerProducts();
-  });
-
-  $rootScope.$on('event.setTopFilter', function(event, data) {
-    $scope.setTopFilter(data.filter);
   });
 
   getShopSellers();
