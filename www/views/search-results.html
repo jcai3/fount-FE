@@ -10,6 +10,22 @@
     <div id="page-wrap">
       <div class="page-content clearfix">
         <div class="inner-page-wrap no-bottom-spacing woocommerce-shop-page has-left-sidebar has-one-sidebar row clearfix">
+          <aside class="sidebar left-sidebar span3">
+            <!-- <section id="woocommerce_layered_nav_filters-2" class="woocommerce widget_layered_nav_filters clearfix">
+              <ul>
+                <li class="chosen"><a title="Remove filter" href="/shop/?filter_size=145">28</a></li>
+                <li class="chosen"><a title="Remove filter" href="/shop/?filter_size=143">32</a></li>
+              </ul>
+            </section> -->
+            <section id="woocommerce_layered_nav-4" class="widget woocommerce widget_layered_nav clearfix" ng-repeat="(filter, refineOption) in filterInfo.refineByOptions">
+              <div class="widget-heading clearfix"><h4><span>{{filter}}</span></h4></div>
+              <ul>
+                <li ng-repeat="option in refineOption.options" ng-click="toggleRefineOptions(filter, option)" ng-class="{'active' : option.selected}">
+                  <span class="refine-name">{{option.name}}</span>
+                  <span class="count">({{option.productsCount}})</span>
+                </li>
+            </section>
+          </aside>
           <section class="span9 push-right clearfix">
             <section class="page-content clearfix">
               <div class="woocommerce-count-wrap">
@@ -31,22 +47,6 @@
               </div>
             </section>
           </section>
-          <aside class="sidebar left-sidebar span3">
-            <!-- <section id="woocommerce_layered_nav_filters-2" class="woocommerce widget_layered_nav_filters clearfix">
-              <ul>
-                <li class="chosen"><a title="Remove filter" href="/shop/?filter_size=145">28</a></li>
-                <li class="chosen"><a title="Remove filter" href="/shop/?filter_size=143">32</a></li>
-              </ul>
-            </section> -->
-            <section id="woocommerce_layered_nav-4" class="widget woocommerce widget_layered_nav clearfix" ng-repeat="(filter, refineOption) in filterInfo.refineByOptions">
-              <div class="widget-heading clearfix"><h4><span>{{filter}}</span></h4></div>
-              <ul>
-                <li ng-repeat="option in refineOption.options" ng-click="toggleRefineOptions(filter, option)" ng-class="{'active' : option.selected}">
-                  <span class="refine-name">{{option.name}}</span>
-                  <span class="count">({{option.productsCount}})</span>
-                </li>
-            </section>
-          </aside>
         </div>
       </div>
     </div>

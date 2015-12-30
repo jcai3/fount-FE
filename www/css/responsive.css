@@ -128,6 +128,10 @@
 	.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
 		width: 22.90%;
 	}
+
+	#product-img-slider .slides li img {
+		height: 355px;
+	}
 }
 
 @media only screen and (min-width: 980px) {
@@ -143,6 +147,10 @@
 -------------------------------------------- */
 
 @media only screen and (max-width: 1024px) {
+
+	#product-img-slider .slides li img {
+		height: 355px;
+	}
 
 	/* HEADER */
 	#mini-header #mini-search {
@@ -200,6 +208,10 @@
 
 	.fount-product-tile .fount-product-image img {
 		height: 166px;
+	}
+
+	#product-img-slider .slides li img {
+		height: 275px;
 	}
 }
 
@@ -392,6 +404,14 @@
 
 	.woocommerce ul.products li.product,.woocommerce-page ul.products li.product {
 	  width: 29.75%;
+	}
+
+	.fount-product-tile .fount-product-image img {
+		height: 220px;
+	}
+
+	#product-img-slider .slides li img {
+		height: 275px;
 	}
 
 	/* LAYOUT */
@@ -860,7 +880,7 @@
 	}
 	ul.products li.product .product-details {
 		float: none;
-		text-align: center;
+		text-align: left;
 	}
 	.woocommerce ul.products li.product .price {
 		text-align: center;
@@ -873,14 +893,50 @@
 	}
 }
 
+@media only screen and (max-width: 667px) {
+	#product-img-slider .slides li img {
+		height: 238px;
+	}
+
+	.fount-product-tile .fount-product-image img {
+		height: 200px;
+	}
+
+	.woocommerce ul.products li.product {
+		margin-left: 18px;
+	}
+}
+
+@media only screen and (max-width: 598px) {
+	#product-img-slider .slides li img {
+		height: 212px;
+	}
+
+	.woocommerce ul.products li.product,.woocommerce-page ul.products li.product {
+		width: 44.75%;
+	}
+
+	.fount-product-tile .fount-product-image img {
+		height: 250px;
+	}
+}
+
 /* --------------------------------------------
 	iPHONE PORTRAIT
 -------------------------------------------- */
 
 @media only screen and (max-width: 479px) {
 
-	.fount-product-tile .fount-product-image {
-		max-height: 166px;
+	.woocommerce ul.products li.product,.woocommerce-page ul.products li.product {
+		width: 44%;
+	}
+
+	.woocommerce ul.products li.product {
+		margin-left: 15px;
+	}
+
+	.fount-product-tile .fount-product-image img {
+		height: 180px;
 	}
 
 	/* HEADER */
@@ -1012,5 +1068,63 @@
 	}
 	body .woocommerce-shop-page ul.products li.product,  body .product_list_widget > div > ul.products li.product {
 		width: 46%!important;
+	}
+}
+
+@media only screen and (max-width: 414px) {
+	#product-img-slider .slides li img {
+		height: 375px;
+	}
+}
+
+@media only screen and (max-width: 375px) {
+
+	#product-img-slider .slides li img {
+		height: 335px;
+	}
+
+	.woocommerce ul.products li.product,.woocommerce-page ul.products li.product {
+		width: 44%;
+	}
+
+	.woocommerce ul.products li.product {
+		margin-left: 15px;
+	}
+
+	.fount-product-tile .fount-product-image img {
+		height: 160px;
+	}
+
+	.fount-header .fount-header-right {
+		margin-right: 5px!important;
+	}
+}
+
+@media only screen and (max-width: 320px) {
+
+	#product-img-slider .slides li img {
+		height: 280px;
+	}
+
+	.fount-header .fount-header-right .fount-shopping-bag {
+		margin-right: 0px!important;
+	}
+
+	.woocommerce ul.products li.product,.woocommerce-page ul.products li.product {
+		width: 88%;
+	}
+
+	.woocommerce ul.products li.product {
+		margin-left: 20px;
+	}
+
+	.fount-product-tile .fount-product-image img {
+		height: 280px;
+	}
+}
+
+@media only screen and (max-width: 300px) {
+	.fount-product-tile .fount-product-image img {
+		height: auto;
 	}
 }

@@ -1,4 +1,4 @@
-<div ng-mouseover="showSearchResults()" ng-mouseleave="hideSearchResults()" class="fount-search">
+<div ng-mouseover="showSearchResults()"  class="fount-search">
   <i ng-click="goToSearchResults()" class="fa-search"></i>
   <input ng-model="searchObj.keyword" ng-keyup="searchProducts()" type="text" placeholder="What are you looking for?" name="s" autocomplete="off">
   <div ng-show="searchObj.results.COUNT>0 && searchObj.showSearchResults==true" class="ajax-search-results">

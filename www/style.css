@@ -2250,7 +2250,8 @@ nav .menu > li.shopping-bag-item ul.sub-menu {
 }
 .search-result .search-item-img, .search-result .search-item-img img, .search-result .search-item-img .img-holder {
 	height: 35px;
-	width: 35px;
+	width: auto;
+	max-width: 35px;
 	float: left;
 }
 .search-result .search-item-img .img-holder i {
