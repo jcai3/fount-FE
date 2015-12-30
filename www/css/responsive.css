@@ -13,6 +13,14 @@
 
 @media only screen and (min-width: 1200px) {
 
+	.filter-wrap {
+		margin-left: -20px;
+	}
+
+	.fount-product-tile .fount-product-image img {
+		height: 260px;
+	}
+
 	/* LAYOUT */
 	.boxed-layout {
 		width: 1200px;
@@ -116,14 +124,16 @@
 
 }
 
+@media (max-width: 1199px) and (min-width: 980px){
+	.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+		width: 22.90%;
+	}
+}
+
 @media only screen and (min-width: 980px) {
 
 	.mobile-search-form {
 		display: none!important;
-	}
-
-	.filter-wrap {
-		margin-left: -20px;
 	}
 
 }
