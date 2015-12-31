@@ -123,21 +123,33 @@ angular.module('sywStyleXApp')
         searchFilters.brandIds.push(option.id);
       }
     } else if (filter == 'PRICE') {
-      var options = $scope.filterInfo.refineByOptions.PRICE.options;
-      for (var i=0,j=options.length; i<j; i++) {
-        options[i].selected = false;
+      if (option.selected == true) {
+        option.selected = false;
+        searchFilters.minPrice = '';
+        searchFilters.maxPrice = '';
+      } else {
+        var options = $scope.filterInfo.refineByOptions.PRICE.options;
+        for (var i=0,j=options.length; i<j; i++) {
+          options[i].selected = false;
+        }
+        option.selected = true;
+        searchFilters.minPrice = option.minPrice;
+        searchFilters.maxPrice = option.maxPrice;
       }
-      option.selected = true;
-      searchFilters.minPrice = option.minPrice;
-      searchFilters.maxPrice = option.maxPrice;
     } else if (filter == 'SALE') {
-      var options = $scope.filterInfo.refineByOptions.SALE.options;
-      for (var i=0,j=options.length; i<j; i++) {
-        options[i].selected = false;
+      if (option.selected == true) {
+        option.selected = false;
+        searchFilters.sale = '';
+      } else {
+        var options = $scope.filterInfo.refineByOptions.SALE.options;
+        for (var i=0,j=options.length; i<j; i++) {
+          options[i].selected = false;
+        }
+        option.selected = true;
+        searchFilters.sale = option.value;
       }
-      option.selected = true;
-      searchFilters.sale = option.value;
     }
+    getFacetsData();
     $scope.changeSortByOptions();
   };
 
@@ -203,6 +215,7 @@ angular.module('sywStyleXApp')
         }
 
         if(!!res.data.payload.BRANDS) {
+          $scope.filterInfo.refineByOptions.BRANDS.options = [];
           var brandsObj = res.data.payload.BRANDS;
           for(var key in brandsObj) {
             for(var i = 0, j = brandsObj[key].length; i < j; i++) {

@@ -222,7 +222,7 @@ nav .menu ul.sub-menu li>a,#top-bar nav .menu ul li>a{color:#666666;}nav .menu u
 }
 
 .sidebar.left-sidebar .widget {
-  height: 250px;
+  max-height: 250px;
   padding-right: 10px;
   margin-bottom: 35px;
   padding-bottom: 0;

@@ -2829,7 +2829,7 @@ nav .menu ul li.parent > a {
 .widget ul {
 	margin: 0;
 	list-style: none;
-	height: 220px;
+	max-height: 220px;
 	overflow-y: auto;
 }
 .widget ul li {
@@ -7954,6 +7954,12 @@ ul.products li.product a.quick-view-button {
 	display: block;
 	top: -36px!important;
 	text-shadow: none!important;
+}
+.fount-search-results-page ul.products li.product figure {
+	border: 1px solid #ccc;
+	-webkit-box-shadow: 9px 8px 6px -7px #ccc;
+	-moz-box-shadow: 9px 8px 6px -7px #ccc;
+	box-shadow: 9px 8px 6px -7px #ccc;
 }
 .woocommerce ul.products li.product figure {
 	overflow: hidden;
