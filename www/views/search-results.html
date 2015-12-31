@@ -25,7 +25,7 @@
               <div class="widget-heading clearfix"><h4><span>{{filter}}</span></h4></div>
               <ul>
                 <li ng-repeat="option in refineOption.options" ng-click="toggleRefineOptions(filter, option)" ng-class="{'active' : option.selected}">
-                  <span ng-show="option.selected == true"><i class="icon-cancel-circled-outline"></i></span>
+                  <span ng-show="option.selected == true" class="filter-remove-icon"><i class="icon-cancel-circled-outline"></i></span>
                   <span class="refine-name">{{option.name}}</span>
                   <span class="count">({{option.productsCount}})</span>
                 </li>

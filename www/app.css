@@ -235,6 +235,16 @@ nav .menu ul.sub-menu li>a,#top-bar nav .menu ul li>a{color:#666666;}nav .menu u
 .sidebar.left-sidebar .widget ul li.active span {
   color: #ffffff;
 }
+.sidebar.left-sidebar .widget ul li.active span.filter-remove-icon {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -9px;
+}
+.sidebar.left-sidebar .widget ul li.active span.refine-name {
+  margin-left: 17px;
+}
+
 .container.no-search-results {
   text-align: center;
 }
