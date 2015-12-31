@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('NewArrivalsCtrl', ['$rootScope','$scope', 'UtilityService', 'SortFilterService', 'ProductSearchService', function($rootScope, $scope, UtilityService, SortFilterService, ProductSearchService) {
+.controller('NewArrivalsCtrl', ['$rootScope', '$scope', '$timeout', 'UtilityService', 'SortFilterService', 'ProductSearchService', function($rootScope, $scope, $timeout, UtilityService, SortFilterService, ProductSearchService) {
   var apiLocker = false;
 
   $scope.newArrivalsObj = {

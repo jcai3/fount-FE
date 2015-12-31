@@ -2321,7 +2321,7 @@ nav .menu .wishlist-item ul.sub-menu li:first-child:before {
 	text-align: center;
 }
 .bag-product {
-	padding: 15px;
+	padding: 15px 15px 15px 10px;
 	border-bottom: 1px solid #e4e4e4;
 	position: relative;
 	font-size: 12px;
@@ -2341,14 +2341,17 @@ nav .menu .wishlist-item ul.sub-menu li:first-child:before {
 	height: auto;
 }
 .bag-product .bag-product-details {
-	margin-left: 82px;
+	margin-left: 115px;
 }
 .bag-product .bag-product-details a {
 	margin: 0;
 	padding: 0;
 }
-.bag-product-title a {
+.bag-product-title {
+	color: #666666;
 	font-weight: bold;
+	max-height: 63px;
+  overflow: hidden;
 }
 .bag-product a.remove {
 	margin: 0;
@@ -2698,16 +2701,16 @@ nav .menu ul li:last-child {
     border: 0;
 }
 nav .menu ul li > a {
-    padding: 10px 15px;
+  padding: 10px 15px;
 	display: block;
-    margin: 0;
-    white-space: nowrap;
-    max-width: 220px;
-    text-overflow: ellipsis;
-    overflow: hidden;
+  margin: 0;
+  white-space: nowrap;
+  max-width: 220px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 nav .menu ul li.parent > a {
-    padding-right: 24px;
+  padding-right: 24px;
 }
 .show-menu {
 	margin: 0 auto;
@@ -8806,6 +8809,10 @@ body.woocommerce .has-both-sidebars ul.products li.product {
 }
 .woocommerce table.cart .product-name, .woocommerce-page table.cart .product-name {
 	width: 150px;
+}
+.woocommerce table.cart .product-name, .woocommerce-page table.cart .product-name div p {
+	max-height: 66px;
+	overflow: hidden;
 }
 .woocommerce table.cart .product-price, .woocommerce-page table.cart .product-price {
 	width: 90px;

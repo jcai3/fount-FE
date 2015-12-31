@@ -93,7 +93,7 @@
                                       <h2><i class="icon ion-waterdrop"></i>Color</h2>
                                       <ul class="fount-product-attr-list">
                                         <li ng-repeat="color in selectedFit.dep.color" ng-click="setSelectedColor(color)" ng-class="{'selectedColorActive': color == selectedColor}" class="fount-product-attr-img">
-                                          <div><img ng-src="{{color.value}}"></div>
+                                          <div><img ng-src="{{color.value}}" xapp-err-src="{{color.image}}"></div>
                                         </li>
                                       </ul>
                                     </div>
@@ -120,7 +120,7 @@
                                       <h2><i class="icon ion-waterdrop"></i>Color</h2>
                                       <ul class="fount-product-attr-list">
                                         <li ng-repeat="color in productDetail.twotap.addToCart.required_field_values.color" ng-click="setSelectedColor(color)" ng-class="{'selectedColorActive': color == selectedColor}" class="fount-product-attr-img">
-                                          <div><img ng-src="{{color.value}}"></div>
+                                          <div><img ng-src="{{color.value}}" xapp-err-src="{{color.image}}"></div>
                                         </li>
                                       </ul>
                                     </div>

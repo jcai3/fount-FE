@@ -96,31 +96,30 @@ angular.module('sywStyleXApp')
     // );
     loginWindow = $window.open('https://api.instagram.com/oauth/authorize?client_id=' + ENV.instagramClientId +
       '&redirect_uri=' + ENV.instagramRedirectDomain + ENV.instagramRedirectUri +
-      '&scope=likes+comments&response_type=code', '_parent'
+      '&scope=likes+comments&response_type=code', '_self', 'width=400,height=250,location=no,clearsessioncache=yes,clearcache=yes'
     );
 
-    var i = $interval(function(){
-      interval += 500;
-
-      try {
-
-        if((loginWindow.location.href).indexOf(host) !== -1) {
-          var userId = (loginWindow.location.href).split('USER_ID=')[1];
-          console.log(loginWindow.location.href);
-          $rootScope.xappObj.overlay = false;
-          $interval.cancel(i);
-          loginWindow.close();
-          if(userId) {
-            console.log('userId: ' + userId);
-            localStorageService.set('userId', userId);
-            invokeFountLogin();
-            // $state.go('shop');
-          }
-        }
-      } catch(e) {
-        console.error(e);
-      }
-    }, interval);
+    // var i = $interval(function(){
+    //   interval += 500;
+    //
+    //   try {
+    //     if((loginWindow.location.href).indexOf(host) !== -1) {
+    //       var userId = (loginWindow.location.href).split('USER_ID=')[1];
+    //       console.log(loginWindow.location.href);
+    //       $rootScope.xappObj.overlay = false;
+    //       $interval.cancel(i);
+    //       loginWindow.close();
+    //       if(userId) {
+    //         console.log('userId: ' + userId);
+    //         localStorageService.set('userId', userId);
+    //         invokeFountLogin();
+    //         // $state.go('shop');
+    //       }
+    //     }
+    //   } catch(e) {
+    //     console.error(e);
+    //   }
+    // }, interval);
   }
 
 }]);

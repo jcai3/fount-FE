@@ -1,13 +1,18 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.directive('fountHeader', ['$rootScope', '$state', 'localStorageService', 'ngDialog', 'CartService', 'ProductDetailService', 'ProductSearchService', 'PublicProfileService', 'LoginRegisterService', 'InstagramService', 'UtilityService', function($rootScope, $state, localStorageService, ngDialog, CartService, ProductDetailService, ProductSearchService, PublicProfileService, LoginRegisterService, InstagramService, UtilityService) {
+.directive('fountHeader', ['$rootScope', '$state', '$location', 'localStorageService', 'ngDialog', 'CartService', 'ProductDetailService', 'ProductSearchService', 'PublicProfileService', 'LoginRegisterService', 'InstagramService', 'UtilityService', function($rootScope, $state, $location, localStorageService, ngDialog, CartService, ProductDetailService, ProductSearchService, PublicProfileService, LoginRegisterService, InstagramService, UtilityService) {
   return {
     restrict: 'A',
     replace: true,
     templateUrl: 'views/templates/fount-header.html',
     scope: {},
     link: function(scope, element, attrs) {
+      var userObj = $location.search();
+      if (userObj.USER_ID) {
+        localStorageService.set('userId', userObj.USER_ID);
+      }
+
       var shoppingCartDict = {};
       scope.isLoggedIn = false;
       scope.topFilter = 'SALE';
@@ -299,6 +304,7 @@ angular.module('sywStyleXApp')
 
       $rootScope.$on('event.updateFountLogin', function(event, data) {
         scope.isLoggedIn = data.isLoggedIn;
+        getProductsFromCart();
         $state.go('on-sale');
       });
 
@@ -309,11 +315,6 @@ angular.module('sywStyleXApp')
         //   count: data.shoppingCartInfo.count,
         //   subtotal: data.shoppingCartInfo.subtotal
         // };
-        getProductsFromCart();
-      });
-
-      $rootScope.$on('event.updateFountLogin', function(event, data) {
-        scope.isLoggedIn = data.isLoggedIn;
         getProductsFromCart();
       });
 
