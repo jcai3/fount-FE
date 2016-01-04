@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('LoginCtrl', ['$rootScope', '$scope', 'LoginRegisterService', 'UtilityService','$state', '$window','$interval','ENV', 'localStorageService',function($rootScope, $scope, LoginRegisterService, UtilityService, $state, $window, $interval, ENV, localStorageService) {
-  // UtilityService.gaTrackAppView('Login Page View');
+.controller('LoginCtrl', ['$rootScope', '$scope', 'LoginRegisterService', 'UtilityService','$state', '$window', 'ENV', 'localStorageService',function($rootScope, $scope, LoginRegisterService, UtilityService, $state, $window, ENV, localStorageService) {
 
   $scope.loginObj = {
     email: '',
@@ -21,8 +20,6 @@ angular.module('sywStyleXApp')
 
   $scope.authErrorMsg = false;
   $scope.errorMessage = '';
-
-  console.log('inside the login page');
 
   var invokeFountLogin = function() {
     $rootScope.$emit('event.updateFountLogin', {isLoggedIn: true});
@@ -78,48 +75,12 @@ angular.module('sywStyleXApp')
   };
 
   $scope.instagramLogin = function(userType) {
-    var host = $window.location.host;
-    console.log('user Type:' + userType);
-    console.log('inside the instagram login function');
-    // $rootScope.xappObj.overlay = true;
     var loginWindow;
-     //the pop-up window size, change if you want
-    var popupWidth = 400,
-    popupHeight = 300,
-    popupLeft = (window.screen.width - popupWidth) / 2,
-    popupTop = (window.screen.height - popupHeight) / 2,
-    interval = 1000;
 
-    // loginWindow = $window.open('https://api.instagram.com/oauth/authorize?client_id=' + ENV.instagramClientId +
-    //   '&redirect_uri=' + ENV.instagramRedirectDomain + ENV.instagramRedirectUri +
-    //   '&scope=likes+comments&response_type=code', '', 'width='+popupWidth+',height='+popupHeight+',left='+popupLeft+',top='+popupTop+''
-    // );
     loginWindow = $window.open('https://api.instagram.com/oauth/authorize?client_id=' + ENV.instagramClientId +
       '&redirect_uri=' + ENV.instagramRedirectDomain + ENV.instagramRedirectUri +
       '&scope=likes+comments&response_type=code', '_self', 'width=400,height=250,location=no,clearsessioncache=yes,clearcache=yes'
     );
-
-    // var i = $interval(function(){
-    //   interval += 500;
-    //
-    //   try {
-    //     if((loginWindow.location.href).indexOf(host) !== -1) {
-    //       var userId = (loginWindow.location.href).split('USER_ID=')[1];
-    //       console.log(loginWindow.location.href);
-    //       $rootScope.xappObj.overlay = false;
-    //       $interval.cancel(i);
-    //       loginWindow.close();
-    //       if(userId) {
-    //         console.log('userId: ' + userId);
-    //         localStorageService.set('userId', userId);
-    //         invokeFountLogin();
-    //         // $state.go('shop');
-    //       }
-    //     }
-    //   } catch(e) {
-    //     console.error(e);
-    //   }
-    // }, interval);
   }
 
 }]);

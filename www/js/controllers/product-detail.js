@@ -611,14 +611,46 @@ angular.module('sywStyleXApp')
 
   $scope.setSelectedFit = function(selectedFit) {
     $scope.selectedFit = selectedFit;
+
+    if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('color') != -1) {
+      $scope.selectedColor = $scope.selectedFit.dep.color[0];
+
+      if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1) {
+        $scope.selectedSize = $scope.selectedColor.dep.size[0];
+
+        if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('inseam') != -1) {
+          $scope.selectedInseam = $scope.selectedSize.dep.inseam[0];
+        }
+      }
+    }
   };
 
   $scope.setSelectedColor = function(selectedColor) {
     $scope.selectedColor = selectedColor;
+
+    if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1) {
+      $scope.selectedSize = $scope.selectedColor.dep.size[0];
+
+      if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('inseam') != -1) {
+        $scope.selectedInseam = $scope.selectedSize.dep.inseam[0];
+      }
+    }
+
+    if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option') == 1) {
+      $scope.selectedOption = $scope.selectedColor.dep.option[0];
+    }
+
+    if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('style') != -1) {
+      $scope.selectedStyle = $scope.selectedColor.dep.style[0];
+    }
   };
 
   $scope.setSelectedSize = function(selectedSize) {
     $scope.selectedSize = selectedSize;
+
+    if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('inseam') != -1) {
+      $scope.selectedInseam = $scope.selectedSize.dep.inseam[0];
+    }
   };
 
   $scope.setSelectedOption = function(selectedOption) {
@@ -639,14 +671,35 @@ angular.module('sywStyleXApp')
 
   $scope.setSelectedOption1 = function(selectedOption1) {
     $scope.selectedOption1 = selectedOption1;
+    if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option 2') != -1) {
+      $scope.selectedOption2 = $scope.selectedOption1.dep['option 2'][0];
+
+      if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option 3') != -1) {
+        $scope.selectedOption3 = $scope.selectedOption2.dep['option 3'][0];
+
+        if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option 4') != -1) {
+          $scope.selectedOption4 = $scope.selectedOption3.dep['option 4'][0];
+        }
+      }
+    }
   };
 
   $scope.setSelectedOption2 = function(selectedOption2) {
     $scope.selectedOption2 = selectedOption2;
+    if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option 3') != -1) {
+      $scope.selectedOption3 = $scope.selectedOption2.dep['option 3'][0];
+
+      if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option 4') != -1) {
+        $scope.selectedOption4 = $scope.selectedOption3.dep['option 4'][0];
+      }
+    }
   };
 
   $scope.setSelectedOption3 = function(selectedOption3) {
     $scope.selectedOption3 = selectedOption3;
+    if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option 4') != -1) {
+      $scope.selectedOption4 = $scope.selectedOption3.dep['option 4'][0];
+    }
   };
 
   $scope.setSelectedOption4 = function(selectedOption4) {
