@@ -2,6 +2,24 @@
 
 angular.module('sywStyleXApp')
 .controller('CheckoutCtrl', ['$scope', '$state', '$timeout', 'UtilityService', 'AddressService', 'ReviewOrderService', 'OrderCommissionService', 'localStorageService', 'TwoTapService', function($scope, $state, $timeout, UtilityService, AddressService, ReviewOrderService, OrderCommissionService, localStorageService, TwoTapService) {
+  if (!!localStorageService.get('shoppingCartInfo')) {
+    $scope.shoppingCartInfo = localStorageService.get('shoppingCartInfo');
+  }
+
+  if (!!localStorageService.get('shoppingCart')) {
+    $scope.shoppingCart = [];
+    var shoppingCart = localStorageService.get('shoppingCart');
+    for (var key in shoppingCart) {
+      for (var i=0, j=shoppingCart[key].length; i<j; i++) {
+        $scope.shoppingCart.push(shoppingCart[key][i]);
+      }
+    }
+  }
+
+  if (!!localStorageService.get('shoppingBagDetail')) {
+      $scope.shoppingBagDetail = localStorageService.get('shoppingBagDetail');
+  }
+
   var apiLocker = false;
 
   // var paymentInfo = {
@@ -232,14 +250,6 @@ angular.module('sywStyleXApp')
     payment: false,
     total: true
   };
-
-  if (!!localStorageService.get('shoppingCartInfo')) {
-    $scope.shoppingCartInfo = localStorageService.get('shoppingCartInfo');
-  }
-
-  if (!!localStorageService.get('shoppingBagDetail')) {
-      $scope.shoppingBagDetail = localStorageService.get('shoppingBagDetail');
-  }
 
   $scope.checkboxModel = {
     differentToBillingAddress: false
@@ -652,10 +662,6 @@ angular.module('sywStyleXApp')
       salesTax: 0,
       finalPrice: 0
     };
-
-    if (!!localStorageService.get('shoppingCartInfo')) {
-      $scope.shoppingCartInfo = localStorageService.get('shoppingCartInfo');
-    }
 
     if (!!localStorageService.get('shoppingBagEstimates')) {
       var shoppingBagEstimates = localStorageService.get('shoppingBagEstimates');

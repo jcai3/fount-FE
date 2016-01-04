@@ -218,10 +218,16 @@
 		                    </tr>
 	                    </thead>
 	                    <tbody>
-                        <tr class="cart_item" ng-repeat="cartItem in shoppingBagDetail.twotap.payload.SHOPPING_CART.cartProducts">
+                        <!-- <tr class="cart_item" ng-repeat="cartItem in shoppingBagDetail.twotap.payload.SHOPPING_CART.cartProducts">
                           <td class="product-name">{{cartItem.product.name}}&nbsp;<strong class="product-quantity">× {{cartItem.quantity}}</strong>													</td>
 						              <td class="product-total">
 							              <span class="amount">{{cartItem.product.finalPrice * cartItem.quantity | currency}}</span>
+                          </td>
+                        </tr> -->
+                        <tr class="cart_item" ng-repeat="product in shoppingCart">
+                          <td class="product-name">{{product.name}}&nbsp;<strong class="product-quantity">× {{product.qty}}</strong>													</td>
+                          <td class="product-total">
+                            <span class="amount">{{product.price * product.qty | currency}}</span>
                           </td>
                         </tr>
                       </tbody>
