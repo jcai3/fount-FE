@@ -220,6 +220,7 @@ angular.module('sywStyleXApp')
       localStorageService.set('shoppingCartInfo', $scope.shoppingCartInfo);
       localStorageService.set('shoppingCart', $scope.shoppingCartDict);
       localStorageService.set('cartProductIds', cartProductIds);
+      $rootScope.$emit('event.updateShoppingCart', {shoppingCartInfo: $scope.shoppingCartInfo});
       hideSaveLaterMsg();
     });
   };

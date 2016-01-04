@@ -9397,6 +9397,9 @@ ul.checkout-process li a.active, ul.checkout-process li p.active {
 #order_review table.shop_table th, #order_review table.shop_table td {
 	padding: 10px 0;
 }
+.fount-checkout table.shop_table th:nth-child(odd), .fount-checkout table.shop_table td:nth-child(odd) {
+	width: 90%;
+}
 #order_review table.shop_table tbody th, #order_review table.shop_table tbody td {
 	padding: 15px 0;
 }

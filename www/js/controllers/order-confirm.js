@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('OrderConfirmCtrl', ['$scope', '$state', '$timeout', 'localStorageService', 'UtilityService', 'TwoTapService', 'CheckoutService', 'CartService', 'ReviewOrderService', 'ngDialog', function($scope, $state, $timeout, localStorageService, UtilityService, TwoTapService, CheckoutService, CartService, ReviewOrderService, ngDialog) {
+.controller('OrderConfirmCtrl', ['$rootScope', '$scope', '$state', '$timeout', 'localStorageService', 'UtilityService', 'TwoTapService', 'CheckoutService', 'CartService', 'ReviewOrderService', 'ngDialog', function($rootScope, $scope, $state, $timeout, localStorageService, UtilityService, TwoTapService, CheckoutService, CartService, ReviewOrderService, ngDialog) {
   // var shippingAddress = ReviewOrderService.getPrimaryAddress();
   // var paymentInfo = ReviewOrderService.getPaymentInfo();
   var shippingAddress = localStorageService.get('shippingAddress');
@@ -84,6 +84,7 @@ angular.module('sywStyleXApp')
         localStorageService.remove('productDetail');
         localStorageService.remove('trackHistory');
         localStorageService.remove('filteredProductsHasMoreData');
+        $rootScope.$emit('event.updateShoppingCart');
         $state.go('order-complete');
       } else {
         $scope.checkoutErrorMsg = {
