@@ -302,13 +302,15 @@ angular.module('sywStyleXApp')
         $state.go('login');
       };
 
+      $rootScope.$on('event.updateTopFilter', function(event, data) {
+        scope.topFilter = data.topFilter;
+      });
+
       $rootScope.$on('event.updateFountLogin', function(event, data) {
         scope.isLoggedIn = data.isLoggedIn;
         getProductsFromCart();
         $state.go('on-sale');
       });
-
-      scope.setTopFilter('SALE');
 
       $rootScope.$on('event.updateShoppingCart', function(event, data) {
         // scope.shoppingCartInfo = {

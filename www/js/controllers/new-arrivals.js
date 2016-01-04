@@ -112,6 +112,10 @@ angular.module('sywStyleXApp')
     }, 10);
   };
 
+  var updateTopFilter = function() {
+    $rootScope.$emit('event.updateTopFilter', {topFilter: 'ARRIVALS'});
+  };
+
   $scope.setTopSellerId = function(id) {
     if ($scope.newArrivalsObj.topSellerId == id) {
       return;
@@ -128,5 +132,5 @@ angular.module('sywStyleXApp')
   };
 
   getShopSellers();
-
+  updateTopFilter();
 }]);
