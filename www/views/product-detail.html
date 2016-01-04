@@ -171,6 +171,9 @@
                                   <div class="item item-fit">
                                     <h2><i class="icon ion-tshirt-outline"></i>Option 1</h2>
                                     <ul class="fount-product-attr-list">
+                                      <!-- <li ng-repeat="option1 in productDetail.twotap.addToCart.required_field_values['option 1']" ng-click="setSelectedOption1(option1)" ng-class="{'selectedColorActive': option1 == selectedOption1}" class="fount-product-attr-img">
+                                        <div><img ng-src="{{option1.value}}" xapp-err-src="{{option1.image}}"></div>
+                                      </li> -->
                                       <li ng-repeat="option1 in productDetail.twotap.addToCart.required_field_values['option 1']" ng-click="setSelectedOption1(option1)" ng-class="{'selectedActive': option1 == selectedOption1}" class="fount-product-attr">{{option1.text}}</li>
                                     </ul>
                                   </div>

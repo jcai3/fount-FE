@@ -81,16 +81,16 @@ angular.module('sywStyleXApp')
       }
 
       if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option 1') != -1) {
-        $scope.selectedOption1 = $scope.productDetail.twotap.addToCart.required_field_values['option 1'];
+        $scope.selectedOption1 = $scope.productDetail.twotap.addToCart.required_field_values['option 1'][0];
 
         if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option 2') != -1) {
-          $scope.selectedOption2 = $scope.selectedOption1.dep['option 2'];
+          $scope.selectedOption2 = $scope.selectedOption1.dep['option 2'][0];
 
           if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option 3') != -1) {
-            $scope.selectedOption3 = $scope.selectedOption2.dep['option 3'];
+            $scope.selectedOption3 = $scope.selectedOption2.dep['option 3'][0];
 
             if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option 4') != -1) {
-              $scope.selectedOption4 = $scope.selectedOption3.dep['option 4'];
+              $scope.selectedOption4 = $scope.selectedOption3.dep['option 4'][0];
             }
           }
         }
