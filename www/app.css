@@ -446,9 +446,10 @@ abbr[title], abbr[data-original-title] {
 }
 .order-complete {
   text-align: left;
+  padding: 100px 0 50px 0;
 }
 .order-complete .back-to-shop {
-  padding: 20px;
+  padding: 50px 0;
   margin-bottom: 30px;
 }
 .order-complete .back-to-shop .button {

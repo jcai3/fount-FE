@@ -144,11 +144,27 @@
                                     </div>
                                   </div>
                                   <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('color') == -1">
-                                    <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1" class="item item-size">
-                                      <h2><i class="icon ion-tshirt-outline"></i>Size</h2>
-                                      <ul class="fount-product-attr-list">
-                                        <li ng-repeat="size in productDetail.twotap.addToCart.required_field_values.size" ng-click="setSelectedSize(size)" ng-class="{'selectedActive': size == selectedSize}" class="fount-product-attr">{{size.text}}</li>
-                                      </ul>
+                                    <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('flavor') != -1">
+                                      <div class="item item-size">
+                                        <h2><i class="icon ion-tshirt-outline"></i>Flavor</h2>
+                                        <ul class="fount-product-attr-list">
+                                          <li ng-repeat="flavor in productDetail.twotap.addToCart.required_field_values.flavor" ng-click="setSelectedFlavor(flavor)" ng-class="{'selectedActive': flavor == selectedFlavor}" class="fount-product-attr">{{flavor.text}}</li>
+                                        </ul>
+                                      </div>
+                                      <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1" class="item item-size">
+                                        <h2><i class="icon ion-tshirt-outline"></i>Size</h2>
+                                        <ul class="fount-product-attr-list">
+                                          <li ng-repeat="size in selectedFlavor.dep.size" ng-click="setSelectedSize(size)" ng-class="{'selectedActive': size == selectedSize}" class="fount-product-attr">{{size.text}}</li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                    <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('flavor') == -1">
+                                      <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1" class="item item-size">
+                                        <h2><i class="icon ion-tshirt-outline"></i>Size</h2>
+                                        <ul class="fount-product-attr-list">
+                                          <li ng-repeat="size in productDetail.twotap.addToCart.required_field_values.size" ng-click="setSelectedSize(size)" ng-class="{'selectedActive': size == selectedSize}" class="fount-product-attr">{{size.text}}</li>
+                                        </ul>
+                                      </div>
                                     </div>
                                   </div>
                                   <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('color') == -1">

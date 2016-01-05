@@ -66,12 +66,21 @@ angular.module('sywStyleXApp')
             $scope.selectedStyle = $scope.selectedColor.dep.style[0];
           }
         } else {
-          if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1) {
-            $scope.selectedSize = $scope.productDetail.twotap.addToCart.required_field_values.size[0];
-          }
+          if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('flavor') != -1) {
+            $scope.selectedFlavor = $scope.productDetail.twotap.addToCart.required_field_values.flavor[0];
 
-          if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option') != -1) {
-            $scope.selectedOption = $scope.productDetail.twotap.addToCart.required_field_values.option[0];
+            if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1) {
+              $scope.selectedSize = $scope.selectedFlavor.dep.size[0];
+            }
+
+          } else {
+            if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1) {
+              $scope.selectedSize = $scope.productDetail.twotap.addToCart.required_field_values.size[0];
+            }
+
+            if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option') != -1) {
+              $scope.selectedOption = $scope.productDetail.twotap.addToCart.required_field_values.option[0];
+            }
           }
         }
       }
@@ -300,6 +309,7 @@ angular.module('sywStyleXApp')
       fit: products.fit,
       color: products['color'],
       size: products['size'],
+      flavor: !!products.flavor ? products.flavor : null,
       options: products.options,
       inseam: products.inseam,
       style: products.style,
@@ -345,6 +355,7 @@ angular.module('sywStyleXApp')
       fit: products.fit,
       color: products['color'],
       size: products['size'],
+      flavor: !!products.flavor ? products.flavor : null,
       options: products.options,
       inseam: products.inseam,
       style: products.style,
@@ -583,6 +594,7 @@ angular.module('sywStyleXApp')
       price: $scope.productDetail.xapp.finalPrice,
       fit: !!$scope.selectedFit ? $scope.selectedFit.text : null,
       color: !!$scope.selectedColor ? $scope.selectedColor.text : null,
+      flavor: !!$scope.selectedFlavor ? $scope.selectedFlavor.text : null,
       size: !!$scope.selectedSize ? $scope.selectedSize.text : null,
       option: !!$scope.selectedOption ? $scope.selectedOption.text : null,
       options: !!$scope.selectedOptions ? $scope.selectedOptions.text : null,
@@ -643,6 +655,14 @@ angular.module('sywStyleXApp')
     if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('style') != -1) {
       $scope.selectedStyle = $scope.selectedColor.dep.style[0];
     }
+  };
+
+  $scope.setSelectedFlavor = function(selectedFlavor) {
+    $scope.selectedFlavor = selectedFlavor;
+
+    if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1) {
+      $scope.selectedSize = $scope.selectedFlavor.dep.size[0];
+     }
   };
 
   $scope.setSelectedSize = function(selectedSize) {
@@ -731,6 +751,11 @@ angular.module('sywStyleXApp')
     if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1 && !$scope.selectedSize && $scope.variableObj.allOptionsSelected) {
       $scope.variableObj.allOptionsSelected = false;
       $scope.variableObj.optionsErrorMessage = 'Please select an option for Size';
+    }
+
+    if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('flavor') != -1 && !$scope.selectedFlavor && $scope.variableObj.allOptionsSelected) {
+      $scope.variableObj.allOptionsSelected = false;
+      $scope.variableObj.optionsErrorMessage = 'Please select an option for Flavor';
     }
 
     if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('option') == 1 && !$scope.selectedOption && $scope.variableObj.allOptionsSelected) {
