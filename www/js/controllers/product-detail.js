@@ -18,6 +18,7 @@ angular.module('sywStyleXApp')
   $scope.isRelevantPostsShown = true;
   $scope.productImagesLength = 0;
   $scope.addToCartDisabled = false;
+  $scope.productAddedToCart = false;
   $scope.variableObj = {
     productNotAvailable: false,
     optionsErrorMessage: '',
@@ -295,6 +296,13 @@ angular.module('sywStyleXApp')
     });
   };
 
+  var productAddedNotify = function() {
+    $scope.productAddedToCart = true;
+    $timeout(function() {
+      $scope.productAddedToCart = false;
+    }, 3000);
+  };
+
   var addProductsToCart = function(products) {
     var user = {
       id: localStorageService.get('userId')
@@ -336,6 +344,7 @@ angular.module('sywStyleXApp')
             }
         }
 
+        productAddedNotify();
         $scope.shoppingCartInfo.count += 1;
         localStorageService.set('shoppingCartInfo', $scope.shoppingCartInfo);
     });
@@ -382,6 +391,7 @@ angular.module('sywStyleXApp')
             }
         }
 
+        productAddedNotify();
         $scope.shoppingCartInfo.count += 1;
         localStorageService.set('shoppingCartInfo', $scope.shoppingCartInfo);
         $rootScope.$emit('event.updateShoppingCart', {shoppingCartInfo: $scope.shoppingCartInfo});

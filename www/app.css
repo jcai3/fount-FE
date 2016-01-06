@@ -870,6 +870,9 @@ ul.fount-product-attr-list li.selectedColorActive div {
   width: 48%;
   text-align: right;
 }
+.fount-product-detail .heading-text .product-added-msg {
+  color: red;
+}
 @media only screen and (max-width: 900px) {
   .fount-header .fount-header-container {
     text-align: center;
@@ -887,6 +890,9 @@ ul.fount-product-attr-list li.selectedColorActive div {
     display: none;
   }
   .fount-header .fount-search-bar {
+    display: none;
+  }
+  .fount-header .fount-header-right .fount-profile-section .fount-log-out {
     display: none;
   }
 }
