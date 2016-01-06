@@ -84,7 +84,16 @@
             <img ng-src="{{publicProfilePicture}}">
           </div>
           <span>{{username}}</span>
-          <div ng-show="showProfileLogout" ng-click="logout()" class="fount-log-out">Logout</div>
+          <div ng-show="showProfileLogout" class="fount-log-out">
+            <div class="fount-user-avatar-big">
+              <img ng-src="{{publicProfilePicture}}">
+            </div>
+            <div class="fount-user-detail">
+              <p>{{username}}</p>
+              <p class="fount-cursor-pointer">Edit My Profile</p>
+              <p ng-click="logout()" class="fount-cursor-pointer">Logout</p>
+            </div>
+          </div>
         </div>
       </div>
       <div ng-click="login()" ng-show="!isLoggedIn" class="fount-header-right">

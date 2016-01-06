@@ -667,10 +667,46 @@ abbr[title], abbr[data-original-title] {
   position: absolute;
   z-index: 3;
   top: 51px;
+  right: 0;
+  width: 210px;
   padding: 10px;
   background: #ffffff;
   color: #252525;
   border: #333;
+  cursor: auto;
+}
+.fount-header .fount-header-right .fount-profile-section .fount-log-out .fount-user-avatar-big {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  border-radius: 100px;
+  border: 2px solid #4AC0D1;
+  background-color: white;
+  vertical-align: bottom;
+}
+.fount-header .fount-header-right .fount-profile-section .fount-log-out .fount-user-avatar-big img {
+  width: 100%;
+  height: 100%;
+  border-radius: 100px;
+  background-color: lightgrey;
+}
+.fount-header .fount-header-right .fount-profile-section .fount-log-out .fount-user-detail {
+  display: inline-block;
+  width: 110px;
+  padding-left: 10px;
+}
+.fount-header .fount-header-right .fount-profile-section .fount-log-out .fount-user-detail p {
+  font-size: 12px;
+  line-height: 27px;
+  margin: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 110px;
+}
+.fount-header .fount-header-right .fount-profile-section .fount-log-out .fount-user-detail p.fount-cursor-pointer:hover {
+  cursor: pointer;
+  color: #4AC0D1;
 }
 .fount-header .fount-header-right .fount-profile-section .fount-user-avatar {
   width: 20px;
