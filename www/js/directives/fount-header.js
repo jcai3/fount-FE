@@ -88,6 +88,14 @@ angular.module('sywStyleXApp')
         scope.showCartOverlay = false;
       };
 
+      scope.profileHoverIn = function() {
+        scope.showProfileLogout = true;
+      };
+
+      scope.profileHoverOut = function() {
+        scope.showProfileLogout = false;
+      };
+
       scope.showMobileMenu = function() {
         var $body = element.find('.navbar').parent().parent();
         $body.css('margin-left', '70%').css('margin-right', '-70%').css('overflow', 'hidden');

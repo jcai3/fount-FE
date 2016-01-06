@@ -79,11 +79,12 @@
 						</li>
 					</ul>
         </div>
-        <div ng-click="logout()" class="fount-profile-section">
+        <div ng-mouseover="profileHoverIn()" ng-mouseleave="profileHoverOut()" class="fount-profile-section">
           <div class="fount-user-avatar">
             <img ng-src="{{publicProfilePicture}}">
           </div>
           <span>{{username}}</span>
+          <div ng-show="showProfileLogout" ng-click="logout()" class="fount-log-out">Logout</div>
         </div>
       </div>
       <div ng-click="login()" ng-show="!isLoggedIn" class="fount-header-right">
@@ -91,7 +92,7 @@
           <i class="sf-cart"></i>
         </div>
         <div class="fount-profile-section">
-          <span>login</span>
+          <span>Login</span>
         </div>
       </div>
     </div>

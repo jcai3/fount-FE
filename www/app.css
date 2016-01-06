@@ -598,7 +598,7 @@ abbr[title], abbr[data-original-title] {
 }
 .fount-header .fount-header-right {
   line-height: 17px;
-  margin: 0 20px 0 0;
+  margin: 0 15px 0 0;
   position: absolute;
   right: 0;
   top: 0;
@@ -660,7 +660,17 @@ abbr[title], abbr[data-original-title] {
   display: inline-block;
   vertical-align: top;
   cursor: pointer;
-  margin-top: 15px;
+  padding: 15px 5px;
+  position: relative;
+}
+.fount-header .fount-header-right .fount-profile-section .fount-log-out {
+  position: absolute;
+  z-index: 3;
+  top: 51px;
+  padding: 10px;
+  background: #ffffff;
+  color: #252525;
+  border: #333;
 }
 .fount-header .fount-header-right .fount-profile-section .fount-user-avatar {
   width: 20px;
