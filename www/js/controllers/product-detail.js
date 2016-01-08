@@ -108,6 +108,17 @@ angular.module('sywStyleXApp')
     }
   };
 
+  var checkSellerQuality = function(productDetail) {
+    console.log('inside the seller quality');
+    if(!!productDetail.xapp.seller) {
+      console.log(productDetail.xapp.seller.quality);
+      if(productDetail.xapp.seller.quality == 'LOW') {
+        $scope.variableObj.buyOnSellerSite = true;
+        $scope.variableObj.buyOnSellerMsg = 'BUY NOW on ' + productDetail.xapp.seller.name;
+      }
+    }
+  };
+
   var prepareProductDetail = function () {
     var productDetail = localStorageService.get('productDetail');
     console.log(productDetail);
@@ -157,7 +168,7 @@ angular.module('sywStyleXApp')
     // $scope.iphone5NotAvailable = (screen.height < 660) ? true : false;
     // $scope.imageHeight = UtilityService.getImageHeight(1);
     var brandId = !!productDetail.xapp.brand ? productDetail.xapp.brand.id : (!!productDetail.xapp.brandId ? productDetail.xapp.brandId : null);
-    var brandName = !!productDetail.xapp.brand ? productDetail.xapp.brand.name : (!!productDetail.xapp.brandName ? productDetail.xapp.brandName : productDetail.xapp.sellerName);
+    var brandName = !!productDetail.xapp.brand ? productDetail.xapp.brand.name : (!!productDetail.xapp.brandName ? productDetail.xapp.brandName : productDetail.xapp.seller.name);
     $scope.productDetail = {
       availability: true,
       xapp: {
@@ -174,8 +185,8 @@ angular.module('sywStyleXApp')
         finalPrice: productDetail.xapp.finalPrice,
         retailPrice: productDetail.xapp.retailPrice,
         salePrice: productDetail.xapp.salePrice,
-        seller: productDetail.xapp.sellerName,
-        affiliateURL: productDetail.xapp.affiliateURL,
+        seller: productDetail.xapp.seller,
+        affiliateURL: productDetail.xapp.buyURL,
         brandId: brandId
       },
 
@@ -200,17 +211,6 @@ angular.module('sywStyleXApp')
 
   };
 
-  var checkSellerQuality = function(productDetail) {
-    console.log('inside the seller quality');
-    if(!!productDetail.xapp.seller) {
-      console.log(productDetail.xapp.seller.quality);
-      if(productDetail.xapp.seller.quality == 'LOW') {
-        $scope.variableObj.buyOnSellerSite = true;
-        $scope.variableObj.buyOnSellerMsg = 'BUY NOW on ' + productDetail.xapp.seller.name;
-      }
-    }
-  };
-
   var getCurrentProductDetails = function() {
     if (productDetailLocker) {
       return;
@@ -232,7 +232,8 @@ angular.module('sywStyleXApp')
            name: response.data.payload.PRODUCT.name,
            price: response.data.payload.PRODUCT.price,
            finalPrice: response.data.payload.PRODUCT.finalPrice,
-           sellerName: response.data.payload.PRODUCT.sellerName,
+          //  sellerName: response.data.payload.PRODUCT.sellerName,
+           seller: !!response.data.payload.PRODUCT.seller ? response.data.payload.PRODUCT.seller : null,
            socialActionUserProduct: !!response.data.payload.PRODUCT.socialActionUserProduct ? response.data.payload.PRODUCT.socialActionUserProduct : null,
            mediaId: !!response.data.payload.PRODUCT.media ? response.data.payload.PRODUCT.media.id : null,
            visualTagId: !!response.data.payload.PRODUCT.visualTag ? response.data.payload.PRODUCT.visualTag.id : null,
@@ -597,7 +598,7 @@ angular.module('sywStyleXApp')
       productId: $scope.productDetail.xapp.id,
       mediaId: $scope.productDetail.xapp.mediaId,
       visualTagId: $scope.productDetail.xapp.visualTagId,
-      sellerName: $scope.productDetail.xapp.seller,
+      sellerName: $scope.productDetail.xapp.seller.name,
       name: $scope.productDetail.xapp.name,
       imageURL: $scope.productDetail.xapp.imageURL,
       affiliateURL: $scope.productDetail.xapp.affiliateURL,
