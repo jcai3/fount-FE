@@ -316,6 +316,7 @@ angular.module('sywStyleXApp')
 
       $rootScope.$on('event.updateFountLogin', function(event, data) {
         scope.isLoggedIn = data.isLoggedIn;
+        scope.topFilter = 'SALE';
         getProductsFromCart();
         $state.go('on-sale');
       });
