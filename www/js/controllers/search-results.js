@@ -271,8 +271,12 @@ angular.module('sywStyleXApp')
           }
 
         } else {
-          $scope.searchObj.pageNumber++;
-          $scope.searchObj.noMoreData = false;
+          if (result.data.payload.PRODUCTS.length === 20) {
+            $scope.searchObj.pageNumber++;
+            $scope.searchObj.noMoreData = false;
+          } else {
+            $scope.searchObj.noMoreData = true;
+          }
           $scope.searchObj.emptySearchResults = false;
           var products = result.data.payload.PRODUCTS;
           for (var i = 0, j = products.length; i < j; i++) {

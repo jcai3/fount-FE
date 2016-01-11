@@ -64,8 +64,12 @@ angular.module('sywStyleXApp')
             $scope.newArrivalsObj.emptySearchResults = true;
           }
         } else {
-          $scope.newArrivalsObj.pageNumber++;
-          $scope.newArrivalsObj.noMoreData = false;
+          if (result.data.payload.PRODUCTS.length === 20) {
+            $scope.newArrivalsObj.pageNumber++;
+            $scope.newArrivalsObj.noMoreData = false;
+          } else {
+            $scope.newArrivalsObj.noMoreData = true;
+          }
           $scope.newArrivalsObj.emptySearchResults = false;
           var products = result.data.payload.PRODUCTS;
           $scope.newArrivalsObj.products.push.apply($scope.newArrivalsObj.products, products);

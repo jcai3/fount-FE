@@ -30,7 +30,7 @@
               </ul>
             </div>
             <div class="fount-no-products" ng-show="!onSaleObj.enableSellerModule">No available products.</div>
-            <div ng-show="onSaleObj.pageNumber >= 5 && !onSaleObj.noMoreData" class="pagination-wrap">
+            <div ng-show="onSaleObj.pageNumber > 5 && !onSaleObj.noMoreData" class="pagination-wrap">
               <input ng-click="loadNextPage()" type="submit" class="button alt load-more" value="Load More">
             </div>
           </div>

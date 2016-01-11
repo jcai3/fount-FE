@@ -47,7 +47,7 @@
                 </ul>
               </div>
               <div ng-if="filterInfo.productCount == 0" class="container no-search-results">No available products</div>
-              <div ng-show="searchObj.pageNumber >= 5 && !searchObj.noMoreData" class="pagination-wrap">
+              <div ng-show="searchObj.pageNumber > 5 && !searchObj.noMoreData" class="pagination-wrap">
                 <input ng-click="loadNextPage()" type="submit" class="button alt load-more" value="Load More">
               </div>
             </section>

@@ -36,8 +36,12 @@ angular.module('sywStyleXApp')
         if (res.data.payload.PRODUCTS.length === 0) {
           $scope.filteredProductsHasMoreData = false;
         } else {
-          $scope.filteredProductsPageNumber++;
-          $scope.filteredProductsHasMoreData = true;
+          if (res.data.payload.PRODUCTS.length === 20) {
+            $scope.filteredProductsPageNumber++;
+            $scope.filteredProductsHasMoreData = true;
+          } else {
+            $scope.filteredProductsHasMoreData = false;
+          }
           var filteredProducts = res.data.payload.PRODUCTS;
           $scope.filteredProducts.push.apply($scope.filteredProducts, filteredProducts);
         }
