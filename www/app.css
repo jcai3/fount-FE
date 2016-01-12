@@ -665,14 +665,14 @@ abbr[title], abbr[data-original-title] {
 }
 .fount-header .fount-header-right .fount-profile-section .fount-log-out {
   position: absolute;
-  z-index: 3;
+  z-index: 9;
   top: 51px;
-  right: 0;
+  right: -3px;
   width: 210px;
   padding: 10px;
   background: #ffffff;
   color: #252525;
-  border: #333;
+  border: 1px solid #ccc;
   cursor: auto;
 }
 .fount-header .fount-header-right .fount-profile-section .fount-log-out .fount-user-avatar-big {
@@ -735,6 +735,7 @@ ul.products li.product .price span {
 }
 .fount-shop-page {
   background-color: #ffffff;
+  margin-top: 20px;
 }
 .fount-shop-page .fount-home-slider .flexslider {
   margin: 0 0 20px 0;
