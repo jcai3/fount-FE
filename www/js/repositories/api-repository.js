@@ -774,4 +774,16 @@ angular.module('sywStyleXApp')
     return serviceCall('GET', 'seller/products', inputParams);
   };
 
+  this.getAdminSellers = function() {
+    return serviceCall('GET', 'seller/getall');
+  };
+
+  this.updateAdminSellers = function(sellers) {
+    var inputParams = {
+      sellers: sellers
+    };
+
+    return serviceCall('POST', 'seller/updateall', inputParams);
+  };
+
 }]);

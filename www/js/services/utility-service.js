@@ -676,6 +676,17 @@ angular.module('sywStyleXApp')
   };
 
 }])
+.service('AdminService', ['apiRepository', function(apiRepository) {
+
+  this.getAdminSellers = function() {
+    return apiRepository.getAdminSellers();
+  };
+
+  this.updateAdminSellers = function(sellers) {
+    return apiRepository.updateAdminSellers(sellers);
+  };
+
+}])
 .service('ReviewOrderService', function(){
     var primaryAddress = {};
     var paymentInfo = {};

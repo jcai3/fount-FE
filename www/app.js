@@ -70,6 +70,11 @@ angular.module('sywStyleXApp', [
       url: '/product/{productId}',
       templateUrl: 'views/product-detail.html',
       controller: 'ProductDetailCtrl'
+    })
+    .state('admin-seller', {
+      url: '/admin-seller',
+      templateUrl: 'views/admin-seller.html',
+      controller: 'AdminSellerCtrl'
     });
 
   // if none of the above states are matched, use this as the fallback
