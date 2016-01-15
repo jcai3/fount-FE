@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('AdminSellerCtrl', ['$scope', '$state', 'UtilityService', 'AdminService', function($scope, $state, UtilityService, AdminService) {
+.controller('AdminCtrl', ['$scope', '$state', 'UtilityService', 'AdminService', function($scope, $state, UtilityService, AdminService) {
   var getAdminSellers = function() {
     AdminService.getAdminSellers().then(function(res) {
       if (UtilityService.validateResult(res)) {
