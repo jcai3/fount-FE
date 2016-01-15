@@ -7,6 +7,29 @@
     </div>
   </div>
   <div class="container admin-seller">
-    <div ng-repeat="seller in adminSellers">{{seller.name}}</div>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Tagger Commission Points</th>
+        <th>User Commission Points</th>
+        <th>Quality</th>
+      </tr>
+      <tr ng-repeat="seller in adminSellers">
+        <td>{{seller.id}}</td>
+        <td>{{seller.name}}</td>
+        <td contenteditable="true" ng-model="seller.taggerCommissionPoints">{{seller.taggerCommissionPoints}}</td>
+        <td contenteditable="true" ng-model="seller.userCommissionPoints">{{seller.userCommissionPoints}}</td>
+        <td>
+          <select ng-init="seller.quality = seller.quality" ng-model="seller.quality">
+            <option value="LOW">LOW</option>
+            <option value="HIGH">HIGH</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+    <div class="update_admin_seller">
+      <input ng-click="updateAdminSeller()" type="submit" class="button alt" value="Update">
+    </div>
   </div>
 </div>
