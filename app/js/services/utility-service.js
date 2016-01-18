@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.service('UtilityService', ['$rootScope', '$http', 'ENV', 'CONSTANTS',function($rootScope, $http, ENV, CONSTANTS) {
+.service('UtilityService', ['$rootScope', '$http', 'ENV', function($rootScope, $http, ENV) {
   var getQueryStrings = function(location) {
     var assoc = {};
     var decode = function(s) {
@@ -26,16 +26,6 @@ angular.module('sywStyleXApp')
       results = regex.exec(location.search);
     return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
   }
-
-  this.IsSuperuser = function(userId) {
-    var superUsersList = CONSTANTS.superUsers.split(',');
-
-    if (superUsersList.indexOf(userId) != -1) {
-      return true;
-    } else {
-      return false;
-    }
-  };
 
   this.getQueryStringFromUrl = function (location, queryString) {
     //alert(getParameterByName(queryString));
