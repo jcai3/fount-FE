@@ -6,8 +6,8 @@ angular.module('sywStyleXApp')
     restrict: 'A',
     link: function(scope, element, attrs) {
       element.bind('error', function() {
-        if (attrs.src != attrs.xappErrSrc) {
-          attrs.$set('src', attrs.xappErrSrc);
+        if (attrs.src != attrs.fountErrSrc) {
+          attrs.$set('src', attrs.fountErrSrc);
         }
       });
     }
