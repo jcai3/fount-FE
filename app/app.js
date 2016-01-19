@@ -8,14 +8,13 @@ angular.module('sywStyleXApp', [
   'ui.router',
   'ngDialog'
 ])
-.config(function($httpProvider, $stateProvider, $urlRouterProvider) {
-  // $httpProvider.defaults.withCredentials = true;
+.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-    // .state('shop', {
-    //   url: '/shop',
-    //   templateUrl: 'views/shop.html',
-    //   controller: 'ShopCtrl'
-    // })
+    .state('discover', {
+      url: '/discover',
+      templateUrl: 'views/discover.html',
+      controller: 'DiscoverCtrl'
+    })
     .state('on-sale', {
       url: '/on-sale',
       templateUrl: 'views/on-sale.html',
@@ -80,22 +79,6 @@ angular.module('sywStyleXApp', [
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/on-sale');
 })
-// .config(['$routeProvider', function($routeProvider) {
-//   $routeProvider
-//     .when('/', {
-//       templateUrl: 'views/shop.html',
-//       controller:  'ShopCtrl'
-//     })
-//     .when('/product', {
-//       templateUrl: 'views/product-detail.html',
-//       controller:  'ProductDetailCtrl'
-//     })
-//     .when('/login', {
-//       templateUrl: 'views/login-register.html',
-//       controller:  'LoginCtrl'
-//     })
-//   .otherwise({redirectTo: '/'});
-// }])
 .run(['$rootScope', function($rootScope){
     $rootScope.xappObj = {
       overlay: false
