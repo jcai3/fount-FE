@@ -93,7 +93,7 @@
                                       <h2><i class="icon ion-waterdrop"></i>Color</h2>
                                       <ul class="fount-product-attr-list">
                                         <li ng-repeat="color in selectedFit.dep.color" ng-click="setSelectedColor(color)" ng-class="{'selectedColorActive': color == selectedColor}" class="fount-product-attr-img">
-                                          <div><img ng-src="{{color.value}}" xapp-err-src="{{color.image}}"></div>
+                                          <div><img ng-src="{{color.value}}" fount-err-src="{{color.image}}"></div>
                                         </li>
                                       </ul>
                                     </div>
@@ -120,7 +120,7 @@
                                       <h2><i class="icon ion-waterdrop"></i>Color</h2>
                                       <ul class="fount-product-attr-list">
                                         <li ng-repeat="color in productDetail.twotap.addToCart.required_field_values.color" ng-click="setSelectedColor(color)" ng-class="{'selectedColorActive': color == selectedColor}" class="fount-product-attr-img">
-                                          <div><img ng-src="{{color.value}}" xapp-err-src="{{color.image}}"></div>
+                                          <div><img ng-src="{{color.value}}" fount-err-src="{{color.image}}"></div>
                                         </li>
                                       </ul>
                                     </div>
@@ -188,7 +188,7 @@
                                     <h2><i class="icon ion-tshirt-outline"></i>Option 1</h2>
                                     <ul class="fount-product-attr-list">
                                       <!-- <li ng-repeat="option1 in productDetail.twotap.addToCart.required_field_values['option 1']" ng-click="setSelectedOption1(option1)" ng-class="{'selectedColorActive': option1 == selectedOption1}" class="fount-product-attr-img">
-                                        <div><img ng-src="{{option1.value}}" xapp-err-src="{{option1.image}}"></div>
+                                        <div><img ng-src="{{option1.value}}" fount-err-src="{{option1.image}}"></div>
                                       </li> -->
                                       <li ng-repeat="option1 in productDetail.twotap.addToCart.required_field_values['option 1']" ng-click="setSelectedOption1(option1)" ng-class="{'selectedActive': option1 == selectedOption1}" class="fount-product-attr">{{option1.text}}</li>
                                     </ul>

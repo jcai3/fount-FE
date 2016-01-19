@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.directive('xappErrSrc', function() {
+.directive('fountErrSrc', function() {
   return {
     restrict: 'A',
     link: function(scope, element, attrs) {
