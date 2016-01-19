@@ -1,14 +1,17 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('DiscoverCtrl', ['$scope', 'UtilityService', function($scope, UtilityService) {
+.controller('DiscoverCtrl', ['$scope', 'UtilityService', 'UserMediaService', function($scope, UtilityService, UserMediaService) {
   var apiLocker = false;
+  var pageNumber = 0;
+  $scope.hasMoreData = true;
+  $scope.discoverMedias = [];
 
   $scope.loadMore = function() {
-    if ($scope.shopObj.noMoreData || $scope.shopObj.pageNumber > 5) {
+    if (!$scope.hasMoreData) {
       return;
     }
-    getSellerProducts();
+    getDiscoverPosts();
   };
 
   var getDiscoverPosts = function() {
@@ -18,26 +21,40 @@ angular.module('sywStyleXApp')
 
     apiLocker = true;
 
-    SortFilterService.getSellerProducts($scope.shopObj.topSellerId, $scope.shopObj.topFilter, $scope.shopObj.pageNumber).then(function(result) {
+    UserMediaService.getLatestMedia(pageNumber).then(function(result) {
       if (UtilityService.validateResult(result)) {
-        if (result.data.payload.PRODUCTS.length === 0) {
-          $scope.shopObj.noMoreData = true;
-          if ($scope.shopObj.pageNumber == 1) {
-            $scope.shopObj.emptySearchResults = true;
-          }
-        } else {
-          $scope.shopObj.pageNumber++;
-          $scope.shopObj.noMoreData = false;
-          $scope.shopObj.emptySearchResults = false;
-          var products = result.data.payload.PRODUCTS;
-          $scope.shopObj.products.push.apply($scope.shopObj.products, products);
-        }
 
-        apiLocker = false;
+        if (result.data.payload.MEDIAS.length === 0) {
+          $scope.hasMoreData = false;
+        } else {
+          pageNumber++;
+          $scope.hasMoreData = true;
+         var discoverMedias = result.data.payload.MEDIAS;
+          // var discoverMedias = [];
+          // for(var i = 0, j= result.data.payload.MEDIAS.length; i < j; i++) {
+          //   var mediaObj = {};
+          //   mediaObj = result.data.payload.MEDIAS[i];
+          //   if(!!result.data.payload.MEDIAS[i].products) {
+          //     mediaObj.itemHeight = $scope.imageHeight + 270;
+          //   } else {
+          //     mediaObj.itemHeight = $scope.imageHeight + 100;
+          //   }
+          //
+          //   discoverMedias.push(mediaObj);
+          // }
+
+          console.log(discoverMedias);
+          $scope.discoverMedias.push.apply($scope.discoverMedias, discoverMedias);
+        }
+      } else {
+        $scope.hasMoreData = false;
+        console.log('error');
       }
+
+      apiLocker = false;
     });
   };
 
-  getShopSellers();
+  getDiscoverPosts();
 
 }]);

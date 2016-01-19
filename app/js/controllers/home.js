@@ -51,12 +51,8 @@ angular.module('sywStyleXApp')
 
     apiLocker = true;
 
-    // UserMediaService.getAllMedia(localStorageService.get('locationData').longitude, localStorageService.get('locationData').latitude, pageNumber).then(function(result) {
     UserMediaService.getLatestMedia(pageNumber).then(function(result) {
       if (UtilityService.validateResult(result)) {
-        // if (!result.data.payload.MEDIAS) {
-        //   $state.go('landing');
-        // }
 
         if (result.data.payload.MEDIAS.length === 0) {
           $scope.hasMoreData = false;
