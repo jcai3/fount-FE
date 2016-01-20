@@ -901,6 +901,26 @@ ul.fount-product-attr-list li.selectedColorActive div {
 .admin-seller .update_admin_seller input {
   padding: 10px 20px;
 }
+.fount-discover-page .fount-discover-post {
+  position: relative;
+  cursor: pointer;
+}
+.fount-discover-page .active-post{
+  /*height: 550px;*/
+}
+.fount-discover-page .fount-discover-post .fount-discover-img {
+  border: 1px solid #ddd;
+}
+.fount-discover-page .fount-discover-post .fount-discover-showcase {
+  display: inline-block;
+  width: 900px;
+  position: absolute;
+  height: 200px;
+}
+.fount-discover-page .fount-discover-post .fount-discover-showcase .fount-tagged-product {
+  width: 150px;
+  display: inline-block;
+}
 @media only screen and (max-width: 900px) {
   .fount-header .fount-header-container {
     text-align: center;

@@ -7,9 +7,14 @@
             <div class="spb_wrapper portfolio-wrap">
               <div infinite-scroll='loadMore()' infinite-scroll-disabled='!hasMoreData' infinite-scroll-distance='0' class="container">
                 <ul class="portfolio-items products gallery-portfolio filterable-items row clearfix">
-                  <li ng-repeat="discoverMedia in discoverMedias" class="clearfix product portfolio-item span3 gallery app-design interface-design">
-                    <div>
-                      <img ng-src="{{discoverMedia.lowResolutionURL}}" fount-err-src="img/err-src.png">
+                  <li ng-repeat="discoverMedia in discoverMedias" class="clearfix product portfolio-item span3 gallery app-design interface-design" ng-class="{'active-post': $index == 5}">
+                    <div ng-class="{'active-post': $index == 5}" class="fount-discover-post">
+                      <div class="fount-discover-img">
+                        <img ng-src="{{discoverMedia.lowResolutionURL}}" fount-err-src="img/err-src.png">
+                      </div>
+                      <div class="fount-discover-showcase" ng-if="$index == 5">
+                        <div ng-repeat="product in discoverMedia.products" class="fount-tagged-product"><img ng-src="{{product.imageURL}}"></div>
+                      </div>
                     </div>
                   </li>
                 </ul>
