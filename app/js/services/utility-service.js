@@ -55,59 +55,6 @@ angular.module('sywStyleXApp')
     return "";
   };
 
-  // this.openSellerSite = function(url, title, source, id) {
-  //   var forwardUrl = ENV.sharingHost.split('#')[0] + '#/main/home';
-  //   var backUrl = ENV.sharingHost.split('#')[0] + '#/product/' + id;
-  //   console.log(forwardUrl);
-  //   if (ionic.Platform.isWebView()) {
-  //   var ref =  cordova.ThemeableBrowser.open(url, '_blank', {
-  //               statusbar: {
-  //                 color: '#ffffff'
-  //               },
-  //               toolbar: {
-  //                 height: 44,
-  //                 color: '#f8f9f9'
-  //               },
-  //               title: {
-  //                 color: '#4AC0D1',
-  //                 staticText: title
-  //               },
-  //               backButton: {
-  //                 wwwImage: 'img/leftArrow.png',
-  //                 wwwImagePressed: 'img/leftArrow.png',
-  //                 wwwImageDensity: 2,
-  //                 align: 'left',
-  //                 event: 'backPressed'
-  //               },
-  //               customButtons: [{
-  //                 wwwImage: 'img/home.png',
-  //                 wwwImagePressed: 'img/home.png',
-  //                 wwwImageDensity: 1,
-  //                 align: 'right',
-  //                 event: 'forwardPressed'
-  //               }],
-  //               backButtonCanClose: true
-  //             });
-  //     ref.addEventListener('backPressed', function(e) {
-  //       console.log('back pressed');
-  //       $state.go('product', {productId: id});
-  //     });
-  //     ref.addEventListener(cordova.ThemeableBrowser.EVT_ERR, function(e) {
-  //       console.error(e.message);
-  //     });
-  //     ref.addEventListener(cordova.ThemeableBrowser.EVT_WRN, function(e) {
-  //       console.log(e.message);
-  //     });
-  //     ref.addEventListener('forwardPressed', function(e) {
-  //       console.log('home button pressed');
-  //       $state.go('main.home');
-  //       ref.close();
-  //     });
-  //
-  //   } else {
-  //     window.open(url, '_blank');
-  //   }
-  // };
 
   this.cjProductUrlParser = function(url) {
     var productURL = decodeURIComponent(url.split('?url=')[1]).split('&cjsku')[0];
@@ -120,24 +67,6 @@ angular.module('sywStyleXApp')
     if (productURL.indexOf('&cm_mmc=') != -1) {
       productURL = productURL.split('&cm_mmc=')[0];
     }
-
-    // handling with
-    // http://www.solsticesunglasses.com/dior-so-real-round-sunglasses/827886336029.html?utm_medium=affiliate&utm_source=cj
-    // if (productURL.indexOf('www.solsticesunglasses.com') != -1) {
-    //   productURL = productURL.split('?')[0];
-    // }
-
-    // handling with shoe metro
-    // http://www.shoemetro.com/p-304080-absolu.aspx?color=Peche/Rose&material=Patent%20Leather
-    // if (productURL.indexOf('www.shoemetro.com') != -1) {
-    //   productURL = productURL.split('?')[0];
-    // }
-
-    // var tempArray = productURL.split('/');
-    //
-    // if (/^[0-9]+$/.test(tempArray[tempArray.length - 1])) {
-    //   productURL = productURL.replace('/' + tempArray[tempArray.length - 1], '');
-    // }
 
     return productURL;
   };
@@ -253,18 +182,6 @@ angular.module('sywStyleXApp')
 
     return 'unsupported';
   };
-
-  // this.gaTrackAppView = function(view) {
-  //   if (typeof analytics !== 'undefined') {
-  //     analytics.trackView(view);
-  //   }
-  // };
-  //
-  // this.gaTrackAppEvent = function(category, action, label, value) {
-  //   if (typeof analytics !== 'undefined') {
-  //     analytics.trackEvent(category, action, label, value);
-  //   }
-  // };
 
 }])
 .service('LoginRegisterService', ['apiRepository', function(apiRepository) {

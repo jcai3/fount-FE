@@ -1,17 +1,48 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('DiscoverCtrl', ['$scope', 'UtilityService', 'UserMediaService', function($scope, UtilityService, UserMediaService) {
+.controller('DiscoverCtrl', ['$scope', '$timeout', 'UtilityService', 'UserMediaService', function($scope, $timeout, UtilityService, UserMediaService) {
   var apiLocker = false;
   var pageNumber = 0;
   $scope.hasMoreData = true;
   $scope.discoverMedias = [];
 
-  $scope.loadMore = function() {
-    if (!$scope.hasMoreData) {
-      return;
-    }
-    getDiscoverPosts();
+  var initializeSellerCarousel = function() {
+
+    var startPosition = 0;
+
+    var settings = {
+      circular: false,
+      infinite: false,
+      responsive: true,
+      width: '100%',
+      align: 'center',
+      auto: false,
+      items: {
+        visible: 3,
+        minimum: 3,
+        start: startPosition
+      },
+      scroll: {
+        items: 1,
+        duration: 50,
+        pauseOnHover: true
+      },
+      prev: {
+        button: $('#showcase-carousel-prev'),
+        key: "left"
+      },
+      next: {
+        button: $('#showcase-carousel-next'),
+        key: "right"
+      }
+    };
+
+    $timeout(function(){
+      var $discoverShowcaseCarousel = $('#discover-showcase-carousel');
+      $discoverShowcaseCarousel.html(angular.element.find('#discover-showcase-carousel .fount-tagged-product'));
+      $discoverShowcaseCarousel.carouFredSel(settings);
+    }, 100);
   };
 
   var getDiscoverPosts = function() {
@@ -29,21 +60,7 @@ angular.module('sywStyleXApp')
         } else {
           pageNumber++;
           $scope.hasMoreData = true;
-         var discoverMedias = result.data.payload.MEDIAS;
-          // var discoverMedias = [];
-          // for(var i = 0, j= result.data.payload.MEDIAS.length; i < j; i++) {
-          //   var mediaObj = {};
-          //   mediaObj = result.data.payload.MEDIAS[i];
-          //   if(!!result.data.payload.MEDIAS[i].products) {
-          //     mediaObj.itemHeight = $scope.imageHeight + 270;
-          //   } else {
-          //     mediaObj.itemHeight = $scope.imageHeight + 100;
-          //   }
-          //
-          //   discoverMedias.push(mediaObj);
-          // }
-
-          console.log(discoverMedias);
+          var discoverMedias = result.data.payload.MEDIAS;
           $scope.discoverMedias.push.apply($scope.discoverMedias, discoverMedias);
         }
       } else {
@@ -55,6 +72,25 @@ angular.module('sywStyleXApp')
     });
   };
 
+  $scope.loadMore = function() {
+    if (!$scope.hasMoreData) {
+      return;
+    }
+    getDiscoverPosts();
+  };
+
+  $scope.invokeDiscoverShowcase = function(discoverMedia, index) {
+    if (!!discoverMedia.products) {
+      $scope.showcaseProducts = discoverMedia.products;
+      var cur = $('#fount-discover-showcase');
+      var ap = $('#fount-showcase-post_7');
+      ap.after(cur);
+
+      initializeSellerCarousel();
+    }
+  };
+
   getDiscoverPosts();
+
 
 }]);
