@@ -10,7 +10,8 @@ angular.module('sywStyleXApp')
       showcaseProducts: '='
     },
     link: function(scope, element, attrs) {
-      var initializeSellerCarousel = function() {
+      scope.showcaseCounter = 3;
+      var initializeShowcaseCarousel = function() {
 
         var startPosition = 0;
 
@@ -18,7 +19,7 @@ angular.module('sywStyleXApp')
           circular: false,
           infinite: false,
           responsive: true,
-          width: null,
+          width: '100%',
           align: 'center',
           auto: false,
           items: {
@@ -27,7 +28,7 @@ angular.module('sywStyleXApp')
             start: startPosition
           },
           scroll: {
-            items: 1,
+            items: 3,
             duration: 50,
             pauseOnHover: true
           },
@@ -43,10 +44,38 @@ angular.module('sywStyleXApp')
 
         $timeout(function(){
           element.find('#discover-showcase-carousel').carouFredSel(settings);
-        }, 100);
+        }, 10);
       };
 
-      initializeSellerCarousel();
+      scope.plusCounter = function(length) {
+        if (length < 3) {
+          return;
+        }
+        if (length >= 6) {
+          if (scope.showcaseCounter < 6) {
+            scope.showcaseCounter = 6;
+          } else {
+            scope.showcaseCounter = length;
+          }
+        } else {
+          scope.showcaseCounter = length;
+        }
+      };
+
+      scope.minusCounter = function(length) {
+        if (length < 3) {
+          return;
+        }
+        if (scope.showcaseCounter > 6) {
+          scope.showcaseCounter = 6;
+        } else if (scope.showcaseCounter > 3 && scope.showcaseCounter <= 6) {
+          scope.showcaseCounter = 3;
+        } else {
+          scope.showcaseCounter = 3;
+        }
+      };
+
+      initializeShowcaseCarousel();
     }
   };
 }]);

@@ -14,38 +14,6 @@
                       </div>
                     </figure>
                   </li>
-                  <!-- <div fount-discover-showcase showcase-products="showcaseProducts" id="fount-discover-showcase"></div> -->
-                  <li class="fount-discover-showcase" id="fount-discover-showcase">
-                    <div class="discover-showcase-container">
-                      <div id="discover-showcase-carousel">
-                        <div ng-repeat="product in showcaseProducts" class="fount-tagged-product">
-                          <div class="tagged-product-img"><img ng-src="{{product.imageURL}}"></div>
-                          <p class="tagged-product-brand">{{product.brand.name}}</p>
-                          <p class="tagged-product-name">{{product.name}}</p>
-                          <p class="tagged-product-price">{{product.finalPrice | currency}}</p>
-                          <div class="tagged-product-details">Details</div>
-                          <div class="tagged-product-wishlist"><i class="fa-heart"></i>&nbsp;Add to wishlist</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="discover-showcase-sidebar">
-                      <h1>SHOP TAGGED ITEMS</h1>
-                      <p>Find the item inpired from the image.<p>
-                      <div class="showcase-carousel-btns">
-                        <div ng-click="minusCounter(showcaseProducts.length)" id="showcase-carousel-prev" class="carousel-arrow carousel-prev">
-                          <i class="fa-chevron-left carousel-arrow-icon"></i>
-                        </div>
-                        <div ng-click="plusCounter(showcaseProducts.length)" id="showcase-carousel-next" class="carousel-arrow carousel-next">
-                          <i class="fa-chevron-right carousel-arrow-icon"></i>
-                        </div>
-                      </div>
-                      <p><span ng-if="showcaseProducts.length>=3">{{showcaseCounter}}</span><span ng-if="showcaseProducts.length<3">{{showcaseProducts.length}}</span>/{{showcaseProducts.length}}</p>
-                      <div class="discover-showcase-shopall">
-                        <div class="showcase-shopall-arrow">------></div>
-                        <div class="showcase-shopall-btn">SHOP ALL</div>
-                      </div>
-                    </div>
-                  </li>
                 </ul>
               </div>
             </div>
