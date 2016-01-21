@@ -986,8 +986,8 @@ ul.fount-product-attr-list li.selectedColorActive div {
   cursor: pointer;
 }
 .fount-discover-page .fount-discover-showcase .discover-showcase-container #discover-showcase-carousel .fount-tagged-product .tagged-product-img img {
-  width: 100%;
-  height: auto;
+  width: auto;
+  max-height: 150px;
 }
 .discover-showcase-sidebar .showcase-carousel-btns {
   position: relative;

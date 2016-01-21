@@ -8,7 +8,7 @@ angular.module('sywStyleXApp')
   $scope.hasMoreData = true;
   $scope.discoverMedias = [];
 
-  var initializeSellerCarousel = function() {
+  var initializeShowcaseCarousel = function() {
 
     var startPosition = 0;
 
@@ -42,8 +42,9 @@ angular.module('sywStyleXApp')
     $timeout(function(){
       var $discoverShowcaseCarousel = $('#discover-showcase-carousel');
       $discoverShowcaseCarousel.html(angular.element.find('#discover-showcase-carousel .fount-tagged-product'));
+      debugger;
       $discoverShowcaseCarousel.carouFredSel(settings);
-    }, 50);
+    }, 10);
   };
 
   var getDiscoverPosts = function() {
@@ -109,13 +110,15 @@ angular.module('sywStyleXApp')
   };
 
   $scope.invokeDiscoverShowcase = function(discoverMedia, index) {
+    $scope.showcaseProducts = [];
     if (!!discoverMedia.products) {
       $scope.showcaseProducts = discoverMedia.products;
-      var cur = $('#fount-discover-showcase');
-      var ap = $('#fount-showcase-post_7');
-      ap.after(cur);
+      var appendContent = $('#fount-discover-showcase');
+      var appendIndex = 4 * Math.floor(index/4) + 3;
+      var beforeContent = $('#fount-showcase-post_' + appendIndex);
+      beforeContent.after(appendContent);
 
-      initializeSellerCarousel();
+      initializeShowcaseCarousel();
     }
   };
 
