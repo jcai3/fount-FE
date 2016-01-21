@@ -75,6 +75,10 @@ angular.module('sywStyleXApp')
         }
       };
 
+      scope.shopAll = function() {
+        // invoke shop all from this function
+      };
+
       initializeShowcaseCarousel();
     }
   };

@@ -4,6 +4,7 @@ angular.module('sywStyleXApp')
 .controller('DiscoverCtrl', ['$scope', '$compile', '$timeout', 'UtilityService', 'UserMediaService', function($scope, $compile, $timeout, UtilityService, UserMediaService) {
   var apiLocker = false;
   var pageNumber = 0;
+  var indexMarker = -1;
   $scope.showcaseCounter = 3;
   $scope.hasMoreData = true;
   $scope.discoverMedias = [];
@@ -43,19 +44,22 @@ angular.module('sywStyleXApp')
   };
 
   $scope.invokeDiscoverShowcase = function(discoverMedia, index) {
+    if (index == indexMarker) {
+      return;
+    }
+
+    indexMarker = index;
+    $('#discover-only-showcase').remove();
     if (!!discoverMedia.products) {
       $scope.showcaseProducts = discoverMedia.products;
-      var appendContent = angular.element('<div fount-discover-showcase showcase-products="showcaseProducts"></div>');
+      var appendContent = angular.element('<div fount-discover-showcase showcase-products="showcaseProducts" id="discover-only-showcase"></div>');
       $compile(appendContent)($scope);
       var appendIndex = 4 * Math.floor(index/4) + 3;
       var beforeContent = $('#fount-showcase-post_' + appendIndex);
       beforeContent.after(appendContent);
-
-      // initializeShowcaseCarousel();
     }
   };
 
   getDiscoverPosts();
-
 
 }]);
