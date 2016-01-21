@@ -24,7 +24,7 @@ angular.module('sywStyleXApp')
         start: startPosition
       },
       scroll: {
-        items: 1,
+        items: 3,
         duration: 50,
         pauseOnHover: true
       },
@@ -42,7 +42,7 @@ angular.module('sywStyleXApp')
       var $discoverShowcaseCarousel = $('#discover-showcase-carousel');
       $discoverShowcaseCarousel.html(angular.element.find('#discover-showcase-carousel .fount-tagged-product'));
       $discoverShowcaseCarousel.carouFredSel(settings);
-    }, 100);
+    }, 50);
   };
 
   var getDiscoverPosts = function() {

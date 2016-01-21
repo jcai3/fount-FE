@@ -906,49 +906,131 @@ ul.fount-product-attr-list li.selectedColorActive div {
 }
 .fount-discover-page .fount-discover-showcase {
   width: 100%;
-  height: 250px;
+  height: 300px;
   float: left;
   position: relative;
   margin: 0 0 3em 10px;
   border: 1px solid #ccc;
 }
 .fount-discover-page .fount-discover-showcase .discover-showcase-container {
-  width: 71%;
+  width: 78%;
   display: inline-block;
 }
 .fount-discover-page .fount-discover-showcase .discover-showcase-sidebar {
   width: 21%;
-  height: 250px;
+  height: 300px;
   display: inline-block;
   vertical-align: top;
   text-align: center;
+  position: relative;
+}
+.fount-discover-page .fount-discover-showcase .discover-showcase-sidebar h1 {
+  color: #4AC0D1;
+  margin-top: 30px;
+}
+.fount-discover-page .fount-discover-showcase .discover-showcase-sidebar p {
+  margin: 15px 50px;
 }
 .fount-discover-page .fount-discover-showcase .discover-showcase-container .caroufredsel_wrapper {
   margin-left: 0px !important;
-	height: 250px !important;
+	height: 300px !important;
 }
 .fount-discover-page .fount-discover-showcase .discover-showcase-container #discover-showcase-carousel {
   /*width: 100%;
   display: inline-block;*/
 }
 .fount-discover-page .fount-discover-showcase .discover-showcase-container #discover-showcase-carousel .fount-tagged-product {
-  height: 250px;
-  width: 240px;
+  height: 300px;
   display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  border-right: 1px solid #ddd;
 }
-.fount-discover-page .fount-discover-showcase .discover-showcase-container #discover-showcase-carousel .fount-tagged-product img {
-  width: 100%;
+.fount-discover-page .fount-discover-showcase .discover-showcase-container #discover-showcase-carousel .fount-tagged-product .tagged-product-img {
+  width: 150px;
+  height: 150px;
+  margin: auto;
+}
+.fount-discover-page .fount-discover-showcase .discover-showcase-container #discover-showcase-carousel .fount-tagged-product .tagged-product-img:before {
+  content: ' ';
+  display: inline-block;
+  vertical-align: middle;
   height: 100%;
 }
-.discover-showcase-sidebar .carousel-arrow {
-  display: block !important;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  background-color: white;
-  color: lightgrey;
-  top: 1px;
+.fount-discover-page .fount-discover-showcase .discover-showcase-container #discover-showcase-carousel .fount-tagged-product p {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.fount-discover-page .fount-discover-showcase .discover-showcase-container #discover-showcase-carousel .fount-tagged-product p.tagged-product-brand {
+  font-weight: bold;
+}
+.fount-discover-page .fount-discover-showcase .discover-showcase-container #discover-showcase-carousel .fount-tagged-product p.tagged-product-price {
+  font-weight: bold;
+  color: #4AC0D1;
+}
+.fount-discover-page .fount-discover-showcase .discover-showcase-container #discover-showcase-carousel .fount-tagged-product .tagged-product-details {
+  margin: 5px auto;
+  padding: 5px 15px;
+  color: white;
+  background: #4AC0D1;
+  border-radius: 15px;
+  width: 100px;
   cursor: pointer;
+}
+.fount-discover-page .fount-discover-showcase .discover-showcase-container #discover-showcase-carousel .fount-tagged-product .tagged-product-wishlist {
+  color: #838486;
+  width: 150px;
+  margin: 10px auto;
+  cursor: pointer;
+}
+.fount-discover-page .fount-discover-showcase .discover-showcase-container #discover-showcase-carousel .fount-tagged-product .tagged-product-img img {
+  width: 100%;
+  height: auto;
+}
+.discover-showcase-sidebar .showcase-carousel-btns {
+  position: relative;
+  width: 120px;
+  height: 70px;
+  margin: auto;
+}
+.discover-showcase-sidebar .discover-showcase-shopall {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid #ddd;
+  text-align: left;
+  cursor: pointer;
+}
+.discover-showcase-sidebar .discover-showcase-shopall .showcase-shopall-arrow {
+  display: inline-block;
+  padding: 10px;
+}
+.discover-showcase-sidebar .discover-showcase-shopall .showcase-shopall-btn {
+  display: inline-block;
+  padding: 10px;
+  float: right
+}
+.discover-showcase-sidebar .showcase-carousel-btns .carousel-arrow {
+  position: absolute;
+  width: 60px;
+  height: 50px;
+  line-height: 50px;
+  background-color: white;
+  color: #b9b9b9;
+  cursor: pointer;
+  border: 1px solid #ddd;
+}
+.discover-showcase-sidebar .showcase-carousel-btns .disabled {
+  cursor: auto;
+  color: #ededed;
+}
+.discover-showcase-sidebar .showcase-carousel-btns .carousel-prev {
+  left: 0;
+}
+.discover-showcase-sidebar .showcase-carousel-btns .carousel-next {
+  right: 0;
 }
 @media only screen and (max-width: 900px) {
   .fount-header .fount-header-container {
