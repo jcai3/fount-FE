@@ -32,13 +32,14 @@
                       <h1>SHOP TAGGED ITEMS</h1>
                       <p>Find the item inpired from the image.<p>
                       <div class="showcase-carousel-btns">
-                        <div id="showcase-carousel-prev" class="carousel-arrow carousel-prev">
+                        <div ng-click="minusCounter(showcaseProducts.length)" id="showcase-carousel-prev" class="carousel-arrow carousel-prev">
                           <i class="fa-chevron-left carousel-arrow-icon"></i>
                         </div>
-                        <div id="showcase-carousel-next" class="carousel-arrow carousel-next">
+                        <div ng-click="plusCounter(showcaseProducts.length)" id="showcase-carousel-next" class="carousel-arrow carousel-next">
                           <i class="fa-chevron-right carousel-arrow-icon"></i>
                         </div>
                       </div>
+                      <p><span ng-if="showcaseProducts.length>=3">{{showcaseCounter}}</span><span ng-if="showcaseProducts.length<3">{{showcaseProducts.length}}</span>/{{showcaseProducts.length}}</p>
                       <div class="discover-showcase-shopall">
                         <div class="showcase-shopall-arrow">------></div>
                         <div class="showcase-shopall-btn">SHOP ALL</div>

@@ -4,6 +4,7 @@ angular.module('sywStyleXApp')
 .controller('DiscoverCtrl', ['$scope', '$timeout', 'UtilityService', 'UserMediaService', function($scope, $timeout, UtilityService, UserMediaService) {
   var apiLocker = false;
   var pageNumber = 0;
+  $scope.showcaseCounter = 3;
   $scope.hasMoreData = true;
   $scope.discoverMedias = [];
 
@@ -70,6 +71,34 @@ angular.module('sywStyleXApp')
 
       apiLocker = false;
     });
+  };
+
+  $scope.plusCounter = function(length) {
+    if (length < 3) {
+      return;
+    }
+    if (length >= 6) {
+      if ($scope.showcaseCounter < 6) {
+        $scope.showcaseCounter = 6;
+      } else {
+        $scope.showcaseCounter = length;
+      }
+    } else {
+      $scope.showcaseCounter = length;
+    }
+  };
+
+  $scope.minusCounter = function(length) {
+    if (length < 3) {
+      return;
+    }
+    if ($scope.showcaseCounter > 6) {
+      $scope.showcaseCounter = 6;
+    } else if ($scope.showcaseCounter > 3 && $scope.showcaseCounter <= 6) {
+      $scope.showcaseCounter = 3;
+    } else {
+      $scope.showcaseCounter = 3;
+    }
   };
 
   $scope.loadMore = function() {

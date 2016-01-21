@@ -926,7 +926,7 @@ ul.fount-product-attr-list li.selectedColorActive div {
 }
 .fount-discover-page .fount-discover-showcase .discover-showcase-sidebar h1 {
   color: #4AC0D1;
-  margin-top: 30px;
+  margin-top: 25px;
 }
 .fount-discover-page .fount-discover-showcase .discover-showcase-sidebar p {
   margin: 15px 50px;
@@ -992,7 +992,7 @@ ul.fount-product-attr-list li.selectedColorActive div {
 .discover-showcase-sidebar .showcase-carousel-btns {
   position: relative;
   width: 120px;
-  height: 70px;
+  height: 50px;
   margin: auto;
 }
 .discover-showcase-sidebar .discover-showcase-shopall {
