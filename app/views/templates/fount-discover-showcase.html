@@ -6,7 +6,7 @@
         <p class="tagged-product-brand">{{product.brand.name}}</p>
         <p class="tagged-product-name">{{product.name}}</p>
         <p class="tagged-product-price">{{product.finalPrice | currency}}</p>
-        <div class="tagged-product-details">Details</div>
+        <div ng-click="productDetail(product.id)" class="tagged-product-details">Details</div>
         <div class="tagged-product-wishlist"><i class="fa-heart"></i>&nbsp;Add to wishlist</div>
       </div>
     </div>

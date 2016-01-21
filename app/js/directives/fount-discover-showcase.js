@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.directive('fountDiscoverShowcase', ['$timeout', function($timeout) {
+.directive('fountDiscoverShowcase', ['$state', '$timeout', function($state, $timeout) {
   return {
     restrict: 'A',
     replace: true,
@@ -45,6 +45,10 @@ angular.module('sywStyleXApp')
         $timeout(function(){
           element.find('#discover-showcase-carousel').carouFredSel(settings);
         }, 10);
+      };
+
+      scope.productDetail = function(id) {
+        $state.go('product', {productId: id});
       };
 
       scope.plusCounter = function(length) {
