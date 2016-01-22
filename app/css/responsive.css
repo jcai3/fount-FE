@@ -21,6 +21,10 @@
 		height: 260px;
 	}
 
+	.fount-discover-page .fount-discover-showcase .discover-showcase-sidebar p {
+	  margin: 15px 50px !important;
+	}
+
 	/* LAYOUT */
 	.boxed-layout {
 		width: 1200px;
@@ -201,6 +205,25 @@
 		margin-left: 0;
 		box-sizing: border-box;
 	}*/
+
+	.fount-discover-page .fount-discover-showcase .discover-showcase-sidebar h1 {
+		margin-top: 45px !important;
+		font-size: 18px;
+		line-height: 22px;
+	}
+
+	.fount-discover-page .fount-discover-showcase .discover-showcase-sidebar p {
+		font-size: 12px;
+		line-height: 16px;
+	}
+
+	.discover-showcase-sidebar .discover-showcase-shopall .showcase-shopall-arrow {
+		padding: 10px 0 !important;
+	}
+
+	.discover-showcase-sidebar .discover-showcase-shopall .showcase-shopall-btn {
+		padding: 10px 0 !important;
+	}
 
 	.fount-product-tile .fount-product-image {
 		height: 166px;
@@ -401,6 +424,28 @@
 -------------------------------------------- */
 
 @media only screen and (max-width: 767px) {
+
+	.fount-discover-page .fount-discover-post .discover-showcase-marker {
+		bottom: -38px;
+	}
+
+	.fount-discover-page .fount-discover-showcase .discover-showcase-sidebar h1 {
+		font-size: 16px;
+		line-height: 20px;
+	}
+
+	.fount-discover-page .fount-discover-showcase .discover-showcase-sidebar p {
+		font-size: 12px;
+		line-height: 18px;
+	}
+
+	.discover-showcase-sidebar .discover-showcase-shopall .showcase-shopall-arrow {
+		padding: 10px 0 !important;
+	}
+
+	.discover-showcase-sidebar .discover-showcase-shopall .showcase-shopall-btn {
+		padding: 10px 0 !important;
+	}
 
 	.woocommerce ul.products li.product,.woocommerce-page ul.products li.product {
 	  width: 29.75%;

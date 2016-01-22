@@ -50,7 +50,9 @@ angular.module('sywStyleXApp')
   };
 
   $scope.invokeDiscoverShowcase = function(discoverMedia, index) {
-    if (index == indexMarker) {
+    var docWidth = $('.fount-discover-page .page-content').width();
+
+    if (docWidth <= 598 || index == indexMarker) {
       return;
     }
 
@@ -61,6 +63,9 @@ angular.module('sywStyleXApp')
       var appendContent = angular.element('<div fount-discover-showcase showcase-products="showcaseProducts" id="discover-only-showcase"></div>');
       $compile(appendContent)($scope);
       var appendIndex = 4 * Math.floor(index/4) + 3;
+      if (docWidth <= 767) {
+        appendIndex = 3 * Math.floor(index/3) + 2;
+      }
       var beforeContent = $('#fount-showcase-post_' + appendIndex);
       beforeContent.after(appendContent);
       $scope.activePost = index;
