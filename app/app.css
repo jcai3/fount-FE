@@ -907,6 +907,14 @@ ul.fount-product-attr-list li.selectedColorActive div {
 .fount-discover-page .fount-discover-header {
   text-align: center;
 }
+.fount-discover-page .fount-discover-post figure {
+  margin-bottom: 0 !important;
+}
+.fount-discover-page .fount-discover-post .discover-showcase-marker {
+  position: absolute;
+  z-index: 10;
+  bottom: -44px;
+}
 .fount-discover-page ul.products {
   padding-top: 0;
 }

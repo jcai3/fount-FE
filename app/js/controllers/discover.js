@@ -5,6 +5,7 @@ angular.module('sywStyleXApp')
   var apiLocker = false;
   var pageNumber = 0;
   var indexMarker = -1;
+  $scope.activePost = -1;
   $scope.showcaseCounter = 3;
   $scope.hasMoreData = true;
   $scope.discoverMedias = [];
@@ -22,6 +23,11 @@ angular.module('sywStyleXApp')
         if (result.data.payload.MEDIAS.length === 0) {
           $scope.hasMoreData = false;
         } else {
+          if (pageNumber == 0) {
+            var firstDiscoverMedia = result.data.payload.MEDIAS[0];
+            $scope.invokeDiscoverShowcase(firstDiscoverMedia, 0);
+          }
+
           pageNumber++;
           $scope.hasMoreData = true;
           var discoverMedias = result.data.payload.MEDIAS;
@@ -57,6 +63,7 @@ angular.module('sywStyleXApp')
       var appendIndex = 4 * Math.floor(index/4) + 3;
       var beforeContent = $('#fount-showcase-post_' + appendIndex);
       beforeContent.after(appendContent);
+      $scope.activePost = index;
     }
   };
 
