@@ -27,6 +27,10 @@ angular.module('sywStyleXApp')
     return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
   }
 
+  this.updateTopFilter = function(filter) {
+    $rootScope.$emit('event.updateTopFilter', {topFilter: filter});
+  };
+
   this.getQueryStringFromUrl = function (location, queryString) {
     //alert(getParameterByName(queryString));
     return getParameterByName(queryString);

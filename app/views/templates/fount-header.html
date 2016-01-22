@@ -1,20 +1,17 @@
 <div class="fount-header">
-  <!-- <div class="container"> -->
   <div ng-show="enableMobileMenu" class="fount-mobile-menu-section">
     <div class="fount-mobile-search">
       <div fount-search></div>
     </div>
     <div ng-show="isLoggedIn">
-      <div ng-click="logout()" class="fount-mobile-menu-tabs">
+      <div class="fount-mobile-menu-tabs">
         <div class="fount-user-avatar">
           <img ng-src="{{publicProfilePicture}}">
         </div>
         <span>{{username}}</span>
       </div>
     </div>
-    <!-- <div class="fount-mobile-menu-tabs"><i class="icon-chart-line"></i>TRENDING</div>
-    <div class="fount-mobile-menu-tabs"><i class="icon-rss"></i>FEED</div> -->
-    <!-- <div ng-click="setTopFilter('DISCOVER')" ng-class="{selected: topFilter == 'DISCOVER'}" class="fount-mobile-menu-tabs"><i class="icon-bell"></i>DISCOVER</div> -->
+    <div ng-click="setTopFilter('DISCOVER')" ng-class="{selected: topFilter == 'DISCOVER'}" class="fount-mobile-menu-tabs"><i class="icon-chart-line"></i>DISCOVER</div>
     <div ng-click="setTopFilter('SALE')" ng-class="{selected: topFilter == 'SALE'}" class="fount-mobile-menu-tabs"><i class="icon-bell"></i>ON SALE</div>
     <div ng-click="setTopFilter('ARRIVALS')" ng-class="{selected: topFilter == 'ARRIVALS'}" class="fount-mobile-menu-tabs"><i class="icon-star-empty"></i>NEW ARRIVALS</div>
     <div class="fount-mobile-menu-tabs"><i class="icon-lifebuoy"></i>HELP</div>
@@ -23,89 +20,79 @@
         <i class="icon-link-ext"></i>Logout
       </div>
     </div>
-    <!-- <div ng-show="!isLoggedIn">
-      <div ng-click="login()">
-        Login
-      </div>
-    </div> -->
   </div>
   <div ng-show="enableMobileMenu" ng-click="hideMobileMenu()" class="fount-mobile-overlay"></div>
-  <!-- <nav class="navbar navbar-default"> -->
-    <div class="fount-header-container">
-      <div ng-click="showMobileMenu()" class="fount-mobile-menu" style="display: none;">
-        <div class="icon-menu"></div>
-      </div>
-      <div class="fount-logo">
-        <img src="img/spree-logo.png" alt="Fount">
-      </div>
-      <div class="fount-menu-btns">
-        <!-- <span>TRENDING</span>
-        <span>FEED</span> -->
-        <!-- <span ng-click="setTopFilter('DISCOVER')" ng-class="{selected: topFilter == 'DISCOVER'}">DISCOVER</span> -->
-        <span ng-click="setTopFilter('SALE')" ng-class="{selected: topFilter == 'SALE'}">ON SALE</span>
-        <span ng-click="setTopFilter('ARRIVALS')" ng-class="{selected: topFilter == 'ARRIVALS'}">NEW ARRIVALS</span>
-      </div>
-      <div class="fount-search-bar">
-        <div fount-search></div>
-      </div>
-      <div ng-show="isLoggedIn" class="fount-header-right">
-        <div ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()" class="fount-shopping-bag">
-          <i ng-click="goToCart()" class="sf-cart"></i>
-          <span ng-click="goToCart()" class="fount-cart-count">{{shoppingCartInfo.count}}</span>
-          <ul ng-show="showCartOverlay" class="sub-menu fount-cart-content">
-            <li>
-  						<div ng-show="shoppingCartInfo.count==0" class="shopping-bag">
-                <div class="bag-header">No item in shopping bag.</div>
-              </div>
-              <div ng-show="shoppingCartInfo.count>0" class="shopping-bag">
-								<div class="bag-contents">
-                  <div ng-repeat="cartProduct in fountCartProducts" ng-click="productDetail(cartProduct.product)" class="bag-product clearfix">
-								    <figure>
-                      <div class="bag-product-img">
-                        <img ng-src="{{cartProduct.product.imageURL}}" class="attachment-shop_thumbnail wp-post-image">
-                      </div>
-                    </figure>
-                    <div class="bag-product-details">
-									    <div class="bag-product-title">{{cartProduct.product.name}}</div>
-									    <div class="bag-product-price">Unit Price: <span class="amount">{{cartProduct.product.finalPrice | currency}}</span></div>
-									    <div class="bag-product-quantity">Quantity: 1</div>
-									  </div>
-                    <!-- <a href="http://neighborhood.swiftideas.com/cart/?remove_item=8e5d5b79456a8e2bc09e54e9e518a5f1&amp;_wpnonce=69ec200133" class="remove" title="Remove this item">×</a> -->
-									</div>
-							  </div>
-							  <div class="bag-buttons">
-							    <a ng-click="goToCart()" class="sf-roll-button bag-button"><span>View shopping bag</span><span>View shopping bag</span></a>
-							    <a ng-click="checkout()" class="sf-roll-button checkout-button"><span>Proceed to checkout</span><span>Proceed to checkout</span></a>
+  <div class="fount-header-container">
+    <div ng-click="showMobileMenu()" class="fount-mobile-menu" style="display: none;">
+      <div class="icon-menu"></div>
+    </div>
+    <div class="fount-logo">
+      <img src="img/spree-logo.png" alt="Fount">
+    </div>
+    <div class="fount-menu-btns">
+      <span ng-click="setTopFilter('DISCOVER')" ng-class="{selected: topFilter == 'DISCOVER'}">DISCOVER</span>
+      <span ng-click="setTopFilter('SALE')" ng-class="{selected: topFilter == 'SALE'}">ON SALE</span>
+      <span ng-click="setTopFilter('ARRIVALS')" ng-class="{selected: topFilter == 'ARRIVALS'}">NEW ARRIVALS</span>
+    </div>
+    <div class="fount-search-bar">
+      <div fount-search></div>
+    </div>
+    <div ng-show="isLoggedIn" class="fount-header-right">
+      <div ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()" class="fount-shopping-bag">
+        <i ng-click="goToCart()" class="sf-cart"></i>
+        <span ng-click="goToCart()" class="fount-cart-count">{{shoppingCartInfo.count}}</span>
+        <ul ng-show="showCartOverlay" class="sub-menu fount-cart-content">
+          <li>
+						<div ng-show="shoppingCartInfo.count==0" class="shopping-bag">
+              <div class="bag-header">No item in shopping bag.</div>
+            </div>
+            <div ng-show="shoppingCartInfo.count>0" class="shopping-bag">
+							<div class="bag-contents">
+                <div ng-repeat="cartProduct in fountCartProducts" ng-click="productDetail(cartProduct.product)" class="bag-product clearfix">
+							    <figure>
+                    <div class="bag-product-img">
+                      <img ng-src="{{cartProduct.product.imageURL}}" class="attachment-shop_thumbnail wp-post-image">
+                    </div>
+                  </figure>
+                  <div class="bag-product-details">
+								    <div class="bag-product-title">{{cartProduct.product.name}}</div>
+								    <div class="bag-product-price">Unit Price: <span class="amount">{{cartProduct.product.finalPrice | currency}}</span></div>
+								    <div class="bag-product-quantity">Quantity: 1</div>
+								  </div>
 								</div>
+						  </div>
+						  <div class="bag-buttons">
+						    <a ng-click="goToCart()" class="sf-roll-button bag-button"><span>View shopping bag</span><span>View shopping bag</span></a>
+						    <a ng-click="checkout()" class="sf-roll-button checkout-button"><span>Proceed to checkout</span><span>Proceed to checkout</span></a>
 							</div>
-						</li>
-					</ul>
+						</div>
+					</li>
+				</ul>
+      </div>
+      <div ng-mouseover="profileHoverIn()" ng-mouseleave="profileHoverOut()" class="fount-profile-section">
+        <div class="fount-user-avatar">
+          <img ng-src="{{publicProfilePicture}}">
         </div>
-        <div ng-mouseover="profileHoverIn()" ng-mouseleave="profileHoverOut()" class="fount-profile-section">
-          <div class="fount-user-avatar">
+        <span>{{username}}</span>
+        <div ng-show="showProfileLogout" class="fount-log-out">
+          <div class="fount-user-avatar-big">
             <img ng-src="{{publicProfilePicture}}">
           </div>
-          <span>{{username}}</span>
-          <div ng-show="showProfileLogout" class="fount-log-out">
-            <div class="fount-user-avatar-big">
-              <img ng-src="{{publicProfilePicture}}">
-            </div>
-            <div class="fount-user-detail">
-              <p>{{username}}</p>
-              <p class="fount-cursor-pointer">Edit My Profile</p>
-              <p ng-click="logout()" class="fount-cursor-pointer">Logout</p>
-            </div>
+          <div class="fount-user-detail">
+            <p>{{username}}</p>
+            <p class="fount-cursor-pointer">Edit My Profile</p>
+            <p ng-click="logout()" class="fount-cursor-pointer">Logout</p>
           </div>
-        </div>
-      </div>
-      <div ng-click="login()" ng-show="!isLoggedIn" class="fount-header-right">
-        <div class="fount-shopping-bag">
-          <i class="sf-cart"></i>
-        </div>
-        <div class="fount-profile-section">
-          <span>Login</span>
         </div>
       </div>
     </div>
-  <!-- </nav> -->
+    <div ng-click="login()" ng-show="!isLoggedIn" class="fount-header-right">
+      <div class="fount-shopping-bag">
+        <i class="sf-cart"></i>
+      </div>
+      <div class="fount-profile-section">
+        <span>Login</span>
+      </div>
+    </div>
+  </div>
 </div>

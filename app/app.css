@@ -468,7 +468,7 @@ abbr[title], abbr[data-original-title] {
   width: 100px;
 }
 .fount-header .fount-menu-btns {
-  width: 240px;
+  width: 335px;
   display: inline-block;
 }
 .fount-header .fount-menu-btns span {
@@ -903,6 +903,12 @@ ul.fount-product-attr-list li.selectedColorActive div {
 }
 .fount-discover-page .fount-discover-post {
   cursor: pointer;
+}
+.fount-discover-page .fount-discover-header {
+  text-align: center;
+}
+.fount-discover-page ul.products {
+  padding-top: 0;
 }
 .fount-discover-page .fount-discover-showcase {
   width: 100%;

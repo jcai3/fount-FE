@@ -77,7 +77,7 @@ angular.module('sywStyleXApp', [
     });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/on-sale');
+  $urlRouterProvider.otherwise('/discover');
 })
 .run(['$rootScope', function($rootScope){
     $rootScope.xappObj = {

@@ -15,7 +15,7 @@ angular.module('sywStyleXApp')
 
       var shoppingCartDict = {};
       scope.isLoggedIn = false;
-      scope.topFilter = 'SALE';
+      scope.topFilter = 'DISCOVER';
 
       var filterParams = {
         sellerIds: [],
@@ -76,10 +76,6 @@ angular.module('sywStyleXApp')
         }
       };
 
-      // scope.goToShop = function() {
-      //   $state.go('shop');
-      // };
-
       scope.hoverIn = function() {
         scope.showCartOverlay = true;
       };
@@ -100,14 +96,6 @@ angular.module('sywStyleXApp')
         var $body = element.find('.navbar').parent().parent();
         $body.css('margin-left', '70%').css('margin-right', '-70%').css('overflow', 'hidden');
         scope.enableMobileMenu = true;
-
-        // ngDialog.open({
-        //   template: 'views/templates/fount-mobile-menu.html',
-        //   showClose: false,
-        //   controller: 'FountMobileMenuCtrl',
-        //   className: 'ngdialog-theme-default fount-mobile-menu-modal',
-        //   closeByDocument: true
-        // });
       };
 
       scope.hideMobileMenu = function() {
@@ -123,46 +111,9 @@ angular.module('sywStyleXApp')
         }
 
         $state.go('product', {productId: product.id});
-
-        // ProductDetailService.getProductDetail(product.id).then(function(response){
-        //   if (UtilityService.validateResult(response)) {
-        //     console.log(response);
-        //     product.affiliateURL = decodeURIComponent(product.buyURL);
-        //     product.mediaId = null;
-        //     product.visualTagId = null;
-        //     product.brandName = !!product.brand ? product.brand.name : null;
-        //     product.brandId = !!product.brand ? product.brand.id : null;
-        //     product.sellerName = !!product.seller ? product.seller.name : null;
-        //
-        //     if(!!response.data.payload.PRODUCT.socialActionUserProduct) {
-        //       product.socialActionUserProduct = response.data.payload.PRODUCT.socialActionUserProduct;
-        //     }
-        //
-        //     var productDetail = {
-        //       xapp: product
-        //       // source: 'shop'
-        //     };
-        //
-        //     if(response.data.payload.PRODUCT.twoTapData) {
-        //       productDetail.twotap = response.data.payload.PRODUCT.twoTapData;
-        //     }
-        //
-        //     localStorageService.set('productDetail', productDetail);
-        //     // productDetailLocker = false;
-        //
-        //     $state.go('product', {productId: product.id});
-        //   }
-        // }, function(error) {
-        //     console.log(error);
-        // });
       };
 
       scope.setTopFilter = function(filter) {
-        // if ($state.current.name != 'shop') {
-        //   $state.go('shop');
-        //   return;
-        // }
-
         if (scope.topFilter == filter) {
           return;
         }
@@ -177,9 +128,10 @@ angular.module('sywStyleXApp')
           $state.go('on-sale');
         } else if (filter == 'ARRIVALS') {
           $state.go('new-arrivals');
+        } else if (filter == 'DISCOVER') {
+          $state.go('discover');
         }
 
-        // $rootScope.$emit('event.setTopFilter', {filter: filter});
       };
 
       if (!!localStorageService.get('shoppingCartInfo')) {
@@ -266,7 +218,6 @@ angular.module('sywStyleXApp')
       };
 
       scope.goToCart = function() {
-        // $state.go('cart');
         updateProductsFromCart();
       };
 
@@ -316,23 +267,18 @@ angular.module('sywStyleXApp')
 
       $rootScope.$on('event.updateFountLogin', function(event, data) {
         scope.isLoggedIn = data.isLoggedIn;
-        scope.topFilter = 'SALE';
+        scope.topFilter = 'DISCOVER';
         getProductsFromCart();
         $state.go('on-sale');
       });
 
       $rootScope.$on('event.updateShoppingCart', function(event, data) {
-        // scope.shoppingCartInfo = {
-        //   count: data.shoppingCartInfo.count,
-        //   subtotal: data.shoppingCartInfo.subtotal
-        // };
         getProductsFromCart();
       });
 
       $rootScope.$on('event.updateFountLogout', function(event, data) {
         scope.isLoggedIn = data.isLoggedIn;
         scope.shoppingCartInfo.subtotal = 0;
-        // getProductsFromCart();
       });
 
       $rootScope.$on('event.closeMobileOverlay', function(event, data) {
