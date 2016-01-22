@@ -269,7 +269,7 @@ angular.module('sywStyleXApp')
         scope.isLoggedIn = data.isLoggedIn;
         scope.topFilter = 'DISCOVER';
         getProductsFromCart();
-        $state.go('on-sale');
+        $state.go('discover');
       });
 
       $rootScope.$on('event.updateShoppingCart', function(event, data) {

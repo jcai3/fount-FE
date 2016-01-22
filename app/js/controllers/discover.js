@@ -59,6 +59,7 @@ angular.module('sywStyleXApp')
     }
 
     indexMarker = index;
+    $scope.activePost = -1;
     $('#discover-only-showcase').remove();
     if (!!discoverMedia.products) {
       $scope.showcaseProducts = discoverMedia.products;

@@ -226,7 +226,7 @@ angular.module('sywStyleXApp')
   };
 
   $scope.goToShop = function() {
-    $state.go('on-sale');
+    $state.go('discover');
   };
 
  $scope.productDetail = function (cartProductDetails) {

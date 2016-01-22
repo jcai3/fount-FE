@@ -47,7 +47,7 @@ angular.module('sywStyleXApp')
 
       $rootScope.$on('event.updateFountLogin', function(event, data) {
         scope.isLoggedIn = data.isLoggedIn;
-        $state.go('on-sale');
+        $state.go('discover');
       });
 
     }
