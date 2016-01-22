@@ -81,9 +81,4 @@ angular.module('sywStyleXApp')
 
   getOrderHistory();
 
-  // $scope.$on('$ionicView.enter', function() {
-  //   getOutstandingCommission();
-  //   getAvailablePoints();
-  //   $scope.userActiveProfile(1);
-  // });
 }]);

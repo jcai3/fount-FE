@@ -33,7 +33,6 @@ angular.module('sywStyleXApp')
         console.log(result);
         localStorageService.set('userId', result.data.payload.USER.id);
         invokeFountLogin();
-        // $state.go('shop');
 
       } else {
         console.log(result);
@@ -60,7 +59,6 @@ angular.module('sywStyleXApp')
 
       } else {
         if (result.data.error || result.data.errors) {
-          // $scope.errorMsg = result.data.error.message;
           $scope.authErrorMsg = true;
           if(!!result.data.error) {
             $scope.errorMessage = result.data.error.message;

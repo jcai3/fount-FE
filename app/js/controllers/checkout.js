@@ -22,34 +22,6 @@ angular.module('sywStyleXApp')
 
   var apiLocker = false;
 
-  // var paymentInfo = {
-  //   email: 'willtest@test.com',
-  //   shipping_title: 'default',
-  //   shipping_first_name: 'William',
-  //   shipping_last_name: 'Zhang',
-  //   shipping_address: '3333 Beverly Rd',
-  //   shipping_city: 'Hoffman Estates',
-  //   shipping_state: 'Illinois',
-  //   shipping_country: 'United States of America',
-  //   shipping_zip: '60179',
-  //   shipping_telephone: '8471231234',
-  //   billing_title: 'default',
-  //   billing_first_name: 'William',
-  //   billing_last_name: 'Zhang',
-  //   billing_address: '3333 Beverly Rd',
-  //   billing_city: 'Hoffman Estates',
-  //   billing_state: 'Illinois',
-  //   billing_country: 'United States of America',
-  //   billing_zip: '60179',
-  //   billing_telephone: '8471231234',
-  //   card_type: 'Visa',
-  //   card_number: '4005519200000004',
-  //   card_name: 'William Zhang',
-  //   expiry_date_year: '2016',
-  //   expiry_date_month: '10',
-  //   cvv: '123'
-  // };
-
   var paymentInfo = {
     email: '',
     shipping_title: '',
@@ -234,8 +206,6 @@ angular.module('sywStyleXApp')
     $scope.sectionVisible.payment = false;
     $scope.paymentdetails.type = $scope.creditCardInfo.type;
     $scope.paymentdetails.number = '************ '+ $scope.creditCardInfo.number.substring(12,16);
-
-    // $scope.clickToNext();
   };
 
   $scope.allInputFieldsValided = true;
@@ -322,9 +292,6 @@ angular.module('sywStyleXApp')
   };
 
   $scope.addShippingAddress = function() {
-    // verify address needs to be done
-    // verifyAddress($scope.shippingAddress);
-
     AddressService.addAddress(user, $scope.shippingAddress).then(function(result) {
       if (UtilityService.validateResult(result)) {
         $scope.sectionVisible.shipping = false;
@@ -366,7 +333,6 @@ angular.module('sywStyleXApp')
   };
 
   $scope.backToPrev = function() {
-    // localStorageService.remove('shoppingCart');
     $state.go('cart');
   };
 
@@ -471,7 +437,6 @@ angular.module('sywStyleXApp')
         verifyAddress($scope.shippingAddress);
       }
     }
-    // return requiredFieldsValided;
   };
 
   $scope.showPopup = function() {
@@ -486,7 +451,6 @@ angular.module('sywStyleXApp')
   };
 
   $scope.confirmToPay = function() {
-    // for non-authenticated checkout
     var shoppingCart = localStorageService.get('shoppingCart');
     var shoppingBagDetail = localStorageService.get('shoppingBagDetail');
     console.log('shoppingCart: ');
@@ -510,7 +474,6 @@ angular.module('sywStyleXApp')
       };
       options.affiliate_links[key] = {};
       for (var productMD5 in shoppingBagDetail.twotap.sites[key].add_to_cart) {
-        // get required_fields
         var sellerName = shoppingBagDetail.twotap.sites[key].info.name;
         if (sellerName.toLowerCase() == 'Office Depot'.toLowerCase()) {
           sellerName = 'Office Depot and OfficeMax';
@@ -539,31 +502,11 @@ angular.module('sywStyleXApp')
           var selectedProduct = UtilityService.getProductFromArrayByUrl(shoppingCart[sellerName], original_url);
 
           var item = {
-            // product: {
-            //   id: selectedProduct.productId
-            // },
-            // media: {
-            //   id: selectedProduct.mediaId
-            // },
-            // visualTag: {
-            //   id: selectedProduct.visualTagId
-            // },
             price: !!selectedProduct.availability ? UtilityService.numberParser(selectedProduct.prices.subtotal) : selectedProduct.price,
             quantity: selectedProduct.qty,
             shoppingCartProduct: {
               id: selectedProduct.id
             }
-            // productMetadata: {
-            //   product: {
-            //     id: selectedProduct.productId
-            //   },
-            //   availability: !!selectedProduct.availability ? 'AVAILABLE' : 'UNAVAILABLE',
-            //   price: !!selectedProduct.availability ? UtilityService.numberParser(selectedProduct.prices.subtotal) : selectedProduct.price,
-            //   fit: selectedProduct.fit,
-            //   option: selectedProduct.option,
-            //   color: selectedProduct.color,
-            //   size: selectedProduct.size
-            // }
           };
           items.push(item);
 
@@ -579,7 +522,6 @@ angular.module('sywStyleXApp')
                 options.fields_input[key].addToCart[productMD5][shoppingBagDetail.twotap.sites[key].add_to_cart[productMD5].required_field_names[i]] = selectedProduct[shoppingBagDetail.twotap.sites[key].add_to_cart[productMD5].required_field_names[i]];
               }
 
-              // options.affiliate_links[key][productMD5] = shoppingBagDetail.twotap.sites[key].add_to_cart[productMD5].original_url;
               options.affiliate_links[key][productMD5] = selectedProduct.affiliateURL;
             }
           }
@@ -632,27 +574,6 @@ angular.module('sywStyleXApp')
       }
     }
   });
-
-  // $scope.$watch('billingAddress', function(newVal, oldVal) {
-  //     if (!!newVal.firstName) {
-  //       $scope.requiredFieldsValided.billing_firstName = true;
-  //     }
-  //     if (!!newVal.lastName) {
-  //       $scope.requiredFieldsValided.billing_lastName = true;
-  //     }
-  //     if (!!newVal.line1) {
-  //       $scope.requiredFieldsValided.billing_address = true;
-  //     }
-  //     if (!!newVal.city) {
-  //       $scope.requiredFieldsValided.billing_city = true;
-  //     }
-  //     if (!!newVal.zip) {
-  //       $scope.requiredFieldsValided.billing_zip = true;
-  //     }
-  //     if (!!newVal.phone) {
-  //       $scope.requiredFieldsValided.billing_telephone = true;
-  //     }
-  // });
 
   $scope.$on('$ionicView.enter', function() {
 

@@ -25,7 +25,9 @@ angular.module('sywStyleXApp')
         } else {
           if (pageNumber == 0) {
             var firstDiscoverMedia = result.data.payload.MEDIAS[0];
-            $scope.invokeDiscoverShowcase(firstDiscoverMedia, 0);
+            $timeout(function() {
+              $scope.invokeDiscoverShowcase(firstDiscoverMedia, 0);
+            }, 10);
           }
 
           pageNumber++;

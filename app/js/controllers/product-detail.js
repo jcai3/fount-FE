@@ -27,14 +27,6 @@ angular.module('sywStyleXApp')
     buyOnSellerMsg: ''  //message in the button like BUY NOW on ssense.com
   }
 
-  // var showProductProperty = $ionicModal.fromTemplateUrl('views/templates/product-property.html', {
-  //   scope: $scope,
-  //   animation: 'slide-in-up'
-  // }).then(function(modal) {
-  //   $scope.modal = modal;
-  //   console.log('modal created');
-  // });
-
   var initializeAttr = function() {
     if (!!$scope.productDetail.twotap.addToCart && !!$scope.productDetail.twotap.addToCart.required_field_names) {
       if ($scope.productDetail.twotap.addToCart.required_field_names.indexOf('fit') != -1) {
@@ -860,7 +852,6 @@ angular.module('sywStyleXApp')
       //write logic to do poll call for poll call
       $scope.showLoadingSpinner();
       pollForTwoTapData();
-  //      $scope.addToCart();   //temp to check the existing flow is working.
     }
 
   };
@@ -899,20 +890,10 @@ angular.module('sywStyleXApp')
   };
 
   $scope.redirectToSeller = function() {
-    console.log('go to seller webpage');
-    console.log($scope.productDetail);
-    // window.open("https://www.ssense.com");
-    // UtilityService.openSellerSite('https://www.ssense.com', 'ssense'); // first arg is buy url, second is title
-    // $state.go('forward-seller');
     window.open($scope.productDetail.xapp.affiliateURL, '_blank');
   }
 
-  // if (!!localStorageService.get('productDetail')) {
-  //   console.log('from 0');
-  //   prepareProductDetail();
-  // } else {
-    getCurrentProductDetails();
-  // }
+  getCurrentProductDetails();
 
   if (!!localStorageService.get('shoppingCartInfo')) {
     $scope.shoppingCartInfo = localStorageService.get('shoppingCartInfo');

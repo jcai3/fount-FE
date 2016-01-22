@@ -72,8 +72,6 @@ angular.module('sywStyleXApp')
       $state.go('profile', {Id:localStorageService.get('profileId'), type:'user',source: 0});
     } else {
       UtilityService.gaTrackAppEvent('Media Detail Page', 'Click', 'Back to home page from media detail');
-//      localStorageService.remove('discoverMedia');
-      // localStorageService.set('mediaId', $stateParams.mediaId);
       localStorageService.remove('trackHistory');
       $state.go('main.home');
     }

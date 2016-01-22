@@ -2,8 +2,7 @@
 
 angular.module('sywStyleXApp')
 .controller('OrderConfirmCtrl', ['$rootScope', '$scope', '$state', '$timeout', 'localStorageService', 'UtilityService', 'TwoTapService', 'CheckoutService', 'CartService', 'ReviewOrderService', 'ngDialog', function($rootScope, $scope, $state, $timeout, localStorageService, UtilityService, TwoTapService, CheckoutService, CartService, ReviewOrderService, ngDialog) {
-  // var shippingAddress = ReviewOrderService.getPrimaryAddress();
-  // var paymentInfo = ReviewOrderService.getPaymentInfo();
+
   var shippingAddress = localStorageService.get('shippingAddress');
   var paymentInfo = localStorageService.get('paymentInfo');
 
