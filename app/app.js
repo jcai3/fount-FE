@@ -66,7 +66,7 @@ angular.module('sywStyleXApp', [
       controller: 'ForwardSellerWebCtrl'
     })
     .state('product', {
-      url: '/product/{productId}',
+      url: '/product/{productName}_{productId}',  /* url: '/product/{productDetail.xapp.name}_{productId}',*/
       templateUrl: 'views/product-detail.html',
       controller: 'ProductDetailCtrl'
     })
