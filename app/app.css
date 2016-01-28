@@ -906,7 +906,6 @@ ul.fount-product-attr-list li.selectedColorActive div {
 }
 .fount-discover-page .fount-discover-header {
   text-align: center;
-  color: #2d3130;
 }
 .fount-discover-page .fount-discover-post figure {
   margin-bottom: 0 !important;
@@ -915,31 +914,6 @@ ul.fount-product-attr-list li.selectedColorActive div {
   position: absolute;
   z-index: 10;
   bottom: -44px;
-}
-.fount-discover-page .fount-discover-keywords {
-  color: lightgrey;
-  text-align: center;
-  margin: 15px auto;
-}
-.fount-discover-page .fount-discover-keywords span {
-  margin-right: 10px;
-  cursor: pointer;
-}
-.fount-discover-page .fount-discover-filter {
-  color: lightgrey;
-  text-align: left;
-  width: 200px;
-  margin: 20px auto;
-  padding: 0 10px;
-  border: 1px solid #ddd;
-  position: relative;
-  cursor: pointer;
-}
-.fount-discover-page .fount-discover-filter span {
-  position: absolute;
-  color: #2d3130;
-  right: 5px;
-  top: 0
 }
 .fount-discover-page ul.products {
   padding-top: 0;
