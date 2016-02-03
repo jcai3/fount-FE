@@ -3,7 +3,8 @@
 angular.module('config', [])
 
 .constant('ENV', {
-/*  sharingHost: 'http://localhost:8100/#/media/',
+  sharingHost: 'http://localhost:8100/#/media/',
+  /* 
   apiEnvname: 'local',
   apiEndpoint: 'http://localhost:9090/',
   instagramRedirectDomain: 'http://localhost:9090/',
