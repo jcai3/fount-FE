@@ -50,7 +50,11 @@ angular.module('sywStyleXApp')
       scope.productDetail = function(id) {
         $state.go('product', {productId: id});
       };
-
+      
+      scope.mediaDetail = function(id) {
+    	$state.go('media', {productId: id});  
+      };
+      
       scope.plusCounter = function(length) {
         if (length < 3) {
           return;

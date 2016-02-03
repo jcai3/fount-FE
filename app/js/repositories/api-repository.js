@@ -785,5 +785,6 @@ angular.module('sywStyleXApp')
 
     return serviceCall('POST', 'seller/updateall', inputParams);
   };
+  
 
 }]);

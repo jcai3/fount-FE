@@ -743,6 +743,9 @@ ul.products li.product .price span {
 .fount-product-detail {
   margin-top: 20px;
 }
+.fount-media-detail {
+	margin-top:20px;
+}
 .woocommerce #review_form #respond {
   position: static;
   margin: 0;
@@ -1003,6 +1006,100 @@ ul.fount-product-attr-list li.selectedColorActive div {
 .fount-discover-page .fount-discover-showcase .discover-showcase-container #discover-showcase-carousel .fount-tagged-product .tagged-product-img img {
   width: auto;
   max-height: 150px;
+}
+.media-container{
+	font-family: 'Open Sans', sans-serif;
+	margin: auto;
+	padding: 0 0 0 0;
+	margin: auto;
+	width: 1400px;
+}
+.media-summary{
+}
+.media-images{
+	display: inline-block;
+	width: 750px;
+} 
+.media-images #image{
+	width: 750px;
+	height: 750px;
+	margin: auto;
+	padding: 0 0 0 0;
+}
+.media-summary .media-info{
+	position:relative;
+	float:right;
+	display:inline-block;
+	width:560px;
+} 
+.media-summary .media-info ul li{
+	display:inline-block;
+	border:0 none;
+	padding-top:3%;
+	margin: 0 40px 0 px;
+}
+.media-summary .media-info ul li .brandName{
+	font-size: 25px;
+	font-color: #5e5e5e;
+	font-weight: bold;
+	margin-left: 20px;
+}
+.media-summary .media-info .caption{
+	height:280px;
+	margin: 0 20 0 20;
+	padding: 50px 0px 50px 0px;
+}
+.media-filter{
+	margin: 0 0 10px 0;
+	padding: 0 0 0 0;
+	width:1400px;
+	height:100px;
+}
+.media-filter table{
+	float:left;
+	width:1400px;
+	height:100px;
+	border-type:solid;
+	border-width:5px;
+	border-color: #d6d6d6;
+}
+.media-filter table tr td{
+	font-color:d6d6d6;
+	font-size:3;
+	font-weight:bold;
+}
+.media-product-items{
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	width:1400px;
+	height:1000px;
+}
+.media-product-items .product-items-detail{
+	display:inline-block;
+	height:500px;
+	width:220px;
+    vertical-align:top;
+	margin: 0 -4px 0 0;
+	padding:30px 30px 30px 30px;
+	border-style: solid;
+	border-color: #d6d6d6;
+}
+.media-product-items .product-items-detail .product-img{
+	width:220px;
+}
+.media-product-items .product-items-detail .info{
+	margin: 50px 0 0 0;
+}
+.media-product-items .product-items-detail .product-details-btn{
+	width:180px;
+	margin:auto;
+}
+.media-product-items .product-items-detail h1{
+	font-size:20px;
+	font-weight:bold;
+}
+.media-product-items .product-items-detail p{
+	font-size:20px;
 }
 .discover-showcase-sidebar .showcase-carousel-btns {
   position: relative;
