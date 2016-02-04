@@ -79,7 +79,13 @@ angular.module('sywStyleXApp', [
       url: '/admin',
       templateUrl: 'views/admin.html',
       controller: 'AdminCtrl'
-    });
+    })
+    .state('cms', {
+      url: '/cms',
+      templateUrl: 'views/cms.html',
+      controller: 'CmsCtrl'
+    })
+    ;
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/discover');

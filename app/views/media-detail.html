@@ -1,4 +1,3 @@
-<!-- 
 <div id="main-container" class="fount-media-detail">
   <div id="page-wrap">
     <div class="page-content clearfix">
@@ -10,31 +9,36 @@
                 <div class="media-container">
                   <div class="media-summary">
 	                  <div class="media-images">
-	                    <div id="image" media-images="productDetail.productImages"></div>
-	                    <div><img id="image" alt="item pic" src="http://i.imgur.com/VP0T8xS.jpg" /></div>
-	                    test
-	                    <div ng-app = "">
-         <p>Enter your Name: <input type = "text" ng-model = "name"></p>
-         <p>Hello <span ng-bind = "name"></span>!</p>
-      </div>
-      test end
+	                    <div><img id="image" alt="item pic" src="{{discoverMedia.standardResolutionURL}}" /></div>
 	                  </div>
 	                  <div class="media-info">
 	                    <div class="summary-top clearfix">
 							<ul>
-								<li><img alt="item pic" src="{{media.brandimage}}" width=100px;/></li>
+								<li><img alt="item pic" src="{{discoverMedia.instagramUserProfileUrl}}" width=100px;/></li>
 								<li><div class="brandName">{{discoverMedia.instagramUserName}}</div></li>
-								<li><div style="margin: 0 0 0 20px;"><center><div><img alt="like" src="img/like.png" /></div><div><font size=3 color="#d6d6d6"><br>{{media.likes}}</font></div></center></div></li>
+								<li><div class="like-counts"><center><div><img alt="like" src="img/like.png" /></div><div>{{discoverMedia.likes}}</div></center></div></li>
 							</ul>
 	                    </div>
 	                    <div class="summary-top clearfix">
-							<div class="caption">{{discoverMedia.caption}}{{1+2}}</div>
+							<div class="caption">{{discoverMedia.caption}}</div>
 						</div>
 	
-	                    <div class="summary-top clearfix">
-	                    	<div>{{media.likeduser}}</div>
-	                    	<div>? likes</div>
-	                    	<div>more></div>
+	                    <div class="summary-top clearfix media-user-likes">
+	                    	<div class="likedUser">
+								<li	ng-repeat="x in discoverUsers track by $index"
+									class="likedUser-list"
+									id="fount-liked_user_{{$index}}">
+									<figure>
+										<div class="likedUserProfile-img">
+				 							<img ng-src="{{x.igProfilePicture}}" fount-err-src="img/err-src.png">
+										</div>
+									</figure>
+								</li>
+							</div>
+							<div class="likes">
+		                    	<div class="likes-count">{{discoverMedia.moreLikes}} likes</div>
+		                    	<div class="more">more></div>
+	                    	</div>
 	                    </div>                   
 	                  </div>
                   </div>
@@ -97,6 +101,7 @@
 						</tr>
 					</table>
                   </div>
+	              
 	              <div class="media-product-items">
 					<div class="product-items-detail">
 						<div class="info">
@@ -109,54 +114,35 @@
 								<br>
 								<br></font>
 						</div>
-						<div>
-							<font size=3 color="#5e5e5e">A fount of products
+						<div class="intro-brief">
+							A fount of products
 								tagged and <br>inspired from the host. Have fun<br>
 								shopping!
-							</font>
 						</div>
 					</div>
-					<div class="product-items-detail">
-						<div class="product-img">
-							<img alt="item pic" src="http://i.imgur.com/JQ5YgrE.png"/>
-						</div>
-						<center>
-						<h1>Saint Laurent</h1>
-						<p>Cassandre Tassel Clutch Bag</p>
-						<div id="price">
-							<font size=3 color="#4ac0d1">$1500<br> <br></font>
-						</div>
-						<input type="image" class="product-details-btn" src="http://i.imgur.com/8Ycesid.png"/>
-						<div>
-							<img style="display: inline-block;" alt="item pic"
-								src="img/wishlist.png" width=40 />
-							<p style="display: inline-block;">
-								<br> <br>add to wish list
-							<p>
-						</div>
-						</center>
-					</div>
-					<div class="product-items-detail">
-						<div class="product-img">
-							<img alt="item pic" src="http://i.imgur.com/JQ5YgrE.png"/>
-						</div>
-						<center>
-						<h1>Saint Laurent</h1>
-						<p>Cassandre Tassel Clutch Bag</p>
-						<div id="price">
-							<font size=3 color="#4ac0d1">$1500<br> <br></font>
-						</div>
-						<input type="image" class="product-details-btn" src="http://i.imgur.com/8Ycesid.png"/>
-						<div>
-							<img style="display: inline-block;" alt="item pic"
-								src="img/wishlist.png" width=40 />
-							<p style="display: inline-block;">
-								<br> <br>add to wish list
-							<p>
-						</div>
-						</center>
-					</div>
-					
+					<li	ng-repeat="products in tagProductsArray track by $index"
+							class="product-items-detail"
+							id="fount-visualtag_product_{{$index}}">
+							<figure>
+								<div class="product-img">
+									<img ng-src="{{products.imageURL}}" fount-err-src="img/err-src.png"/>
+								</div>
+								<center>
+								<div class="brand-name"><h1>{{products.brand.name}}</h1></div>
+								<div class="product-name"><p>{{products.name}}</p></div>
+								<div class="product-price">
+									{{products.price | currency}}
+								</div>
+								<div class="details-btn"><input type="image" class="product-details-btn" src="http://i.imgur.com/8Ycesid.png"/></div>
+								<div class="add-to-wishlist">
+									<div><img style="display: inline-block;" alt="item pic"	src="img/wishlist.png" width=40 /></div>
+									<div>
+										<p style="display: inline-block;">add to wish list<p>
+									</div>
+								</div>
+								</center>
+							</figure>
+						</li>						
 				 </div>
                 </div>
               </div>
@@ -168,19 +154,4 @@
   </div>
 </div>
 
-
- -->
- 
- 
-
-
- 
-      
-      <div>
-         <p>Enter your Name: <input type = "text"></p>
-         <p>Hello <span ng-bind = "name"></span>!</p>
-      </div>
-      
-      
-      
 

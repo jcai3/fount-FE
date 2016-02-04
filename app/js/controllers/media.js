@@ -4,8 +4,6 @@ angular.module('sywStyleXApp')
 .controller('MediaCtrl', ['$scope', 'UtilityService', 'UserMediaService', 'MediaTagService', '$state', '$stateParams', 'localStorageService', function($scope, UtilityService, UserMediaService, MediaTagService, $state, $stateParams, localStorageService) {
   UtilityService.gaTrackAppView('Media Detail Page View');
 
-  $scope.showTagProductSuccessMsg = false;
-
   var getCurrentMedia = function() {
     UserMediaService.getCurrentMedia($stateParams.mediaId).then(function(result) {
       if (UtilityService.validateResult(result)) {
@@ -50,14 +48,14 @@ angular.module('sywStyleXApp')
       localStorageService.remove('trackHistory');
       localStorageService.remove('taggedProducts');
       $state.go('main.settings');
-    } else if (prevState.source == 'product-detail') {
-      UtilityService.gaTrackAppEvent('Media Detail Page', 'Click', 'Back to product-detail page from media detail');
-      var product = { id: prevState.id };
+    } else if (prevState.source == 'media-detail') {
+      UtilityService.gaTrackAppEvent('Media Detail Page', 'Click', 'Back to media-detail page from media detail');
+      var media = { id: prevState.id };
       localStorageService.remove('discoverMedia');
-      localStorageService.remove('productDetail');
+      localStorageService.remove('mediaDetail');
       localStorageService.set('trackHistory', viewHistory);
       localStorageService.remove('taggedProducts');
-      $state.go('product', {productId: product.id});
+      $state.go('media', {mediaId: media.id});
     } else if(prevState.source == 'brand-profile') {
       UtilityService.gaTrackAppEvent('Media Detail Page', 'Click', 'Back to brand profile page from media detail');
       localStorageService.remove('discoverMedia');
@@ -103,7 +101,7 @@ angular.module('sywStyleXApp')
 
         var prevSource = {
           source: localStorageService.get('discoverMedia').source,
-          id: (localStorageService.get('discoverMedia').source == 'product-detail') ? localStorageService.get('productDetail').xapp.id : null
+          id: (localStorageService.get('discoverMedia').source == 'media-detail') ? localStorageService.get('mediaDetail').xapp.id : null
         };
 
         if (trackHistory.length >= 1) {
