@@ -39,6 +39,10 @@ angular.module('sywStyleXApp')
       };
 
       angular.element(document).ready(function () {
+    	  if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
+    		  $("#smartWebBanner").css("display", "block");
+    	  };
+ 
     	  $("#swb-close").click(function(){
    		   $("#smartWebBanner").css("display", "none");
     	  });
