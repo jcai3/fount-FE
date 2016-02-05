@@ -746,6 +746,7 @@ ul.products li.product .price span {
 }
 .fount-media-detail {
 	margin-top:20px;
+	margin-left:-50px;
 }
 .woocommerce #review_form #respond {
   position: static;
@@ -1184,7 +1185,7 @@ ul.fount-product-attr-list li.selectedColorActive div {
 	font-weight:bold;
 }
 .media-product-items .product-items-detail  p{
-	font-size:20px;
+	font-size:14px;
 }
 .media-product-items .product-items-detail  .add-to-wishlist{
 	margin:10px 0 0 0;
