@@ -8264,6 +8264,15 @@ nav.woocommerce-pagination ul li a.prev i {
 	float: left;
 	width: 38%;
 }
+.woocommerce div.product div.mediaimages {
+	position: relative;
+	z-index: 2;
+	overflow: hidden;
+	/*padding-bottom: 50px;*/
+	margin-bottom: 0;
+	float: left;
+	width: 50%;
+}
 .woocommerce div.product div.summary {
 	margin-bottom: 50px;
 	float: right;
