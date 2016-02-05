@@ -82,9 +82,7 @@
 							</td>
 							<td id="sort by" style="width: 280px;">
 								<div class="dropdown">
-									<div class="dropdown">
-										SORT BY <span
-											class="caret"></span>
+									<div class="dropdown">SORT BY <span	class="caret"></span>
 									</div>
 									<div class="dropdown-menu">
 										<p>
@@ -134,7 +132,7 @@
 								<div class="product-price">
 									{{products.price | currency}}
 								</div>
-								<div class="details-btn"><input type="image" class="product-details-btn" src="http://i.imgur.com/8Ycesid.png"/></div>
+								<div ng-click="productDetail(products.productTagger.id)" class="details-btn"><input type="image" class="product-details-btn" src="http://i.imgur.com/8Ycesid.png"/></div>
 								<div class="add-to-wishlist">
 									<div><img style="display: inline-block;" alt="item pic"	src="img/wishlist.png" width=40 /></div>
 									<div>

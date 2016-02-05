@@ -232,7 +232,7 @@ angular.module('sywStyleXApp')
 
       if (!localStorageService.get('userId')) {
         scope.isLoggedIn = false;
-        $state.go('login');
+        //$state.go('login');
       } else {
         scope.isLoggedIn = true;
         getProductsFromCart();

@@ -17,8 +17,10 @@ angular.module('sywStyleXApp')
 	    }
 
 	    apiLocker = true;*/
-
-	/*$stateParams.mediaId = 15;*/
+	  $scope.productDetail = function(id) {
+	        $state.go('product', {productId: id});
+	      };
+	  
 	UserMediaService.getCurrentMedia($stateParams.mediaId).then(function(result){
 		if(UtilityService.validateResult(result)) {
 			console.log('get current media details');
