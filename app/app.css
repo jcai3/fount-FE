@@ -92,6 +92,7 @@ body{
 }
 body {
   background-size:auto;
+  overflow-x: hidden;
 }
 #main-container,.tm-toggle-button-wrap a {
   background-color:#ffffff;
@@ -1038,7 +1039,7 @@ ul.fount-product-attr-list li.selectedColorActive div {
 	min-height:350px;
 }
 .media-summary .media-info{
-	margin: 10px 10px 10px 10px;
+	margin: 10px 10px 10px 20px;
 	padding: 0 0 0 0;
 	position:relative;
 	float:left;
