@@ -4,7 +4,7 @@ angular.module('config', [])
 
 .constant('ENV', {
   sharingHost: 'http://localhost:8100/#/media/',
-  apiEnvname: 'st', //local  st?
+  apiEnvname: 'prodnew', //local  st?
   
   /*apiEndpoint: 'http://localhost:9090/',
   instagramRedirectDomain: 'http://localhost:9090/',
@@ -19,5 +19,4 @@ angular.module('config', [])
   instagramClientId: 'ee232f8727414f5cbba4ec881ed2a71f',
   
   instagramRedirectUri: 'getInstagramAccessToken'
-  
 });
