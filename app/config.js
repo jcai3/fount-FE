@@ -4,7 +4,7 @@ angular.module('config', [])
 
 .constant('ENV', {
   sharingHost: 'http://localhost:8100/#/media/',
-  apiEnvname: 'prod', //local  st?
+  apiEnvname: 'st', //local  st?
   
   /*apiEndpoint: 'http://localhost:9090/',
   instagramRedirectDomain: 'http://localhost:9090/',
@@ -16,9 +16,8 @@ angular.module('config', [])
   */
   apiEndpoint: 'https://fountit.com/lifestyle/',
   instagramRedirectDomain: 'https://fountit.com/lifestyle/',
-  //instagramClientId: 'ee232f8727414f5cbba4ec881ed2a71f',
-  instagramClientId: 'e32a8358d9cf4782b97e0f7c23de7309',
-	  
+  instagramClientId: 'ee232f8727414f5cbba4ec881ed2a71f',
+  
   instagramRedirectUri: 'getInstagramAccessToken'
   
 });
