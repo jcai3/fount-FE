@@ -1016,38 +1016,52 @@ ul.fount-product-attr-list li.selectedColorActive div {
 }
 .media-summary{
 }
-.media-images{
+.media-summary.media-images{
+	position:relative;
 	display: inline-block;
+	float:left;
 	width: 50%;
+	height:50%
 } 
 .media-images #image{
+	display:block;
 	width: 100%;
 	height: 100%;
-	margin: auto;
+	margin: 10px 10px 10px 10px;
 	padding: 0 0 0 0;
+	min-width:350px;
+	min-height:350px;
+}
+.media-images img{
+	display:block;
+	min-width:350px;
+	min-height:350px;
 }
 .media-summary .media-info{
+	margin: 10px 10px 10px 10px;
+	padding: 0 0 0 0;
 	position:relative;
-	float:right;
+	float:left;
 	display:inline-block;
-	width:43%;
+	width:45%;
+	height:50%;
 } 
+.media-summary .media-info ul{
+}
 .media-summary .media-info ul li{
 	display:inline-block;
+	float:left;
 	border:0 none;
 	padding-top:0;
-	margin: 0 40px 0 px;
+	margin: 10px 10px 10px 0;
 }
 .media-summary .media-info ul li .brandName{
-	font-size: 30px;
+	font-size: 25px;
 	font-color: #5e5e5e;
 	font-weight: bold;
-	margin-left: 20px;
+	padding-top:20px;
 }
 .media-summary .media-info ul li .like-counts{
-	float:right;
-	padding: 0 0 0 0;
-	margin: 0 20px 0 40px;
 	color: #d6d6d6;
 	font-size:20px;
 }
@@ -1055,7 +1069,7 @@ ul.fount-product-attr-list li.selectedColorActive div {
 	height:240px;
 	margin: 0 20 0 20;
 	padding: 30px 0px 30px 0px;
-	font-size:25px;
+	/* font-size:25px; */
 }
 .media-user-likes .likes{
 	float:right;
@@ -1191,9 +1205,13 @@ ul.fount-product-attr-list li.selectedColorActive div {
 	float:left;
 	margin: 0 0 0 30px
 }
+.likedUser .likedUser-list .likedUserProfile-img{
+	height:70px;
+	width:70px;
+}
 .likedUser .likedUser-list .likedUserProfile-img img{
-	width:90px;
-    height:90px;
+	width:100%;
+    height:100%;
     border-radius:50%;
     overflow:hidden;
 }
