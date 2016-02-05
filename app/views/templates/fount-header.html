@@ -1,10 +1,4 @@
 <div class="fount-header">
-<script>
-$(document).ready(function(){
-	$("#swb-close").click(function(){
-		   $("#smartWebBanner").css("display", "none");
-	   });
-</script>
   <div ng-show="enableMobileMenu" class="fount-mobile-menu-section">
     <div class="fount-mobile-search">
       <div fount-search></div>
@@ -34,8 +28,8 @@ $(document).ready(function(){
     </div>
    
    <div id="smartWebBanner" class="free ios7 shown" style="top: 0px;">
-    <input type="button" onlick="#smartWebBanner.hide();" id="swb-close" value="X" />
-    <a href="https://dl.dropboxusercontent.com/s/c61hw52bvrc7kzn/build-index.html?dl=0" id="swb-icon" class="gloss" style="background-image: url(&quot;/apple-touch-icon.png&quot;);">
+    <input type="button" id="swb-close" value="X" />
+    <a href="https://dl.dropboxusercontent.com/s/c61hw52bvrc7kzn/build-index.html?dl=0" id="swb-icon" class="gloss" style="background-image: url(img/spree-logo.png);">
     </a><div id="swb-info"><strong>Fountit.com</strong><span>Fount SYW</span></div><a href="https://dl.dropboxusercontent.com/s/c61hw52bvrc7kzn/build-index.html?dl=0" id="swb-save">download the app</a></div>
     
     <div class="fount-logo">

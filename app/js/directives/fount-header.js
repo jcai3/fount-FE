@@ -38,6 +38,12 @@ angular.module('sywStyleXApp')
         };
       };
 
+      angular.element(document).ready(function () {
+    	  $("#swb-close").click(function(){
+   		   $("#smartWebBanner").css("display", "none");
+    	  });
+        });
+      
       var getProfileDetails = function() {
         var userId = localStorageService.get('userId');
         PublicProfileService.getPublicProfile(userId).then(function(response){
