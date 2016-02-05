@@ -23,7 +23,7 @@
       </div>
     </div>
     <p><span ng-if="showcaseProducts.length>=3">{{showcaseCounter}}</span><span ng-if="showcaseProducts.length<3">{{showcaseProducts.length}}</span>/{{showcaseProducts.length}}</p>
-    <div ng-click="shopAll()" class="discover-showcase-shopall">
+    <div ng-click="shopAll(product.id)" class="discover-showcase-shopall">
       <div class="showcase-shopall-arrow">------></div>
       <div class="showcase-shopall-btn">SHOP ALL</div>
     </div>

@@ -299,7 +299,7 @@ Custom jQuery functions.
 		headerOverlaySet: function() {
 			var headerWrapHeight = jQuery('.header-wrap').height();
 
-			if (jQuery('#main-container').find('#swift-slider').length === 0 && jQuery('#main-container').find('.home-slider-wrap').length === 0 && jQuery('#page-wrap').find('.page-heading').length === 0) {
+			if (jQuery('#').find('#swift-slider').length === 0 && jQuery('#main-container').find('.home-slider-wrap').length === 0 && jQuery('#page-wrap').find('.page-heading').length === 0) {
 				jQuery('.inner-page-wrap').animate({
 					'padding-top': headerWrapHeight + 20
 				}, 300);

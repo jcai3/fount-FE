@@ -45,7 +45,8 @@ angular.module('sywStyleXApp')
       console.log(error);
     });
   }
-  
+ 
+
  /* var indexMarker = -1;
   $scope.invokeLikedUser = function(discoverMedia, index) {
 

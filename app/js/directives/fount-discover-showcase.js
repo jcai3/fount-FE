@@ -51,10 +51,6 @@ angular.module('sywStyleXApp')
         $state.go('product', {productId: id});
       };
       
-      scope.mediaDetail = function(id) {
-    	$state.go('media', {productId: id});  
-      };
-      
       scope.plusCounter = function(length) {
         if (length < 3) {
           return;
@@ -83,8 +79,8 @@ angular.module('sywStyleXApp')
         }
       };
 
-      scope.shopAll = function() {
-        // invoke shop all from this function
+      scope.shopAll = function(id) {
+    	/* $state.go('media', {mediaId: id});*/
       };
 
       initializeShowcaseCarousel();
