@@ -1045,6 +1045,7 @@ ul.fount-product-attr-list li.selectedColorActive div {
 	display:inline-block;
 	width:45%;
 	height:50%;
+	min-width:300px;
 } 
 .media-summary .media-info ul{
 }
