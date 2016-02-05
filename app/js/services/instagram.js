@@ -4,7 +4,7 @@ angular.module('sywStyleXApp')
 .service('InstagramService', ['$rootScope', '$http', 'ENV', '$window', function($rootScope, $http, ENV, $window) {
   var self = this;
   var API_ENDPOINT = 'https://api.instagram.com/v1';
-  // var API_ENDPOINT = 'https://api.instagram.com/v1';
+  //var API_ENDPOINT = 'https://api.instagram.com/v1';
   var LOGOUT_URL = 'https://instagram.com/accounts/logout';
 
   this.getEndpoint = function() {

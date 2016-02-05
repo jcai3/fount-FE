@@ -1083,8 +1083,6 @@ ul.fount-product-attr-list li.selectedColorActive div {
 	float:left;
 	width:1400px;
 	height:100px;
-	border-style: solid;
-	border-color: #d6d6d6;
 }
 .media-filter table tr td{
 	font-color:d6d6d6;
@@ -1097,9 +1095,9 @@ ul.fount-product-attr-list li.selectedColorActive div {
     display: inline-block;
 	
 }
-/* .dropdown > .caret{
+.dropdown > .caret{
 	float:right;
-} */
+} 
 .media-filter .dropdown:hover .dropdown-menu {
     display: block;
     position: absolute;
@@ -1125,6 +1123,7 @@ ul.fount-product-attr-list li.selectedColorActive div {
 	padding:20px 30px 20px 30px;
 	border-style: solid;
 	border-color: #d6d6d6;
+	float:left;
 }
 .media-product-items .product-items-detail {
 	display:inline-block;
