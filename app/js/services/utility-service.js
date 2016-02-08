@@ -598,6 +598,23 @@ angular.module('sywStyleXApp')
   };
 
 }])
+
+.service('CmsService', ['apiRepository', function(apiRepository) {
+	this.getSellerCategories = function(sellerId, isCreate, pageNumber){
+		return apiRepository.getSellerCategories(sellerId, isCreate, pageNumber);
+	};
+	
+	this.getChildCategories = function(categoryId){
+		return apiRepository.getChildCategories(categoryId);
+	};
+	
+	this.mapCategory = function(categoryMap){
+		return apiRepository.categoryMap(categoryMap);
+	};	
+	
+}])
+
+
 .service('ReviewOrderService', function(){
     var primaryAddress = {};
     var paymentInfo = {};

@@ -181,6 +181,30 @@ angular.module('sywStyleXApp')
   this.getCurrentMedia = function(id) {
     return serviceCall('GET', 'media/' + id);
   };
+  
+  this.getSellerCategories = function(sellerId, isCreate, pageNumber) {
+	  var inputParams = {
+	    sellerId, sellerId,
+	    isCreate, isCreate,
+	    pageNumber, pageNumber
+	  };
+	  return serviceCall('GET', 'category/byseller', inputParams);
+  };
+  
+  this.getChildCategories = function(categoryId) {
+	  var inputParams = {
+		categoryId, categoryId
+	  };
+	  return serviceCall('GET', 'category/getchilds', inputParams);
+  };
+  
+  this.mapCategory = function(categoryMap) {
+	  var inputParams = {
+		categoryMap, categoryMap
+	  };
+	  return serviceCall('POST', 'category/mapcategory', inputParams);
+  };
+  
 
   this.searchProducts = function(pageNumber, keyword, filterParams) {
     var inputParams = {

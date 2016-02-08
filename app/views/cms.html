@@ -1,5 +1,59 @@
-     
-      <div>
-         <p>Enter your Name: <input type = "text"></p>
-         <p>Hello <span ng-bind = "name"></span>!</p>
-      </div>
+<div id="" class="clearfix">
+	<div class="page-heading  clearfix asset-bg alt-one">
+		<div class="container">
+			<div class="heading-text">
+				<h1 class="entry-title">CMS Page</h1>
+				<p>{{sellerCategory}}</p>
+			</div>
+		</div>
+	</div>
+	<div class="container cms-seller">
+	   <table>
+	     <tr>
+	       <th>SELLER ID</th>
+	       <th>SELLER CATEGORY</th>
+	       <th>FOUNT <br>1st level CATEGORY</th>
+	       <th>FOUNT <br>2nd level CATEGORY</th>
+	       <th>FOUNT <br>3rd level CATEGORY</th>
+	     </tr>
+	     <tr ng-repeat="seller in adminSellers">
+	       <td>{{seller.name}}</td>
+	       <td>Seller Category</td>
+	       <td>
+		      <select class="rootcategory" id="sub-0-{{seller.id}}" ng-model="selectedCategory"
+			    ng-options="category.name for category in testdataset"  ng-change="categoryChanged(selectedCategory, {{seller.id}})">
+			    <option value="">Choose category</option>
+		      	<!-- <option value="" selected="selected">Choose category</option>
+	            <option value="SUBCATEGORY1">SUBCATEGORY1</option>
+	            <option value="SUBCATEGORY2">SUBCATEGORY2</option>
+	            <option value="SUBCATEGORY3">SUBCATEGORY3</option> -->
+	          </select>
+           </td>
+           <td>
+		      <select class="subcategory" id="sub-1-{{seller.id}}" ng-model="selectedCategory"
+			    ng-options="category.name for category in testdataset"  ng-change="subcategoryChanged(selectedCategory, {{seller.id}})">
+		        <option value="">Choose category</option>
+	            <!-- <option value="SUBCATEGORY1">SUBCATEGORY1</option>
+	            <option value="SUBCATEGORY2">SUBCATEGORY2</option>
+	            <option value="SUBCATEGORY3">SUBCATEGORY3</option> -->
+	          </select>
+           </td>
+           <td>
+		      <select class="subcategory" id="sub-2-{{seller.id}}" ng-model="selectedCategory"
+			    ng-options="category.name for category in testdataset"  ng-change="categoryChanged(selectedCategory)">
+		        <option value="">Choose category</option>
+	            <!-- <option value="SUBCATEGORY1">SUBCATEGORY1</option>
+	            <option value="SUBCATEGORY2">SUBCATEGORY2</option>
+	            <option value="SUBCATEGORY3">SUBCATEGORY3</option> -->
+	          </select>
+           </td>
+	       <!-- <td ng-repeat="child in fountCategory"> call api according to id
+	       	<li>{{child.name}}</li>
+	       </td> -->
+	     </tr>
+	   </table>
+	   <div class="update_cms_seller">
+	     <input ng-click="mapCategory()" type="submit" class="button alt" value="Update">
+	   </div>
+	</div>
+</div>

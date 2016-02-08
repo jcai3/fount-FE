@@ -2,21 +2,14 @@
 
 angular.module('sywStyleXApp')
 .controller('MediaDetailCtrl', ['$scope', 'UtilityService', 'UserMediaService', 'MediaTagService', '$state', '$stateParams', 'localStorageService', function($scope, UtilityService, UserMediaService, MediaTagService, $state, $stateParams, localStorageService) {
-  /*
-	  var apiLocker = false;*/
+
 	  var pageNumber = 0;
 	  var indexMarker = -1;
 	  $scope.activePost = -1;
 	  $scope.showcaseCounter = 3;
 	  $scope.hasMoreData = true;
 	  $scope.discoverMedias = [];
-/*
-	  var getDiscoverPosts = function() {
-	    if (apiLocker) {
-	      return;
-	    }
 
-	    apiLocker = true;*/
 	  $scope.productDetail = function(id) {
 	        $state.go('product', {productId: id});
 	      };

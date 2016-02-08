@@ -25,7 +25,6 @@ angular.module('sywStyleXApp')
       '&redirect_uri=' + ENV.instagramRedirectDomain + ENV.instagramRedirectUri +
       '&scope=likes+comments&response_type=code', '', 'width='+popupWidth+',height='+popupHeight+',left='+popupLeft+',top='+popupTop+''
     );
-
     loginWindow.addEventListener('load', function(event) {
       console.log('loaded');
       console.log(event);
