@@ -906,40 +906,76 @@ ul.fount-product-attr-list li.selectedColorActive div {
 .admin-seller .update_admin_seller input {
   padding: 10px 20px;
 }
+#cms-container{
+	overflow-y:auto; 
+	overflow-x: scroll;
+	min-width:1200px;
+	margin:30px, 30px, 50px, 50px;
+}
 .cms-seller {
   margin: 25px auto;
+  overflow-x: scroll;
 }
-.cms-seller table{
+.cms-seller .seller-info .info, cms-seller .fount-cate-root .info, cms-seller .fount-cate-child .info{
+  height:3000px;
+}
+/* .cms-seller .seller-info, .fount-cate-root, .fount-cate-child{
+	width:200px;
+} */
+.cms-seller .seller-info, .seller-cate, .fount-cate-root, .fount-cate-child{
+	display:inline-block;
+	float:left;
+}
+.cms-seller .header{
+  display:block;
   border: 1px solid #ccc;
-  border-collapse: collapse;
+  height:80px;
+  padding: 30px 10px 10px 10px;
+  font-weight:bold;
+  font-size:20px;
+  text-align: center;
 }
-.cms-seller table, .cms-seller table th, .cms-seller table td {
+.cms-seller .info{
+  display:block;
+  padding: 10px 20px;
   border: 1px solid #ccc;
-  border-collapse: collapse;
+  background-color:#eee;
 }
- .cms-seller table td{
- background-color: #eee;
- padding: 10px 15px;
- }
- .cms-seller table th{
- padding: 10px 15px;
- }
- .cms-seller table tr td select {
-  margin-bottom: 0;
- }
- .cms-seller .rootcategory{
- display:block;
- }
- .cms-seller .subcategory{
- display:none;
- }
+.cms-seller .child-info{
+	background-color:#eee;
+}
+.cms-seller .child-info ul{
+	margin:auto;
+	padding:10px 20px 10px 30px;
+}
+.cms-seller .child-info ul{
+	display:inline-block;
+}
+.cms-seller .child-info li{
+	height:40px;
+	margin-bottom: 10px;
+	margin-top:10px;
+    font-size: 14px;
+}
+.cms-seller .info li{
+	height:40px;
+	margin-bottom: 10px;
+	margin-top:10px;
+    font-size: 14px;
+}
+
+
  .cms-seller .update_cms_seller {
-  margin-top: 25px;
+  margin-top: 300px;
   text-align: right;
  }
  .cms-seller .update_cms_seller input {
   padding: 10px 20px;
  }
+
+ 
+ 
+ 
 .fount-discover-page .fount-discover-post {
   cursor: pointer;
 }
@@ -1103,9 +1139,10 @@ ul.fount-product-attr-list li.selectedColorActive div {
 	font-size:20px;
 }
 .media-summary .media-info .caption{
+	font-family: "Din Text Pro Regular",Verdana,sans-serif;
 	height:240px;
 	margin: 0 20 0 20;
-	padding: 30px 0px 30px 0px;
+	padding: 30px 10px 30px 10px;
 	/* font-size:25px; */
 }
 .media-user-likes .likes{
@@ -1146,7 +1183,7 @@ ul.fount-product-attr-list li.selectedColorActive div {
 
 .media-filter .filter .dropdown{
 	length:25%;
-	/* position: relative; */
+	position: relative; 
     display: inline-block;
 	
 }

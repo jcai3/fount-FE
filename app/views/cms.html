@@ -1,14 +1,92 @@
-<div id="" class="clearfix">
+<div id="cms-container" class="">
 	<div class="page-heading  clearfix asset-bg alt-one">
 		<div class="container">
 			<div class="heading-text">
 				<h1 class="entry-title">CMS Page</h1>
-				<p>{{sellerCategory}}</p>
+				<p><!-- {{sellerCategory}} --> <!-- {{childCategory}} --> <!-- {{allSeller}} --></p>
 			</div>
 		</div>
 	</div>
-	<div class="container cms-seller">
-	   <table>
+	
+	
+	
+	<div class="cms-seller" > <!-- ng-repeat="mainseller in allSeller" -->
+		<div class="seller-info">
+			<div class="header">SELLER</div>
+			<div class="info">
+				<!-- <select ng-model="allSeller" ng-change=""> -->
+					<!-- <option ng-repeat="seller in allSeller" value="{{seller.id}}"> -->
+					{{mainseller.name}}
+					<!-- </option>
+				</select> -->
+			</div>
+		</div>
+		<div class="seller-cate">
+			<div class="header">SELLER CATEGORY</div>
+			<div class="info">
+				<ul ng-repeat="category in sellerCategory track by $index">
+					<li id="category.id">{{category.name}}</li>
+				</ul>
+			</div>
+		</div>
+		<div class="fount-cate-root">
+			<div class="header">
+				Fount<br>Root Category
+			</div>
+			<div class="info">
+				<div ng-repeat="seller in sellerCategory track by $index"
+					class="root-category"
+					id="sub-cate-1-{{$index}}">
+					<div>
+						<select name="repeatSelect_[$index]" id="repeatSelect_{{$index}}"
+							ng-model="childCategory"
+							ng-options="name as category.name for category in childCategory track by category.id"
+							ng-change="addChildCategory(childCategory.id)"
+							>
+						<option value="" >please select an category</option>
+						</select>
+						
+					</div>	
+				</div>
+			</div>
+		</div>
+		<div id="fount-cate-child" >
+			<div class="header">Fount<br>Child Category</div>
+			<div class="child-info">
+			 	<fount-category-selector></fount-category-selector>
+			 	
+				 <!-- <ul ng-repeat="seller in sellerCategory track by $index">
+					<select id="sub-0-{{seller.id}}" class="root-category" ng-model="childCategory" ng-options="category.name for category in childCategory" ng-value="category.id">
+						<option value="">Choose your category</option>
+						<option ng-repeat="category.name for category in childCategory" value="{{category.id}}">{{category.name}}</option>
+					</select>
+				</ul> -->
+				 <!-- <ul ng-repeat="seller in sellerCategory track by $index">
+				  <select id="sub-1-{{seller.id}}" class="child-category" ng-model="newChild" ng-options="category.name for category in newChild" ng-value="category.id">
+				  		<option value="">Choose category</option>
+				  		<option ng-repeat="category.name for category in childCategory" value="{{category.id}}">{{category.name}}</option>
+				  </select>
+				 </ul>
+				 <ul ng-repeat="seller in sellerCategory track by $index">
+				  <select id="sub-2-{{seller.id}}" class="child-category" ng-model="newChild" ng-options="category.name for category in newChild" ng-value="category.id">
+				  		<option value="">Choose category</option>
+				  		<option ng-repeat="category.name for category in childCategory" value="{{category.id}}">{{category.name}}</option>
+				  </select>
+				 </ul> -->
+			</div>
+			<!-- <fount-category-selector></fount-category-selector> -->
+		</div>
+		
+		<div class="update_cms_seller">
+	     <input ng-click="mapCategory()" type="submit" class="button alt" value="Update">
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	    <!-- <table>
 	     <tr>
 	       <th>SELLER ID</th>
 	       <th>SELLER CATEGORY</th>
@@ -23,37 +101,39 @@
 		      <select class="rootcategory" id="sub-0-{{seller.id}}" ng-model="selectedCategory"
 			    ng-options="category.name for category in testdataset"  ng-change="categoryChanged(selectedCategory, {{seller.id}})">
 			    <option value="">Choose category</option>
-		      	<!-- <option value="" selected="selected">Choose category</option>
+		      	<option value="" selected="selected">Choose category</option>
 	            <option value="SUBCATEGORY1">SUBCATEGORY1</option>
 	            <option value="SUBCATEGORY2">SUBCATEGORY2</option>
-	            <option value="SUBCATEGORY3">SUBCATEGORY3</option> -->
+	            <option value="SUBCATEGORY3">SUBCATEGORY3</option>
 	          </select>
            </td>
            <td>
 		      <select class="subcategory" id="sub-1-{{seller.id}}" ng-model="selectedCategory"
 			    ng-options="category.name for category in testdataset"  ng-change="subcategoryChanged(selectedCategory, {{seller.id}})">
 		        <option value="">Choose category</option>
-	            <!-- <option value="SUBCATEGORY1">SUBCATEGORY1</option>
+	            <option value="SUBCATEGORY1">SUBCATEGORY1</option>
 	            <option value="SUBCATEGORY2">SUBCATEGORY2</option>
-	            <option value="SUBCATEGORY3">SUBCATEGORY3</option> -->
+	            <option value="SUBCATEGORY3">SUBCATEGORY3</option>
 	          </select>
            </td>
            <td>
 		      <select class="subcategory" id="sub-2-{{seller.id}}" ng-model="selectedCategory"
 			    ng-options="category.name for category in testdataset"  ng-change="categoryChanged(selectedCategory)">
 		        <option value="">Choose category</option>
-	            <!-- <option value="SUBCATEGORY1">SUBCATEGORY1</option>
+	            <option value="SUBCATEGORY1">SUBCATEGORY1</option>
 	            <option value="SUBCATEGORY2">SUBCATEGORY2</option>
-	            <option value="SUBCATEGORY3">SUBCATEGORY3</option> -->
+	            <option value="SUBCATEGORY3">SUBCATEGORY3</option>
 	          </select>
            </td>
-	       <!-- <td ng-repeat="child in fountCategory"> call api according to id
+	       <td ng-repeat="child in fountCategory"> call api according to id
 	       	<li>{{child.name}}</li>
-	       </td> -->
+	       </td>
 	     </tr>
 	   </table>
 	   <div class="update_cms_seller">
 	     <input ng-click="mapCategory()" type="submit" class="button alt" value="Update">
-	   </div>
+	   </div> -->
+	   
+	   
 	</div>
-</div>
+

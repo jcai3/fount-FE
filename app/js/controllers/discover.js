@@ -61,9 +61,10 @@ angular.module('sywStyleXApp')
     indexMarker = index;
     $scope.activePost = -1;
     $('#discover-only-showcase').remove();
+    $('.media enterpoint').remove();
     if (!!discoverMedia.products) {
       $scope.showcaseProducts = discoverMedia.products;
-      var appendContent = angular.element('<div fount-discover-showcase showcase-products="showcaseProducts" id="discover-only-showcase"></div>');
+      var appendContent = angular.element('<div fount-discover-showcase showcase-products="showcaseProducts" id="discover-only-showcase"></div><div class="media enterpoint"><a href="https://fountit.com/epn/#/media/m_"+discoverMedia.id+"">go</a></div>');
       $compile(appendContent)($scope);
       var appendIndex = 4 * Math.floor(index/4) + 3;
       if (docWidth <= 767) {

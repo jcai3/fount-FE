@@ -10,12 +10,12 @@
                   <div class="media-summary">
                   	<div class="container">
 	                  <div class="media-images mediaimages">
-	                    <div><img id="image" alt="item pic" src="{{discoverMedia.standardResolutionURL}}" /></div>
+	                    <div><img id="image" src="{{discoverMedia.standardResolutionURL}}" fount-err-src="img/err-src.png"/></div>
 	                  </div>
 	                  <div class="media-info mediasummary">
 	                    <div class="summary-top clearfix">
 							<ul>
-								<li><img alt="item pic" src="{{discoverMedia.instagramUserProfileUrl}}" width=100px;/></li>
+								<li><img alt="item pic" src="{{discoverMedia.instagramUserProfileUrl}}" width=100px; fount-err-src="img/err-src.png"/></li>
 								<li><div class="brandName">{{discoverMedia.instagramUserName}}</div></li>
 								<li><div class="like-counts"><center><div><img alt="like" src="img/like.png" width=80px;/></div><div>{{discoverMedia.likes}}</div></center></div></li>
 							</ul>
@@ -38,12 +38,11 @@
 							</div>
 							<div class="likes">
 		                    	<div class="likes-count">{{discoverMedia.moreLikes}} likes</div>
-		                    	<div class="more">more></div>
+		                    	<a href="#" class="more">more</a>
 	                    	</div>
 	                    </div>                   
 	                  </div>
-	                  <div class="mediafilter">
-		        
+	                  <div class="media-filter">
 							<div class="filter">
 								<p>FILTER</p>
 								<div class="dropdown">
@@ -132,7 +131,7 @@
 									<div class="add-to-wishlist">
 										<div><img style="display: inline-block;" alt="item pic"	src="img/wishlist.png" width=40 /></div>
 										<div>
-											<p style="display: inline-block;">add to wish list<p>
+											<p style="display: inline-block;"><a href="#">add to wish list</a><p>
 										</div>
 									</div>
 									</center>

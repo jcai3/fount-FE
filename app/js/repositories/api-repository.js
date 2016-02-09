@@ -191,6 +191,10 @@ angular.module('sywStyleXApp')
 	  return serviceCall('GET', 'category/byseller', inputParams);
   };
   
+  this.getAllSellers = function() {
+	  return serviceCall('GET', 'seller/getall');
+  };
+  
   this.getChildCategories = function(categoryId) {
 	  var inputParams = {
 		categoryId, categoryId

@@ -80,7 +80,7 @@ angular.module('sywStyleXApp')
       };
 
       scope.shopAll = function(id) {
-    	/* $state.go('media', {mediaId: id});*/
+    	 $state.go('media', {mediaId: id});
       };
 
       initializeShowcaseCarousel();

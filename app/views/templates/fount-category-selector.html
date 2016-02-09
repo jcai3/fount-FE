@@ -1,0 +1,9 @@
+<div>
+	<select name="repeatSelect_[$index]" id="repeatSelect-{{$index}}"
+		ng-model="childCategory.repeatSelect_[$index]"
+		ng-options="name as category.name for category in childCategory track by category.id"
+		ng-change="addChildCategory(childCategory.repeatSelect_[$index].id)">
+		<option value="">please select an category</option>
+	</select>
+
+</div>

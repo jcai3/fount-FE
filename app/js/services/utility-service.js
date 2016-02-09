@@ -609,8 +609,12 @@ angular.module('sywStyleXApp')
 	};
 	
 	this.mapCategory = function(categoryMap){
-		return apiRepository.categoryMap(categoryMap);
+		return apiRepository.mapCategory(categoryMap);
 	};	
+	
+	this.getAllSellers = function(){
+		return apiRepository.getAllSellers();
+	};
 	
 }])
 
