@@ -1,0 +1,51 @@
+<div id="main-container" class="clearfix">
+	<div class="page-heading  clearfix asset-bg alt-one">
+		<div class="container">
+			<div class="heading-text">
+				<h1 class="entry-title">Banner Management</h1>
+			</div>
+		</div>
+	</div>
+	<div class="container admin-seller">
+
+
+		<h1 class="entry-title">Create New</h1>
+		<div class="woocommerce-message" ng-show="successmsg">Banner Upload Success</div>
+		<form ng-submit="submit()" id="img2b64">
+			<table>
+				<tr>
+					<td>
+						<div class="form-group">
+							<div class="col-sm-10">
+								<label for="filePicker">Choose or drag a file:</label> <input
+									type="file" id="filePicker">
+							</div>
+						</div>
+					</td>
+					<td><input ng-model="bcName" type="text"
+						placeholder="Banner Name" required /></td>
+					<td><input ng-model="ctaUrl" type="text"
+						placeholder="Redirect link" required /></td>
+				</tr>
+			</table>
+			<div class="update_admin_seller">
+				<input ng-click="updateBanner()" type="submit" class="button alt"
+					value="Update">
+			</div>
+		</form>
+
+
+		<h1 class="entry-title">View</h1>
+		<div class="bannerlist" ng-repeat="image in images">
+			<div class="bannerTitle">Name: {{image.name}}     Url: {{image.ctaUrl}}</div>
+			
+			<div class="banner img-wrap">
+				<span id="killbanner" class="close"
+					ng-click="deleteBanner(image.id)">&times;</span> <img
+					src="{{image.essentialsMedia.lowResolutionURL}}"
+					data-id="{{image.id}}" fount-err-src="img/err-src.png" />
+			</div>
+		</div>
+
+
+	</div>

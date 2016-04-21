@@ -1,0 +1,59 @@
+<div id="main-container" class="fount-search-results-page">
+  <div class="page-heading  clearfix asset-bg none">
+    <div class="container">
+      <div class="heading-text">
+        <h1 class="entry-title">{{searchKeyword}}</h1>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div id="page-wrap">
+      <div class="page-content clearfix">
+        <div class="inner-page-wrap no-bottom-spacing woocommerce-shop-page has-left-sidebar has-one-sidebar row clearfix">
+          <aside class="sidebar left-sidebar span3">
+            <!-- <section id="woocommerce_layered_nav_filters-2" class="woocommerce widget_layered_nav_filters clearfix">
+              <div class="fount-search-top-section">
+                <div class="fount-left-clear">
+                  <input ng-click="clearFilters()" type="submit" class="button alt" value="Clear">
+                </div>
+                <div class="fount-right-apply">
+                  <input ng-click="applyFilters()" type="submit" class="button alt" value="Apply">
+                </div>
+              </div>
+            </section> -->
+            <section id="woocommerce_layered_nav-4" class="widget woocommerce widget_layered_nav clearfix" ng-repeat="(filter, refineOption) in filterInfo.refineByOptions">
+              <div class="widget-heading clearfix"><h4><span>{{filter}}</span></h4></div>
+              <ul>
+                <li ng-repeat="option in refineOption.options" ng-click="toggleRefineOptions(filter, option)" ng-class="{'active' : option.selected}">
+                  <span ng-show="option.selected == true" class="filter-remove-icon"><i class="icon-cancel-circled-outline"></i></span>
+                  <span class="refine-name">{{option.name}}</span>
+                  <span class="count">({{option.productsCount}})</span>
+                </li>
+            </section>
+          </aside>
+          <section class="span9 push-right clearfix">
+            <section class="page-content clearfix">
+              <div class="woocommerce-count-wrap">
+                <p class="woocommerce-result-count">Showing all {{filterInfo.productCount}} products</p>
+              </div>
+              <form class="woocommerce-ordering">
+                <select ng-options="sortOption.value as sortOption.name for sortOption in filterInfo.sortByOptions" ng-model="filterInfo.selectedSortby" ng-change="changeSortByOptions()"></select>
+              </form>
+              <div infinite-scroll='loadMore()' infinite-scroll-disabled='searchObj.noMoreData' infinite-scroll-distance='0' class="container">
+                <ul id="products" class="portfolio-items gallery-portfolio filterable-items row clearfix products">
+                  <li ng-repeat="product in searchObj.products" class="clearfix product portfolio-item span3 gallery app-design interface-design">
+                    <div fount-product-tile product="product"></div>
+                  </li>
+                </ul>
+              </div>
+              <div ng-if="filterInfo.productCount == 0" class="container no-search-results">No available products</div>
+              <div ng-show="searchObj.pageNumber > 5 && !searchObj.noMoreData" class="pagination-wrap">
+                <input ng-click="loadNextPage()" type="submit" class="button alt load-more" value="Load More">
+              </div>
+            </section>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

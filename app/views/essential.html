@@ -1,0 +1,85 @@
+<div id="main-container" class="clearfix">
+	<div class="page-heading  clearfix asset-bg alt-one">
+		<div class="container">
+			<div class="heading-text">
+				<h1 class="entry-title">Essential Category Management</h1>
+			</div>
+		</div>
+	</div>
+	<div class="container admin-seller">
+
+		<h1 class="entry-title">Create New</h1>
+		<div class="woocommerce-message" ng-show="successmsg">Banner Upload Success</div>
+		<form ng-submit="submit()">
+			<table>
+				<tr>
+					<td>Department</td>
+					<td>CategoryName</td>
+					<td>SubCategoryList</td>
+					<td>Upload image</td>
+				</tr>
+				<tr>
+					<td><select ng-model="department"
+						ng-options="department.name for department in departments"
+						value="department.id">
+					</select></td>
+					<td><input placeholder="type your name here" ng-model="bcName"
+						type="text" required /></td>
+
+					<td><input placeholder="type your category id here"
+						ng-model="categoryIds" type="text" required /></td>
+
+					<td>
+						<div class="form-group">
+							<div class="col-sm-10">
+								<label for="filePicker">Choose or drag a file:</label> <input
+									type="file" id="filePicker">
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+
+			<div class="update_admin_seller">
+				<input ng-click="createEssentialCategories()" type="submit"
+					class="button alt" value="Update">
+			</div>
+		</form>
+
+
+		<h1 class="entry-title">View</h1>
+		<table>
+			<tr>
+				<td><select ng-model="department"
+					ng-options="department.name for department in departments"
+					ng-change="getId(department)">
+				</select></td>
+				<td>image</td>
+				<td>Essential Category</td>
+				<td>Category</td>
+				<td></td>
+			</tr>
+			<tr ng-repeat="category in categories">
+				<td>{{category.essentialsDepartment.name}}</td>
+				<td>
+					<div class="img-wrap">
+						<img src="{{category.essentialsMedia.standardResolutionURL}}"
+							fount-err-src="img/err-src.png" />
+					</div>
+				</td>
+				<td>{{category.categories[0].name}}</td>
+				<td><div ng-repeat="sub in category.categories">
+						{{sub.id}}: {{sub.name}};<br>
+					</div></td>
+				<td><input ng-click="deleteCategory(category.id)" type="submit"
+					class="button" value="delete"></td>
+			</tr>
+			<tr><td></td><td></td><td></td><td><input type="button" value="previous page" ng-show="ifLast" ng-click="lastPage()"></td><td><input type="button" value="next page" ng-show="ifNext" ng-click="nextPage()"></td></tr>
+		</table>
+
+
+
+
+
+	</div>
+</div>

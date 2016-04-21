@@ -1,0 +1,35 @@
+<div class="fount-product-tile">
+  <figure>
+    <div ng-click="productDetail(product)" class="fount-product-image">
+      <img itemprop="image" ng-src="{{product.imageURL}}">
+    </div>
+    <figcaption>
+      <div class="shop-actions clearfix">
+        <div class="yith-wcwl-add-to-wishlist">
+          <div ng-click="toggleLikeProduct(product)" class="yith-wcwl-add-button show">
+            <div><i class="fa-heart" ng-class="productLiked ? 'fount-active-icon' : 'fount-inactive-icon'"></i></div>
+          </div>
+          <div class="yith-wcwl-wishlistaddedbrowse hide">
+            <span class="feedback">Product added to wishlist.</span>
+            <a>
+              <i class="fa-check"></i>
+            </a>
+          </div>
+          <div class="yith-wcwl-wishlistexistsbrowse hide">
+            <a>
+              <i class="fa-check"></i>
+            </a>
+          </div>
+          <div style="clear:both"></div>
+          <div class="yith-wcwl-wishlistaddresponse"></div>
+        </div>
+      </div>
+    </figcaption>
+  </figure>
+  <div class="product-details">
+    <a>{{product.name}}</a>
+  </div>
+  <span class="price">
+    <span ng-if="product.price > product.finalPrice" class="amount fount-sale-price">{{product.price | currency}}</span><span class="amount">{{product.finalPrice | currency}}</span>
+  </span>
+</div>

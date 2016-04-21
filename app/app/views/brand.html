@@ -1,0 +1,33 @@
+<div id="main-container" class="clearfix">
+  <div class="page-heading  clearfix asset-bg none">
+    <div class="container">
+      <div class="heading-text">
+        <h1 class="entry-title">{{brandName}}</h1>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div id="page-wrap">
+      <div class="page-content clearfix">
+        <section class="container">
+          <div class="row">
+            <div class="spb_portfolio_widget spb_content_element span12">
+              <div class="spb_wrapper portfolio-wrap">
+                <div infinite-scroll='loadMore()' infinite-scroll-disabled='!filteredProductsHasMoreData' infinite-scroll-distance='0' class="container">
+                  <ul class="portfolio-items products gallery-portfolio filterable-items row clearfix">
+                    <li ng-repeat="product in filteredProducts" class="clearfix product portfolio-item span3 gallery app-design interface-design">
+                      <div fount-product-tile product="product"></div>
+                    </li>
+                  </ul>
+                </div>
+                <div ng-show="filteredProductsPageNumber > 5 && filteredProductsHasMoreData" class="pagination-wrap">
+                  <input ng-click="loadNextPage()" type="submit" class="button alt load-more" value="Load More">
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

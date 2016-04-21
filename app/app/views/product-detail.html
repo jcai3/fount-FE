@@ -1,0 +1,345 @@
+<div id="main-container" class="fount-product-detail">
+  <div class="clearfix">
+    <div class="container">
+      <div class="heading-text">
+        <p ng-show="productAddedToCart" class="product-added-msg">"{{productDetail.xapp.name}}" was successfully added to your cart.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pb-fw-wrap">
+    <div id="page-wrap">
+      <div class="page-content clearfix">
+        <div class="inner-page-wrap has-no-sidebar clearfix">
+          <article class="clearfix product type-product status-publish has-post-thumbnail product_cat-footwear product_cat-sneakers product_tag-adidas product_tag-sneakers product_shipping_class-standard-shipping pa_colour-grey pa_colour-red pa_size-eu41-us8 pa_size-eu42-us9 pa_size-eu43-us10 pa_size-eu45-us12 pa_fabric-leather-2 pa_fabric-mesh pa_fabric-suede sale shipping-taxable purchasable product-type-simple product-cat-footwear product-cat-sneakers product-tag-adidas product-tag-sneakers instock">
+            <div class="page-content clearfix">
+              <section class="article-body-wrap">
+                <div class="product type-product status-publish has-post-thumbnail product_cat-footwear product_cat-sneakers product_tag-adidas product_tag-sneakers product_shipping_class-standard-shipping pa_colour-grey pa_colour-red pa_size-eu41-us8 pa_size-eu42-us9 pa_size-eu43-us10 pa_size-eu45-us12 pa_fabric-leather-2 pa_fabric-mesh pa_fabric-suede sale shipping-taxable purchasable product-type-simple product-cat-footwear product-cat-sneakers product-tag-adidas product-tag-sneakers instock">
+                  <div class="container">
+                    <div class="images">
+                      <!-- <span ng-show="productDetail.xapp.price < productDetail.xapp.retailPrice" class="onsale">Sale!</span> -->
+                      <div fount-product-slider product-images="productDetail.productImages"></div>
+                    </div>
+                    <div class="summary entry-summary">
+                      <div class="summary-top clearfix">
+                        <div class="product-short">
+                          <p>{{productDetail.xapp.name}}</p>
+                          <p><span ng-click="goToBrand()" class="fount-pdp-to-brand"><strong>{{productDetail.xapp.brandName}}</strong></span></p>
+                        </div>
+
+                        <div itemprop="offers" itemscope="">
+                          <p itemprop="price" class="price">
+                            <del ng-if="productDetail.xapp.price > productDetail.xapp.finalPrice">
+                              <span class="amount">{{productDetail.xapp.price | currency}}</span>
+                            </del>
+                            <ins>
+                              <span class="amount">{{productDetail.xapp.finalPrice | currency}}</span>
+                            </ins>
+                          </p>
+                          <!-- <meta itemprop="priceCurrency" content="GBP">
+                          <link itemprop="availability" href="http://schema.org/InStock"> -->
+                        </div>
+                      </div>
+
+                      <form class="cart" >
+                        <div class="quantity">
+                          <input type="number" step="1" min="1" name="quantity" value="{{productQuantity}}" title="Qty" class="input-text qty text" size="4" disabled="true">
+                          <!-- <div class="qty-adjust">
+                            <a class="qty-plus" ng-click="quantityPlus()">
+                              <i class="fa-chevron-up"></i>
+                            </a>
+                            <a class="qty-minus" ng-click="quantityMinus()">
+                              <i class="fa-chevron-down"></i>
+                            </a>
+                          </div> -->
+                        </div>
+                        <!-- <input type="hidden" name="add-to-cart" value="9356"> -->
+                        <button ng-click="addItemToCart()" ng-disabled="addToCartDisabled" ng-if="!variableObj.buyOnSellerSite" ng-class="{'buttonDisabled' : addToCartDisabled}" class="single_add_to_cart_button"><i class="fa-plus"></i>Add to shopping bag</button>
+                        <button ng-click="redirectToSeller()" ng-if="variableObj.buyOnSellerSite" class="single_add_to_cart_button">{{variableObj.buyOnSellerMsg}}</button>
+                        <div class="yith-wcwl-add-to-wishlist">
+                          <div class="yith-wcwl-add-button show">
+                            <a ng-click="toggleFavoriteProduct()" class="add_to_wishlist">
+                              <i class="fa-heart" ng-class="productLiked ? 'fount-active-icon' : 'fount-inactive-icon'"></i>
+                            </a>
+                          </div>
+                          <div style="clear:both"></div>
+                          <div class="yith-wcwl-wishlistaddresponse"></div>
+                        </div>
+                      </form>
+                      <div class="fount-product-notAvailable" ng-if="variableObj.productNotAvailable">
+                        <span>Sorry, this product is currently out of stock.</span>
+                      </div>
+                      <div class="clear"></div>
+
+                      <div class="accordion" id="product-accordion">
+                        <div ng-if="!!productDetail.twotap.addToCart.required_field_names && productDetail.twotap.addToCart.required_field_names.length > 0 && !(productDetail.twotap.addToCart.required_field_names.length == 1 && productDetail.twotap.addToCart.required_field_names[0] == 'quantity')" class="accordion-group">
+                          <div class="accordion-body collapse in">
+                            <div class="accordion-inner">
+                              <div class="options-error-msg" ng-if="!variableObj.allOptionsSelected">
+                                <span>{{variableObj.optionsErrorMessage}}</span>
+                              </div>
+                              <div class="item product-color-size">
+                                <div ng-click="closeProductProperty()" class="ion-ios-close-outline calm"></div>
+                                <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('fit') != -1">
+                                  <div class="item item-fit">
+                                    <h2><i class="icon ion-tshirt-outline"></i>Fit</h2>
+                                    <ul class="fount-product-attr-list">
+                                      <li ng-repeat="fit in productDetail.twotap.addToCart.required_field_values.fit" ng-click="setSelectedFit(fit)" ng-class="{'selectedActive': fit == selectedFit}" class="fount-product-attr">{{fit.text}}</li>
+                                    </ul>
+                                  </div>
+                                  <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('color') != -1">
+                                    <div class="item item-color">
+                                      <h2><i class="icon ion-waterdrop"></i>Color</h2>
+                                      <ul class="fount-product-attr-list">
+                                        <li ng-repeat="color in selectedFit.dep.color" ng-click="setSelectedColor(color)" ng-class="{'selectedColorActive': color == selectedColor}" class="fount-product-attr-img">
+                                          <div><img ng-src="{{color.value}}" fount-err-src="{{color.image}}"></div>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1">
+                                      <div class="item item-size">
+                                        <h2><i class="icon ion-tshirt-outline"></i>Size</h2>
+                                        <ul class="fount-product-attr-list">
+                                          <li ng-repeat="size in selectedColor.dep.size" ng-click="setSelectedSize(size)" ng-class="{'selectedActive': size == selectedSize}" class="fount-product-attr">{{size.text}}</li>
+                                        </ul>
+                                      </div>
+                                      <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('inseam') != -1" class="item item-inseam">
+                                        <h2><i class="icon ion-waterdrop"></i>Inseam</h2>
+                                        <ul class="fount-product-attr-list">
+                                          <li ng-repeat="inseam in selectedSize.dep.inseam" ng-click="setSelectedInseam(inseam)" ng-class="{'selectedActive': inseam == selectedInseam}" class="fount-product-attr">{{inseam.text}}</li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('fit') == -1">
+                                  <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('color') != -1">
+                                    <div class="item item-color">
+                                      <h2><i class="icon ion-waterdrop"></i>Color</h2>
+                                      <ul class="fount-product-attr-list">
+                                        <li ng-repeat="color in productDetail.twotap.addToCart.required_field_values.color" ng-click="setSelectedColor(color)" ng-class="{'selectedColorActive': color == selectedColor}" class="fount-product-attr-img">
+                                          <div><img ng-src="{{color.value}}" fount-err-src="{{color.image}}"></div>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1" class="item item-size">
+                                      <h2><i class="icon ion-tshirt-outline"></i>Size</h2>
+                                      <ul class="fount-product-attr-list">
+                                        <li ng-repeat="size in selectedColor.dep.size" ng-click="setSelectedSize(size)" ng-class="{'selectedActive': size == selectedSize}" class="fount-product-attr">{{size.text}}</li>
+                                      </ul>
+                                    </div>
+                                    <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('option') == 1" class="item item-size">
+                                      <h2><i class="icon ion-tshirt-outline"></i>Option</h2>
+                                      <ul class="fount-product-attr-list">
+                                        <li ng-repeat="option in selectedColor.dep.option" ng-click="setSelectedOption(option)" ng-class="{'selectedActive': option == selectedOption}" class="fount-product-attr">{{option.text}}</li>
+                                      </ul>
+                                    </div>
+                                    <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('style') != -1" class="item item-size">
+                                      <h2><i class="icon ion-tshirt-outline"></i>Style</h2>
+                                      <ul class="fount-product-attr-list">
+                                        <li ng-repeat="style in selectedColor.dep.style" ng-click="setSelectedStyle(style)" ng-class="{'selectedActive': style == selectedStyle}" class="fount-product-attr">{{style.text}}</li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                  <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('color') == -1">
+                                    <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('flavor') != -1">
+                                      <div class="item item-size">
+                                        <h2><i class="icon ion-tshirt-outline"></i>Flavor</h2>
+                                        <ul class="fount-product-attr-list">
+                                          <li ng-repeat="flavor in productDetail.twotap.addToCart.required_field_values.flavor" ng-click="setSelectedFlavor(flavor)" ng-class="{'selectedActive': flavor == selectedFlavor}" class="fount-product-attr">{{flavor.text}}</li>
+                                        </ul>
+                                      </div>
+                                      <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1" class="item item-size">
+                                        <h2><i class="icon ion-tshirt-outline"></i>Size</h2>
+                                        <ul class="fount-product-attr-list">
+                                          <li ng-repeat="size in selectedFlavor.dep.size" ng-click="setSelectedSize(size)" ng-class="{'selectedActive': size == selectedSize}" class="fount-product-attr">{{size.text}}</li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                    <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('flavor') == -1">
+                                      <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1" class="item item-size">
+                                        <h2><i class="icon ion-tshirt-outline"></i>Size</h2>
+                                        <ul class="fount-product-attr-list">
+                                          <li ng-repeat="size in productDetail.twotap.addToCart.required_field_values.size" ng-click="setSelectedSize(size)" ng-class="{'selectedActive': size == selectedSize}" class="fount-product-attr">{{size.text}}</li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('color') == -1">
+                                    <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('option') != -1" class="item item-option">
+                                      <h2><i class="icon ion-waterdrop"></i>Option</h2>
+                                      <ul class="fount-product-attr-list">
+                                        <li ng-repeat="option in productDetail.twotap.addToCart.required_field_values.option" ng-click="setSelectedOption(option)" ng-class="{'selectedActive': option == selectedOption}" class="fount-product-attr">{{option.text}}</li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('options') != -1" class="item item-size">
+                                  <h2><i class="icon ion-tshirt-outline"></i>Options</h2>
+                                  <ul class="fount-product-attr-list">
+                                    <li ng-repeat="options in productDetail.twotap.addToCart.required_field_values.options" ng-click="setSelectedOptions(options)" ng-class="{'selectedActive': options == selectedOptions}" class="fount-product-attr">{{options.text}}</li>
+                                  </ul>
+                                </div>
+
+                                <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('option 1') != -1">
+                                  <div class="item item-fit">
+                                    <h2><i class="icon ion-tshirt-outline"></i>Option 1</h2>
+                                    <ul class="fount-product-attr-list">
+                                      <!-- <li ng-repeat="option1 in productDetail.twotap.addToCart.required_field_values['option 1']" ng-click="setSelectedOption1(option1)" ng-class="{'selectedColorActive': option1 == selectedOption1}" class="fount-product-attr-img">
+                                        <div><img ng-src="{{option1.value}}" fount-err-src="{{option1.image}}"></div>
+                                      </li> -->
+                                      <li ng-repeat="option1 in productDetail.twotap.addToCart.required_field_values['option 1']" ng-click="setSelectedOption1(option1)" ng-class="{'selectedActive': option1 == selectedOption1}" class="fount-product-attr">{{option1.text}}</li>
+                                    </ul>
+                                  </div>
+                                  <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('option 2') != -1">
+                                    <div class="item item-color">
+                                      <h2><i class="icon ion-waterdrop"></i>Option 2</h2>
+                                      <ul class="fount-product-attr-list">
+                                        <li ng-repeat="option2 in selectedOption1.dep['option 2']" ng-click="setSelectedOption2(option2)" ng-class="{'selectedActive': option2 == selectedOption2}" class="fount-product-attr">{{option2.text}}</li>
+                                      </ul>
+                                    </div>
+                                    <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('option 3') != -1">
+                                      <div class="item item-size">
+                                        <h2><i class="icon ion-tshirt-outline"></i>Option 3</h2>
+                                        <ul class="fount-product-attr-list">
+                                          <li ng-repeat="option3 in selectedOption2.dep['option 3']" ng-click="setSelectedOption3(option3)" ng-class="{'selectedActive': option3 == selectedOption3}" class="fount-product-attr">{{option3.text}}</li>
+                                        </ul>
+                                      </div>
+                                      <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('option 4') != -1" class="item item-inseam">
+                                        <h2><i class="icon ion-waterdrop"></i>Option 4</h2>
+                                        <ul class="fount-product-attr-list">
+                                          <li ng-repeat="option4 in selectedOption3.dep['option 4']" ng-click="setSelectedOption4(option4)" ng-class="{'selectedActive': option4 == selectedOption4}" class="fount-product-attr">{{option4.text}}</li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div ng-if="productDetail.xapp.description.trim().length>0" class="accordion-group">
+                          <div class="accordion-heading">
+                            <a class="accordion-toggle" ng-click="toggleDescription()">Description</a>
+                          </div>
+                          <div ng-show="isDescriptionShown" id="product-description" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+                              <p>{{productDetail.xapp.description}}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-group">
+                          <div class="accordion-heading">
+                            <a ng-click="toggleReview()" class="accordion-toggle">Review</a>
+                          </div>
+                          <div ng-show="isReviewShown" id="product-reviews" class="accordion-body  in collapse" style="height: auto;">
+                            <div class="accordion-inner">
+                              <div id="reviews">
+                                <div id="comments">
+                                  <h2>Reviews</h2>
+                                  <p class="woocommerce-noreviews">There are no reviews yet.</p>
+                                </div>
+                                <div id="review_form_wrapper">
+                                  <div id="review_form">
+                                    <div id="respond" class="comment-respond">
+                                      <h4 id="reply-title" class="comment-reply-title">Be the first to review “{{productDetail.xapp.name}}” <small><a rel="nofollow" id="cancel-comment-reply-link" href="/product/aspesi-jacket-shirt/#respond" style="display:none;">Cancel reply</a></small></h4>
+                                      <form id="commentform" class="comment-form">
+                                        <!-- <p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" aria-required="true"></p>
+                                        <p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" aria-required="true"></p> -->
+                                        <p class="comment-form-rating">
+                                          <label for="rating">Your Rating</label>
+                                          <p class="stars">
+                                            <span>
+                                              <a ng-click="reviewStar(1)" ng-class="{'reviewSelected': starReviewed == 1}" class="star-1">1</a>
+                                              <a ng-click="reviewStar(2)" ng-class="{'reviewSelected': starReviewed == 2}" class="star-2">2</a>
+                                              <a ng-click="reviewStar(3)" ng-class="{'reviewSelected': starReviewed == 3}" class="star-3">3</a>
+                                              <a ng-click="reviewStar(4)" ng-class="{'reviewSelected': starReviewed == 4}" class="star-4">4</a>
+                                              <a ng-click="reviewStar(5)" ng-class="{'reviewSelected': starReviewed == 5}" class="star-5">5</a>
+                                            </span>
+                                          </p>
+                                          <select name="rating" id="rating" style="display: none;">
+                                            <option value="">Rate…</option>
+                                            <option value="5">Perfect</option>
+                                            <option value="4">Good</option>
+                                            <option value="3">Average</option>
+                                            <option value="2">Not that bad</option>
+                                            <option value="1">Very Poor</option>
+                                          </select>
+                                        </p>
+                                        <p class="comment-form-comment"><label for="comment">Your Review</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" ng-model="reviewComment"></textarea></p>
+                                        <p ng-show="showReviewAlertMsg" class="fount-pdp-review-msg">Please choose your rating and fill out your review.</p>
+                                        <p class="form-submit">
+                                          <input ng-click="submitReview()" name="submit" type="submit" class="submit" value="Submit">
+                                        </p>
+                                      </form>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="clear"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- <div class="accordion" id="product-accordion">
+
+                      </div> -->
+
+                      <div class="product_meta">
+                        <p>
+                          <span class="need-help">Need Help? <a class="inline" ng-click="openContactModal()">Contact Us</a></span>
+                          <span class="leave-feedback"><a class="inline" ng-click="openFeedbackModal()">Leave Feedback</a></span>
+                        </p>
+                        <p ng-if="!!productDetail.xapp.category">
+                          <span class="posted_in">Categories: <a rel="tag">{{productDetail.xapp.category.name}}</a></span>
+                        </p>
+                        <!-- <p>
+                          <span class="tagged_as">Tags: <a rel="tag">xxx</a>, <a rel="tag">xxx</a>.</span>
+                        </p> -->
+                      </div>
+
+                      <div class="product-share share-links clearfix">
+                        <span>Share</span>
+                        <ul>
+                          <li>
+                            <a class="product_share_email"><i class="fa-envelope"></i></a>
+                          </li>
+                          <li>
+                            <a class="product_share_facebook"><i class="fa-facebook"></i></a>
+                          </li>
+                          <li>
+                            <a class="product_share_twitter"><i class="fa-twitter"></i></a>
+                          </li>
+                          <li>
+                            <a><i class="fa-google-plus"></i></a>
+                          </li>
+                          <li>
+                            <a class="product_share_pinterest"><i class="fa-pinterest"></i></a>
+                          </li>
+                        </ul>
+                      </div>
+
+                    </div>
+                  </div>
+                  <!-- <div class="container product-after-wrap">
+                    <div class="product-carousel spb_content_element">
+                      <h4 class="lined-heading"><span>Relevant Posts</span></h4>
+                      <div infinite-scroll='loadMore()' infinite-scroll-disabled='!hasMoreData' infinite-scroll-distance='0' class="container">
+                        <ul class="portfolio-items gallery-portfolio filterable-items row clearfix">
+                          <li ng-repeat="discoverMedia in discoverMedias" class="clearfix portfolio-item span3 gallery app-design interface-design">
+                            <div fount-post-tile discover-media="discoverMedia"></div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div> -->
+                </div>
+              </section>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

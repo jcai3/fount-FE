@@ -1,0 +1,16 @@
+<div ng-mouseover="showSearchResults()" ng-mouseleave="hideSearchResults()" class="fount-search">
+  <i ng-click="goToSearchResults()" class="fa-search"></i>
+  <input ng-model="searchObj.keyword" ng-keyup="searchProducts()" type="text" placeholder="What are you looking for?" name="s" autocomplete="off">
+  <div ng-show="searchObj.results.COUNT>0 && searchObj.showSearchResults==true" class="ajax-search-results">
+    <div class="search-result-pt">
+      <div ng-repeat="product in searchObj.results.PRODUCTS" ng-click="productDetail(product)" class="search-result">
+        <div class="search-item-img"><a><img width="150" height="150" ng-src="{{product.imageURL}}" class="attachment-thumbnail wp-post-image"></a>
+        </div>
+        <div class="search-item-content">
+          <h5><a>{{product.name}}</a></h5>
+        </div>
+      </div>
+    </div>
+    <span class="all-results" ng-click="goToSearchResults()">View all {{searchObj.results.COUNT}} results</span>
+  </div>
+</div>

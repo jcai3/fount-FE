@@ -1,0 +1,254 @@
+ <div class="fount-quick-view" style="height:50%">
+   		<div class="container" style="height:50%; width:100%;">
+              <div class="fount-quick-view-images" style="heigh:40%; width:60%; position: fixed;" >
+                    <!-- <span ng-show="productDetail.xapp.price < productDetail.xapp.retailPrice" class="onsale">Sale!</span> -->
+                   <div fount-quick-view-slider product-images="productDetail.productImages" ></div>
+                    
+               </div> 
+                <div class="fount-quick-view-right" style="width:40%; border-left:1px solid #dddddd; float:right;">
+              
+               	<div class="fount-quick-view-name">
+                  <div ng-click="goToBrand()" class="fount-quick-view-quickviewbrand" >{{productDetail.xapp.brandName}}</div>
+                   <div class="fount-quick-view-quickviewname" >{{productDetail.xapp.name}}</div>
+            
+             </div>
+              
+                       <div class="fount-product-notAvailable" ng-if="variableObj.productNotAvailable" style="border-style:none;padding-left:5%;">
+                        <span>Sorry, this product is currently out of stock.</span>
+                      </div>  
+                      <div class="rating" >
+                      	<i class="fa fa-heart-o" ></i>
+                      	<i class="fa fa-heart-o" ></i>
+                      	<i class="fa fa-heart-o" ></i>
+                      	<i class="fa fa-heart-o" ></i>
+                      	<i class="fa fa-heart-o" ></i>
+                      </div>   
+                	<div class="qklabels">
+                    
+                            <label class="deslabel" ng-style="onclicklabeldescription"><a  ng-click="toggleDescription()" >DESCRIPTION</a></label>
+                          	<!--	<li class="active" style="border-bottom: 1px solid #4ac0d1"> <a class="accordion-toggle" ng-click="toggleDescription()">DESCRIPTION</a> -->
+                            <label class="likelabel" ng-style="onclicklabellikes" ><a ng-click="toggleLikes()">LIKES</a></label>
+                          <label class="rplabel" ng-style="onclicklabelrelatedpost" ><a ng-click="toggleRelatedPost()">RELEVANT POSTS</a></label> 
+                          	
+                       
+                     </div>
+                     <div style="text-align:left; padding-left:5%;padding-top:5%;height: 150px;overflow-y:scroll; ">
+                          <div ng-show="isDescriptionShown" id="product-description" class="accordion-body collapse in"> 
+                              <p>{{productDetail.xapp.description}}</p>
+                       
+                          </div>
+                          <div ng-show="isLikesShown" id="likes" class="accordion-body collapse in">
+                          <p>How many likes</p>
+                          </div>
+                          <div ng-show="isRelatedPostShown" id="relatedPost" class="accordion-body collapse in">
+                          <p>Load Related Post</p>
+                          </div>
+                     </div> 
+                       
+                       
+                        <div ng-if="!!productDetail.twotap.addToCart.required_field_names && productDetail.twotap.addToCart.required_field_names.length > 0 && !(productDetail.twotap.addToCart.required_field_names.length == 1 && productDetail.twotap.addToCart.required_field_names[0] == 'quantity')" class="accordion-group" style="border-style:none;">
+                          <div class="accordion-body collapse in">
+                           
+                              <div class="options-error-msg" ng-if="!variableObj.allOptionsSelected">
+                                <span>{{variableObj.optionsErrorMessage}}</span>
+                              </div>
+                           
+                         
+                        </div>
+                       
+                     			
+                      </div>
+                      		
+								
+						<table style="width:100% ; table-layout:fixed;">
+							<tr style="height:100%; border-bottom:1px solid #dddddd;border-top:1px solid #dddddd;">
+								<td style="width:50%; border-right:1px solid #dddddd;">	
+								  <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('fit') != -1">
+								   <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('color') != -1">
+								    <div class="fount-quick-view-color">
+                                
+   										<div class="dropdown">
+  											<button class="colorAndsize-button dropdown-toggle " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
+    											{{selectedColor.text}}
+    											<span class="fa fa-angle-down"></span>
+  											</button>
+  											<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+       										<li ng-repeat="color in selectedFit.dep.color" ng-click="setSelectedColor(color)" ng-class="{'selectedColorActive': color == selectedColor}" class="fount-product-attr-img">
+        									<span><img ng-src="{{color.value}}" class="fount-quick-view-img-icon" style="border-radius: 5em;
+											width:15px;
+											height:15px;" ></span><span >{{color.text}}</span>
+       											</li>
+  											</ul>
+											</div>  					
+                                    	</div>
+								 </div>
+								 </div>
+								 
+								   <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('fit') == -1">
+								   	<div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('color') != -1">
+								   		<div class="">
+								   		 <div class="dropdown">
+  											<button class="colorAndsize-button dropdown-toggle " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"  >
+   												{{selectedColor.text}}
+    										<span class="fa fa-angle-down"></span>
+  											</button>
+  												<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+       												<li ng-repeat="color in productDetail.twotap.addToCart.required_field_values.color" ng-click="setSelectedColor(color)" ng-class="{'selectedColorActive': color == selectedColor}" class="fount-product-attr-img">
+        												<span><img ng-src="{{color.value}}" fount-err-src="{{color.image}}" class="fount-quick-view-img-icon" style="border-radius: 5em;
+													width:15px;
+														height:15px; "></span><span style="display:inline-block;">{{color.text}}</span>
+       												</li>
+  												</ul>
+											</div>  	
+							
+                                    </div>
+								   	</div>
+								   </div>
+								     <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('fit') == -1 && productDetail.twotap.addToCart.required_field_names.indexOf('color') == -1">
+								   	 <div class="dropdown">
+ 									 <button class="colorAndsize-button dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"  >
+   										Color: Original
+    								<span class="fa fa-angle-down"></span>
+  									</button>
+  									</div>
+								   </div>
+								 </td>
+								
+								<td>
+									<div class="size1">
+										<div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('fit') != -1">
+										  <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('color') != -1">
+											 <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1">
+                                      			  <div class="dropdown">
+  											<button class="dropdown-toggle colorAndsize-button" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
+    											{{selectedSize.text}}
+    										<span class="fa fa-angle-down"></span>
+  											</button>
+  												<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      											<li ng-repeat="size in selectedColor.dep.size" ng-click="setSelectedSize(size)" ng-class="{'selectedActive': size == selectedSize}" class="fount-product-attr">
+      										{{size.text}}</li>
+  											</ul>
+											</div>
+											</div>
+                                     </div>
+										</div>
+									
+									  <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('fit') == -1">
+									    <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('color') != -1">
+								
+									  	 <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1" class="item item-size">
+                                     
+                                     		  <div class="dropdown">
+  												<button class="dropdown-toggle colorAndsize-button" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
+    													{{selectedSize.text}} 
+    												<span class="fa fa-angle-down"></span>
+  													</button>
+ 													 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+       												<li ng-repeat="size in selectedColor.dep.size" ng-click="setSelectedSize(size)" ng-class="{'selectedActive': size == selectedSize}" class="fount-product-attr">{{size.text}}</li>
+  													</ul>
+												</div>
+										</div>
+                                    </div>
+									  </div>
+									 
+									  <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('fit') == -1">
+									   <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('color') == -1">
+									   		<div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('flavor') != -1">
+									   			 <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1" class="item item-size">
+                                        
+                                        	                                  		  <div class="dropdown">
+  														<button class="dropdown-toggle colorAndsize-button" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
+    															{{selectedSize.text}}
+    														<span class="fa fa-angle-down"></span>
+  														</button>
+  														<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+         													<li ng-repeat="size in selectedColor.dep.size" ng-click="setSelectedSize(size)" ng-class="{'selectedActive': size == selectedSize}" class="fount-product-attr">{{size.text}}</li>
+  														</ul>
+													</div>
+                                        				
+                                      			</div>
+									   		</div>
+									   		</div>
+									   		 <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('fit') == -1">
+									   		<div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('color') == -1">
+									   		<div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('flavor') == -1">
+                                      			<div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1" class="item item-size">
+                                        
+                                        	 <div class="dropdown">
+  												<button class="dropdown-toggle colorAndsize-button" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
+    												{{selectedSize.text}}
+    											<span class="fa fa-angle-down"></span>
+  												</button>
+  											<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        										<li ng-repeat="size in productDetail.twotap.addToCart.required_field_values.size" ng-click="setSelectedSize(size)" ng-class="{'selectedActive': size == selectedSize}" class="fount-product-attr">{{size.text}}</li>
+  											</ul>
+											</div>			
+                                        				
+                                        		
+                                      		</div>
+                                    		</div>
+                                    		</div>
+                                    		</div>
+                                    	
+                                    		<div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('fit') == -1 && productDetail.twotap.addToCart.required_field_names.indexOf('color') == -1 && 
+                                    		productDetail.twotap.addToCart.required_field_names.indexOf('flavor') == -1 && productDetail.twotap.addToCart.required_field_names.indexOf('size') == -1">
+                                    		<div class="dropdown">
+  										<button class="dropdown-toggle colorAndsize-button" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
+    									Size: One Size
+    									<span class="fa fa-angle-down"></span>
+  										</button>
+                                    		</div>
+									   </div>
+								</div>
+								</div>
+							</td>
+							</tr>
+							<tr style="height:100%;">
+							<td style="padding:0; width:50%">
+						<div class="fount-dp-grid">      								<button class="dpui-numberPicker-decrease" onclick="npdecrease()" style="height:100%; width:30%; border-right:1px solid #dddddd;" >-</button>
+      								<input type="text" class="dpui-numberPicker-input" value="1" style="height: 100%; width:30%;border-top:none;border-bottom:none;border-left:none; border-right:none;" />
+      								<button class="dpui-numberPicker-increase" onclick="npincrease()" style="height:100%; width:30%;border-left:1px solid #dddddd;" >+</button>
+</div>
+   								
+							</td>
+								<td style="background-color: #4ac0d1; width:50%">
+								
+                          			
+                            	<!-- 	<del ng-if="productDetail.xapp.price > productDetail.xapp.finalPrice">
+                              				<span class="fount-quick-view-amount" >{{productDetail.xapp.price | currency}}</span>
+                            			</del> -->
+                     <!--     <ins style="text-decoration: none;"> -->
+                              <span class="fount-quick-view-amount" >{{productDetail.xapp.finalPrice | currency}}</span>
+                       <!--       </ins> -->
+                         
+                          
+                    
+                        
+								<button ng-click="addItemToCart()" ng-disabled="addToCartDisabled" ng-if="!variableObj.buyOnSellerSite" ng-class="{'buttonDisabled' : addToCartDisabled}" class="qvAddCart" style="position:relative; width: 50%;float:right;">Add to Cart</button>
+                        			<button ng-click="redirectToSeller()" ng-if="variableObj.buyOnSellerSite" class="qvAddCart" style="position:relative; font-size: 10px ; width: 50%;float:right;">{{variableObj.buyOnSellerMsg}}</button>
+                        
+								</td>
+							</tr>	
+					
+						</table>	
+					</div>
+                     </div>
+                    
+                     
+
+                 
+              
+					
+              
+			
+              
+                 </div>
+             
+            
+          
+            
+        
+      
+   
+  
+

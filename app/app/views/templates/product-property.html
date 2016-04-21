@@ -1,0 +1,144 @@
+<ion-modal-view cache-view="false" class="product-property">
+  <ion-content scroll="false">
+    <div class="opacity-overlay"></div>
+    <div class="options-error-msg" ng-if="!variableObj.allOptionsSelected">
+      <span>{{variableObj.optionsErrorMessage}}</span>
+    </div>
+    <div ng-class="{'iphone4NotAvailable': iphone4NotAvailable == true}" class="item product-color-size">
+      <div ng-click="closeProductProperty()" class="ion-ios-close-outline calm"></div>
+      <!-- <div class="options-error-msg" ng-if="!variableObj.allOptionsSelected">
+        <span>{{variableObj.optionsErrorMessage}}</span>
+      </div> -->
+      <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('fit') != -1">
+        <div class="item item-fit">
+          <h2><i class="icon ion-tshirt-outline"></i>&nbsp;&nbsp;Fit</h2>
+          <!-- <p ng-hide="iphone5NotAvailable">Fit available for this item</p> -->
+          <select ng-model="selectedFit" ng-options="fit.text for fit in productDetail.twotap.addToCart.required_field_values.fit" ng-change="setSelectedFit(selectedFit)">
+            <option value="">Fit available for this item</option>
+          </select>
+        </div>
+        <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('color') != -1">
+          <div class="item item-color">
+            <h2><i class="icon ion-waterdrop"></i>&nbsp;&nbsp;Color</h2>
+            <!-- <p ng-hide="iphone5NotAvailable">Choose a color for item</p> -->
+            <select ng-model="selectedColor" ng-options="color.text for color in selectedFit.dep.color" ng-change="setSelectedColor(selectedColor)" ng-disabled="!selectedFit">
+              <option value="">Choose a color for item</option>
+            </select>
+          </div>
+          <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1">
+            <div class="item item-size">
+              <h2><i class="icon ion-tshirt-outline"></i>&nbsp;&nbsp;Size</h2>
+              <!-- <p ng-hide="iphone5NotAvailable">Size available for this item</p> -->
+              <select ng-model="selectedSize" ng-options="size.text for size in selectedColor.dep.size" ng-change="setSelectedSize(selectedSize)" ng-disabled="!selectedFit || !selectedColor">
+                <option value="">Size available for this item</option>
+              </select>
+            </div>
+            <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('inseam') != -1" class="item item-inseam">
+              <h2><i class="icon ion-waterdrop"></i>&nbsp;&nbsp;Inseam</h2>
+              <!-- <p ng-hide="iphone5NotAvailable">Inseam available for this item</p> -->
+              <select ng-model="selectedInseam" ng-options="inseam.text for inseam in selectedSize.dep.inseam" ng-change="setSelectedInseam(selectedInseam)" ng-disabled="!selectedFit || !selectedColor || !selectedSize">
+                <option value="">Inseam available for this item</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('fit') == -1">
+        <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('color') != -1">
+          <div class="item item-color">
+            <h2><i class="icon ion-waterdrop"></i>&nbsp;&nbsp;Color</h2>
+            <p>Choose a color for item</p>
+            <select ng-model="selectedColor" ng-options="color.text for color in productDetail.twotap.addToCart.required_field_values.color" ng-change="setSelectedColor(selectedColor)">
+              <option value="">Choose a color for item</option>
+            </select>
+          </div>
+          <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1" class="item item-size">
+            <h2><i class="icon ion-tshirt-outline"></i>&nbsp;&nbsp;Size</h2>
+            <p>Size available for this item</p>
+            <select ng-model="selectedSize" ng-options="size.text for size in selectedColor.dep.size" ng-change="setSelectedSize(selectedSize)" ng-disabled="!selectedColor">
+              <option value="">Size available for this item</option>
+            </select>
+          </div>
+          <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('option') == 1" class="item item-size">
+            <h2><i class="icon ion-tshirt-outline"></i>&nbsp;&nbsp;Option</h2>
+            <p>Option available for this item</p>
+            <select ng-model="selectedOption" ng-options="option.text for option in selectedColor.dep.option" ng-change="setSelectedOption(selectedOption)" ng-disabled="!selectedColor">
+              <option value="">Option available for this item</option>
+            </select>
+          </div>
+          <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('style') != -1" class="item item-size">
+            <h2><i class="icon ion-tshirt-outline"></i>&nbsp;&nbsp;Style</h2>
+            <p>Style available for this item</p>
+            <select ng-model="selectedStyle" ng-options="style.text for style in selectedColor.dep.style" ng-change="setSelectedStyle(selectedStyle)" ng-disabled="!selectedColor">
+              <option value="">Style available for this item</option>
+            </select>
+          </div>
+        </div>
+        <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('color') == -1">
+          <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('size') != -1" class="item item-size">
+            <h2><i class="icon ion-tshirt-outline"></i>&nbsp;&nbsp;Size</h2>
+            <p>Size available for this item</p>
+            <select ng-model="selectedSize" ng-options="size.text for size in productDetail.twotap.addToCart.required_field_values.size" ng-change="setSelectedSize(selectedSize)">
+              <option value="">Size available for this item</option>
+            </select>
+          </div>
+        </div>
+        <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('color') == -1">
+          <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('option') != -1" class="item item-option">
+            <h2><i class="icon ion-waterdrop"></i>&nbsp;&nbsp;Option</h2>
+            <p>Option available for this item</p>
+            <select ng-model="selectedOption" ng-options="option.text for option in productDetail.twotap.addToCart.required_field_values.option" ng-change="setSelectedOption(selectedOption)">
+              <option value="">Option available for this item</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('options') != -1" class="item item-size">
+        <h2><i class="icon ion-tshirt-outline"></i>&nbsp;&nbsp;Options</h2>
+        <p>Options available for this item</p>
+        <select ng-model="selectedOptions" ng-options="options.text for options in productDetail.twotap.addToCart.required_field_values.options" ng-change="setSelectedOptions(selectedOptions)">
+          <option value="">Options available for this item</option>
+        </select>
+      </div>
+
+      <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('option 1') != -1">
+        <div class="item item-fit">
+          <h2><i class="icon ion-tshirt-outline"></i>&nbsp;&nbsp;Option 1</h2>
+          <!-- <p ng-hide="iphone5NotAvailable">Option 1 available for this item</p> -->
+          <select ng-model="selectedOption1" ng-options="option1.text for option1 in productDetail.twotap.addToCart.required_field_values['option 1']" ng-change="setSelectedOption1(selectedOption1)">
+            <option value="">Option 1 available for this item</option>
+          </select>
+        </div>
+        <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('option 2') != -1">
+          <div class="item item-color">
+            <h2><i class="icon ion-waterdrop"></i>&nbsp;&nbsp;Option 2</h2>
+            <!-- <p ng-hide="iphone5NotAvailable">Option 2 available for this item</p> -->
+            <select ng-model="selectedOption2" ng-options="option2.text for option2 in selectedOption1.dep['option 2']" ng-change="setSelectedOption2(selectedOption2)" ng-disabled="!selectedOption1">
+              <option value="">Option 2 available for this item</option>
+            </select>
+          </div>
+          <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('option 3') != -1">
+            <div class="item item-size">
+              <h2><i class="icon ion-tshirt-outline"></i>&nbsp;&nbsp;Option 3</h2>
+              <!-- <p ng-hide="iphone5NotAvailable">Option 3 available for this item</p> -->
+              <select ng-model="selectedOption3" ng-options="option3.text for option3 in selectedOption2.dep['option 3']" ng-change="setSelectedOption3(selectedOption3)" ng-disabled="!selectedOption1 || !selectedOption2">
+                <option value="">Option 3 available for this item</option>
+              </select>
+            </div>
+            <div ng-if="productDetail.twotap.addToCart.required_field_names.indexOf('option 4') != -1" class="item item-inseam">
+              <h2><i class="icon ion-waterdrop"></i>&nbsp;&nbsp;Option 4</h2>
+              <!-- <p ng-hide="iphone5NotAvailable">Option 4 available for this item</p> -->
+              <select ng-model="selectedOption4" ng-options="option4.text for option4 in selectedOption3.dep['option 4']" ng-change="setSelectedOption4(selectedOption4)" ng-disabled="!selectedOption1 || !selectedOption2 || !selectedOption3">
+                <option value="">Option 4 available for this item</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+  <ion-footer-bar>
+    <div ng-click="submitProperty()" class="button button-calm submit-property">ADD TO CART</div>
+  </ion-footer-bar>
+</ion-modal-view>

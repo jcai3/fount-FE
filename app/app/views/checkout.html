@@ -1,0 +1,281 @@
+<div id="main-container" class="clearfix fount-checkout">
+  <div class="page-heading  clearfix asset-bg alt-one">
+    <div class="container">
+      <div class="heading-text">
+        <h1 class="entry-title">Checkout</h1>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div id="page-wrap">
+      <div class="inner-page-wrap has-no-sidebar clearfix">
+        <div class="clearfix post-5862 page type-page status-publish hentry" id="5862">
+          <div class="page-content clearfix">
+            <div class="woocommerce">
+              <form class="checkout woocommerce-checkout row" novalidate>
+                <ul ng-show="!allInputFieldsValided || invalidAddress.billing || invalidAddress.shipping" class="woocommerce-error">
+            			<li ng-show="!requiredFieldsValided.billing_firstName"><strong>First Name</strong> is a required field.</li>
+            			<li ng-show="!requiredFieldsValided.billing_lastName"><strong>Last Name</strong> is a required field.</li>
+            			<li ng-show="!requiredFieldsValided.billing_address"><strong>Address</strong> is a required field.</li>
+            			<li ng-show="!requiredFieldsValided.billing_city"><strong>City</strong> is a required field.</li>
+            			<li ng-show="!requiredFieldsValided.billing_zip"><strong>Zip</strong> is a required field.</li>
+            			<li ng-show="!requiredFieldsValided.billing_telephone"><strong>Phone</strong> is a required field.</li>
+                  <li ng-show="!requiredFieldsValided.card_number"><strong>Card Number</strong> is a required field.</li>
+                  <li ng-show="!requiredFieldsValided.expiry"><strong>Card Expiration</strong> is a required field.</li>
+                  <li ng-show="!requiredFieldsValided.cvv"><strong>Card CVV</strong> is a required field.</li>
+                  <li ng-show="!requiredFieldsValided.card_name"><strong>Card Full Name</strong> is a required field.</li>
+                  <li ng-show="invalidAddress.billing">Please enter a valid billing address.</li>
+                  <li ng-show="invalidAddress.shipping">Please enter a valid shipping address.</li>
+              	</ul>
+                <div class="span7" id="customer_details">
+                  <div>
+                    <h4 class="lined-heading"><span>Billing Address</span></h4>
+                    <p class="form-row form-row-first validate-required">
+                      <label for="billing_first_name" class="">First Name <abbr class="required" title="required">*</abbr></label>
+                      <input ng-class="{'has-error': !requiredFieldsValided.billing_firstName, 'has-value': billingAddress.firstName.length}" type="text" class="input-text" ng-model="billingAddress.firstName" placeholder="First Name" required>
+                    </p>
+                    <p class="form-row form-row-last validate-required">
+                      <label for="billing_last_name" class="">Last Name <abbr class="required" title="required">*</abbr></label>
+                      <input ng-class="{'has-error': !requiredFieldsValided.billing_lastName, 'has-value': billingAddress.lastName.length}" type="text" class="input-text" ng-model="billingAddress.lastName" placeholder="Last Name" required>
+                    </p>
+                    <div class="clear"></div>
+                    <p class="form-row form-row-wide address-field validate-required">
+                      <label for="billing_address_1" class="">Address <abbr class="required" title="required">*</abbr></label>
+                      <input ng-class="{'has-error': !requiredFieldsValided.billing_address, 'has-value': billingAddress.line1.length}" type="text" class="input-text" ng-model="billingAddress.line1" placeholder="Street Address (Include Apt/Unit)" required>
+                    </p>
+                    <p class="form-row form-row-wide address-field validate-required">
+                      <label for="billing_city" class="">City <abbr class="required" title="required">*</abbr></label>
+                      <input ng-class="{'has-error': !requiredFieldsValided.billing_city, 'has-value': billingAddress.city.length}" type="text" class="input-text" ng-model="billingAddress.city" placeholder="City" required>
+                    </p>
+                    <p class="form-row form-row-wide address-field validate-required">
+                      <label for="billing_state" class="">State <abbr class="required" title="required">*</abbr></label>
+                      <select ng-model="billingAddress.state">
+                        <option value="Alabama">Alabama</option>
+                        <option value="Alaska">Alaska</option>
+                        <option value="Arizona">Arizona</option>
+                        <option value="Arkansas">Arkansas</option>
+                        <option value="California">California</option>
+                        <option value="Colorado">Colorado</option>
+                        <option value="Connecticut">Connecticut</option>
+                        <option value="Delaware">Delaware</option>
+                        <option value="District of Columbia">District of Columbia</option>
+                        <option value="Florida">Florida</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Hawaii">Hawaii</option>
+                        <option value="Idaho">Idaho</option>
+                        <option value="Illinois">Illinois</option>
+                        <option value="Indiana">Indiana</option>
+                        <option value="Iowa">Iowa</option>
+                        <option value="Kansas">Kansas</option>
+                        <option value="Kentucky">Kentucky</option>
+                        <option value="Louisiana">Louisiana</option>
+                        <option value="Maine">Maine</option>
+                        <option value="Maryland">Maryland</option>
+                        <option value="Massachusetts">Massachusetts</option>
+                        <option value="Michigan">Michigan</option>
+                        <option value="Minnesota">Minnesota</option>
+                        <option value="Mississippi">Mississippi</option>
+                        <option value="Missouri">Missouri</option>
+                        <option value="Montana">Montana</option>
+                        <option value="Nebraska">Nebraska</option>
+                        <option value="Nevada">Nevada</option>
+                        <option value="New Hampshire">New Hampshire</option>
+                        <option value="New Jersey">New Jersey</option>
+                        <option value="New Mexico">New Mexico</option>
+                        <option value="New York">New York</option>
+                        <option value="North Carolina">North Carolina</option>
+                        <option value="North Dakota">North Dakota</option>
+                        <option value="Ohio">Ohio</option>
+                        <option value="Oklahoma">Oklahoma</option>
+                        <option value="Oregon">Oregon</option>
+                        <option value="Pennsylvania">Pennsylvania</option>
+                        <option value="Rhode Island">Rhode Island</option>
+                        <option value="South Carolina">South Carolina</option>
+                        <option value="South Dakota">South Dakota</option>
+                        <option value="Tennessee">Tennessee</option>
+                        <option value="Texas">Texas</option>
+                        <option value="Utah">Utah</option>
+                        <option value="U.S. Virgin Islands">Virgin Islands</option>
+                        <option value="Vermont">Vermont</option>
+                        <option value="Virginia">Virginia</option>
+                        <option value="Washington">Washington</option>
+                        <option value="West Virginia">West Virginia</option>
+                        <option value="Wisconsin">Wisconsin</option>
+                        <option value="Wyoming">Wyoming</option>
+                      </select>
+                    </p>
+                    <p class="form-row form-row-last address-field validate-required validate-postcode">
+                      <label for="billing_postcode" class="">Zip <abbr class="required" title="required">*</abbr></label>
+                      <input ng-class="{'has-error': !requiredFieldsValided.billing_zip, 'has-value': billingAddress.zip.length}" type="text" class="input-text" ng-model="billingAddress.zip" placeholder="Zip">
+                    </p>
+                    <p class="form-row form-row-last validate-required validate-phone">
+                      <label for="billing_phone" class="">Phone <abbr class="required" title="required">*</abbr></label>
+                      <input ng-class="{'has-error': !requiredFieldsValided.billing_telephone, 'has-value': billingAddress.phone.length}" type="text" class="input-text" ng-model="billingAddress.phone" placeholder="Phone Number">
+                    </p>
+                    <div class="clear"></div>
+                  </div>
+                  <div>
+                    <p id="ship-to-different-address">
+                      <!-- <input class="input-checkbox" type="checkbox" name="ship_to_different_address" ng-model="checkboxModel.differentToBillingAddress" ng-change="fillShippingAddress()"> -->
+                      <input class="input-checkbox" type="checkbox" name="ship_to_different_address" ng-model="checkboxModel.differentToBillingAddress">
+                      <label for="ship-to-different-address-checkbox" class="checkbox">Ship to a different address?</label>
+                    </p>
+                    <div class="shipping_address" ng-show="checkboxModel.differentToBillingAddress">
+                      <h4 class="lined-heading"><span>Shipping Address</span></h4>
+                      <p class="form-row form-row-first validate-required">
+                        <label for="shipping_first_name" class="">First Name <abbr class="required" title="required">*</abbr></label>
+                        <input ng-class="{'has-error': !requiredFieldsValided.shipping_firstName, 'has-value': shippingAddress.firstName.length}" type="text" class="input-text" ng-model="shippingAddress.firstName" name="userFirstName" placeholder="First Name" required />
+                      </p>
+                      <p class="form-row form-row-last validate-required">
+                        <label for="shipping_last_name" class="">Last Name <abbr class="required" title="required">*</abbr></label>
+                        <input ng-class="{'has-error': !requiredFieldsValided.shipping_lastName, 'has-value': shippingAddress.lastName.length}" type="text" class="input-text" ng-model="shippingAddress.lastName" name="userLastName" placeholder="Last Name" required />
+                      </p>
+                      <p class="form-row form-row-wide address-field validate-required">
+                        <label for="shipping_address_1" class="">Address <abbr class="required" title="required">*</abbr></label>
+                        <input ng-class="{'has-error': !requiredFieldsValided.shipping_address, 'has-value': shippingAddress.line1.length}" type="text" class="input-text" ng-model="shippingAddress.line1" name="userAddressLine1" placeholder="Street Address (Include Apt/Unit)" required />
+                      </p>
+                      <p class="form-row form-row-wide address-field validate-required">
+                        <label for="shipping_city" class="">City <abbr class="required" title="required">*</abbr></label>
+                        <input ng-class="{'has-error': !requiredFieldsValided.shipping_city, 'has-value': shippingAddress.city.length}" type="text" class="input-text" ng-model="shippingAddress.city" name="userAddressCity" placeholder="City" required />
+                      </p>
+                      <p class="form-row form-row-first address-field validate-required">
+                        <label for="shipping_state" class="">State <abbr class="required" title="required">*</abbr></label>
+                        <select ng-model="shippingAddress.state" name="userAddressState">
+                          <option value="Alabama">Alabama</option>
+                          <option value="Alaska">Alaska</option>
+                          <option value="Arizona">Arizona</option>
+                          <option value="Arkansas">Arkansas</option>
+                          <option value="California">California</option>
+                          <option value="Colorado">Colorado</option>
+                          <option value="Connecticut">Connecticut</option>
+                          <option value="Delaware">Delaware</option>
+                          <option value="District of Columbia">District of Columbia</option>
+                          <option value="Florida">Florida</option>
+                          <option value="Georgia">Georgia</option>
+                          <option value="Hawaii">Hawaii</option>
+                          <option value="Idaho">Idaho</option>
+                          <option value="Illinois">Illinois</option>
+                          <option value="Indiana">Indiana</option>
+                          <option value="Iowa">Iowa</option>
+                          <option value="Kansas">Kansas</option>
+                          <option value="Kentucky">Kentucky</option>
+                          <option value="Louisiana">Louisiana</option>
+                          <option value="Maine">Maine</option>
+                          <option value="Maryland">Maryland</option>
+                          <option value="Massachusetts">Massachusetts</option>
+                          <option value="Michigan">Michigan</option>
+                          <option value="Minnesota">Minnesota</option>
+                          <option value="Mississippi">Mississippi</option>
+                          <option value="Missouri">Missouri</option>
+                          <option value="Montana">Montana</option>
+                          <option value="Nebraska">Nebraska</option>
+                          <option value="Nevada">Nevada</option>
+                          <option value="New Hampshire">New Hampshire</option>
+                          <option value="New Jersey">New Jersey</option>
+                          <option value="New Mexico">New Mexico</option>
+                          <option value="New York">New York</option>
+                          <option value="North Carolina">North Carolina</option>
+                          <option value="North Dakota">North Dakota</option>
+                          <option value="Ohio">Ohio</option>
+                          <option value="Oklahoma">Oklahoma</option>
+                          <option value="Oregon">Oregon</option>
+                          <option value="Pennsylvania">Pennsylvania</option>
+                          <option value="Rhode Island">Rhode Island</option>
+                          <option value="South Carolina">South Carolina</option>
+                          <option value="South Dakota">South Dakota</option>
+                          <option value="Tennessee">Tennessee</option>
+                          <option value="Texas">Texas</option>
+                          <option value="Utah">Utah</option>
+                          <option value="U.S. Virgin Islands">Virgin Islands</option>
+                          <option value="Vermont">Vermont</option>
+                          <option value="Virginia">Virginia</option>
+                          <option value="Washington">Washington</option>
+                          <option value="West Virginia">West Virginia</option>
+                          <option value="Wisconsin">Wisconsin</option>
+                          <option value="Wyoming">Wyoming</option>
+                        </select>
+                      </p>
+                      <p class="form-row form-row-last address-field validate-required validate-postcode">
+                        <label for="shipping_postcode" class="">Zip <abbr class="required" title="required">*</abbr></label>
+                        <input ng-class="{'has-error': !requiredFieldsValided.shipping_zip, 'has-value': shippingAddress.zip.length}" type="text" class="input-text" ng-model="shippingAddress.zip" name="userAddressZip" placeholder="Zip" required />
+                      </p>
+                      <p class="form-row form-row-last validate-required validate-phone">
+                        <label for="shipping_phone" class="">Phone <abbr class="required" title="required">*</abbr></label>
+                        <input ng-class="{'has-error': !requiredFieldsValided.shipping_telephone, 'has-value': shippingAddress.phone.length}" type="text" class="input-text" ng-model="shippingAddress.phone" placeholder="Phone Number" required />
+                      </p>
+                      <div class="clear"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-2 span5" id="review-order">
+                  <div id="order_review" class="woocommerce-checkout-review-order review-order-wrap">
+                    <h4 id="order_review_heading"><span>Your Order</span></h4>
+                    <table class="shop_table woocommerce-checkout-review-order-table" style="position: relative; zoom: 1;">
+                      <thead>
+                        <tr>
+			                    <th class="product-name">Product</th>
+			                    <th class="product-total">Total</th>
+		                    </tr>
+	                    </thead>
+	                    <tbody>
+                        <!-- <tr class="cart_item" ng-repeat="cartItem in shoppingBagDetail.twotap.payload.SHOPPING_CART.cartProducts">
+                          <td class="product-name">{{cartItem.product.name}}&nbsp;<strong class="product-quantity">× {{cartItem.quantity}}</strong>													</td>
+						              <td class="product-total">
+							              <span class="amount">{{cartItem.product.finalPrice * cartItem.quantity | currency}}</span>
+                          </td>
+                        </tr> -->
+                        <tr class="cart_item" ng-repeat="product in shoppingCart">
+                          <td class="product-name">{{product.name}}&nbsp;<strong class="product-quantity">× {{product.qty}}</strong>													</td>
+                          <td class="product-total">
+                            <span class="amount">{{product.price * product.qty | currency}}</span>
+                          </td>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr class="cart-subtotal">
+                          <th>Subtotal</th>
+                          <td><span class="amount">{{shoppingCartInfo.subtotal | currency}}</span></td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                    <div id="payment" class="woocommerce-checkout-payment" style="position: relative; zoom: 1;">
+                      <ul class="payment_methods methods">
+                        <li class="payment_method_bacs">
+                          <label for="payment_method_bacs">Payment</label>
+                        </li>
+                        <li class="payment_method_bacs">
+                          <select ng-model="creditCardInfo.type">
+                            <option value="Visa">VISA</option>
+                            <option value="Mastercard">MASTER</option>
+                            <option value="American Express">AMERICAN EXPRESS</option>
+                            <option value="Discover">DISCOVER</option>
+                          </select>
+                        </li>
+                        <li class="payment_method_bacs">
+                          <input ng-class="{'has-error': !requiredFieldsValided.card_number, 'has-value': creditCardInfo.number.length}" class="input-text" type="text" ng-model="creditCardInfo.number" placeholder="Card Number" maxlength="16" required>
+                        </li>
+                        <li class="payment_method_bacs">
+                           <input ng-class="{'has-error': !requiredFieldsValided.expiry, 'has-value': creditCardInfo.expiration.length}" class="input-text" type="text" ng-model="creditCardInfo.expiration" placeholder="Expiration (MM/YYYY)" required>
+                        </li>
+                        <li class="payment_method_bacs">
+                           <input ng-class="{'has-error': !requiredFieldsValided.cvv, 'has-value': creditCardInfo.cvv.length}" class="input-text" type="text" ng-model="creditCardInfo.cvv" placeholder="CVV" required>
+                        </li>
+                        <li class="payment_method_bacs">
+                           <input ng-class="{'has-error': !requiredFieldsValided.card_name, 'has-value': creditCardInfo.name.length}" class="input-text" type="text" ng-model="creditCardInfo.name" placeholder="Full Name (First Last)" required>
+                        </li>
+                      </ul>
+                      <div class="form-row place-order">
+                        <input ng-click="validRequiredFields()" type="submit" class="button alt" name="woocommerce_checkout_place_order" id="place_order" value="Review">
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

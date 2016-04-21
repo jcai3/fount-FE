@@ -1,0 +1,19 @@
+<div class='fount-quick-view-slider'>
+  <div id="quick-view-img-slider"  class="flexslider"> 
+    <ul class="slides"  >
+      <li ng-repeat="productImage in productImages" >
+     
+       <img ng-src="{{productImage}}"/>
+     
+      </li>
+    </ul>   
+  </div>
+  <div id="quick-view-img-carousel" class="flexslider" >
+    <ul class="slides" >
+      <li ng-repeat="productImage in productImages" >
+        <img ng-src="{{productImage}}" />
+      </li>
+    </ul>
+    
+  </div> 
+</div>
