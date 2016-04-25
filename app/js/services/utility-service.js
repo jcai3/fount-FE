@@ -392,16 +392,16 @@ angular.module('sywStyleXApp')
     return apiRepository.addProductsToCart(user, product, media, visualTag, productMetadata, quantity, shippingMethod, originalUrl);
   };
 
-  this.addShopProductsToCart = function(user, product, productMetadata, quantity, shippingMethod, originalUrl) {
-    return apiRepository.addShopProductsToCart(user, product, productMetadata, quantity, shippingMethod, originalUrl);
+  this.addShopProductsToCart = function(product, productMetadata, quantity, shippingMethod, originalUrl) {
+    return apiRepository.addShopProductsToCart(product, productMetadata, quantity, shippingMethod, originalUrl);
   };
 
   this.updateProductsInCart = function(user, cartProductId, color, size, quantity) {
     return apiRepository.updateProductsInCart(user, cartProductId, color, size, quantity);
   };
 
-  this.deleteProductsFromCart = function(cart, cartProduct) {
-    return apiRepository.deleteProductsFromCart(cart, cartProduct);
+  this.deleteProductsFromCart = function(cart, cartProduct, productMetaDataId) {
+    return apiRepository.deleteProductsFromCart(cart, cartProduct, productMetaDataId);
   };
 
   this.getProductsFromCart = function(userId, twoTapForceSync) {

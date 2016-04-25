@@ -37,7 +37,7 @@
     <div class="fount-search-bar">
       <div fount-search></div>
     </div>
-    <div ng-show="isLoggedIn" class="fount-header-right">
+    <div class="fount-header-right">
       <div ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()" class="fount-shopping-bag">
         <i ng-click="goToCart()" class="sf-cart"></i>
         <span ng-click="goToCart()" class="fount-cart-count">{{shoppingCartInfo.count}}</span>
@@ -69,7 +69,7 @@
 			</li>
 		</ul>
       </div>
-      <div ng-mouseover="profileHoverIn()" ng-mouseleave="profileHoverOut()" class="fount-profile-section" id="fount-profile-section">
+      <div  ng-show="isLoggedIn" ng-mouseover="profileHoverIn()" ng-mouseleave="profileHoverOut()" class="fount-profile-section" id="fount-profile-section">
         <div class="fount-user-avatar">
           <img ng-src="{{publicProfilePicture}}">
         </div>
@@ -85,11 +85,14 @@
           </div>
         </div>
       </div>
+      <div ng-show="!isLoggedIn" class="fount-profile-section">
+      	<div id="whitespace"></div>
+      </div>
     </div>
     <div ng-click="login()" ng-show="!isLoggedIn" class="fount-header-right">
-      <div class="fount-shopping-bag">
+     <!--  <div class="fount-shopping-bag">
         <i class="sf-cart"></i>
-      </div>
+      </div> -->
       <div class="fount-profile-section" id="fount-profile-section">
         <span>Login</span>
       </div>

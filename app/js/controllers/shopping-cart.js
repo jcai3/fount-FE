@@ -167,7 +167,11 @@ angular.module('sywStyleXApp')
       id: shoppingCartToDelete.id
     };
 
-    CartService.deleteProductsFromCart(shoppingCart, cartProduct).success(function(res) {
+    /*var productMetaDataId = {
+      id: 
+    };*/
+    
+    CartService.deleteProductsFromCart(shoppingCart, cartProduct, productMetaDataId).success(function(res) {
       var index = cartProductIds.indexOf(shoppingCartToDelete.id);
       if (index > -1) {
         cartProductIds.splice(index, 1);

@@ -327,7 +327,7 @@ angular.module('sywStyleXApp')
     var visualTag = {id: products.visualTagId};
     var originalUrl = products.buyURL;
 
-    CartService.addProductsToCart(user, product, media, visualTag, productMetadata, $scope.productQuantity, shippingMethod, originalUrl).success(function(res) {
+    CartService.addProductsToCart(product, media, visualTag, productMetadata, $scope.productQuantity, shippingMethod, originalUrl).success(function(res) {
 
         if (products.availability) {
             if (!!products.prices) {
@@ -374,7 +374,7 @@ angular.module('sywStyleXApp')
 //    var visualTag = {id: products.visualTagId};
     var originalUrl = products.buyURL;
 
-    CartService.addShopProductsToCart(user, product, productMetadata, $scope.productQuantity, shippingMethod, originalUrl).success(function(res) {
+    CartService.addShopProductsToCart(product, productMetadata, $scope.productQuantity, shippingMethod, originalUrl).success(function(res) {
 
         if (products.availability) {
             if (!!products.prices) {

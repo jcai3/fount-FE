@@ -666,6 +666,9 @@ abbr[title], abbr[data-original-title] {
   padding: 15px 5px;
   position: relative;
 }
+.fount-header .fount-header-right .fount-profile-section #whitespace {
+	margin-right:40px;
+}
 .fount-header .fount-header-right .fount-profile-section .fount-log-out {
   position: absolute;
   z-index: 9;
@@ -731,6 +734,9 @@ abbr[title], abbr[data-original-title] {
   height: 52px;
   display: inline-block;
   vertical-align: -8px;
+}
+.fount-header .whitespace {
+  margin-gright:80px;	
 }
 ul.products li.product .price span {
   font-size: 14px;

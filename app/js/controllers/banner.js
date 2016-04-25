@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('BannerCtrl', ['$scope', '$state', '$window', 'UtilityService', 'AdminService', 'BannerService', function($scope, $state, $window, UtilityService, AdminService, BannerService) {
+.controller('BannerCtrl', ['$scope', '$state', 'localStorageService', '$window', 'UtilityService', 'AdminService', 'BannerService', function($scope, $state, localStorageService, $window, UtilityService, AdminService, BannerService) {
 
 var media = null;
 	var handleFileSelect = function(evt) {
@@ -37,7 +37,7 @@ var media = null;
 	$scope.width = [];
 	$scope.height = [];
 	$scope.medias = [];
-	var userId ="1";
+	var userId = localStorageService.get('userId');
 	$scope.width.push("1200");
 	$scope.height.push("300");
 	$scope.successmsg = false;

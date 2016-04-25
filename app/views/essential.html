@@ -9,7 +9,7 @@
 	<div class="container admin-seller">
 
 		<h1 class="entry-title">Create New</h1>
-		<div class="woocommerce-message" ng-show="successmsg">Banner Upload Success</div>
+		<div class="woocommerce-message" ng-show="successmsg">Category Creation Success</div>
 		<form ng-submit="submit()">
 			<table>
 				<tr>
@@ -67,7 +67,7 @@
 							fount-err-src="img/err-src.png" />
 					</div>
 				</td>
-				<td>{{category.categories[0].name}}</td>
+				<td>{{category.name}}</td>
 				<td><div ng-repeat="sub in category.categories">
 						{{sub.id}}: {{sub.name}};<br>
 					</div></td>

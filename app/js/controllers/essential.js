@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywStyleXApp')
-.controller('EssentialCtrl', ['$scope', '$state', 'UtilityService', 'AdminService', 'EssentialService', function($scope, $state, UtilityService, AdminService, EssentialService) {
+.controller('EssentialCtrl', ['$scope', '$state', 'localStorageService', 'UtilityService', 'AdminService', 'EssentialService', function($scope, $state, localStorageService, UtilityService, AdminService, EssentialService) {
 	 var departmentId = 1;
 	 $scope.departments = [{}];
 	 
@@ -10,8 +10,8 @@ angular.module('sywStyleXApp')
 	 $scope.width = [];
 	 $scope.height = [];
 	 $scope.medias = [];
-	 var userId ="1";
-	 $scope.categoryIds=[];
+	 var userId = localStorageService.get('userId');
+	 $scope.categoryIds=null;
 	 $scope.width.push("500");
 	 $scope.height.push("500");
 	 var pagenum=1;
@@ -27,12 +27,10 @@ angular.module('sywStyleXApp')
 
 		    if (files && file) {
 		        var reader = new FileReader();
-
 		        reader.onload = function(readerEvt) {
 		            var binaryString = readerEvt.target.result;
 		            media = btoa(binaryString);
 		            media = "data:image/png;base64,"+media;
-		            //console.log("media :"+media);
 		        };
 
 		        reader.readAsBinaryString(file);
@@ -86,19 +84,21 @@ angular.module('sywStyleXApp')
 	
 	 
 	 $scope.createEssentialCategories = function() {
+		 $scope.medias.length=0;
 		 departmentId = $scope.department.id;
 		 $scope.medias.push(media);
 			 console.log('begin insert');
+		 $scope.successmsg = false;
 		 $scope.successmsg = true;
+		 console.log("userId is: "+userId);
 		 EssentialService.createEssentialCategories(userId, $scope.medias, $scope.width, $scope.height, $scope.bcName, bcType, departmentId, $scope.categoryIds).then(function(res) {
 			 if (UtilityService.validateResult(res)) {
 				 console.log("category created:"+categoryIds);
 			 }
 			 else{
 				 console.log('create category fails');
-			 }
-			 $scope.medias.length=0; 
-		 });
+			 }		 
+		 });	 
 	 };
 		 
 	 

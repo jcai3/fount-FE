@@ -371,9 +371,8 @@ angular.module('sywStyleXApp')
     return serviceCall('POST', 'cart/discover/add', inputParams);
   };
 
-  this.addShopProductsToCart = function(user, product, productMetadata, quantity, shippingMethod, originalUrl) {
+  this.addShopProductsToCart = function(product, productMetadata, quantity, shippingMethod, originalUrl) {
     var inputParams = {
-      user: user,
       product: product,
       productMetadata: productMetadata,
       quantity: quantity,
@@ -396,18 +395,18 @@ angular.module('sywStyleXApp')
     return serviceCall('POST', 'cart/update', inputParams);
   };
 
-  this.deleteProductsFromCart = function(shoppingCart, cartProduct) {
+  this.deleteProductsFromCart = function(shoppingCart, cartProduct, productMetaDataId) {
     var inputParams = {
       shoppingCart: shoppingCart,
-      cartProduct: cartProduct
+      cartProduct: cartProduct,
+      productMetaDataId: productMetaDataId
     };
 
     return serviceCall('POST', 'cart/delete', inputParams);
   };
 
-  this.getProductsFromCart = function(userId, twoTapForceSync) {
+  this.getProductsFromCart = function(twoTapForceSync) {
     var inputParams = {
-      userId: userId,
       twoTapForceSync: twoTapForceSync
     };
 
@@ -761,9 +760,9 @@ angular.module('sywStyleXApp')
     return serviceCall('GET', 'user/getUser', inputParams);
   };
 
-  this.getCheckoutSummary = function(selectedProducts) {
+  this.getCheckoutSummary = function(selectedProductMetaDataIds) {
     var inputParams = {
-      selectedProducts: selectedProducts
+    	selectedProductMetaDataIds: selectedProductMetaDataIds
     };
 
     return serviceCall('POST', 'checkout/get', inputParams);
@@ -771,7 +770,7 @@ angular.module('sywStyleXApp')
 
   this.placeOrder = function(shoppingCartProductGroups, cartId, pidMap, noauthCheckout, totalPrice, shippingPrice, salesTax) {
     var inputParams = {
-      shoppingCartProductGroups: shoppingCartProductGroups,
+      shoppingCartProductGroups: shoppingCartProductGroups,  // include private List<Long> selectedProductMetaDataIds in this parameter
       cartId: cartId,
       pidMap: pidMap,
       noauthCheckout: noauthCheckout,

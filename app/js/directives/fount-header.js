@@ -202,8 +202,8 @@ angular.module('sywStyleXApp')
 
       var updateProductsFromCart = function() {
         shoppingCartDict = {};
-        var userId = localStorageService.get('userId');
-        CartService.getProductsFromCart(userId, true).success(function(response) {
+        //var userId = localStorageService.get('userId');
+        CartService.getProductsFromCart(true).success(function(response) {
           var userCartProducts = response.payload.SHOPPING_CART.cartProducts;
           var userCartLength = userCartProducts.length;
           if (userCartLength > 0) {
