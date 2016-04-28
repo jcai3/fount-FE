@@ -8,6 +8,9 @@ angular.module('sywStyleXApp')
 
   var cartId = '';
   var cartProductIds = localStorageService.get('cartProductIds');
+  console.log(localStorageService);
+  var selectedProductMetaDataIds = localStorageService.get('selectedProductMetaDataIds');
+  console.log(selectedProductMetaDataIds);
   var affiliateLinks = [];
   var twotapProductUrls = [];
   var productTwotapIdMap = {};
@@ -48,7 +51,7 @@ angular.module('sywStyleXApp')
   };
 
   var getCartProducts = function() {
-    CheckoutService.getCheckoutSummary(cartProductIds).then(function(result) {
+    CheckoutService.getCheckoutSummary(selectedProductMetaDataIds).then(function(result) {
       cartId = result.data.payload.CART_ID;
       affiliateLinks = result.data.payload.AFFILIATE_LINKS;
       twotapProductUrls = result.data.payload.TWOTAP_PRODUCT_URLS;

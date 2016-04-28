@@ -154,8 +154,10 @@ angular.module('sywStyleXApp')
       }
 
       var getProductsFromCart = function() {
-        CartService.getProductsFromCart(localStorageService.get('userId'), false).success(function(response) {
-          scope.username = response.payload.SHOPPING_CART.user.displayName;
+        CartService.getProductsFromCart(false).success(function(response) {
+          //scope.username = response.payload.SHOPPING_CART.user.displayName;
+          console.log("cart products:");
+          console.log(response.payload);
           scope.fountCartProducts = response.payload.SHOPPING_CART.cartProducts;
           scope.shoppingCartInfo.count = response.payload.SHOPPING_CART.cartProducts.length;
           scope.shoppingCartInfo.subtotal = 0;
@@ -170,7 +172,7 @@ angular.module('sywStyleXApp')
 
       var collateShoppingCartItems = function(cartProducts) {
         var shoppingBagObj = {
-          id:cartProducts.id,
+          id:(cartProducts.id == null) ? null : cartProducts.id,
           availability: (cartProducts.productMetadata.availability == 'AVAILABLE') ? true : false,
           productId: cartProducts.product.id ,
           sellerName: cartProducts.product.seller.name,
@@ -188,9 +190,10 @@ angular.module('sywStyleXApp')
           visualTagId: !!cartProducts.visualTag ? cartProducts.visualTag.id : null,
           qty: cartProducts.quantity,
           prices: {subtotal: "$0.00"},
-          itemSelected: false
+          itemSelected: false,
+          productMetadataId: cartProducts.productMetadata.id
         };
-
+        console.log(shoppingBagObj);
         if (shoppingBagObj.sellerName in shoppingCartDict) {
           shoppingCartDict[shoppingBagObj.sellerName].push(shoppingBagObj);
         } else {
@@ -204,6 +207,7 @@ angular.module('sywStyleXApp')
         shoppingCartDict = {};
         //var userId = localStorageService.get('userId');
         CartService.getProductsFromCart(true).success(function(response) {
+        	console.log(response);
           var userCartProducts = response.payload.SHOPPING_CART.cartProducts;
           var userCartLength = userCartProducts.length;
           if (userCartLength > 0) {
@@ -242,6 +246,7 @@ angular.module('sywStyleXApp')
 
       if (!localStorageService.get('userId')) {
         scope.isLoggedIn = false;
+        getProductsFromCart();
         //$state.go('login');
       } else {
         scope.isLoggedIn = true;

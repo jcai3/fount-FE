@@ -404,8 +404,8 @@ angular.module('sywStyleXApp')
     return apiRepository.deleteProductsFromCart(cart, cartProduct, productMetaDataId);
   };
 
-  this.getProductsFromCart = function(userId, twoTapForceSync) {
-    return apiRepository.getProductsFromCart(userId, twoTapForceSync);
+  this.getProductsFromCart = function(twoTapForceSync) {
+    return apiRepository.getProductsFromCart(twoTapForceSync);
   };
 
   this.saveForLaterFromCart = function(cartProduct) {
@@ -610,8 +610,8 @@ angular.module('sywStyleXApp')
 }])
 .service('CheckoutService', ['apiRepository', function(apiRepository) {
 
-  this.getCheckoutSummary = function(selectedProducts) {
-    return apiRepository.getCheckoutSummary(selectedProducts);
+  this.getCheckoutSummary = function(selectedProductMetaDataIds) {
+    return apiRepository.getCheckoutSummary(selectedProductMetaDataIds);
   };
 
   this.placeOrder = function(shoppingCartProductGroups, cartId, pidMap, noauthCheckout, totalPrice, shippingPrice, salesTax) {

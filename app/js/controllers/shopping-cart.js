@@ -17,7 +17,18 @@ angular.module('sywStyleXApp')
       $scope.showSaveForLaterSuccessMsg = false;
     }, 2000);
   };
-
+  //update shoppingCartDict
+/*  var getCart = function(sync) {
+	  console.log("update shoppingCartDict");
+	  CartService.getProductsFromCart(sync).then(function(res)){
+		  if (UtilityService.validateResult(res)) {
+			  	$scope.shoppingCartDict = res.payload.SHOPPING_CART;
+			  	console.log("shoppingCartDict is:");
+			  	console.log($scope.shoppingCartDict);
+		      }
+	  });
+  };*/
+  
   var toggleSelectAllSellerItems = function(key) {
     var sellerItems = $scope.shoppingCartDict[key];
 
@@ -159,6 +170,7 @@ angular.module('sywStyleXApp')
   };
 
   $scope.removeItemFromCart= function(shoppingCartToDelete) {
+	console.log(shoppingCartToDelete);
     var shoppingCart = {
       id: localStorageService.get('shoppingCartId')
     };
@@ -166,12 +178,12 @@ angular.module('sywStyleXApp')
     var cartProduct = {
       id: shoppingCartToDelete.id
     };
-
-    /*var productMetaDataId = {
-      id: 
-    };*/
+    
+    var productMetaDataId = shoppingCartToDelete.productMetadataId;
+  
     
     CartService.deleteProductsFromCart(shoppingCart, cartProduct, productMetaDataId).success(function(res) {
+    	console.log(productMetaDataId);
       var index = cartProductIds.indexOf(shoppingCartToDelete.id);
       if (index > -1) {
         cartProductIds.splice(index, 1);
@@ -244,7 +256,8 @@ angular.module('sywStyleXApp')
     ProductDetailService.getProductDetail(cartProductDetails.productId).then(function(response){
 
       if (UtilityService.validateResult(response)) {
-        var product = {
+    	  console.log(response.data.payload.PRODUCT);
+    	  var product = {
           brandName: response.data.payload.PRODUCT.brand.name,
           buyURL: response.data.payload.PRODUCT.buyURL,
           description: response.data.payload.PRODUCT.description,
@@ -291,16 +304,10 @@ angular.module('sywStyleXApp')
     };
     if(!!localStorageService.get('shoppingBagDetail')){
       shoppingBagDetail = localStorageService.get('shoppingBagDetail');
-      //
-      // var showProductProperty = $ionicModal.fromTemplateUrl('product-property.html', {
-      //   scope: $scope,
-      //   animation: 'slide-in-up'
-      // }).then(function(modal) {
-      //   $scope.modal = modal;
-      //   console.log('modal created');
-      // });
 
       var shoppingCart = localStorageService.get('shoppingCart');
+      console.log("shoppingCart is:");
+      console.log(shoppingCart);
       var sellerNames = [];
       for (var key in shoppingCart) {
         Object.defineProperties(shoppingCart[key], {
@@ -353,10 +360,6 @@ angular.module('sywStyleXApp')
   };
 
   enableShoppingCartView();
-
-  // $scope.$on('$ionicView.leave', function() {
-  //   $scope.modal.remove();
-  //   console.log('modal removed');
-  // });
+  //getCart(true);
 
 }]);
